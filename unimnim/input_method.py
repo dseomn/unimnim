@@ -43,6 +43,8 @@ def _generate_map_one_script(
 
     for base_keys, base_value in script.base.items():
         _add(script.prefix + base_keys, base_value)
+    for combining_keys, combining_value in script.combining.items():
+        _add(script.prefix + combining_keys, combining_value)
 
     while combining_to_check:
         keys, value = combining_to_check.popleft()

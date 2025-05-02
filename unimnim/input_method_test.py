@@ -79,6 +79,8 @@ def test_generate_map_error(
                 "ls.": "\N{LATIN SMALL LETTER S WITH DOT BELOW}",
                 "ls*.": "\N{LATIN SMALL LETTER S WITH DOT BELOW AND DOT ABOVE}",
                 "ls.*": "\N{LATIN SMALL LETTER S WITH DOT BELOW AND DOT ABOVE}",
+                "l*": "\N{COMBINING DOT ABOVE}",
+                "l.": "\N{COMBINING DOT BELOW}",
             },
         ),
         (
@@ -98,6 +100,7 @@ def test_generate_map_error(
                 "la'": "\N{LATIN SMALL LETTER A WITH ACUTE}",
                 "lae": "\N{LATIN SMALL LETTER AE}",
                 "lae'": "\N{LATIN SMALL LETTER AE WITH ACUTE}",
+                "l'": "\N{COMBINING ACUTE ACCENT}",
             },
         ),
         (
@@ -120,6 +123,8 @@ def test_generate_map_error(
                 "ls...": (
                     "\N{LATIN SMALL LETTER S WITH DOT BELOW AND DOT ABOVE}"
                 ),
+                "l.": "\N{COMBINING DOT ABOVE}",
+                "l..": "\N{COMBINING DOT BELOW}",
             },
         ),
         (
@@ -139,8 +144,10 @@ def test_generate_map_error(
             {
                 "ga": "\N{GREEK SMALL LETTER ALPHA}",
                 "ga~": "\N{GREEK SMALL LETTER ALPHA WITH PERISPOMENI}",
+                "g~": "\N{COMBINING GREEK PERISPOMENI}",
                 "la": "a",
                 "la~": "\N{LATIN SMALL LETTER A WITH TILDE}",
+                "l~": "\N{COMBINING TILDE}",
             },
         ),
     ),
