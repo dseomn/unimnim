@@ -46,7 +46,7 @@ from unimnim import input_method
                     combining={},
                 ),
             },
-            "scripts have the same input key sequences",
+            "scripts have the same mnemonics",
         ),
     ),
 )
@@ -84,7 +84,7 @@ def test_generate_map_error(
             },
         ),
         (
-            # Base keys can overlap.
+            # Base mnemonics can overlap.
             {
                 "Latin": data.Script(
                     prefix="l",
@@ -104,8 +104,8 @@ def test_generate_map_error(
             },
         ),
         (
-            # Combining keys can overlap. Overlapping combining keys can even
-            # stack together, as long as the order isn't important.
+            # Combining mnemonics can overlap. Overlapping combining mnemonics
+            # can even stack together, as long as the order isn't important.
             {
                 "Latin": data.Script(
                     prefix="l",
@@ -128,7 +128,8 @@ def test_generate_map_error(
             },
         ),
         (
-            # Different scripts can give different meanings to the same keys.
+            # Different scripts can give different meanings to the same
+            # mnemonics.
             {
                 "Greek": data.Script(
                     prefix="g",

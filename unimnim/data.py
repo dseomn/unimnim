@@ -63,11 +63,9 @@ class Script:
 
     Attributes:
         prefix: Prefix for all of the script's mnemonics.
-        base: Map from input keys (after and not including prefix) to the
-            character that input should produce.
-        combining: Map from input keys (after and not including prefix, one
-            sequence from base, and zero or more other sequences from combining)
-            to the combining code point that should be added to the character.
+        base: Map from mnemonic (not including prefix) to a result.
+        combining: Map from mnemonic (not including prefix) to a combining code
+            point that should be added to an existing result.
     """
 
     prefix: str

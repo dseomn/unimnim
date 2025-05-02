@@ -25,63 +25,67 @@ def _generate_map_one_script(
     script_id: str,
     script: data.Script,
 ) -> Mapping[str, str]:
-    """Returns a map from input keys to replacement string for one script."""
+    """Returns a map from mnemonic to result for one script."""
     mapping = {}
     combining_to_check = collections.deque[tuple[str, str]]()
 
-    def _add(keys: str, value: str) -> None:
-        # Allow duplicates only if the value is the same. That way if "." is dot
-        # above and ".." is dot below, "..." can be generated in either order
-        # without counting as a duplicate.
-        if keys not in mapping:
-            mapping[keys] = value
-            combining_to_check.append((keys, value))
-        elif mapping[keys] != value:
+    def _add(mnemonic: str, result: str) -> None:
+        # Allow duplicates only if the result is the same. That way if "." is
+        # dot above and ".." is dot below, "..." can be generated in either
+        # order without counting as a duplicate.
+        if mnemonic not in mapping:
+            mapping[mnemonic] = result
+            combining_to_check.append((mnemonic, result))
+        elif mapping[mnemonic] != result:
             raise ValueError(
-                f"Script {script_id!r} has duplicate key sequence {keys!r}"
+                f"Script {script_id!r} has duplicate mnemonic {mnemonic!r}"
             )
 
-    for base_keys, base_value in script.base.items():
-        _add(script.prefix + base_keys, base_value)
-    for combining_keys, combining_value in script.combining.items():
-        _add(script.prefix + combining_keys, combining_value)
+    for mnemonic, result in script.base.items():
+        _add(script.prefix + mnemonic, result)
+    for mnemonic, result in script.combining.items():
+        _add(script.prefix + mnemonic, result)
 
     while combining_to_check:
-        keys, value = combining_to_check.popleft()
-        for combining_keys, combining_value in script.combining.items():
-            combined_value = unicodedata.normalize(
-                "NFC", value + combining_value
+        mnemonic, result = combining_to_check.popleft()
+        for combining_mnemonic, combining_result in script.combining.items():
+            combined_result = unicodedata.normalize(
+                "NFC", result + combining_result
             )
-            if len(combined_value) != 1:
-                # TODO: dseomn - Handle some characters that are multiple code
+            if len(combined_result) != 1:
+                # TODO: dseomn - Handle some results that are multiple code
                 # points.
                 # https://www.unicode.org/Public/draft/ucd/NamedSequences.txt
                 # looks like it should be the right place to find them, but see
                 # https://github.com/mike-fabian/ibus-typing-booster/issues/698#issuecomment-2840304410
                 # for limitations of that file.
                 continue
-            combined_keys = keys + combining_keys
-            _add(combined_keys, combined_value)
+            combined_mnemonic = mnemonic + combining_mnemonic
+            _add(combined_mnemonic, combined_result)
 
     return mapping
 
 
 def generate_map(scripts: Mapping[str, data.Script]) -> Mapping[str, str]:
-    """Returns a map from input keys to replacement string."""
-    value_and_script_id_by_keys = collections.defaultdict[
+    """Returns a map from mnemonic to result."""
+    result_and_script_id_by_mnemonic = collections.defaultdict[
         str, list[tuple[str, str]]
     ](list)
     for script_id, script in scripts.items():
-        for keys, value in _generate_map_one_script(script_id, script).items():
-            value_and_script_id_by_keys[keys].append((value, script_id))
+        for mnemonic, result in _generate_map_one_script(
+            script_id, script
+        ).items():
+            result_and_script_id_by_mnemonic[mnemonic].append(
+                (result, script_id)
+            )
     if duplicates := {
-        k: v for k, v in value_and_script_id_by_keys.items() if len(v) > 1
+        k: v for k, v in result_and_script_id_by_mnemonic.items() if len(v) > 1
     }:
         raise ValueError(
-            "Some scripts have the same input key sequences:\n"
+            "Some scripts have the same mnemonics:\n"
             f"{pprint.pformat(duplicates)}"
         )
     return {
-        keys: value
-        for keys, ((value, _),) in value_and_script_id_by_keys.items()
+        mnemonic: result
+        for mnemonic, ((result, _),) in result_and_script_id_by_mnemonic.items()
     }
