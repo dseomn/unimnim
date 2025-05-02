@@ -16,6 +16,7 @@
 from collections.abc import Mapping
 import dataclasses
 import pathlib
+import pprint
 import re
 import tomllib
 from typing import Any, Self
@@ -67,6 +68,21 @@ def parse_explicit_string(explicit_string: str, /) -> str:
     return decoded_string
 
 
+def _require_sorted_by_value_and_key(
+    mapping: Mapping[str, str], /, *, name: str
+) -> None:
+    items = list(mapping.items())
+    sorted_items = sorted(items, key=lambda kv: (kv[1], kv[0]))
+    if items != sorted_items:
+        raise ValueError(
+            f"{name} is not sorted by value then key.\n"
+            "Expected:\n"
+            f"{pprint.pformat(dict(sorted_items), sort_dicts=False)}\n"
+            "Actual:\n"
+            f"{pprint.pformat(dict(items), sort_dicts=False)}"
+        )
+
+
 @dataclasses.dataclass(frozen=True, kw_only=True)
 class Group:
     """Data for a single group of mnemonics.
@@ -81,6 +97,10 @@ class Group:
     prefix: str
     base: Mapping[str, str]
     combining: Mapping[str, str]
+
+    def __post_init__(self) -> None:
+        _require_sorted_by_value_and_key(self.base, name="base")
+        _require_sorted_by_value_and_key(self.combining, name="combining")
 
     @classmethod
     def parse(cls, raw: Any, /) -> Self:

@@ -56,9 +56,46 @@ def test_parse_explicit_string(explicit_string: str, expected: str) -> None:
     assert data.parse_explicit_string(explicit_string) == expected
 
 
-def test_group_parse_error() -> None:
-    with pytest.raises(ValueError, match="Unexpected keys"):
-        data.Group.parse(dict(prefix="l", base={}, not_valid="foo"))
+@pytest.mark.parametrize(
+    "raw,error_regex",
+    (
+        (dict(prefix="l", base={}, not_valid="foo"), r"Unexpected keys"),
+        (
+            dict(
+                prefix="l",
+                base={
+                    "b": "U+0062 LATIN SMALL LETTER B",
+                    "a": "U+0061 LATIN SMALL LETTER A",
+                },
+            ),
+            r"base is not sorted",
+        ),
+        (
+            dict(
+                prefix="l",
+                base={
+                    "b": "U+0061 LATIN SMALL LETTER A",
+                    "a": "U+0061 LATIN SMALL LETTER A",
+                },
+            ),
+            r"base is not sorted",
+        ),
+        (
+            dict(
+                prefix="l",
+                base={},
+                combining={
+                    "~": "U+0303 COMBINING TILDE",
+                    "'": "U+0301 COMBINING ACUTE ACCENT",
+                },
+            ),
+            r"combining is not sorted",
+        ),
+    ),
+)
+def test_group_parse_error(raw: Any, error_regex: str) -> None:
+    with pytest.raises(ValueError, match=error_regex):
+        data.Group.parse(raw)
 
 
 @pytest.mark.parametrize(
