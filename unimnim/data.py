@@ -13,9 +13,11 @@
 # limitations under the License.
 """Data file parsing."""
 
-from collections.abc import Mapping
+from collections.abc import Collection, Mapping
 import dataclasses
+import pathlib
 import re
+import tomllib
 from typing import Any, Self
 import unicodedata
 
@@ -91,3 +93,11 @@ class Script:
                 }
             ),
         )
+
+
+def load(path: pathlib.Path, /) -> Collection[Script]:
+    """Returns all scripts from .toml files in a directory."""
+    return [
+        Script.parse(tomllib.loads(file.read_text()))
+        for file in path.glob("**/*.toml")
+    ]

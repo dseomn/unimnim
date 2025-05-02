@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import collections
+import pathlib
 from typing import Any
 
 import pytest
@@ -69,3 +71,33 @@ def test_script_parse_error() -> None:
 )
 def test_script_parse(raw: Any, expected: Any) -> None:
     assert data.Script.parse(raw) == data.Script(**expected)
+
+
+def test_load(tmp_path: pathlib.Path) -> None:
+    (tmp_path / "subdir").mkdir()
+    (tmp_path / "subdir" / "Latin.toml").write_text(
+        """
+        prefix = "l"
+        [base]
+        "a" = "U+0061 LATIN SMALL LETTER A"
+        """
+    )
+    (tmp_path / "Greek.toml").write_text(
+        """
+        prefix = "g"
+        [base]
+        "a" = "U+03B1 GREEK SMALL LETTER ALPHA"
+        """
+    )
+
+    actual = data.load(tmp_path)
+
+    expected = (
+        data.Script.parse(
+            dict(prefix="l", base={"a": "U+0061 LATIN SMALL LETTER A"})
+        ),
+        data.Script.parse(
+            dict(prefix="g", base={"a": "U+03B1 GREEK SMALL LETTER ALPHA"})
+        ),
+    )
+    assert collections.Counter(actual) == collections.Counter(expected)
