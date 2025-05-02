@@ -9,6 +9,7 @@ name = "unimnim"
 version = "0"
 requires-python = ">=3.11"
 dependencies = [
+  "immutabledict",
 ]
 
 [project.optional-dependencies]

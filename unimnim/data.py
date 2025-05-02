@@ -19,6 +19,8 @@ import re
 from typing import Any, Self
 import unicodedata
 
+import immutabledict
+
 
 def parse_string(s: str, /) -> str:
     """Returns the value of a human-readable string of unicode code points.
@@ -79,11 +81,13 @@ class Script:
             raise ValueError(f"Unexpected keys: {list(unexpected_keys)}")
         return cls(
             prefix=raw["prefix"],
-            base={
-                key: parse_string(value) for key, value in raw["base"].items()
-            },
-            combining={
-                key: parse_string(value)
-                for key, value in raw.get("combining", {}).items()
-            },
+            base=immutabledict.immutabledict(
+                {key: parse_string(value) for key, value in raw["base"].items()}
+            ),
+            combining=immutabledict.immutabledict(
+                {
+                    key: parse_string(value)
+                    for key, value in raw.get("combining", {}).items()
+                }
+            ),
         )
