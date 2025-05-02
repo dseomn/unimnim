@@ -11,3 +11,24 @@ sequences](https://en.wikipedia.org/wiki/Compose_key#Compose_sequences).
 *mnemonic*: Key sequence that a user types.
 
 *result*: Text that results from typing a mnemonic.
+
+## Data format
+
+### Explicit strings
+
+Results are specified with strings that are explicit about all code points, to
+avoid confusion over [homoglyphs](https://en.wikipedia.org/wiki/Homoglyph) and
+to make it easy to see non-printing characters. Each code point in an explicit
+string is represented with its number and name, e.g., `U+0068 LATIN SMALL LETTER
+H`. Code points are joined together by commas and spaces. At the end, there can
+optionally be a colon, then a space, then the normally encoded string.
+
+For example, these explicit strings both encode the English word `hi`:
+
+```
+U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I
+U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I: hi
+```
+
+In general, the first form should be used for non-printing and combining
+characters, and the second form for everything else.

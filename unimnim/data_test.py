@@ -21,20 +21,22 @@ from unimnim import data
 
 
 @pytest.mark.parametrize(
-    "s,error_regex",
+    "explicit_string,error_regex",
     (
         ("foo", r"not of the form"),
         ("U+0070 LATIN SMALL LETTER I", r"U\+0070 has name .* not"),
         ("U+0069 LATIN SMALL LETTER I: foo", r"decodes to 'i' not 'foo'"),
     ),
 )
-def test_parse_string_error(s: str, error_regex: str) -> None:
+def test_parse_explicit_string_error(
+    explicit_string: str, error_regex: str
+) -> None:
     with pytest.raises(ValueError, match=error_regex):
-        data.parse_string(s)
+        data.parse_explicit_string(explicit_string)
 
 
 @pytest.mark.parametrize(
-    "s,expected",
+    "explicit_string,expected",
     (
         ("U+0068 LATIN SMALL LETTER H", "h"),
         ("U+0068 LATIN SMALL LETTER H: h", "h"),
@@ -42,8 +44,8 @@ def test_parse_string_error(s: str, error_regex: str) -> None:
         ("U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I: hi", "hi"),
     ),
 )
-def test_parse_string(s: str, expected: str) -> None:
-    assert data.parse_string(s) == expected
+def test_parse_explicit_string(explicit_string: str, expected: str) -> None:
+    assert data.parse_explicit_string(explicit_string) == expected
 
 
 def test_script_parse_error() -> None:

@@ -22,15 +22,9 @@ from typing import Any, Self
 import unicodedata
 
 
-def parse_string(s: str, /) -> str:
-    """Returns the value of a human-readable string of unicode code points.
-
-    Args:
-        s: A string of the form "U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL
-            LETTER I" or "U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER
-            I: hi"
-    """
-    encoded_string, separator, expected_string = s.partition(": ")
+def parse_explicit_string(explicit_string: str, /) -> str:
+    """Returns the value of an explicit string."""
+    encoded_string, separator, expected_string = explicit_string.partition(": ")
     code_points = []
     for code_point_string in encoded_string.split(", "):
         if (
@@ -52,7 +46,8 @@ def parse_string(s: str, /) -> str:
     decoded_string = "".join(code_points)
     if separator and expected_string != decoded_string:
         raise ValueError(
-            f"{s!r} decodes to {decoded_string!r} not {expected_string!r}"
+            f"{explicit_string!r} decodes to {decoded_string!r} not "
+            f"{expected_string!r}"
         )
     return decoded_string
 
@@ -80,10 +75,11 @@ class Script:
         return cls(
             prefix=raw["prefix"],
             base={
-                key: parse_string(value) for key, value in raw["base"].items()
+                key: parse_explicit_string(value)
+                for key, value in raw["base"].items()
             },
             combining={
-                key: parse_string(value)
+                key: parse_explicit_string(value)
                 for key, value in raw.get("combining", {}).items()
             },
         )
