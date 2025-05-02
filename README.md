@@ -1,3 +1,9 @@
+<!--
+    SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+
+    SPDX-License-Identifier: Apache-2.0
+-->
+
 # UNIcode MNemonic Input Method (unimnim)
 
 This is a very early alpha stage input method for using mnemonics to input as
