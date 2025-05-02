@@ -25,6 +25,8 @@ from unimnim import data
     (
         ("foo", r"not of the form"),
         ("U+0070 LATIN SMALL LETTER I", r"U\+0070 has name .* not"),
+        ("U+0070 (NULL)", r"does not have alias"),  # alias for other char
+        ("U+0070 (NOT AN ALIAS I HOPE)", r"does not have alias"),
         ("U+0069 LATIN SMALL LETTER I: foo", r"decodes to 'i' not 'foo'"),
     ),
 )
@@ -38,10 +40,16 @@ def test_parse_explicit_string_error(
 @pytest.mark.parametrize(
     "explicit_string,expected",
     (
+        ("U+0000 (NULL)", "\x00"),
         ("U+0068 LATIN SMALL LETTER H", "h"),
         ("U+0068 LATIN SMALL LETTER H: h", "h"),
         ("U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I", "hi"),
         ("U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I: hi", "hi"),
+        ("U+01A2 LATIN CAPITAL LETTER OI (LATIN CAPITAL LETTER GHA)", "\u01a2"),
+        (
+            "U+01A2 LATIN CAPITAL LETTER OI (LATIN CAPITAL LETTER GHA): \u01a2",
+            "\u01a2",
+        ),
     ),
 )
 def test_parse_explicit_string(explicit_string: str, expected: str) -> None:

@@ -27,21 +27,36 @@ def parse_explicit_string(explicit_string: str, /) -> str:
     encoded_string, separator, expected_string = explicit_string.partition(": ")
     code_points = []
     for code_point_string in encoded_string.split(", "):
-        if (
-            match := re.fullmatch(r"U\+([0-9A-F]+) (.+)", code_point_string)
-        ) is None:
+        match = re.fullmatch(
+            (
+                r"U\+(?P<number>[0-9A-F]+)"
+                r"(?: (?P<name>[^()]+))?"
+                r"(?: \((?P<alias>.+)\))?"
+            ),
+            code_point_string,
+        )
+        if match is None:
             raise ValueError(
-                "Code point is not of the form U+ABCD NAME: "
+                "Code point is not of the form U+ABCD NAME (ALIAS): "
                 f"{code_point_string!r}"
             )
-        code_point = chr(int(match.group(1), base=16))
-        expected_name = match.group(2)
-        actual_name = unicodedata.name(code_point)
-        if actual_name != expected_name:
-            raise ValueError(
-                f"U+{match.group(1)} has name {actual_name!r} not "
-                f"{expected_name!r}"
-            )
+        code_point = chr(int(match.group("number"), base=16))
+        if (expected_name := match.group("name")) is not None:
+            actual_name = unicodedata.name(code_point)
+            if actual_name != expected_name:
+                raise ValueError(
+                    f"U+{match.group('number')} has name {actual_name!r} not "
+                    f"{expected_name!r}"
+                )
+        if (alias := match.group("alias")) is not None:
+            try:
+                alias_value = unicodedata.lookup(alias)
+            except KeyError:
+                alias_value = None
+            if alias_value != code_point:
+                raise ValueError(
+                    f"U+{match.group('number')} does not have alias {alias!r}"
+                )
         code_points.append(code_point)
     decoded_string = "".join(code_points)
     if separator and expected_string != decoded_string:
