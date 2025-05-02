@@ -24,6 +24,9 @@ test = [
   "pytest-cov",
 ]
 
+[project.scripts]
+unimnim = "unimnim.main:main"
+
 [tool.black]
 line-length = 80
 
