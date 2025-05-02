@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import collections
 import pathlib
 from typing import Any
 
@@ -92,12 +91,11 @@ def test_load(tmp_path: pathlib.Path) -> None:
 
     actual = data.load(tmp_path)
 
-    expected = (
-        data.Script.parse(
+    assert actual == {
+        "subdir/Latin.toml": data.Script.parse(
             dict(prefix="l", base={"a": "U+0061 LATIN SMALL LETTER A"})
         ),
-        data.Script.parse(
+        "Greek.toml": data.Script.parse(
             dict(prefix="g", base={"a": "U+03B1 GREEK SMALL LETTER ALPHA"})
         ),
-    )
-    assert collections.Counter(actual) == collections.Counter(expected)
+    }

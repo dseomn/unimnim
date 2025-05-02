@@ -13,7 +13,7 @@
 # limitations under the License.
 """Data file parsing."""
 
-from collections.abc import Collection, Mapping
+from collections.abc import Mapping
 import dataclasses
 import pathlib
 import re
@@ -95,9 +95,15 @@ class Script:
         )
 
 
-def load(path: pathlib.Path, /) -> Collection[Script]:
-    """Returns all scripts from .toml files in a directory."""
-    return [
-        Script.parse(tomllib.loads(file.read_text()))
+def load(path: pathlib.Path, /) -> Mapping[str, Script]:
+    """Loads scripts from .toml files in a directory.
+
+    Returns:
+        Map from a script identifier to the script data.
+    """
+    return {
+        str(file.relative_to(path)): Script.parse(
+            tomllib.loads(file.read_text())
+        )
         for file in path.glob("**/*.toml")
-    ]
+    }
