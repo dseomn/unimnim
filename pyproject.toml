@@ -1,0 +1,52 @@
+[build-system]
+requires = [
+  "setuptools",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unimnim"
+version = "0"
+requires-python = ">=3.11"
+dependencies = [
+]
+
+[project.optional-dependencies]
+test = [
+  "black",
+  "isort",
+  "mypy",
+  "pytest",
+  "pytest-cov",
+]
+
+[tool.black]
+line-length = 80
+
+[tool.coverage.run]
+omit = [
+  "**/*_test.py",
+]
+
+[tool.isort]
+profile = "google"
+skip_gitignore = true
+src_paths = ["."]
+
+[tool.mypy]
+disallow_any_generics = true
+disallow_untyped_defs = true
+packages = ["unimnim"]
+warn_redundant_casts = true
+warn_unreachable = true
+warn_unused_ignores = true
+
+[tool.pytest.ini_options]
+addopts = """\
+  --cov=. \
+  --cov-branch \
+  --cov-report=term-missing \
+  """
+
+[tool.setuptools.packages.find]
+include = ["unimnim", "unimnim.*"]
