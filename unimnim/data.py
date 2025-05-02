@@ -68,11 +68,11 @@ def parse_explicit_string(explicit_string: str, /) -> str:
 
 
 @dataclasses.dataclass(frozen=True, kw_only=True)
-class Script:
-    """Data for a single script.
+class Group:
+    """Data for a single group of mnemonics.
 
     Attributes:
-        prefix: Prefix for all of the script's mnemonics.
+        prefix: Prefix for all of the group's mnemonics.
         base: Map from mnemonic (not including prefix) to a result.
         combining: Map from mnemonic (not including prefix) to a combining code
             point that should be added to an existing result.
@@ -100,14 +100,14 @@ class Script:
         )
 
 
-def load(path: pathlib.Path, /) -> Mapping[str, Script]:
-    """Loads scripts from .toml files in a directory.
+def load(path: pathlib.Path, /) -> Mapping[str, Group]:
+    """Loads groups from .toml files in a directory.
 
     Returns:
-        Map from a script identifier to the script data.
+        Map from a group identifier to the group data.
     """
     return {
-        str(file.relative_to(path)): Script.parse(
+        str(file.relative_to(path)): Group.parse(
             tomllib.loads(file.read_text())
         )
         for file in path.glob("**/*.toml")

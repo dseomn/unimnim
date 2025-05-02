@@ -8,6 +8,9 @@ sequences](https://en.wikipedia.org/wiki/Compose_key#Compose_sequences).
 
 ## Terminology
 
+*group*: Group of mnemonics with common properties, e.g., the same prefix, and
+the same pattern of combining characters used to generate accented results.
+
 *mnemonic*: Key sequence that a user types.
 
 *result*: Text that results from typing a mnemonic.

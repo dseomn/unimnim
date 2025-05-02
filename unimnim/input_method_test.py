@@ -21,50 +21,50 @@ from unimnim import input_method
 
 
 @pytest.mark.parametrize(
-    "scripts,error_regex",
+    "groups,error_regex",
     (
         (
             {
-                "Latin": data.Script(
+                "latin": data.Group(
                     prefix="l",
                     base={"a": "a", "a'": "b"},
                     combining={"'": "\N{COMBINING ACUTE ACCENT}"},
                 ),
             },
-            "Script 'Latin' has duplicate",
+            "Group 'latin' has duplicate",
         ),
         (
             {
-                "Latin1": data.Script(
+                "latin1": data.Group(
                     prefix="l",
                     base={"a": "a"},
                     combining={},
                 ),
-                "Latin2": data.Script(
+                "latin2": data.Group(
                     prefix="l",
                     base={"a": "a"},
                     combining={},
                 ),
             },
-            "scripts have the same mnemonics",
+            "groups have the same mnemonics",
         ),
     ),
 )
 def test_generate_map_error(
-    scripts: Mapping[str, data.Script],
+    groups: Mapping[str, data.Group],
     error_regex: str,
 ) -> None:
     with pytest.raises(ValueError, match=error_regex):
-        input_method.generate_map(scripts)
+        input_method.generate_map(groups)
 
 
 @pytest.mark.parametrize(
-    "scripts,expected",
+    "groups,expected",
     (
         (
             # Combining characters can stack, in any valid order.
             {
-                "Latin": data.Script(
+                "latin": data.Group(
                     prefix="l",
                     base={"s": "s"},
                     combining={
@@ -86,7 +86,7 @@ def test_generate_map_error(
         (
             # Base mnemonics can overlap.
             {
-                "Latin": data.Script(
+                "latin": data.Group(
                     prefix="l",
                     base={
                         "a": "a",
@@ -107,7 +107,7 @@ def test_generate_map_error(
             # Combining mnemonics can overlap. Overlapping combining mnemonics
             # can even stack together, as long as the order isn't important.
             {
-                "Latin": data.Script(
+                "latin": data.Group(
                     prefix="l",
                     base={"s": "s"},
                     combining={
@@ -128,15 +128,15 @@ def test_generate_map_error(
             },
         ),
         (
-            # Different scripts can give different meanings to the same
+            # Different groups can give different meanings to the same
             # mnemonics.
             {
-                "Greek": data.Script(
+                "greek": data.Group(
                     prefix="g",
                     base={"a": "\N{GREEK SMALL LETTER ALPHA}"},
                     combining={"~": "\N{COMBINING GREEK PERISPOMENI}"},
                 ),
-                "Latin": data.Script(
+                "latin": data.Group(
                     prefix="l",
                     base={"a": "a"},
                     combining={"~": "\N{COMBINING TILDE}"},
@@ -154,7 +154,7 @@ def test_generate_map_error(
     ),
 )
 def test_generate_map(
-    scripts: Mapping[str, data.Script],
+    groups: Mapping[str, data.Group],
     expected: Mapping[str, str],
 ) -> None:
-    assert input_method.generate_map(scripts) == expected
+    assert input_method.generate_map(groups) == expected

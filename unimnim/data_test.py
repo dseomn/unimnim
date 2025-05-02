@@ -56,9 +56,9 @@ def test_parse_explicit_string(explicit_string: str, expected: str) -> None:
     assert data.parse_explicit_string(explicit_string) == expected
 
 
-def test_script_parse_error() -> None:
+def test_group_parse_error() -> None:
     with pytest.raises(ValueError, match="Unexpected keys"):
-        data.Script.parse(dict(prefix="l", base={}, not_valid="foo"))
+        data.Group.parse(dict(prefix="l", base={}, not_valid="foo"))
 
 
 @pytest.mark.parametrize(
@@ -78,20 +78,20 @@ def test_script_parse_error() -> None:
         ),
     ),
 )
-def test_script_parse(raw: Any, expected: Any) -> None:
-    assert data.Script.parse(raw) == data.Script(**expected)
+def test_group_parse(raw: Any, expected: Any) -> None:
+    assert data.Group.parse(raw) == data.Group(**expected)
 
 
 def test_load(tmp_path: pathlib.Path) -> None:
     (tmp_path / "subdir").mkdir()
-    (tmp_path / "subdir" / "Latin.toml").write_text(
+    (tmp_path / "subdir" / "latin.toml").write_text(
         """
         prefix = "l"
         [base]
         "a" = "U+0061 LATIN SMALL LETTER A"
         """
     )
-    (tmp_path / "Greek.toml").write_text(
+    (tmp_path / "greek.toml").write_text(
         """
         prefix = "g"
         [base]
@@ -102,10 +102,10 @@ def test_load(tmp_path: pathlib.Path) -> None:
     actual = data.load(tmp_path)
 
     assert actual == {
-        "subdir/Latin.toml": data.Script.parse(
+        "subdir/latin.toml": data.Group.parse(
             dict(prefix="l", base={"a": "U+0061 LATIN SMALL LETTER A"})
         ),
-        "Greek.toml": data.Script.parse(
+        "greek.toml": data.Group.parse(
             dict(prefix="g", base={"a": "U+03B1 GREEK SMALL LETTER ALPHA"})
         ),
     }

@@ -21,11 +21,11 @@ import unicodedata
 from unimnim import data
 
 
-def _generate_map_one_script(
-    script_id: str,
-    script: data.Script,
+def _generate_map_one_group(
+    group_id: str,
+    group: data.Group,
 ) -> Mapping[str, str]:
-    """Returns a map from mnemonic to result for one script."""
+    """Returns a map from mnemonic to result for one group."""
     mapping = {}
     combining_to_check = collections.deque[tuple[str, str]]()
 
@@ -38,17 +38,17 @@ def _generate_map_one_script(
             combining_to_check.append((mnemonic, result))
         elif mapping[mnemonic] != result:
             raise ValueError(
-                f"Script {script_id!r} has duplicate mnemonic {mnemonic!r}"
+                f"Group {group_id!r} has duplicate mnemonic {mnemonic!r}"
             )
 
-    for mnemonic, result in script.base.items():
-        _add(script.prefix + mnemonic, result)
-    for mnemonic, result in script.combining.items():
-        _add(script.prefix + mnemonic, result)
+    for mnemonic, result in group.base.items():
+        _add(group.prefix + mnemonic, result)
+    for mnemonic, result in group.combining.items():
+        _add(group.prefix + mnemonic, result)
 
     while combining_to_check:
         mnemonic, result = combining_to_check.popleft()
-        for combining_mnemonic, combining_result in script.combining.items():
+        for combining_mnemonic, combining_result in group.combining.items():
             combined_result = unicodedata.normalize(
                 "NFC", result + combining_result
             )
@@ -66,26 +66,24 @@ def _generate_map_one_script(
     return mapping
 
 
-def generate_map(scripts: Mapping[str, data.Script]) -> Mapping[str, str]:
+def generate_map(groups: Mapping[str, data.Group]) -> Mapping[str, str]:
     """Returns a map from mnemonic to result."""
-    result_and_script_id_by_mnemonic = collections.defaultdict[
+    result_and_group_id_by_mnemonic = collections.defaultdict[
         str, list[tuple[str, str]]
     ](list)
-    for script_id, script in scripts.items():
-        for mnemonic, result in _generate_map_one_script(
-            script_id, script
+    for group_id, group in groups.items():
+        for mnemonic, result in _generate_map_one_group(
+            group_id, group
         ).items():
-            result_and_script_id_by_mnemonic[mnemonic].append(
-                (result, script_id)
-            )
+            result_and_group_id_by_mnemonic[mnemonic].append((result, group_id))
     if duplicates := {
-        k: v for k, v in result_and_script_id_by_mnemonic.items() if len(v) > 1
+        k: v for k, v in result_and_group_id_by_mnemonic.items() if len(v) > 1
     }:
         raise ValueError(
-            "Some scripts have the same mnemonics:\n"
+            "Some groups have the same mnemonics:\n"
             f"{pprint.pformat(duplicates)}"
         )
     return {
         mnemonic: result
-        for mnemonic, ((result, _),) in result_and_script_id_by_mnemonic.items()
+        for mnemonic, ((result, _),) in result_and_group_id_by_mnemonic.items()
     }
