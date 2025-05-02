@@ -13,7 +13,10 @@
 # limitations under the License.
 """Data file parsing."""
 
+from collections.abc import Mapping
+import dataclasses
 import re
+from typing import Any, Self
 import unicodedata
 
 
@@ -50,3 +53,37 @@ def parse_string(s: str, /) -> str:
             f"{s!r} decodes to {decoded_string!r} not {expected_string!r}"
         )
     return decoded_string
+
+
+@dataclasses.dataclass(frozen=True, kw_only=True)
+class Script:
+    """Data for a single script.
+
+    Attributes:
+        prefix: Prefix for all of the script's mnemonics.
+        base: Map from input keys (after and not including prefix) to the
+            character that input should produce.
+        combining: Map from input keys (after and not including prefix, one
+            sequence from base, and zero or more other sequences from combining)
+            to the combining code point that should be added to the character.
+    """
+
+    prefix: str
+    base: Mapping[str, str]
+    combining: Mapping[str, str]
+
+    @classmethod
+    def parse(cls, raw: Any, /) -> Self:
+        """Returns the data parsed from the format used in data files."""
+        if unexpected_keys := raw.keys() - {"prefix", "base", "combining"}:
+            raise ValueError(f"Unexpected keys: {list(unexpected_keys)}")
+        return cls(
+            prefix=raw["prefix"],
+            base={
+                key: parse_string(value) for key, value in raw["base"].items()
+            },
+            combining={
+                key: parse_string(value)
+                for key, value in raw.get("combining", {}).items()
+            },
+        )

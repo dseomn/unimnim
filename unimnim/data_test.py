@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import Any
+
 import pytest
 
 from unimnim import data
@@ -41,3 +43,29 @@ def test_parse_string_error(s: str, error_regex: str) -> None:
 )
 def test_parse_string(s: str, expected: str) -> None:
     assert data.parse_string(s) == expected
+
+
+def test_script_parse_error() -> None:
+    with pytest.raises(ValueError, match="Unexpected keys"):
+        data.Script.parse(dict(prefix="l", base={}, not_valid="foo"))
+
+
+@pytest.mark.parametrize(
+    "raw,expected",
+    (
+        (
+            dict(prefix="l", base={"a": "U+0061 LATIN SMALL LETTER A"}),
+            dict(prefix="l", base={"a": "a"}, combining={}),
+        ),
+        (
+            dict(
+                prefix="l",
+                base={"a": "U+0061 LATIN SMALL LETTER A"},
+                combining={"'": "U+0301 COMBINING ACUTE ACCENT"},
+            ),
+            dict(prefix="l", base={"a": "a"}, combining={"'": "\u0301"}),
+        ),
+    ),
+)
+def test_script_parse(raw: Any, expected: Any) -> None:
+    assert data.Script.parse(raw) == data.Script(**expected)
