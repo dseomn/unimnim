@@ -36,7 +36,9 @@ def main(
         data_ = data.load(data_path)
 
     map_ = input_method.generate_map(data_)
-    (parsed_args.output / "map.json").write_text(json.dumps(map_, indent=2))
+    (parsed_args.output / "map.json").write_text(
+        json.dumps(map_, ensure_ascii=False, indent=2)
+    )
 
 
 if __name__ == "__main__":
