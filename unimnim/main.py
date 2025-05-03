@@ -40,6 +40,13 @@ def main(
         json.dumps(map_, ensure_ascii=False, indent=2)
     )
 
+    (parsed_args.output / "m17n.mim").write_text(
+        input_method.render_template(
+            resources.files().joinpath("templates/m17n.mim.jinja").read_text(),
+            map_,
+        )
+    )
+
 
 if __name__ == "__main__":
     main()

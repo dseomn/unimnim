@@ -8,6 +8,8 @@ from collections.abc import Mapping
 import pprint
 import unicodedata
 
+import jinja2
+
 from unimnim import data
 
 
@@ -77,3 +79,18 @@ def generate_map(groups: Mapping[str, data.Group]) -> Mapping[str, str]:
         mnemonic: result
         for mnemonic, ((result, _),) in result_and_group_id_by_mnemonic.items()
     }
+
+
+def render_template(template: str, map_: Mapping[str, str]) -> str:
+    """Returns a rendered jinja template.
+
+    Args:
+        template: Template contents.
+        map_: See generate_map().
+    """
+    jinja_env = jinja2.Environment(
+        undefined=jinja2.StrictUndefined,
+        autoescape=False,
+    )
+    jinja_env.filters["ord"] = ord
+    return jinja_env.from_string(template).render(map=map_)

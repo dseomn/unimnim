@@ -148,3 +148,16 @@ def test_generate_map(
     expected: Mapping[str, str],
 ) -> None:
     assert input_method.generate_map(groups) == expected
+
+
+@pytest.mark.parametrize(
+    "template,map_,expected",
+    (
+        (r"{{ '\x03' | ord }}", {}, "3"),
+        (r"{{ map['foo'] }}", dict(foo="kumquat"), "kumquat"),
+    ),
+)
+def test_render_template(
+    template: str, map_: Mapping[str, str], expected: str
+) -> None:
+    assert input_method.render_template(template, map_) == expected
