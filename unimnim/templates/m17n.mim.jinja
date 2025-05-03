@@ -8,11 +8,11 @@
 
 
 {%- macro mtext(s) -%}
-"
-{%- for c in s -%}
-\u{{ "{:X}".format(c | ord) }}
-{%- endfor -%}
-"
+  {%- set characters = [] -%}
+  {%- for c in s -%}
+    {%- do characters.append("\\u{:X}".format(c | ord)) -%}
+  {%- endfor -%}
+  "{{ "".join(characters) }}"
 {%- endmacro %}
 
 

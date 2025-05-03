@@ -89,6 +89,7 @@ def render_template(template: str, map_: Mapping[str, str]) -> str:
         map_: See generate_map().
     """
     jinja_env = jinja2.Environment(
+        extensions=["jinja2.ext.do"],
         undefined=jinja2.StrictUndefined,
         autoescape=False,
     )
