@@ -30,6 +30,7 @@ def test_parse_explicit_string_error(
 @pytest.mark.parametrize(
     "explicit_string,expected",
     (
+        ("", ""),
         ("U+0000 (NULL)", "\x00"),
         ("U+0068 LATIN SMALL LETTER H", "h"),
         ("U+0068 LATIN SMALL LETTER H: h", "h"),

@@ -15,6 +15,8 @@ import unicodedata
 
 def parse_explicit_string(explicit_string: str, /) -> str:
     """Returns the value of an explicit string."""
+    if not explicit_string:
+        return ""
     encoded_string, separator, expected_string = explicit_string.partition(": ")
     code_points = []
     for code_point_string in encoded_string.split(", "):
