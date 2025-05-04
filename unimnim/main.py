@@ -49,6 +49,7 @@ def main(
         input_method.render_template(
             resources.files().joinpath("templates/m17n.mim.jinja").read_text(),
             map=map_,
+            prefix_map=prefix_map,
         )
     )
 

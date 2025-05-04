@@ -16,10 +16,21 @@
 
 (variable
   (prompt (_"What to show before a mnemonic") "·")
+
+  (search-prefix-prompt
+    (_"What to show before a mnemonic prefix search")
+    prompt)
+  (search-prefix-min-length
+    (_"How many characters to require before searching")
+    1)
   )
 
 (command
   (start (_"Start a mnemonic") (C-Escape))
+
+  (search-prefix-start
+    (_"Start a search for a mnemonic prefix")
+    (S-C-Escape))
   )
 
 (macro
@@ -33,14 +44,40 @@
     ({{ mnemonic | m17n_mtext }} (delete @<) {{ result | m17n_mtext }})
     {%- endfor %}
     )
+
+  (search-prefix-starter (search-prefix-start search-prefix-prompt))
+  (search-prefix-map
+    {%- for prefix, results in prefix_map.items() %}
+    ({{ prefix | m17n_mtext }}
+      (>= {{ prefix | length }} search-prefix-min-length
+        (
+         (delete @<)
+         (
+          (
+           {%- for result in results %}
+           {{ result | m17n_mtext }}
+           {%- endfor %}
+           )
+          )
+         )
+        )
+      )
+    {%- endfor %}
+    )
   )
 
 (state
   (init
     (starter (mark PROMPT) (shift map))
+    (search-prefix-starter (mark PROMPT) (shift search-prefix-map))
     )
   (map
     (map (shift init))
+    (nil (delete-prompt) (shift init))
+    )
+  (search-prefix-map
+    (t (show))
+    (search-prefix-map)  ; No (shift init), to allow backspace.
     (nil (delete-prompt) (shift init))
     )
   )
