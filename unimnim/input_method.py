@@ -4,7 +4,7 @@
 """Generates the input method from data."""
 
 import collections
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 import pprint
 from typing import Any
 import unicodedata
@@ -80,6 +80,15 @@ def generate_map(groups: Mapping[str, data.Group]) -> Mapping[str, str]:
         mnemonic: result
         for mnemonic, ((result, _),) in result_and_group_id_by_mnemonic.items()
     }
+
+
+def generate_prefix_map(map_: Mapping[str, str]) -> Mapping[str, Sequence[str]]:
+    """Returns a map from mnemonic prefix to matching results."""
+    prefix_map = collections.defaultdict[str, list[str]](list)
+    for mnemonic, result in map_.items():
+        for prefix_len in range(len(mnemonic) + 1):
+            prefix_map[mnemonic[:prefix_len]].append(result)
+    return prefix_map
 
 
 def m17n_mtext(s: str) -> str:

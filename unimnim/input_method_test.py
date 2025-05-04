@@ -150,6 +150,22 @@ def test_generate_map(
     assert input_method.generate_map(groups) == expected
 
 
+def test_generate_prefix_map() -> None:
+    assert input_method.generate_prefix_map(
+        {
+            "a": "A",
+            "abc": "ABC",
+            "b": "B",
+        }
+    ) == {
+        "": ["A", "ABC", "B"],
+        "a": ["A", "ABC"],
+        "ab": ["ABC"],
+        "abc": ["ABC"],
+        "b": ["B"],
+    }
+
+
 @pytest.mark.parametrize(
     "s,expected",
     (

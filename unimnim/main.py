@@ -40,6 +40,11 @@ def main(
         json.dumps(map_, ensure_ascii=False, indent=2)
     )
 
+    prefix_map = input_method.generate_prefix_map(map_)
+    (parsed_args.output / "prefix_map.json").write_text(
+        json.dumps(prefix_map, ensure_ascii=False, indent=2)
+    )
+
     (parsed_args.output / "m17n.mim").write_text(
         input_method.render_template(
             resources.files().joinpath("templates/m17n.mim.jinja").read_text(),

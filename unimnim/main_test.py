@@ -12,5 +12,6 @@ def test_main(tmp_path: pathlib.Path) -> None:
 
     assert {str(f.relative_to(tmp_path)) for f in tmp_path.glob("**/*")} == {
         "map.json",
+        "prefix_map.json",
         "m17n.mim",
     }
