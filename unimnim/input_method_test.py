@@ -151,9 +151,22 @@ def test_generate_map(
 
 
 @pytest.mark.parametrize(
+    "s,expected",
+    (
+        ('"', r'"\""'),
+        ("\\", r'"\\"'),
+        ("f00 b@r", '"f00 b@r"'),
+        ("\x00\x11", r'"\u0 \u11 "'),
+    ),
+)
+def test_m17n_mtext(s: str, expected: str) -> None:
+    assert input_method.m17n_mtext(s) == expected
+
+
+@pytest.mark.parametrize(
     "template,map_,expected",
     (
-        (r"{{ '\x03' | ord }}", {}, "3"),
+        (r"{{ 'a' | m17n_mtext }}", {}, '"a"'),
         (r"{{ map['foo'] }}", dict(foo="kumquat"), "kumquat"),
     ),
 )

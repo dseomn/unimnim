@@ -81,6 +81,29 @@ def generate_map(groups: Mapping[str, data.Group]) -> Mapping[str, str]:
     }
 
 
+def m17n_mtext(s: str) -> str:
+    """Returns the given string as m17n MTEXT."""
+    # The documentation at
+    # https://www.nongnu.org/m17n/manual-en/m17nDBFormat.html does not fully and
+    # correctly describe the format, so this implementation is based on how
+    # read_mtext_element() works in
+    # https://git.savannah.nongnu.org/cgit/m17n/m17n-lib.git/tree/src/plist.c
+    result = ['"']
+    for c in s:
+        if c in r"\"":
+            result.append(f"\\{c}")
+        elif c.isprintable():
+            result.append(c)
+        else:
+            # Note the space at the end. read_hexadesimal() seems to read hex
+            # indefinitely, and read_mtext_element() only calls UNGETC() on
+            # next_c if it's not a space. I.e., the trailing space both ends
+            # read_hexadesimal() and is discarded by read_mtext_element().
+            result.append(f"\\u{ord(c):X} ")
+    result.append('"')
+    return "".join(result)
+
+
 def render_template(template: str, map_: Mapping[str, str]) -> str:
     """Returns a rendered jinja template.
 
@@ -93,5 +116,5 @@ def render_template(template: str, map_: Mapping[str, str]) -> str:
         undefined=jinja2.StrictUndefined,
         autoescape=False,
     )
-    jinja_env.filters["ord"] = ord
+    jinja_env.filters["m17n_mtext"] = m17n_mtext
     return jinja_env.from_string(template).render(map=map_)
