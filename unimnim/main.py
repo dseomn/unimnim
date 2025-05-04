@@ -43,7 +43,7 @@ def main(
     (parsed_args.output / "m17n.mim").write_text(
         input_method.render_template(
             resources.files().joinpath("templates/m17n.mim.jinja").read_text(),
-            map_,
+            map=map_,
         )
     )
 

@@ -163,14 +163,5 @@ def test_m17n_mtext(s: str, expected: str) -> None:
     assert input_method.m17n_mtext(s) == expected
 
 
-@pytest.mark.parametrize(
-    "template,map_,expected",
-    (
-        (r"{{ 'a' | m17n_mtext }}", {}, '"a"'),
-        (r"{{ map['foo'] }}", dict(foo="kumquat"), "kumquat"),
-    ),
-)
-def test_render_template(
-    template: str, map_: Mapping[str, str], expected: str
-) -> None:
-    assert input_method.render_template(template, map_) == expected
+def test_render_template() -> None:
+    assert input_method.render_template(r"{{ x | m17n_mtext }}", x="a") == '"a"'

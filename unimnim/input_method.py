@@ -6,6 +6,7 @@
 import collections
 from collections.abc import Mapping
 import pprint
+from typing import Any
 import unicodedata
 
 import jinja2
@@ -104,12 +105,12 @@ def m17n_mtext(s: str) -> str:
     return "".join(result)
 
 
-def render_template(template: str, map_: Mapping[str, str]) -> str:
+def render_template(template: str, **kwargs: Any) -> str:
     """Returns a rendered jinja template.
 
     Args:
         template: Template contents.
-        map_: See generate_map().
+        **kwargs: Context for the template.
     """
     jinja_env = jinja2.Environment(
         extensions=["jinja2.ext.do"],
@@ -117,4 +118,4 @@ def render_template(template: str, map_: Mapping[str, str]) -> str:
         autoescape=False,
     )
     jinja_env.filters["m17n_mtext"] = m17n_mtext
-    return jinja_env.from_string(template).render(map=map_)
+    return jinja_env.from_string(template).render(**kwargs)
