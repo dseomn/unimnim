@@ -19,6 +19,22 @@ both `path/to/unimnim/data/latin.toml` and
 
 *result*: Text that results from typing a mnemonic.
 
+*prefix*: Prefix for a group's mnemonics. In general, groups where users are
+likely to type more mnemonics should get shorter and easier to type prefixes
+than other groups. E.g., while some users might type math symbols frequently,
+they probably do not type as many math symbols at a time as a user typing in a
+natural language. So a group for math symbols should probably have a longer
+prefix than a group for a common script.
+
+*base*: Mnemonics in a group that directly follow the group's prefix. E.g., for
+the Latin script's group with a prefix of `l`, the base `a` creates the mnemonic
+`la` with the result `a`.
+
+*combining*: Mnemonics in a group that modify the preceding mnemonic. E.g., for
+the Latin script's group, the combining `'` modifies the `la` mnemonic to create
+the mnemonic `la'` with the result `á`. Combining mnemonics can stack, e.g., the
+mnemonic `le^'` has the result `ế`.
+
 ## Data format
 
 ### Explicit strings
