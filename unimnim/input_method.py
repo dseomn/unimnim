@@ -36,8 +36,6 @@ def _generate_map_one_group(
 
     for mnemonic, result in group.base.items():
         _add(group.prefix + mnemonic, result)
-    for mnemonic, result in group.combining.items():
-        _add(group.prefix + mnemonic, result)
 
     while combining_to_check:
         mnemonic, result = combining_to_check.popleft()
@@ -79,6 +77,7 @@ def generate_map(groups: Mapping[str, data.Group]) -> Mapping[str, str]:
     return {
         mnemonic: result
         for mnemonic, ((result, _),) in result_and_group_id_by_mnemonic.items()
+        if result
     }
 
 
