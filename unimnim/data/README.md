@@ -24,11 +24,11 @@ likely to type more mnemonics should get shorter and easier to type prefixes
 than other groups. E.g., while some users might type math symbols frequently,
 they probably do not type as many math symbols at a time as a user typing in a
 natural language. So a group for math symbols should probably have a longer
-prefix than a group for a common script. One of the reasons that the prefix is
-its own field in data files is to hopefully make it easier for users to override
-prefixes in the future, e.g., to let users who primarily type math symbols with
-this input method to override a math symbol group to use a shorter (or empty)
-prefix. Please file a bug if that's something you want.
+prefix than a group for a more common script. One of the reasons that the prefix
+is its own field in data files is to hopefully make it easier for users to
+override prefixes in the future, e.g., to let users who primarily type math
+symbols with this input method to override a math symbol group to use a shorter
+(or empty) prefix. Please file a bug if that's something you want.
 
 *base*: Mnemonics in a group that directly follow the group's prefix. E.g., for
 the Latin script's group with a prefix of `l`, the base `a` creates the mnemonic
