@@ -46,3 +46,16 @@ U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I: hi
 
 In general, the first form should be used for non-printing and combining
 characters, and the second form for everything else.
+
+## Licenses
+
+This repo follows the [reuse](https://reuse.software/) specification. See file
+headers for what license(s) each file is available under, and the
+[LICENSES](LICENSES) directory for the text of the licenses.
+
+The intent is that all of this repo can be used under the terms of Apache-2.0.
+*Additionally*, [data files](unimnim/data) and [templates](unimnim/templates)
+can be used under the terms of CC0-1.0, and some templates can also be used
+under the terms of whatever license(s) are common for the type of input method
+the template is for. If you find a file that doesn't match that intent, please
+file a bug.
