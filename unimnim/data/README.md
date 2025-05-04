@@ -60,3 +60,34 @@ U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I: hi
 
 In general, the first form should be used for non-printing and combining
 characters, and the second form for everything else.
+
+## Conventions
+
+To make the mnemonics as easy to remember as possible, the data files generally
+follow a set of conventions. When a convention would generally require a comment
+for a user looking at a data file to understand, it should have a tag in a
+comment, which can be searched in this document in the parentheses after a
+convention's title.
+
+### Base mnemonics with empty results (`empty-for-combining`)
+
+Groups with combining characters can have a base mnemonic with an empty result
+to make it possible to type raw combining characters. Both of the following
+examples provide mnemonics to type a combining acute character, `l_'` in the
+first and `l'` in the second.
+
+```toml
+prefix = "l"
+[base]
+"_" = ""  # empty-for-combining
+[combining]
+"'" = "U+0301 COMBINING ACUTE ACCENT"
+```
+
+```toml
+prefix = "l"
+[base]
+"" = ""  # empty-for-combining
+[combining]
+"'" = "U+0301 COMBINING ACUTE ACCENT"
+```
