@@ -13,11 +13,44 @@ from typing import Any, Self
 import unicodedata
 
 
+def _parse_explicit_code_point(explicit: str) -> str:
+    match = re.fullmatch(
+        (
+            r"U\+(?P<number>[0-9A-F]+)"
+            r"(?: (?P<name>[^()]+))?"
+            r"(?: \((?P<alias>.+)\))?"
+        ),
+        explicit,
+    )
+    if match is None:
+        raise ValueError(
+            f"Code point is not of the form U+ABCD NAME (ALIAS): {explicit!r}"
+        )
+    code_point = chr(int(match.group("number"), base=16))
+    if (expected_name := match.group("name")) is not None:
+        actual_name = unicodedata.name(code_point)
+        if actual_name != expected_name:
+            raise ValueError(
+                f"U+{match.group('number')} has name {actual_name!r} not "
+                f"{expected_name!r}"
+            )
+    if (alias := match.group("alias")) is not None:
+        try:
+            alias_value = unicodedata.lookup(alias)
+        except KeyError:
+            alias_value = None
+        if alias_value != code_point:
+            raise ValueError(
+                f"U+{match.group('number')} does not have alias {alias!r}"
+            )
+    return code_point
+
+
 def parse_explicit_string(explicit_string: str, /) -> str:
     """Returns the value of an explicit string."""
     if not explicit_string:
         return ""
-    string_match = re.fullmatch(
+    match = re.fullmatch(
         (
             r"(?P<encoded_string>[^\[\]:]*)"
             r"(?: \[(?P<flags>[^\]]*)\])?"
@@ -25,52 +58,20 @@ def parse_explicit_string(explicit_string: str, /) -> str:
         ),
         explicit_string,
     )
-    if string_match is None:
+    if match is None:
         raise ValueError(f"Can't parse explicit string: {explicit_string!r}")
-    encoded_string = string_match.group("encoded_string")
-    match flags := string_match.group("flags"):
+    encoded_string = match.group("encoded_string")
+    match flags := match.group("flags"):
         case None:
             flag_combining = False
         case "combining":
             flag_combining = True
         case _:
             raise ValueError(f"Invalid flags: {flags!r}")
-    expected_string = string_match.group("expected_string")
-    code_points = []
-    for code_point_string in encoded_string.split(", "):
-        code_point_match = re.fullmatch(
-            (
-                r"U\+(?P<number>[0-9A-F]+)"
-                r"(?: (?P<name>[^()]+))?"
-                r"(?: \((?P<alias>.+)\))?"
-            ),
-            code_point_string,
-        )
-        if code_point_match is None:
-            raise ValueError(
-                "Code point is not of the form U+ABCD NAME (ALIAS): "
-                f"{code_point_string!r}"
-            )
-        code_point = chr(int(code_point_match.group("number"), base=16))
-        if (expected_name := code_point_match.group("name")) is not None:
-            actual_name = unicodedata.name(code_point)
-            if actual_name != expected_name:
-                raise ValueError(
-                    f"U+{code_point_match.group('number')} has name "
-                    f"{actual_name!r} not {expected_name!r}"
-                )
-        if (alias := code_point_match.group("alias")) is not None:
-            try:
-                alias_value = unicodedata.lookup(alias)
-            except KeyError:
-                alias_value = None
-            if alias_value != code_point:
-                raise ValueError(
-                    f"U+{code_point_match.group('number')} does not have alias "
-                    f"{alias!r}"
-                )
-        code_points.append(code_point)
-    decoded_string = "".join(code_points)
+    expected_string = match.group("expected_string")
+    decoded_string = "".join(
+        map(_parse_explicit_code_point, encoded_string.split(", "))
+    )
     if expected_string is not None:
         if flag_combining and not unicodedata.normalize(
             "NFD", expected_string
