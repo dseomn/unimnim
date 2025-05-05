@@ -31,6 +31,7 @@ from unimnim import data
             "U+0061 LATIN SMALL LETTER A, U+0301 COMBINING ACUTE ACCENT",
             r"not NFC normalized",
         ),
+        ("U+00E0 LATIN SMALL LETTER A WITH GRAVE", r"is precomposed"),
     ),
 )
 def test_parse_explicit_string_error(
