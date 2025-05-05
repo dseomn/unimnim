@@ -85,6 +85,8 @@ def parse_explicit_string(explicit_string: str, /) -> str:
                 f"{explicit_string!r} decodes to {decoded_string!r} not "
                 f"{expected_string!r}"
             )
+    if not unicodedata.is_normalized("NFC", decoded_string):
+        raise ValueError(f"{explicit_string!r} is not NFC normalized.")
     return decoded_string
 
 

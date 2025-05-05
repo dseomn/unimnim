@@ -27,6 +27,10 @@ from unimnim import data
             r"not the combining sequence at the end of",
         ),
         ("U+0069 LATIN SMALL LETTER I: foo", r"decodes to 'i' not 'foo'"),
+        (
+            "U+0061 LATIN SMALL LETTER A, U+0301 COMBINING ACUTE ACCENT",
+            r"not NFC normalized",
+        ),
     ),
 )
 def test_parse_explicit_string_error(
