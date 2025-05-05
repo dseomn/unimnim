@@ -73,7 +73,7 @@ for a user looking at a data file to understand, it should have a tag in a
 comment, which can be searched in this document in the parentheses after a
 convention's title.
 
-### Also known as (`aka: alternate name`)
+### Also known as (`aka="alternate name"`)
 
 Some characters have mnemonics that are derived from alternate names other than
 the name or any of the aliases in Unicode. This can be used for different
@@ -83,13 +83,13 @@ To fit a pattern of other similar mnemonics:
 
 ```toml
 "-m" = "U+2014 EM DASH: —"
-"-q" = "U+2015 HORIZONTAL BAR: ―"  # aka: quotation dash
+"-q" = "U+2015 HORIZONTAL BAR: ―"  # aka="quotation dash"
 ```
 
 To differentiate characters that would otherwise have the same mnemonic:
 
 ```toml
-"DH" = "U+00D0 LATIN CAPITAL LETTER ETH: Ð"  # aka: edh
+"DH" = "U+00D0 LATIN CAPITAL LETTER ETH: Ð"  # aka="edh"
 "TH" = "U+00DE LATIN CAPITAL LETTER THORN: Þ"
 ```
 
