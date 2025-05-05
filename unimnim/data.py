@@ -19,7 +19,8 @@ def parse_explicit_string(explicit_string: str, /) -> str:
         return ""
     string_match = re.fullmatch(
         (
-            r"(?P<encoded_string>[^:]*)"  #
+            r"(?P<encoded_string>[^\[\]:]*)"
+            r"(?: \[(?P<flags>[^\]]*)\])?"
             r"(?:: (?P<expected_string>.*))?"
         ),
         explicit_string,
@@ -27,6 +28,13 @@ def parse_explicit_string(explicit_string: str, /) -> str:
     if string_match is None:
         raise ValueError(f"Can't parse explicit string: {explicit_string!r}")
     encoded_string = string_match.group("encoded_string")
+    match flags := string_match.group("flags"):
+        case None:
+            flag_combining = False
+        case "combining":
+            flag_combining = True
+        case _:
+            raise ValueError(f"Invalid flags: {flags!r}")
     expected_string = string_match.group("expected_string")
     code_points = []
     for code_point_string in encoded_string.split(", "):
@@ -63,11 +71,19 @@ def parse_explicit_string(explicit_string: str, /) -> str:
                 )
         code_points.append(code_point)
     decoded_string = "".join(code_points)
-    if expected_string is not None and expected_string != decoded_string:
-        raise ValueError(
-            f"{explicit_string!r} decodes to {decoded_string!r} not "
-            f"{expected_string!r}"
-        )
+    if expected_string is not None:
+        if flag_combining and not unicodedata.normalize(
+            "NFD", expected_string
+        ).endswith(decoded_string):
+            raise ValueError(
+                f"{explicit_string!r} decodes to {decoded_string!r} which is "
+                f"not the combining sequence at the end of {expected_string!r}"
+            )
+        elif not flag_combining and expected_string != decoded_string:
+            raise ValueError(
+                f"{explicit_string!r} decodes to {decoded_string!r} not "
+                f"{expected_string!r}"
+            )
     return decoded_string
 
 

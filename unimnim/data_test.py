@@ -14,10 +14,18 @@ from unimnim import data
     "explicit_string,error_regex",
     (
         (":", r"Can't parse"),
+        ("U+0068 LATIN SMALL LETTER H [foo]", "Invalid flags: 'foo'"),
         ("foo", r"not of the form"),
         ("U+0070 LATIN SMALL LETTER I", r"U\+0070 has name .* not"),
         ("U+0070 (NULL)", r"does not have alias"),  # alias for other char
         ("U+0070 (NOT AN ALIAS I HOPE)", r"does not have alias"),
+        (
+            (
+                "U+0301 COMBINING ACUTE ACCENT [combining]: "
+                "\N{LATIN SMALL LETTER A WITH GRAVE}"
+            ),
+            r"not the combining sequence at the end of",
+        ),
         ("U+0069 LATIN SMALL LETTER I: foo", r"decodes to 'i' not 'foo'"),
     ),
 )
@@ -41,6 +49,13 @@ def test_parse_explicit_string_error(
         (
             "U+01A2 LATIN CAPITAL LETTER OI (LATIN CAPITAL LETTER GHA): \u01a2",
             "\u01a2",
+        ),
+        (
+            (
+                "U+0301 COMBINING ACUTE ACCENT [combining]: "
+                "\N{LATIN SMALL LETTER A WITH ACUTE}"
+            ),
+            "\u0301",
         ),
     ),
 )

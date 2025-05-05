@@ -51,15 +51,26 @@ Each code point in an explicit string is represented with its number followed by
 its name and/or an alias in parentheses. E.g., `U+0068 LATIN SMALL LETTER H` for
 a code point with a useful name, `U+0000 (NULL)` for a code point with only an
 alias, or `U+01A2 LATIN CAPITAL LETTER OI (LATIN CAPITAL LETTER GHA)` for a code
-point with a corrected name.
+point with a corrected name. Code points are joined together by commas and
+spaces.
 
-Code points are joined together by commas and spaces. At the end, there can
-optionally be a colon, then a space, then the normally encoded string. For
-example, these explicit strings both encode the English word `hi`:
+After the code points, there can optionally be flags in square brackets.
+Currently the only flag is `combining` which affects how the expected string
+(see below) is matched.
+
+At the end, there can optionally be a colon, then a space, then a normally
+encoded string to show what the explicit string actually looks like. Normally,
+this string at the end must exactly match the code points. With the `combining`
+flag, it instead must decompose to a sequence that ends in the code points,
+which is useful to show what a combining character looks like without causing
+rendering issues.
+
+Examples:
 
 ```
 U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I
 U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I: hi
+U+0301 COMBINING ACUTE ACCENT [combining]: á
 ```
 
 In general, the first form should be used for non-printing and combining
