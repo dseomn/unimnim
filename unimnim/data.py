@@ -17,10 +17,20 @@ def parse_explicit_string(explicit_string: str, /) -> str:
     """Returns the value of an explicit string."""
     if not explicit_string:
         return ""
-    encoded_string, separator, expected_string = explicit_string.partition(": ")
+    string_match = re.fullmatch(
+        (
+            r"(?P<encoded_string>[^:]*)"  #
+            r"(?:: (?P<expected_string>.*))?"
+        ),
+        explicit_string,
+    )
+    if string_match is None:
+        raise ValueError(f"Can't parse explicit string: {explicit_string!r}")
+    encoded_string = string_match.group("encoded_string")
+    expected_string = string_match.group("expected_string")
     code_points = []
     for code_point_string in encoded_string.split(", "):
-        match = re.fullmatch(
+        code_point_match = re.fullmatch(
             (
                 r"U\+(?P<number>[0-9A-F]+)"
                 r"(?: (?P<name>[^()]+))?"
@@ -28,31 +38,32 @@ def parse_explicit_string(explicit_string: str, /) -> str:
             ),
             code_point_string,
         )
-        if match is None:
+        if code_point_match is None:
             raise ValueError(
                 "Code point is not of the form U+ABCD NAME (ALIAS): "
                 f"{code_point_string!r}"
             )
-        code_point = chr(int(match.group("number"), base=16))
-        if (expected_name := match.group("name")) is not None:
+        code_point = chr(int(code_point_match.group("number"), base=16))
+        if (expected_name := code_point_match.group("name")) is not None:
             actual_name = unicodedata.name(code_point)
             if actual_name != expected_name:
                 raise ValueError(
-                    f"U+{match.group('number')} has name {actual_name!r} not "
-                    f"{expected_name!r}"
+                    f"U+{code_point_match.group('number')} has name "
+                    f"{actual_name!r} not {expected_name!r}"
                 )
-        if (alias := match.group("alias")) is not None:
+        if (alias := code_point_match.group("alias")) is not None:
             try:
                 alias_value = unicodedata.lookup(alias)
             except KeyError:
                 alias_value = None
             if alias_value != code_point:
                 raise ValueError(
-                    f"U+{match.group('number')} does not have alias {alias!r}"
+                    f"U+{code_point_match.group('number')} does not have alias "
+                    f"{alias!r}"
                 )
         code_points.append(code_point)
     decoded_string = "".join(code_points)
-    if separator and expected_string != decoded_string:
+    if expected_string is not None and expected_string != decoded_string:
         raise ValueError(
             f"{explicit_string!r} decodes to {decoded_string!r} not "
             f"{expected_string!r}"

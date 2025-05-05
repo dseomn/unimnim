@@ -13,6 +13,7 @@ from unimnim import data
 @pytest.mark.parametrize(
     "explicit_string,error_regex",
     (
+        (":", r"Can't parse"),
         ("foo", r"not of the form"),
         ("U+0070 LATIN SMALL LETTER I", r"U\+0070 has name .* not"),
         ("U+0070 (NULL)", r"does not have alias"),  # alias for other char
