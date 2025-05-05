@@ -116,6 +116,22 @@ prefix = "l"
 "'" = "U+0301 COMBINING ACUTE ACCENT"
 ```
 
+### Consistency with other systems (`from=other1,other2`)
+
+When there isn't a good and obvious mnemonic, sometimes one is taken from
+another similar system of mnemonics. E.g., an ogonek does not look much like a
+semicolon, but I couldn't think of anything better.
+
+```toml
+";" = "U+0328 COMBINING OGONEK"  # from=rfc1345,xcompose
+```
+
+Other systems for use with this tag:
+
+*   `rfc1345`: https://datatracker.ietf.org/doc/html/rfc1345
+*   `xcompose`: One of the `Compose.pre` files at
+    https://gitlab.freedesktop.org/xorg/lib/libx11/-/tree/master/nls
+
 ### Geometry suffixes (`geometry-suffix`)
 
 Mnemonics for characters that are geometrically related to another character can
