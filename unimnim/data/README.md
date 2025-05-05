@@ -95,3 +95,12 @@ prefix = "l"
 [combining]
 "'" = "U+0301 COMBINING ACUTE ACCENT"
 ```
+
+### Geometry suffixes (`geometry-suffix`)
+
+Mnemonics for characters that are geometrically related to another character can
+use one of these suffixes:
+
+| Suffix | Meaning | Example |
+| --- | --- | --- |
+| `I` | inverted | `"!I" = "U+00A1 INVERTED EXCLAMATION MARK: ¡"` |
