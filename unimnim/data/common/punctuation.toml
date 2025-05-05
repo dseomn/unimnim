@@ -6,3 +6,20 @@ prefix = "c"
 
 [base]
 "!I" = "U+00A1 INVERTED EXCLAMATION MARK: ¡"  # geometry-suffix
+"<<" = "U+00AB LEFT-POINTING DOUBLE ANGLE QUOTATION MARK: «"
+">>" = "U+00BB RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK: »"
+"?I" = "U+00BF INVERTED QUESTION MARK: ¿"  # geometry-suffix
+"-h" = "U+2010 HYPHEN: ‐"
+"-f" = "U+2012 FIGURE DASH: ‒"
+"-n" = "U+2013 EN DASH: –"
+"-m" = "U+2014 EM DASH: —"
+"-q" = "U+2015 HORIZONTAL BAR: ―"  # quotation dash
+"<" = "U+2039 SINGLE LEFT-POINTING ANGLE QUOTATION MARK: ‹"
+">" = "U+203A SINGLE RIGHT-POINTING ANGLE QUOTATION MARK: ›"
+"!!" = "U+203C DOUBLE EXCLAMATION MARK: ‼"
+"!?" = "U+203D INTERROBANG: ‽"
+"?!" = "U+203D INTERROBANG: ‽"
+"??" = "U+2047 DOUBLE QUESTION MARK: ⁇"
+"-~" = "U+2053 SWUNG DASH: ⁓"
+"!?I" = "U+2E18 INVERTED INTERROBANG: ⸘"  # geometry-suffix
+"?!I" = "U+2E18 INVERTED INTERROBANG: ⸘"  # geometry-suffix
