@@ -73,6 +73,9 @@ for a user looking at a data file to understand, it should have a tag in a
 comment, which can be searched in this document in the parentheses after a
 convention's title.
 
+Additionally, some groups have their own conventions, see the comments at the
+top of the file.
+
 ### Also known as (`aka="alternate name"`)
 
 Some characters have mnemonics that are derived from alternate names other than
