@@ -65,6 +65,7 @@ prefix = "l"
 "ae" = "U+00E6 LATIN SMALL LETTER AE: æ"
 "dh" = "U+00F0 LATIN SMALL LETTER ETH: ð"  # aka="edh"
 "th" = "U+00FE LATIN SMALL LETTER THORN: þ"
+"i." = "U+0131 LATIN SMALL LETTER DOTLESS I: ı"  # uncombine
 "SS" = "U+1E9E LATIN CAPITAL LETTER SHARP S: ẞ"
 
 [combining]
