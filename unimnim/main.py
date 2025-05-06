@@ -35,6 +35,10 @@ def main(
     with resources.as_file(resources.files().joinpath("data")) as data_path:
         data_ = data.load(data_path)
 
+    (parsed_args.output / "known_sequences.json").write_text(
+        json.dumps(input_method.known_sequences(), ensure_ascii=False, indent=2)
+    )
+
     map_ = input_method.generate_map(data_)
     (parsed_args.output / "map.json").write_text(
         json.dumps(map_, ensure_ascii=False, indent=2)

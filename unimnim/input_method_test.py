@@ -10,6 +10,22 @@ from unimnim import data
 from unimnim import input_method
 
 
+def test_known_sequences() -> None:
+    known_sequences = input_method.known_sequences()
+
+    # From ES_STANDARD.
+    assert "en" in known_sequences["a"]
+
+    # Needs icu.USET_ADD_CASE_MAPPINGS to get uppper case.
+    assert "en" in known_sequences["A"]
+
+    # From ES_AUXILIARY.
+    assert "en" in known_sequences["\N{LATIN SMALL LETTER I WITH DIAERESIS}"]
+
+    # From ES_PUNCTUATION.
+    assert "en" in known_sequences["!"]
+
+
 @pytest.mark.parametrize(
     "groups,error_regex",
     (
@@ -69,6 +85,49 @@ def test_generate_map_error(
                 "ls.": "\N{LATIN SMALL LETTER S WITH DOT BELOW}",
                 "ls*.": "\N{LATIN SMALL LETTER S WITH DOT BELOW AND DOT ABOVE}",
                 "ls.*": "\N{LATIN SMALL LETTER S WITH DOT BELOW AND DOT ABOVE}",
+            },
+        ),
+        (
+            # Known sequences of length > 1 can be produced.
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    base={"a": "a"},
+                    combining={",": "\N{COMBINING CEDILLA}"},
+                ),
+            },
+            {
+                "la": "a",
+                "la,": "a\N{COMBINING CEDILLA}",
+            },
+        ),
+        (
+            # Known sequences of length > 2 can be produced even if they start
+            # with a sequence that cannot be produced.
+            #
+            # This test case was found by loading the known_sequences.json file
+            # and running:
+            #
+            # [
+            #   (x, list(map(unicodedata.name, x)))
+            #   for x in known_sequences
+            #   if len(x) > 2 and x[:-1] not in known_sequences
+            # ]
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    base={"j": "j"},
+                    combining={
+                        "~": "\N{COMBINING TILDE}",
+                        ".": "\N{COMBINING DOT ABOVE}",
+                    },
+                ),
+            },
+            {
+                "lj": "j",
+                "lj~": "j\N{COMBINING TILDE}",
+                # Note that "lj." is not present.
+                "lj.~": "j\N{COMBINING DOT ABOVE}\N{COMBINING TILDE}",
             },
         ),
         (

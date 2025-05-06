@@ -4,14 +4,50 @@
 """Generates the input method from data."""
 
 import collections
-from collections.abc import Mapping, Sequence
+from collections.abc import Mapping, Sequence, Set
+import functools
 import pprint
 from typing import Any
 import unicodedata
 
+import icu
 import jinja2
 
 from unimnim import data
+
+
+@functools.cache
+def known_sequences() -> Mapping[str, Sequence[str]]:
+    """Returns a map from known sequences to languages they're from."""
+    sequences = collections.defaultdict(set)
+    for language in icu.Locale.getISOLanguages():
+        locale_data = icu.LocaleData(language)
+        for exemplar_type in (
+            icu.ULocaleDataExemplarSetType.ES_STANDARD,
+            icu.ULocaleDataExemplarSetType.ES_AUXILIARY,
+            # TODO: dseomn - File a feature request at
+            # https://gitlab.pyicu.org/main/pyicu to get ES_PUNCTUATION from
+            # https://github.com/unicode-org/icu/blob/48597a4897e8cfea3aad5be7a4e8143c852876a5/icu4c/source/i18n/unicode/ulocdata.h#L54C5-L54C28
+            # added.
+            3,
+        ):
+            for sequence in locale_data.getExemplarSet(
+                icu.USET_ADD_CASE_MAPPINGS, exemplar_type
+            ):
+                sequences[unicodedata.normalize("NFC", sequence)].add(language)
+    return {
+        sequence: sorted(languages) for sequence, languages in sequences.items()
+    }
+
+
+@functools.cache
+def _known_sequences_and_prefixes() -> Set[str]:
+    """Returns known sequences and prefixes of it with length > 1."""
+    result = set()
+    for sequence in known_sequences():
+        for prefix_len in range(2, len(sequence) + 1):
+            result.add(sequence[:prefix_len])
+    return result
 
 
 def _generate_map_one_group(
@@ -19,17 +55,20 @@ def _generate_map_one_group(
     group: data.Group,
 ) -> Mapping[str, str]:
     """Returns a map from mnemonic to result for one group."""
-    mapping = {}
+    mapping_all = {}
+    mapping_known = {}
     combining_to_check = collections.deque[tuple[str, str]]()
 
-    def _add(mnemonic: str, result: str) -> None:
+    def _add(mnemonic: str, result: str, *, is_known: bool = True) -> None:
         # Allow duplicates only if the result is the same. That way if "." is
         # dot above and ".." is dot below, "..." can be generated in either
         # order without counting as a duplicate.
-        if mnemonic not in mapping:
-            mapping[mnemonic] = result
+        if mnemonic not in mapping_all:
+            mapping_all[mnemonic] = result
+            if is_known:
+                mapping_known[mnemonic] = result
             combining_to_check.append((mnemonic, result))
-        elif mapping[mnemonic] != result:
+        elif mapping_all[mnemonic] != result:
             raise ValueError(
                 f"Group {group_id!r} has duplicate mnemonic {mnemonic!r}"
             )
@@ -43,18 +82,22 @@ def _generate_map_one_group(
             combined_result = unicodedata.normalize(
                 "NFC", result + combining_result
             )
-            if len(combined_result) != 1:
-                # TODO: dseomn - Handle some results that are multiple code
-                # points.
-                # https://www.unicode.org/Public/draft/ucd/NamedSequences.txt
-                # looks like it should be the right place to find them, but see
-                # https://github.com/mike-fabian/ibus-typing-booster/issues/698#issuecomment-2840304410
-                # for limitations of that file.
+            if (
+                len(combined_result) != 1
+                and combined_result not in _known_sequences_and_prefixes()
+            ):
                 continue
             combined_mnemonic = mnemonic + combining_mnemonic
-            _add(combined_mnemonic, combined_result)
+            _add(
+                combined_mnemonic,
+                combined_result,
+                is_known=(
+                    len(combined_result) == 1
+                    or combined_result in known_sequences()
+                ),
+            )
 
-    return mapping
+    return mapping_known
 
 
 def generate_map(groups: Mapping[str, data.Group]) -> Mapping[str, str]:

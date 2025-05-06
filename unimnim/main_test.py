@@ -11,6 +11,7 @@ def test_main(tmp_path: pathlib.Path) -> None:
     main.main(args=(f"--output={tmp_path}",))
 
     assert {str(f.relative_to(tmp_path)) for f in tmp_path.glob("**/*")} == {
+        "known_sequences.json",
         "map.json",
         "prefix_map.json",
         "m17n.mim",
