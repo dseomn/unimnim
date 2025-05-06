@@ -75,7 +75,7 @@ prefix = "l"
 "d/" = "U+0111 LATIN SMALL LETTER D WITH STROKE: đ"
 "H/" = "U+0126 LATIN CAPITAL LETTER H WITH STROKE: Ħ"
 "h/" = "U+0127 LATIN SMALL LETTER H WITH STROKE: ħ"
-"i-." = "U+0131 LATIN SMALL LETTER DOTLESS I: ı"  # uncombine
+"i-." = "U+0131 LATIN SMALL LETTER DOTLESS I: ı"  # uncombine suboptimal
 "L/" = "U+0141 LATIN CAPITAL LETTER L WITH STROKE: Ł"
 "l/" = "U+0142 LATIN SMALL LETTER L WITH STROKE: ł"
 "NG" = "U+014A LATIN CAPITAL LETTER ENG: Ŋ"
@@ -101,7 +101,7 @@ prefix = "l"
 "''" = "U+030B COMBINING DOUBLE ACUTE ACCENT [combining]: ő"
 "v" = "U+030C COMBINING CARON [combining]: ǎ"
 "``" = "U+030F COMBINING DOUBLE GRAVE ACCENT [combining]: ȁ"
-"+" = "U+031B COMBINING HORN [combining]: ơ"  # from=xcompose
-"!" = "U+0323 COMBINING DOT BELOW [combining]: ạ"  # from=xcompose
+"+" = "U+031B COMBINING HORN [combining]: ơ"  # from=xcompose suboptimal
+"!" = "U+0323 COMBINING DOT BELOW [combining]: ạ"  # from=xcompose suboptimal
 "," = "U+0327 COMBINING CEDILLA [combining]: ç"
-";" = "U+0328 COMBINING OGONEK [combining]: ą"  # from=rfc1345,xcompose
+";" = "U+0328 COMBINING OGONEK [combining]: ą"  # from=rfc1345,xcompose suboptimal

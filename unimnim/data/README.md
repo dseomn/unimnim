@@ -185,6 +185,12 @@ welcome.
 "s+" = "U+017F LATIN SMALL LETTER LONG S: ſ"  # length
 ```
 
+# Suboptimal (`suboptimal`)
+
+Hopefully not actually a convention, but mnemonics that are less than ideal can
+be tagged with this to make it clear that suggestions for improvements are
+particularly welcome for them, and to make it easier to revisit them later.
+
 ### Using a combining mnemonic to remove a diacritic (`uncombine`)
 
 For characters that are similar to other characters with a combining character
