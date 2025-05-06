@@ -21,6 +21,7 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
     """Returns a map from known sequences to languages they're from."""
     sequences = collections.defaultdict(set)
     for language in icu.Locale.getISOLanguages():
+        locale = icu.Locale(language)
         locale_data = icu.LocaleData(language)
         for exemplar_type in (
             icu.ULocaleDataExemplarSetType.ES_STANDARD,
@@ -35,6 +36,10 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
                 icu.USET_ADD_CASE_MAPPINGS, exemplar_type
             ):
                 sequences[unicodedata.normalize("NFC", sequence)].add(language)
+        numbering_system = icu.NumberingSystem.createInstance(locale)
+        if not numbering_system.isAlgorithmic():
+            for digit in numbering_system.getDescription():
+                sequences[unicodedata.normalize("NFC", digit)].add(language)
     return {
         sequence: sorted(languages) for sequence, languages in sequences.items()
     }

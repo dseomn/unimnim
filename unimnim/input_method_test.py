@@ -25,6 +25,9 @@ def test_known_sequences() -> None:
     # From ES_PUNCTUATION.
     assert "en" in known_sequences["!"]
 
+    # From the numbering system.
+    assert "en" in known_sequences["0"]
+
 
 @pytest.mark.parametrize(
     "groups,error_regex",
