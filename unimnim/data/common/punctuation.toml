@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
 
-prefix = "c"
+prefix = "C"
 
 [base]
 "!I" = "U+00A1 INVERTED EXCLAMATION MARK: ¡"  # geometry-suffix
