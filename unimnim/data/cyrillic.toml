@@ -8,6 +8,7 @@
 prefix = "c"
 
 [base]
+"_" = ""  # empty-for-combining
 "A" = "U+0410 CYRILLIC CAPITAL LETTER A: А"
 "B" = "U+0411 CYRILLIC CAPITAL LETTER BE: Б"
 "V" = "U+0412 CYRILLIC CAPITAL LETTER VE: В"
@@ -56,3 +57,14 @@ prefix = "c"
 "q" = "U+051B CYRILLIC SMALL LETTER QA: ԛ"
 "W" = "U+051C CYRILLIC CAPITAL LETTER WE: Ԝ"
 "w" = "U+051D CYRILLIC SMALL LETTER WE: ԝ"
+
+[combining]
+"`" = "U+0300 COMBINING GRAVE ACCENT [combining]: ѐ"
+"'" = "U+0301 COMBINING ACUTE ACCENT [combining]: ќ"
+"-" = "U+0304 COMBINING MACRON [combining]: ӣ"
+"u" = "U+0306 COMBINING BREVE [combining]: й"
+'"' = "U+0308 COMBINING DIAERESIS [combining]: ӓ"
+"o" = "U+030A COMBINING RING ABOVE [combining]: а̊"
+"''" = "U+030B COMBINING DOUBLE ACUTE ACCENT [combining]: ӳ"
+"v" = "U+030C COMBINING CARON [combining]: т̌"
+";" = "U+0328 COMBINING OGONEK [combining]: к̨"  # from=rfc1345,xcompose
