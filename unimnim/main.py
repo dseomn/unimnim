@@ -9,10 +9,15 @@ from importlib import resources
 import json
 import pathlib
 import sys
+from typing import Any
 
 from unimnim import coverage
 from unimnim import data
 from unimnim import input_method
+
+
+def _write_json(path: pathlib.Path, data: Any) -> None:
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2))
 
 
 def main(
@@ -36,19 +41,16 @@ def main(
     with resources.as_file(resources.files().joinpath("data")) as data_path:
         data_ = data.load(data_path)
 
-    (parsed_args.output / "known_sequences.json").write_text(
-        json.dumps(input_method.known_sequences(), ensure_ascii=False, indent=2)
+    _write_json(
+        parsed_args.output / "known_sequences.json",
+        input_method.known_sequences(),
     )
 
     map_ = input_method.generate_map(data_)
-    (parsed_args.output / "map.json").write_text(
-        json.dumps(map_, ensure_ascii=False, indent=2)
-    )
+    _write_json(parsed_args.output / "map.json", map_)
 
     prefix_map = input_method.generate_prefix_map(map_)
-    (parsed_args.output / "prefix_map.json").write_text(
-        json.dumps(prefix_map, ensure_ascii=False, indent=2)
-    )
+    _write_json(parsed_args.output / "prefix_map.json", prefix_map)
 
     (parsed_args.output / "m17n.mim").write_text(
         input_method.render_template(
@@ -58,12 +60,9 @@ def main(
         )
     )
 
-    (parsed_args.output / "coverage.json").write_text(
-        json.dumps(
-            coverage.report(covered=frozenset(map_.values())),
-            ensure_ascii=False,
-            indent=2,
-        )
+    _write_json(
+        parsed_args.output / "coverage.json",
+        coverage.report(covered=frozenset(map_.values())),
     )
 
 
