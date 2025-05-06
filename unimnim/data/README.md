@@ -155,6 +155,19 @@ use one of these suffixes:
 | --- | --- | --- |
 | `I` | inverted | `"!I" = "U+00A1 INVERTED EXCLAMATION MARK: ¡"` |
 
+### Character length (`length`)
+
+Long characters can use a `+` suffix and shorter characters can use a `-`
+suffix.
+
+Unfortunately, this could be somewhat confusing when `-` is used for macron,
+which can also mean long in some contexts. So it's a trade-off, and ideas are
+welcome.
+
+```toml
+"s+" = "U+017F LATIN SMALL LETTER LONG S: ſ"  # length
+```
+
 ### Using a combining mnemonic to remove a diacritic (`uncombine`)
 
 For characters that are similar to other characters with a combining character
