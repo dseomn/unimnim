@@ -163,7 +163,7 @@ suffixes:
 | Suffix | Meaning | Example |
 | --- | --- | --- |
 | `[` | initial | |
-| `` (default) | medial | |
+| no suffix | medial | |
 | `]` | final | `"s]" = "U+03C2 GREEK SMALL LETTER FINAL SIGMA: ς"` |
 | `[]` | isolated | |
 
