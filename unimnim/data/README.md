@@ -158,13 +158,13 @@ use one of these suffixes:
 ### Using a combining mnemonic to remove a diacritic (`uncombine`)
 
 For characters that are similar to other characters with a combining character
-removed, the mnemonic for the other character and the combining character can be
-used if it won't cause any conflicts:
+removed, the mnemonic can be based on the other character and the combining
+character.
 
 ```toml
 [base]
 "i" = "U+0069 LATIN SMALL LETTER I: i"
-"i." = "U+0131 LATIN SMALL LETTER DOTLESS I: ı"  # uncombine
+"i-." = "U+0131 LATIN SMALL LETTER DOTLESS I: ı"  # uncombine
 [combining]
 "." = "U+0307 COMBINING DOT ABOVE"
 ```
