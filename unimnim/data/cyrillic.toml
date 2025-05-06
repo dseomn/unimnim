@@ -85,6 +85,7 @@ prefix = "c"
 [combining]
 "`" = "U+0300 COMBINING GRAVE ACCENT [combining]: ѐ"
 "'" = "U+0301 COMBINING ACUTE ACCENT [combining]: ќ"
+"^" = "U+0302 COMBINING CIRCUMFLEX ACCENT [combining]: а̂"
 "-" = "U+0304 COMBINING MACRON [combining]: ӣ"
 "u" = "U+0306 COMBINING BREVE [combining]: й"
 '"' = "U+0308 COMBINING DIAERESIS [combining]: ӓ"
