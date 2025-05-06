@@ -185,7 +185,7 @@ welcome.
 "s+" = "U+017F LATIN SMALL LETTER LONG S: ſ"  # length
 ```
 
-# Suboptimal (`suboptimal`)
+### Suboptimal (`suboptimal`)
 
 Hopefully not actually a convention, but mnemonics that are less than ideal can
 be tagged with this to make it clear that suggestions for improvements are
