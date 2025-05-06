@@ -154,6 +154,7 @@ use one of these suffixes:
 | Suffix | Meaning | Example |
 | --- | --- | --- |
 | `I` | inverted | `"!I" = "U+00A1 INVERTED EXCLAMATION MARK: ¡"` |
+| `R` | reversed | |
 
 ### Initial, medial, final, and isolated (`imfi`)
 
