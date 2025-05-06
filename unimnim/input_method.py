@@ -26,10 +26,8 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
         for exemplar_type in (
             icu.ULocaleDataExemplarSetType.ES_STANDARD,
             icu.ULocaleDataExemplarSetType.ES_AUXILIARY,
-            # TODO: dseomn - File a feature request at
-            # https://gitlab.pyicu.org/main/pyicu to get ES_PUNCTUATION from
-            # https://github.com/unicode-org/icu/blob/48597a4897e8cfea3aad5be7a4e8143c852876a5/icu4c/source/i18n/unicode/ulocdata.h#L54C5-L54C28
-            # added.
+            # TODO: https://gitlab.pyicu.org/main/pyicu/-/issues/175 - Use a
+            # named constant for ES_PUNCTUATION.
             3,
         ):
             for sequence in locale_data.getExemplarSet(
