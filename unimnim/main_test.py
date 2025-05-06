@@ -15,4 +15,5 @@ def test_main(tmp_path: pathlib.Path) -> None:
         "map.json",
         "prefix_map.json",
         "m17n.mim",
+        "coverage.json",
     }

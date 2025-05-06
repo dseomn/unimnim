@@ -10,6 +10,7 @@ import json
 import pathlib
 import sys
 
+from unimnim import coverage
 from unimnim import data
 from unimnim import input_method
 
@@ -54,6 +55,14 @@ def main(
             resources.files().joinpath("templates/m17n.mim.jinja").read_text(),
             map=map_,
             prefix_map=prefix_map,
+        )
+    )
+
+    (parsed_args.output / "coverage.json").write_text(
+        json.dumps(
+            coverage.report(covered=frozenset(map_.values())),
+            ensure_ascii=False,
+            indent=2,
         )
     )
 
