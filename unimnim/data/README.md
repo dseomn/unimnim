@@ -155,6 +155,22 @@ use one of these suffixes:
 | --- | --- | --- |
 | `I` | inverted | `"!I" = "U+00A1 INVERTED EXCLAMATION MARK: ¡"` |
 
+### Initial, medial, final, and isolated (`imfi`)
+
+Mnemonics for characters with a specific IMFI position can use one of these
+suffixes:
+
+| Suffix | Meaning | Example |
+| --- | --- | --- |
+| `[` | initial | |
+| `` (default) | medial | |
+| `]` | final | `"s]" = "U+03C2 GREEK SMALL LETTER FINAL SIGMA: ς"` |
+| `[]` | isolated | |
+
+Note that the opening `[` is always used for initial and the closing `]` for
+final, even if they appear
+[mirrored](https://www.unicode.org/reports/tr9/#Mirroring).
+
 ### Character length (`length`)
 
 Long characters can use a `+` suffix and shorter characters can use a `-`
