@@ -66,8 +66,14 @@
       )
     {%- endfor %}
     )
+
+  (backspace (BackSpace))
   )
 
+; There are two approaches to committing here. Using (shift init) after the
+; state's main map causes it to commit as soon as possible. Using (shift
+; backspace) gives the user a chance to press backspace within the pre-edit even
+; if there are no other letters that could be typed to get a different mnemonic.
 (state
   (init
     (starter (mark PROMPT) (shift map))
@@ -79,7 +85,11 @@
     )
   (search-prefix-map
     (t (show))
-    (search-prefix-map)  ; No (shift init), to allow backspace.
+    (search-prefix-map (shift backspace))
+    (nil (delete-prompt) (shift init))
+    )
+  (backspace
+    (backspace (undo))
     (nil (delete-prompt) (shift init))
     )
   )
