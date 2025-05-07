@@ -107,10 +107,10 @@ def test_combining_parse_error(raw: Any, error_regex: str) -> None:
             dict(append={"'": "\u0301"}),
         ),
         (
-            dict(name_regex_replace={"/": [r"^.*$", r"\g<0> WITH STROKE"]}),
+            dict(name_regex_replace={"/": [r".*", r"\g<0> WITH STROKE"]}),
             dict(
                 name_regex_replace={
-                    "/": (re.compile(r"^.*$"), r"\g<0> WITH STROKE")
+                    "/": (re.compile(r".*"), r"\g<0> WITH STROKE")
                 },
             ),
         ),

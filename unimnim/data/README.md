@@ -103,7 +103,7 @@ prefix = "l"
 # used as the new result. See https://docs.python.org/3/library/re.html for the
 # regex and replacement syntaxes. Must be sorted by mnemonic.
 [combining.name_regex_replace]
-"/" = ['^.*$', '\g<0> WITH STROKE']
+"/" = ['.*', '\g<0> WITH STROKE']
 ```
 
 ## Conventions

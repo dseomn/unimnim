@@ -159,7 +159,7 @@ def test_generate_map_error(
                     combining=data.Combining(
                         append={"'": "\N{COMBINING ACUTE ACCENT}"},
                         name_regex_replace={
-                            "/": (re.compile(r"^.*$"), r"\g<0> WITH STROKE"),
+                            "/": (re.compile(r".*"), r"\g<0> WITH STROKE"),
                         },
                     ),
                 ),
@@ -198,7 +198,7 @@ def test_generate_map_error(
                     combining=data.Combining(
                         name_regex_replace={
                             "/": (
-                                re.compile(r"^.*$"),
+                                re.compile(r".*"),
                                 r"\g<0> WITH A FAKE ACCENT",
                             ),
                         },

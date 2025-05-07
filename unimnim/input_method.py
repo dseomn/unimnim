@@ -126,11 +126,10 @@ def _generate_map_one_group(
             combining_pattern,
             combining_replacement,
         ) in group.combining.name_regex_replace.items():
-            combined_name = combining_pattern.sub(
-                combining_replacement, result_name
-            )
-            if combined_name == result_name:
+            match = combining_pattern.fullmatch(result_name)
+            if match is None:
                 continue
+            combined_name = match.expand(combining_replacement)
             try:
                 combined_result = unicodedata.normalize(
                     "NFC", unicodedata.lookup(combined_name)
