@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Data file parsing."""
 
-from collections.abc import Mapping
+from collections.abc import Callable, Mapping
 import dataclasses
 import pathlib
 import pprint
@@ -96,19 +96,35 @@ def parse_explicit_string(explicit_string: str, /) -> str:
     return decoded_string
 
 
-def _require_sorted_by_value_and_key(
-    mapping: Mapping[str, str], /, *, name: str
+def _require_sorted(
+    mapping: Mapping[str, Any],
+    /,
+    *,
+    key: Callable[[Any], Any],
+    key_description: str,
+    name: str,
 ) -> None:
     items = list(mapping.items())
-    sorted_items = sorted(items, key=lambda kv: (kv[1], kv[0]))
+    sorted_items = sorted(items, key=key)
     if items != sorted_items:
         raise ValueError(
-            f"{name} is not sorted by value then key.\n"
+            f"{name} is not sorted by {key_description}.\n"
             "Expected:\n"
             f"{pprint.pformat(dict(sorted_items), sort_dicts=False)}\n"
             "Actual:\n"
             f"{pprint.pformat(dict(items), sort_dicts=False)}"
         )
+
+
+def _require_sorted_by_value_and_key(
+    mapping: Mapping[str, str], /, *, name: str
+) -> None:
+    _require_sorted(
+        mapping,
+        key=lambda kv: (kv[1], kv[0]),
+        key_description="value then key",
+        name=name,
+    )
 
 
 @dataclasses.dataclass(frozen=True, kw_only=True)
