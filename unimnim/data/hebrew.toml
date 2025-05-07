@@ -8,6 +8,7 @@ prefix = "h"
 
 [base]
 "_" = ""  # empty-for-combining
+"-" = "U+05BE HEBREW PUNCTUATION MAQAF: ־"
 "a" = "U+05D0 HEBREW LETTER ALEF: א"  # from=rfc1345 suboptimal
 "v" = "U+05D1 HEBREW LETTER BET: ב"
 "g" = "U+05D2 HEBREW LETTER GIMEL: ג"
