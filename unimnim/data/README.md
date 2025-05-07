@@ -142,6 +142,7 @@ semicolon, but I couldn't think of anything better.
 
 Other systems for use with this tag:
 
+*   `aliases`: https://www.unicode.org/Public/UNIDATA/NameAliases.txt
 *   `rfc1345`: https://datatracker.ietf.org/doc/html/rfc1345
 *   `xcompose`: One of the `Compose.pre` files at
     https://gitlab.freedesktop.org/xorg/lib/libx11/-/tree/master/nls
