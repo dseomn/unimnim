@@ -101,7 +101,10 @@ prefix = "l"
 # replacement is a valid code point name or alias, the partial mnemonic is
 # appended to the existing result's mnemonic and the normalized replacement is
 # used as the new result. See https://docs.python.org/3/library/re.html for the
-# regex and replacement syntaxes. Must be sorted by mnemonic.
+# regex and replacement syntaxes. See
+# https://www.unicode.org/versions/Unicode16.0.0/core-spec/chapter-2/#G27986 for
+# why some mnemonics use this instead of combining.append. Must be sorted by
+# mnemonic.
 [combining.name_regex_replace]
 "/" = ['.*', '\g<0> WITH STROKE']
 ```
