@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Romanization_of_Hebrew
+
+prefix = "h"
+
+[base]
+"v" = "U+05D1 HEBREW LETTER BET: ב"
+"g" = "U+05D2 HEBREW LETTER GIMEL: ג"
+"d" = "U+05D3 HEBREW LETTER DALET: ד"
+"h" = "U+05D4 HEBREW LETTER HE: ה"
+"w" = "U+05D5 HEBREW LETTER VAV: ו"
+"z" = "U+05D6 HEBREW LETTER ZAYIN: ז"
+"ch" = "U+05D7 HEBREW LETTER HET: ח"
+"y" = "U+05D9 HEBREW LETTER YOD: י"
+"k]" = "U+05DA HEBREW LETTER FINAL KAF: ך"  # imfi
+"k" = "U+05DB HEBREW LETTER KAF: כ"
+"l" = "U+05DC HEBREW LETTER LAMED: ל"
+"m]" = "U+05DD HEBREW LETTER FINAL MEM: ם"  # imfi
+"m" = "U+05DE HEBREW LETTER MEM: מ"
+"n]" = "U+05DF HEBREW LETTER FINAL NUN: ן"  # imfi
+"n" = "U+05E0 HEBREW LETTER NUN: נ"
+"s" = "U+05E1 HEBREW LETTER SAMEKH: ס"
+"f]" = "U+05E3 HEBREW LETTER FINAL PE: ף"  # imfi
+"f" = "U+05E4 HEBREW LETTER PE: פ"
+"tz]" = "U+05E5 HEBREW LETTER FINAL TSADI: ץ"  # imfi
+"tz" = "U+05E6 HEBREW LETTER TSADI: צ"
+"c" = "U+05E7 HEBREW LETTER QOF: ק"
+"r" = "U+05E8 HEBREW LETTER RESH: ר"
+"sh" = "U+05E9 HEBREW LETTER SHIN: ש"
