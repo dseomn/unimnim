@@ -18,8 +18,12 @@ from unimnim import data
 
 @functools.cache
 def known_sequences() -> Mapping[str, Sequence[str]]:
-    """Returns a map from known sequences to languages they're from."""
+    """Returns a map from known sequences to languages they're from.
+
+    The languages can be empty for known sequences with unknown language.
+    """
     sequences = collections.defaultdict(set)
+
     for language in icu.Locale.getISOLanguages():
         locale = icu.Locale(language)
         locale_data = icu.LocaleData(language)
@@ -38,6 +42,15 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
         if not numbering_system.isAlgorithmic():
             for digit in numbering_system.getDescription():
                 sequences[unicodedata.normalize("NFC", digit)].add(language)
+
+    # Some single code points like U+FB31 HEBREW LETTER BET WITH DAGESH are
+    # neither NFC normalized, nor are their NFC normalizations in (current as of
+    # 2025-05-06) exemplar data.
+    for code_point in range(0x10FFFF + 1):
+        code_point_nfc = unicodedata.normalize("NFC", chr(code_point))
+        if len(code_point_nfc) > 1:
+            sequences[code_point_nfc]  # create it if it doesn't exist
+
     return {
         sequence: sorted(languages) for sequence, languages in sequences.items()
     }

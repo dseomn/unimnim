@@ -28,6 +28,15 @@ def test_known_sequences() -> None:
     # From the numbering system.
     assert "en" in known_sequences["0"]
 
+    # From checking NFC of all code points. To find another test case if this
+    # one is added to exemplar data:
+    #
+    # jq 'to_entries | .[] | select(.value == []) | .key' \
+    #   < output/known_sequences.json
+    assert not known_sequences[
+        "\N{HEBREW LETTER BET}\N{HEBREW POINT DAGESH OR MAPIQ}"
+    ]
+
 
 @pytest.mark.parametrize(
     "groups,error_regex",
