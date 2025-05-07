@@ -85,14 +85,14 @@ Data files are in [TOML](https://toml.io/) format:
 prefix = "l"
 
 # Base mnemonics, as a map from mnemonic (regular string) to result (explicit
-# string).
+# string). Must be sorted by result, then mnemonic.
 [base]
 "A" = "U+0041 LATIN CAPITAL LETTER A: A"
 
 # Combinining mnemonics as a map from partial mnemonic (regular string) to a
 # combining code point (explicit string). The partial mnemonic is appended to an
 # existing mnemonic and the code point is appended to that existing mnemonic's
-# result, then normalized.
+# result, then normalized. Must be sorted by result, then mnemonic.
 [combining.append]
 "`" = "U+0300 COMBINING GRAVE ACCENT [combining]: à"
 ```
