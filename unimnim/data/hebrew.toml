@@ -8,6 +8,7 @@ prefix = "h"
 
 [base]
 "_" = ""  # empty-for-combining
+"a" = "U+05D0 HEBREW LETTER ALEF: א"  # from=rfc1345 suboptimal
 "v" = "U+05D1 HEBREW LETTER BET: ב"
 "g" = "U+05D2 HEBREW LETTER GIMEL: ג"
 "d" = "U+05D3 HEBREW LETTER DALET: ד"
@@ -24,6 +25,7 @@ prefix = "h"
 "n]" = "U+05DF HEBREW LETTER FINAL NUN: ן"  # imfi
 "n" = "U+05E0 HEBREW LETTER NUN: נ"
 "s" = "U+05E1 HEBREW LETTER SAMEKH: ס"
+"e" = "U+05E2 HEBREW LETTER AYIN: ע"  # from=rfc1345 suboptimal
 "f]" = "U+05E3 HEBREW LETTER FINAL PE: ף"  # imfi
 "f" = "U+05E4 HEBREW LETTER PE: פ"
 "tz]" = "U+05E5 HEBREW LETTER FINAL TSADI: ץ"  # imfi
