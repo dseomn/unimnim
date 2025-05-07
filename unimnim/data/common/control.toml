@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+prefix = "C"
+
+[base]
+"NUL" = "U+0000 (NULL)"  # from=aliases
+"SOH" = "U+0001 (START OF HEADING)"  # from=aliases
+"STX" = "U+0002 (START OF TEXT)"  # from=aliases
+"ETX" = "U+0003 (END OF TEXT)"  # from=aliases
+"EOT" = "U+0004 (END OF TRANSMISSION)"  # from=aliases
+"ENQ" = "U+0005 (ENQUIRY)"  # from=aliases
+"ACK" = "U+0006 (ACKNOWLEDGE)"  # from=aliases
+"BEL" = "U+0007 (ALERT)"  # from=aliases
+"BS" = "U+0008 (BACKSPACE)"  # from=aliases
+"HT" = "U+0009 (HORIZONTAL TABULATION)"  # from=aliases
+"LF" = "U+000A (LINE FEED)"  # from=aliases
+"VT" = "U+000B (VERTICAL TABULATION)"  # from=aliases
+"FF" = "U+000C (FORM FEED)"  # from=aliases
+"CR" = "U+000D (CARRIAGE RETURN)"  # from=aliases
+"SO" = "U+000E (SHIFT OUT)"  # from=aliases
+"SI" = "U+000F (SHIFT IN)"  # from=aliases
+"DLE" = "U+0010 (DATA LINK ESCAPE)"  # from=aliases
+"DC1" = "U+0011 (DEVICE CONTROL ONE)"  # from=aliases
+"DC2" = "U+0012 (DEVICE CONTROL TWO)"  # from=aliases
+"DC3" = "U+0013 (DEVICE CONTROL THREE)"  # from=aliases
+"DC4" = "U+0014 (DEVICE CONTROL FOUR)"  # from=aliases
+"NAK" = "U+0015 (NEGATIVE ACKNOWLEDGE)"  # from=aliases
+"SYN" = "U+0016 (SYNCHRONOUS IDLE)"  # from=aliases
+"ETB" = "U+0017 (END OF TRANSMISSION BLOCK)"  # from=aliases
+"CAN" = "U+0018 (CANCEL)"  # from=aliases
+"EOM" = "U+0019 (END OF MEDIUM)"  # from=aliases
+"SUB" = "U+001A (SUBSTITUTE)"  # from=aliases
+"ESC" = "U+001B (ESCAPE)"  # from=aliases
+"FS" = "U+001C (FILE SEPARATOR)"  # from=aliases
+"GS" = "U+001D (GROUP SEPARATOR)"  # from=aliases
+"RS" = "U+001E (RECORD SEPARATOR)"  # from=aliases
+"US" = "U+001F (UNIT SEPARATOR)"  # from=aliases
+"DEL" = "U+007F (DELETE)"  # from=aliases
