@@ -35,6 +35,8 @@ prefix = "h"
 "r" = "U+05E8 HEBREW LETTER RESH: ר"
 "sh" = "U+05E9 HEBREW LETTER SHIN: ש"
 "T" = "U+05EA HEBREW LETTER TAV: ת"  # suboptimal
+"'" = "U+05F3 HEBREW PUNCTUATION GERESH: ׳"
+'"' = "U+05F4 HEBREW PUNCTUATION GERSHAYIM: ״"
 
 [combining]
 "." = "U+05BC HEBREW POINT DAGESH OR MAPIQ [combining]: בּ"
