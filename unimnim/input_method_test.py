@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 
 import pytest
 
@@ -238,20 +238,43 @@ def test_generate_map(
     assert input_method.generate_map(groups) == expected
 
 
-def test_generate_prefix_map() -> None:
-    assert input_method.generate_prefix_map(
-        {
-            "a": "A",
-            "abc": "ABC",
-            "b": "B",
-        }
-    ) == {
-        "": ["A", "ABC", "B"],
-        "a": ["A", "ABC"],
-        "ab": ["ABC"],
-        "abc": ["ABC"],
-        "b": ["B"],
-    }
+@pytest.mark.parametrize(
+    "map_,expected",
+    (
+        (
+            {
+                "a": "A",
+                "abc": "ABC",
+                "b": "B",
+            },
+            {
+                "": ["A", "ABC", "B"],
+                "a": ["A", "ABC"],
+                "ab": ["ABC"],
+                "abc": ["ABC"],
+                "b": ["B"],
+            },
+        ),
+        (
+            {
+                "abc": "A",
+                "acb": "A",
+            },
+            {
+                "": ["A"],  # no duplicates despite multiple mnemonics for A
+                "a": ["A"],  # ditto
+                "ab": ["A"],
+                "abc": ["A"],
+                "ac": ["A"],
+                "acb": ["A"],
+            },
+        ),
+    ),
+)
+def test_generate_prefix_map(
+    map_: Mapping[str, str], expected: Mapping[str, Sequence[str]]
+) -> None:
+    assert input_method.generate_prefix_map(map_) == expected
 
 
 @pytest.mark.parametrize(

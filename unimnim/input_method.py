@@ -145,7 +145,9 @@ def generate_prefix_map(map_: Mapping[str, str]) -> Mapping[str, Sequence[str]]:
     prefix_map = collections.defaultdict[str, list[str]](list)
     for mnemonic, result in map_.items():
         for prefix_len in range(len(mnemonic) + 1):
-            prefix_map[mnemonic[:prefix_len]].append(result)
+            results = prefix_map[mnemonic[:prefix_len]]
+            if result not in results:
+                results.append(result)
     return prefix_map
 
 
