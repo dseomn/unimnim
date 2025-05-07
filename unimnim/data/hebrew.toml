@@ -39,7 +39,7 @@ prefix = "h"
 "'" = "U+05F3 HEBREW PUNCTUATION GERESH: ׳"
 '"' = "U+05F4 HEBREW PUNCTUATION GERSHAYIM: ״"
 
-[combining]
+[combining.append]
 "." = "U+05BC HEBREW POINT DAGESH OR MAPIQ [combining]: בּ"
 "h" = "U+05C1 HEBREW POINT SHIN DOT [combining]: שׁ"
 "s" = "U+05C2 HEBREW POINT SIN DOT [combining]: שׂ"

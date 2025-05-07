@@ -64,6 +64,6 @@ prefix = "g"
 "ps" = "U+03C8 GREEK SMALL LETTER PSI: ψ"
 "w" = "U+03C9 GREEK SMALL LETTER OMEGA: ω"  # greek-beta-code suboptimal
 
-[combining]
+[combining.append]
 "'" = "U+0301 COMBINING ACUTE ACCENT [combining]: ά"
 '"' = "U+0308 COMBINING DIAERESIS [combining]: ϊ"

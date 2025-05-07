@@ -128,23 +128,49 @@ def _require_sorted_by_value_and_key(
 
 
 @dataclasses.dataclass(frozen=True, kw_only=True)
+class Combining:
+    """Data for combining mnemonics.
+
+    Attributes:
+        append: Map from partial mnemonic to a combining code point. The partial
+            mnemonic is appended to an existing mnemonic and the code point is
+            appended to that existing mnemonic's result, then normalized.
+    """
+
+    append: Mapping[str, str] = dataclasses.field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        _require_sorted_by_value_and_key(self.append, name="combining.append")
+
+    @classmethod
+    def parse(cls, raw: Any, /) -> Self:
+        """Returns the data parsed from the format used in data files."""
+        if unexpected_keys := raw.keys() - {"append"}:
+            raise ValueError(f"Unexpected keys: {list(unexpected_keys)}")
+        return cls(
+            append={
+                key: parse_explicit_string(value)
+                for key, value in raw.get("append", {}).items()
+            },
+        )
+
+
+@dataclasses.dataclass(frozen=True, kw_only=True)
 class Group:
     """Data for a single group of mnemonics.
 
     Attributes:
         prefix: Prefix for all of the group's mnemonics.
         base: Map from mnemonic (not including prefix) to a result.
-        combining: Map from mnemonic (not including prefix) to a combining code
-            point that should be added to an existing result.
+        combining: Rules for combining partial mnemonics with base.
     """
 
     prefix: str
     base: Mapping[str, str]
-    combining: Mapping[str, str]
+    combining: Combining = dataclasses.field(default_factory=Combining)
 
     def __post_init__(self) -> None:
         _require_sorted_by_value_and_key(self.base, name="base")
-        _require_sorted_by_value_and_key(self.combining, name="combining")
 
     @classmethod
     def parse(cls, raw: Any, /) -> Self:
@@ -157,10 +183,7 @@ class Group:
                 key: parse_explicit_string(value)
                 for key, value in raw["base"].items()
             },
-            combining={
-                key: parse_explicit_string(value)
-                for key, value in raw.get("combining", {}).items()
-            },
+            combining=Combining.parse(raw.get("combining", {})),
         )
 
 

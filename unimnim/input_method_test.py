@@ -46,7 +46,9 @@ def test_known_sequences() -> None:
                 "latin": data.Group(
                     prefix="l",
                     base={"a": "a", "a'": "b"},
-                    combining={"'": "\N{COMBINING ACUTE ACCENT}"},
+                    combining=data.Combining(
+                        append={"'": "\N{COMBINING ACUTE ACCENT}"},
+                    ),
                 ),
             },
             "Group 'latin' has duplicate",
@@ -56,12 +58,10 @@ def test_known_sequences() -> None:
                 "latin1": data.Group(
                     prefix="l",
                     base={"a": "a"},
-                    combining={},
                 ),
                 "latin2": data.Group(
                     prefix="l",
                     base={"a": "a"},
-                    combining={},
                 ),
             },
             "groups have the same mnemonics",
@@ -85,10 +85,12 @@ def test_generate_map_error(
                 "latin": data.Group(
                     prefix="l",
                     base={"s": "s"},
-                    combining={
-                        "*": "\N{COMBINING DOT ABOVE}",
-                        ".": "\N{COMBINING DOT BELOW}",
-                    },
+                    combining=data.Combining(
+                        append={
+                            "*": "\N{COMBINING DOT ABOVE}",
+                            ".": "\N{COMBINING DOT BELOW}",
+                        },
+                    ),
                 ),
             },
             {
@@ -105,7 +107,9 @@ def test_generate_map_error(
                 "latin": data.Group(
                     prefix="l",
                     base={"a": "a"},
-                    combining={",": "\N{COMBINING CEDILLA}"},
+                    combining=data.Combining(
+                        append={",": "\N{COMBINING CEDILLA}"},
+                    ),
                 ),
             },
             {
@@ -129,10 +133,12 @@ def test_generate_map_error(
                 "latin": data.Group(
                     prefix="l",
                     base={"j": "j"},
-                    combining={
-                        "~": "\N{COMBINING TILDE}",
-                        ".": "\N{COMBINING DOT ABOVE}",
-                    },
+                    combining=data.Combining(
+                        append={
+                            "~": "\N{COMBINING TILDE}",
+                            ".": "\N{COMBINING DOT ABOVE}",
+                        },
+                    ),
                 ),
             },
             {
@@ -151,7 +157,9 @@ def test_generate_map_error(
                         "a": "a",
                         "ae": "\N{LATIN SMALL LETTER AE}",
                     },
-                    combining={"'": "\N{COMBINING ACUTE ACCENT}"},
+                    combining=data.Combining(
+                        append={"'": "\N{COMBINING ACUTE ACCENT}"},
+                    ),
                 ),
             },
             {
@@ -168,10 +176,12 @@ def test_generate_map_error(
                 "latin": data.Group(
                     prefix="l",
                     base={"s": "s"},
-                    combining={
-                        ".": "\N{COMBINING DOT ABOVE}",
-                        "..": "\N{COMBINING DOT BELOW}",
-                    },
+                    combining=data.Combining(
+                        append={
+                            ".": "\N{COMBINING DOT ABOVE}",
+                            "..": "\N{COMBINING DOT BELOW}",
+                        },
+                    ),
                 ),
             },
             {
@@ -190,12 +200,16 @@ def test_generate_map_error(
                 "greek": data.Group(
                     prefix="g",
                     base={"a": "\N{GREEK SMALL LETTER ALPHA}"},
-                    combining={"~": "\N{COMBINING GREEK PERISPOMENI}"},
+                    combining=data.Combining(
+                        append={"~": "\N{COMBINING GREEK PERISPOMENI}"},
+                    ),
                 ),
                 "latin": data.Group(
                     prefix="l",
                     base={"a": "a"},
-                    combining={"~": "\N{COMBINING TILDE}"},
+                    combining=data.Combining(
+                        append={"~": "\N{COMBINING TILDE}"},
+                    ),
                 ),
             },
             {
@@ -212,7 +226,9 @@ def test_generate_map_error(
                 "latin": data.Group(
                     prefix="l",
                     base={"_": ""},
-                    combining={"~": "\N{COMBINING TILDE}"},
+                    combining=data.Combining(
+                        append={"~": "\N{COMBINING TILDE}"},
+                    ),
                 ),
             },
             {"l_~": "\N{COMBINING TILDE}"},
@@ -224,7 +240,9 @@ def test_generate_map_error(
                 "latin": data.Group(
                     prefix="l",
                     base={"": ""},
-                    combining={"~": "\N{COMBINING TILDE}"},
+                    combining=data.Combining(
+                        append={"~": "\N{COMBINING TILDE}"},
+                    ),
                 ),
             },
             {"l~": "\N{COMBINING TILDE}"},

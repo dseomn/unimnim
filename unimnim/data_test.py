@@ -71,6 +71,40 @@ def test_parse_explicit_string(explicit_string: str, expected: str) -> None:
 @pytest.mark.parametrize(
     "raw,error_regex",
     (
+        (dict(not_valid="foo"), r"Unexpected keys"),
+        (
+            dict(
+                append={
+                    "~": "U+0303 COMBINING TILDE",
+                    "'": "U+0301 COMBINING ACUTE ACCENT",
+                },
+            ),
+            r"combining\.append is not sorted",
+        ),
+    ),
+)
+def test_combining_parse_error(raw: Any, error_regex: str) -> None:
+    with pytest.raises(ValueError, match=error_regex):
+        data.Combining.parse(raw)
+
+
+@pytest.mark.parametrize(
+    "raw,expected",
+    (
+        ({}, {}),
+        (
+            dict(append={"'": "U+0301 COMBINING ACUTE ACCENT"}),
+            dict(append={"'": "\u0301"}),
+        ),
+    ),
+)
+def test_combining_parse(raw: Any, expected: Any) -> None:
+    assert data.Combining.parse(raw) == data.Combining(**expected)
+
+
+@pytest.mark.parametrize(
+    "raw,error_regex",
+    (
         (dict(prefix="l", base={}, not_valid="foo"), r"Unexpected keys"),
         (
             dict(
@@ -92,17 +126,6 @@ def test_parse_explicit_string(explicit_string: str, expected: str) -> None:
             ),
             r"base is not sorted",
         ),
-        (
-            dict(
-                prefix="l",
-                base={},
-                combining={
-                    "~": "U+0303 COMBINING TILDE",
-                    "'": "U+0301 COMBINING ACUTE ACCENT",
-                },
-            ),
-            r"combining is not sorted",
-        ),
     ),
 )
 def test_group_parse_error(raw: Any, error_regex: str) -> None:
@@ -115,15 +138,21 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
     (
         (
             dict(prefix="l", base={"a": "U+0061 LATIN SMALL LETTER A"}),
-            dict(prefix="l", base={"a": "a"}, combining={}),
+            dict(prefix="l", base={"a": "a"}),
         ),
         (
             dict(
                 prefix="l",
                 base={"a": "U+0061 LATIN SMALL LETTER A"},
-                combining={"'": "U+0301 COMBINING ACUTE ACCENT"},
+                combining=dict(append={"'": "U+0301 COMBINING ACUTE ACCENT"}),
             ),
-            dict(prefix="l", base={"a": "a"}, combining={"'": "\u0301"}),
+            dict(
+                prefix="l",
+                base={"a": "a"},
+                combining=data.Combining.parse(
+                    dict(append={"'": "U+0301 COMBINING ACUTE ACCENT"})
+                ),
+            ),
         ),
     ),
 )

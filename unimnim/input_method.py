@@ -94,7 +94,11 @@ def _generate_map_one_group(
 
     while combining_to_check:
         mnemonic, result = combining_to_check.popleft()
-        for combining_mnemonic, combining_result in group.combining.items():
+
+        for (
+            combining_mnemonic,
+            combining_result,
+        ) in group.combining.append.items():
             combined_result = unicodedata.normalize(
                 "NFC", result + combining_result
             )
