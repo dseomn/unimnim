@@ -7,6 +7,7 @@
 prefix = "h"
 
 [base]
+"_" = ""  # empty-for-combining
 "v" = "U+05D1 HEBREW LETTER BET: ב"
 "g" = "U+05D2 HEBREW LETTER GIMEL: ג"
 "d" = "U+05D3 HEBREW LETTER DALET: ד"
@@ -30,3 +31,6 @@ prefix = "h"
 "c" = "U+05E7 HEBREW LETTER QOF: ק"
 "r" = "U+05E8 HEBREW LETTER RESH: ר"
 "sh" = "U+05E9 HEBREW LETTER SHIN: ש"
+
+[combining]
+"." = "U+05BC HEBREW POINT DAGESH OR MAPIQ [combining]: בּ"
