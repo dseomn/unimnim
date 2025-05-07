@@ -132,9 +132,7 @@ class Combining:
     """Data for combining mnemonics.
 
     Attributes:
-        append: Map from partial mnemonic to a combining code point. The partial
-            mnemonic is appended to an existing mnemonic and the code point is
-            appended to that existing mnemonic's result, then normalized.
+        append: See unimnim/data/README.md
     """
 
     append: Mapping[str, str] = dataclasses.field(default_factory=dict)

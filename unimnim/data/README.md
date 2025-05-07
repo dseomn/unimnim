@@ -76,6 +76,27 @@ U+0301 COMBINING ACUTE ACCENT [combining]: á
 In general, the first form should be used for non-printing and combining
 characters, and the second form for everything else.
 
+### Data files
+
+Data files are in [TOML](https://toml.io/) format:
+
+```toml
+# See "pefix" in Terminology section above.
+prefix = "l"
+
+# Base mnemonics, as a map from mnemonic (regular string) to result (explicit
+# string).
+[base]
+"A" = "U+0041 LATIN CAPITAL LETTER A: A"
+
+# Combinining mnemonics as a map from partial mnemonic (regular string) to a
+# combining code point (explicit string). The partial mnemonic is appended to an
+# existing mnemonic and the code point is appended to that existing mnemonic's
+# result, then normalized.
+[combining.append]
+"`" = "U+0300 COMBINING GRAVE ACCENT [combining]: à"
+```
+
 ## Conventions
 
 To make the mnemonics as easy to remember as possible, the data files generally
