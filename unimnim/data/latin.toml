@@ -2,10 +2,6 @@
 #
 # SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
 
-# Some Latin letters have names with "WITH STROKE", but those do not decompose
-# into a base letter and a combining stroke. The mnemonics for them generally
-# use "/" as a suffix as if it were a combining mnemonic.
-
 prefix = "l"
 
 [base]
@@ -64,26 +60,16 @@ prefix = "l"
 "z" = "U+007A LATIN SMALL LETTER Z: z"
 "AE" = "U+00C6 LATIN CAPITAL LETTER AE: Æ"
 "DH" = "U+00D0 LATIN CAPITAL LETTER ETH: Ð"  # aka="edh"
-"O/" = "U+00D8 LATIN CAPITAL LETTER O WITH STROKE: Ø"
 "TH" = "U+00DE LATIN CAPITAL LETTER THORN: Þ"
 "ss" = "U+00DF LATIN SMALL LETTER SHARP S: ß"
 "ae" = "U+00E6 LATIN SMALL LETTER AE: æ"
 "dh" = "U+00F0 LATIN SMALL LETTER ETH: ð"  # aka="edh"
-"o/" = "U+00F8 LATIN SMALL LETTER O WITH STROKE: ø"
 "th" = "U+00FE LATIN SMALL LETTER THORN: þ"
-"D/" = "U+0110 LATIN CAPITAL LETTER D WITH STROKE: Đ"
-"d/" = "U+0111 LATIN SMALL LETTER D WITH STROKE: đ"
-"H/" = "U+0126 LATIN CAPITAL LETTER H WITH STROKE: Ħ"
-"h/" = "U+0127 LATIN SMALL LETTER H WITH STROKE: ħ"
 "i-." = "U+0131 LATIN SMALL LETTER DOTLESS I: ı"  # uncombine suboptimal
-"L/" = "U+0141 LATIN CAPITAL LETTER L WITH STROKE: Ł"
-"l/" = "U+0142 LATIN SMALL LETTER L WITH STROKE: ł"
 "NG" = "U+014A LATIN CAPITAL LETTER ENG: Ŋ"
 "ng" = "U+014B LATIN SMALL LETTER ENG: ŋ"
 "OE" = "U+0152 LATIN CAPITAL LIGATURE OE: Œ"
 "oe" = "U+0153 LATIN SMALL LIGATURE OE: œ"
-"T/" = "U+0166 LATIN CAPITAL LETTER T WITH STROKE: Ŧ"
-"t/" = "U+0167 LATIN SMALL LETTER T WITH STROKE: ŧ"
 "s+" = "U+017F LATIN SMALL LETTER LONG S: ſ"  # length
 "SS" = "U+1E9E LATIN CAPITAL LETTER SHARP S: ẞ"
 
@@ -105,3 +91,6 @@ prefix = "l"
 "!" = "U+0323 COMBINING DOT BELOW [combining]: ạ"  # from=xcompose suboptimal
 "," = "U+0327 COMBINING CEDILLA [combining]: ç"
 ";" = "U+0328 COMBINING OGONEK [combining]: ą"  # from=rfc1345,xcompose suboptimal
+
+[combining.name_regex_replace]
+"/" = ['.*', '\g<0> WITH STROKE']
