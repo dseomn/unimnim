@@ -38,3 +38,32 @@ prefix = "C"
 "RS" = "U+001E (RECORD SEPARATOR)"  # from=aliases
 "US" = "U+001F (UNIT SEPARATOR)"  # from=aliases
 "DEL" = "U+007F (DELETE)"  # from=aliases
+"BPH" = "U+0082 (BREAK PERMITTED HERE)"  # from=aliases
+"NBH" = "U+0083 (NO BREAK HERE)"  # from=aliases
+"IND" = "U+0084 (INDEX)"  # from=aliases
+"NEL" = "U+0085 (NEXT LINE)"  # from=aliases
+"SSA" = "U+0086 (START OF SELECTED AREA)"  # from=aliases
+"ESA" = "U+0087 (END OF SELECTED AREA)"  # from=aliases
+"HTS" = "U+0088 (HORIZONTAL TABULATION SET)"  # from=aliases
+"HTJ" = "U+0089 (HORIZONTAL TABULATION WITH JUSTIFICATION)"  # from=aliases
+"VTS" = "U+008A (VERTICAL TABULATION SET)"  # from=aliases
+"PLD" = "U+008B (PARTIAL LINE DOWN)"  # from=aliases
+"PLU" = "U+008C (PARTIAL LINE UP)"  # from=aliases
+"RI" = "U+008D (REVERSE INDEX)"  # from=aliases
+"SS2" = "U+008E (SINGLE SHIFT TWO)"  # from=aliases
+"SS3" = "U+008F (SINGLE SHIFT THREE)"  # from=aliases
+"DCS" = "U+0090 (DEVICE CONTROL STRING)"  # from=aliases
+"PU1" = "U+0091 (PRIVATE USE ONE)"  # from=aliases
+"PU2" = "U+0092 (PRIVATE USE TWO)"  # from=aliases
+"STS" = "U+0093 (SET TRANSMIT STATE)"  # from=aliases
+"CCH" = "U+0094 (CANCEL CHARACTER)"  # from=aliases
+"MW" = "U+0095 (MESSAGE WAITING)"  # from=aliases
+"SPA" = "U+0096 (START OF PROTECTED AREA)"  # from=aliases
+"EPA" = "U+0097 (END OF PROTECTED AREA)"  # from=aliases
+"SOS" = "U+0098 (START OF STRING)"  # from=aliases
+"SCI" = "U+009A (SINGLE CHARACTER INTRODUCER)"  # from=aliases
+"CSI" = "U+009B (CONTROL SEQUENCE INTRODUCER)"  # from=aliases
+"ST" = "U+009C (STRING TERMINATOR)"  # from=aliases
+"OSC" = "U+009D (OPERATING SYSTEM COMMAND)"  # from=aliases
+"PM" = "U+009E (PRIVACY MESSAGE)"  # from=aliases
+"APC" = "U+009F (APPLICATION PROGRAM COMMAND)"  # from=aliases
