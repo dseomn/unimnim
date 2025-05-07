@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 from collections.abc import Mapping, Sequence
+import re
 
 import pytest
 
@@ -147,6 +148,64 @@ def test_generate_map_error(
                 # Note that "lj." is not present.
                 "lj.~": "j\N{COMBINING DOT ABOVE}\N{COMBINING TILDE}",
             },
+        ),
+        (
+            # combining.name_regex_replace works and can stack with
+            # combining.append.
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    base={"o": "o"},
+                    combining=data.Combining(
+                        append={"'": "\N{COMBINING ACUTE ACCENT}"},
+                        name_regex_replace={
+                            "/": (re.compile(r"^.*$"), r"\g<0> WITH STROKE"),
+                        },
+                    ),
+                ),
+            },
+            {
+                "lo": "o",
+                "lo'": "\N{LATIN SMALL LETTER O WITH ACUTE}",
+                "lo/": "\N{LATIN SMALL LETTER O WITH STROKE}",
+                "lo/'": "\N{LATIN SMALL LETTER O WITH STROKE AND ACUTE}",
+            },
+        ),
+        (
+            # A regex that does not match is not an error.
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    base={"o": "o"},
+                    combining=data.Combining(
+                        name_regex_replace={
+                            "/": (
+                                re.compile(r"no match"),
+                                r"\g<0> WITH STROKE",
+                            ),
+                        },
+                    ),
+                ),
+            },
+            {"lo": "o"},
+        ),
+        (
+            # A regex that produces a name that does not exist is not an error.
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    base={"o": "o"},
+                    combining=data.Combining(
+                        name_regex_replace={
+                            "/": (
+                                re.compile(r"^.*$"),
+                                r"\g<0> WITH A FAKE ACCENT",
+                            ),
+                        },
+                    ),
+                ),
+            },
+            {"lo": "o"},
         ),
         (
             # Base mnemonics can overlap.

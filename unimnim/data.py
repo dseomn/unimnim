@@ -116,6 +116,15 @@ def _require_sorted(
         )
 
 
+def _require_sorted_by_key(mapping: Mapping[str, Any], /, *, name: str) -> None:
+    _require_sorted(
+        mapping,
+        key=lambda kv: kv[0],
+        key_description="key",
+        name=name,
+    )
+
+
 def _require_sorted_by_value_and_key(
     mapping: Mapping[str, str], /, *, name: str
 ) -> None:
@@ -133,22 +142,35 @@ class Combining:
 
     Attributes:
         append: See unimnim/data/README.md
+        name_regex_replace: See unimnim/data/README.md
     """
 
     append: Mapping[str, str] = dataclasses.field(default_factory=dict)
+    name_regex_replace: Mapping[str, tuple[re.Pattern[str], str]] = (
+        dataclasses.field(default_factory=dict)
+    )
 
     def __post_init__(self) -> None:
         _require_sorted_by_value_and_key(self.append, name="combining.append")
+        _require_sorted_by_key(
+            self.name_regex_replace, name="combining.name_regex_replace"
+        )
 
     @classmethod
     def parse(cls, raw: Any, /) -> Self:
         """Returns the data parsed from the format used in data files."""
-        if unexpected_keys := raw.keys() - {"append"}:
+        if unexpected_keys := raw.keys() - {"append", "name_regex_replace"}:
             raise ValueError(f"Unexpected keys: {list(unexpected_keys)}")
         return cls(
             append={
                 key: parse_explicit_string(value)
                 for key, value in raw.get("append", {}).items()
+            },
+            name_regex_replace={
+                key: (re.compile(regex_str), replacement)
+                for key, (regex_str, replacement) in raw.get(
+                    "name_regex_replace", {}
+                ).items()
             },
         )
 

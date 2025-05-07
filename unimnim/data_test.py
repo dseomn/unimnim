@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 import pathlib
+import re
 from typing import Any
 
 import pytest
@@ -81,6 +82,15 @@ def test_parse_explicit_string(explicit_string: str, expected: str) -> None:
             ),
             r"combining\.append is not sorted",
         ),
+        (
+            dict(
+                name_regex_replace={
+                    "b": ["foo", "bar"],
+                    "a": ["foo", "bar"],
+                },
+            ),
+            r"combining\.name_regex_replace is not sorted",
+        ),
     ),
 )
 def test_combining_parse_error(raw: Any, error_regex: str) -> None:
@@ -95,6 +105,14 @@ def test_combining_parse_error(raw: Any, error_regex: str) -> None:
         (
             dict(append={"'": "U+0301 COMBINING ACUTE ACCENT"}),
             dict(append={"'": "\u0301"}),
+        ),
+        (
+            dict(name_regex_replace={"/": [r"^.*$", r"\g<0> WITH STROKE"]}),
+            dict(
+                name_regex_replace={
+                    "/": (re.compile(r"^.*$"), r"\g<0> WITH STROKE")
+                },
+            ),
         ),
     ),
 )

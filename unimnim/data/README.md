@@ -95,6 +95,15 @@ prefix = "l"
 # result, then normalized. Must be sorted by result, then mnemonic.
 [combining.append]
 "`" = "U+0300 COMBINING GRAVE ACCENT [combining]: à"
+
+# Combining mnemonics as a map from partial mnemonic to a regex and replacement
+# string. If the regex matches the code point name of an existing result and the
+# replacement is a valid code point name or alias, the partial mnemonic is
+# appended to the existing result's mnemonic and the normalized replacement is
+# used as the new result. See https://docs.python.org/3/library/re.html for the
+# regex and replacement syntaxes. Must be sorted by mnemonic.
+[combining.name_regex_replace]
+"/" = ['^.*$', '\g<0> WITH STROKE']
 ```
 
 ## Conventions

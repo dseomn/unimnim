@@ -117,6 +117,29 @@ def _generate_map_one_group(
                 ),
             )
 
+        if len(result) != 1:
+            continue
+        if (result_name := unicodedata.name(result, None)) is None:
+            continue
+
+        for combining_mnemonic, (
+            combining_pattern,
+            combining_replacement,
+        ) in group.combining.name_regex_replace.items():
+            combined_name = combining_pattern.sub(
+                combining_replacement, result_name
+            )
+            if combined_name == result_name:
+                continue
+            try:
+                combined_result = unicodedata.normalize(
+                    "NFC", unicodedata.lookup(combined_name)
+                )
+            except KeyError:
+                continue
+            combined_mnemonic = mnemonic + combining_mnemonic
+            _add(combined_mnemonic, combined_result)
+
     return mapping_known
 
 
