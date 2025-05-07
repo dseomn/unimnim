@@ -1,0 +1,29 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# All spaces have a mnemonic starting with SP to make them easier to look
+# through with a prefix search. Where a space has an official alias, that's also
+# used as a mnemonic.
+
+prefix = "C"
+
+[base]
+"NBSP" = "U+00A0 NO-BREAK SPACE"  # from=aliases
+"SPNB" = "U+00A0 NO-BREAK SPACE"
+"SPN" = "U+2002 EN SPACE"
+"SPM" = "U+2003 EM SPACE"
+"SPM13" = "U+2004 THREE-PER-EM SPACE"
+"SPM14" = "U+2005 FOUR-PER-EM SPACE"
+"SPM16" = "U+2006 SIX-PER-EM SPACE"
+"SPF" = "U+2007 FIGURE SPACE"
+"SPP" = "U+2008 PUNCTUATION SPACE"
+"SPT" = "U+2009 THIN SPACE"
+"SPH" = "U+200A HAIR SPACE"
+"LS" = "U+2028 LINE SEPARATOR"
+"PS" = "U+2029 PARAGRAPH SEPARATOR"
+"NNBSP" = "U+202F NARROW NO-BREAK SPACE"  # from=aliases
+"SPNBN" = "U+202F NARROW NO-BREAK SPACE"
+"MMSP" = "U+205F MEDIUM MATHEMATICAL SPACE"  # from=aliases
+"SPMM" = "U+205F MEDIUM MATHEMATICAL SPACE"
+"SPI" = "U+3000 IDEOGRAPHIC SPACE"
