@@ -335,6 +335,33 @@ def test_generate_map_error(
             },
             {"l~": "\N{COMBINING TILDE}"},
         ),
+        (
+            # Combining characters can stack over an empty base result.
+            {
+                "regions": data.Group(
+                    prefix="r",
+                    base={"": ""},
+                    combining=data.Combining(
+                        append={
+                            "N": "\N{REGIONAL INDICATOR SYMBOL LETTER N}",
+                            "U": "\N{REGIONAL INDICATOR SYMBOL LETTER U}",
+                        },
+                    ),
+                ),
+            },
+            {
+                "rN": "\N{REGIONAL INDICATOR SYMBOL LETTER N}",
+                "rU": "\N{REGIONAL INDICATOR SYMBOL LETTER U}",
+                "rNU": (
+                    "\N{REGIONAL INDICATOR SYMBOL LETTER N}"
+                    "\N{REGIONAL INDICATOR SYMBOL LETTER U}"
+                ),
+                "rUN": (
+                    "\N{REGIONAL INDICATOR SYMBOL LETTER U}"
+                    "\N{REGIONAL INDICATOR SYMBOL LETTER N}"
+                ),
+            },
+        ),
     ),
 )
 def test_generate_map(
