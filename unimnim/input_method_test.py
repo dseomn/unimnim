@@ -38,6 +38,14 @@ def test_known_sequences() -> None:
         "\N{HEBREW LETTER BET}\N{HEBREW POINT DAGESH OR MAPIQ}"
     ]
 
+    assert (
+        "emoji"
+        in known_sequences[
+            "\N{REGIONAL INDICATOR SYMBOL LETTER U}"
+            "\N{REGIONAL INDICATOR SYMBOL LETTER N}"
+        ]
+    )
+
 
 @pytest.mark.parametrize(
     "groups,error_regex",

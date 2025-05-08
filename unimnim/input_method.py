@@ -51,6 +51,10 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
         if len(code_point_nfc) > 1:
             sequences[code_point_nfc]  # create it if it doesn't exist
 
+    for uproperty in (icu.UProperty.EMOJI, icu.UProperty.RGI_EMOJI):
+        for emoji in icu.Char.getBinaryPropertySet(uproperty):
+            sequences[emoji].add("emoji")
+
     return {
         sequence: sorted(languages) for sequence, languages in sequences.items()
     }
