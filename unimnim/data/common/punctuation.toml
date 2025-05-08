@@ -14,6 +14,8 @@ prefix = "C"
 "-n" = "U+2013 EN DASH: –"
 "-m" = "U+2014 EM DASH: —"
 "-q" = "U+2015 HORIZONTAL BAR: ―"  # aka="quotation dash"
+"|-" = "U+2020 DAGGER: †"
+"|--" = "U+2021 DOUBLE DAGGER: ‡"
 "..." = "U+2026 HORIZONTAL ELLIPSIS: …"
 ".h" = "U+2027 HYPHENATION POINT: ‧"
 "<" = "U+2039 SINGLE LEFT-POINTING ANGLE QUOTATION MARK: ‹"
@@ -26,3 +28,4 @@ prefix = "C"
 "-~" = "U+2053 SWUNG DASH: ⁓"
 "!?I" = "U+2E18 INVERTED INTERROBANG: ⸘"  # geometry-suffix
 "?!I" = "U+2E18 INVERTED INTERROBANG: ⸘"  # geometry-suffix
+"|---" = "U+2E4B TRIPLE DAGGER: ⹋"
