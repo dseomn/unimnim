@@ -279,6 +279,27 @@ def test_generate_map_error(
             },
         ),
         (
+            # Empty results are filtered out before checking for conflicts
+            # between groups.
+            {
+                "latin1": data.Group(
+                    prefix="l",
+                    base={"a": "a"},
+                ),
+                "latin2": data.Group(
+                    prefix="la",
+                    base={"": ""},
+                    combining=data.Combining(
+                        append={"~": "\N{COMBINING TILDE}"},
+                    ),
+                ),
+            },
+            {
+                "la": "a",
+                "la~": "\N{COMBINING TILDE}",
+            },
+        ),
+        (
             # A base mnemonic can have an empty result to allow typing combining
             # characters.
             {

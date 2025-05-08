@@ -81,7 +81,7 @@ def _generate_map_one_group(
         # order without counting as a duplicate.
         if mnemonic not in mapping_all:
             mapping_all[mnemonic] = result
-            if is_known:
+            if is_known and result:
                 mapping_known[mnemonic] = result
             combining_to_check.append((mnemonic, result))
         elif mapping_all[mnemonic] != result:
@@ -162,7 +162,6 @@ def generate_map(groups: Mapping[str, data.Group]) -> Mapping[str, str]:
     return {
         mnemonic: result
         for mnemonic, ((result, _),) in result_and_group_id_by_mnemonic.items()
-        if result
     }
 
 
