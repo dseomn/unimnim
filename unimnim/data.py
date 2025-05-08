@@ -12,6 +12,12 @@ import tomllib
 from typing import Any, Self
 import unicodedata
 
+import icu
+
+# TODO: https://gitlab.pyicu.org/main/pyicu/-/issues/176 - Use a constant
+# instead of 6.
+_DEPRECATED_CODE_POINTS = frozenset(icu.Char.getBinaryPropertySet(6))
+
 
 def _parse_explicit_code_point(explicit: str) -> str:
     match = re.fullmatch(
@@ -93,6 +99,11 @@ def parse_explicit_string(explicit_string: str, /) -> str:
         # probably makes sense to add a flag to bypass this check if/when any
         # base mnemonics want to intentionally have a precomposed result.
         raise ValueError(f"{explicit_string!r} is precomposed.")
+    if deprecated := frozenset(decoded_string) & _DEPRECATED_CODE_POINTS:
+        raise ValueError(
+            f"{explicit_string!r} contains deprecated code points "
+            f"{list(deprecated)}"
+        )
     return decoded_string
 
 

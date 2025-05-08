@@ -33,6 +33,7 @@ from unimnim import data
             r"not NFC normalized",
         ),
         ("U+00E0 LATIN SMALL LETTER A WITH GRAVE", r"is precomposed"),
+        ("U+0149 LATIN SMALL LETTER N PRECEDED BY APOSTROPHE", r"deprecated"),
     ),
 )
 def test_parse_explicit_string_error(
