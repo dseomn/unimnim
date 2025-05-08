@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+prefix = "C"
+
+[base]
+"c/o" = "U+2105 CARE OF: ℅"
+"No" = "U+2116 NUMERO SIGN: №"
+"Rx" = "U+211E PRESCRIPTION TAKE: ℞"
+"SM" = "U+2120 SERVICE MARK: ℠"
+"TM" = "U+2122 TRADE MARK SIGN: ™"
+"est" = "U+212E ESTIMATED SYMBOL: ℮"
+"POI" = "U+2318 PLACE OF INTEREST SIGN: ⌘"
