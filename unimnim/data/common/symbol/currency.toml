@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# Many values in this file were picked after a very quick look at a Wikipedia
+# page or two, so consider this entire file #suboptimal.
+
+prefix = "C$"
+
+[base]
+"CT" = "U+00A2 CENT SIGN: ¢"
+"LB" = "U+00A3 POUND SIGN: £"
+"" = "U+00A4 CURRENCY SIGN: ¤"
+"Y" = "U+00A5 YEN SIGN: ¥"
+"B" = "U+0E3F THAI CURRENCY SYMBOL BAHT: ฿"
+"Rs" = "U+20A8 RUPEE SIGN: ₨"
+"W" = "U+20A9 WON SIGN: ₩"
+"D" = "U+20AB DONG SIGN: ₫"
+"EU" = "U+20AC EURO SIGN: €"
+"P" = "U+20B1 PESO SIGN: ₱"
+"R" = "U+20B9 INDIAN RUPEE SIGN: ₹"
+"RU" = "U+20BD RUBLE SIGN: ₽"
+"BTC" = "U+20BF BITCOIN SIGN: ₿"
