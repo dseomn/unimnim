@@ -49,6 +49,13 @@ def _parse_explicit_code_point(explicit: str) -> str:
             raise ValueError(
                 f"U+{match.group('number')} does not have alias {alias!r}"
             )
+    elif correction := icu.Char.charName(
+        code_point, icu.UCharNameChoice.CHAR_NAME_ALIAS
+    ):
+        raise ValueError(
+            f"U+{match.group('number')} has corrected name {correction}, but "
+            "no alias was specified."
+        )
     return code_point
 
 
