@@ -5,6 +5,7 @@
 prefix = "C"
 
 [base]
+"SHY" = "U+00AD SOFT HYPHEN"  # from=aliases
 "LRM" = "U+200E LEFT-TO-RIGHT MARK"  # from=aliases
 "RLM" = "U+200F RIGHT-TO-LEFT MARK"  # from=aliases
 "LRE" = "U+202A LEFT-TO-RIGHT EMBEDDING"  # from=aliases
