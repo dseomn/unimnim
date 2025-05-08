@@ -180,7 +180,7 @@ Other systems for use with this tag:
 *   `xcompose`: One of the `Compose.pre` files at
     https://gitlab.freedesktop.org/xorg/lib/libx11/-/tree/master/nls
 
-### Geometry suffixes (`geometry-suffix`)
+### Geometry (`geometry`)
 
 Mnemonics for characters that are geometrically related to another character can
 use one of these suffixes:

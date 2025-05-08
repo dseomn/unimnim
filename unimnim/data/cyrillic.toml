@@ -39,7 +39,7 @@ prefix = "c"
 '""' = "U+042A CYRILLIC CAPITAL LETTER HARD SIGN: Ъ"  # suboptimal
 "Y" = "U+042B CYRILLIC CAPITAL LETTER YERU: Ы"
 "''" = "U+042C CYRILLIC CAPITAL LETTER SOFT SIGN: Ь"  # suboptimal
-"JER" = "U+042D CYRILLIC CAPITAL LETTER E: Э"  # aka="backwards ye" geometry-suffix suboptimal
+"JER" = "U+042D CYRILLIC CAPITAL LETTER E: Э"  # aka="backwards ye" geometry suboptimal
 "JU" = "U+042E CYRILLIC CAPITAL LETTER YU: Ю"
 "JA" = "U+042F CYRILLIC CAPITAL LETTER YA: Я"
 "a" = "U+0430 CYRILLIC SMALL LETTER A: а"
@@ -70,7 +70,7 @@ prefix = "c"
 '"' = "U+044A CYRILLIC SMALL LETTER HARD SIGN: ъ"
 "y" = "U+044B CYRILLIC SMALL LETTER YERU: ы"
 "'" = "U+044C CYRILLIC SMALL LETTER SOFT SIGN: ь"
-"jeR" = "U+044D CYRILLIC SMALL LETTER E: э"  # aka="backwards ye" geometry-suffix suboptimal
+"jeR" = "U+044D CYRILLIC SMALL LETTER E: э"  # aka="backwards ye" geometry suboptimal
 "ju" = "U+044E CYRILLIC SMALL LETTER YU: ю"
 "ja" = "U+044F CYRILLIC SMALL LETTER YA: я"
 "je" = "U+0454 CYRILLIC SMALL LETTER UKRAINIAN IE: є"
