@@ -4,16 +4,16 @@
 
 # This file combines base symbols from a mix of math and programming:
 #
-# not: !
-# and: &
-# multiplication: *
-# subtraction: -
 # addition: +
-# equality: =
-# or: |
-# less: <
-# greater: >
+# and: &
 # division: /
+# equality: =
+# greater: >
+# less: <
+# multiplication: *
+# not: !
+# or: |
+# subtraction: -
 #
 # With suffixes for areas of mathematics:
 #
