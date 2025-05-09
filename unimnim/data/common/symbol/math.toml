@@ -18,8 +18,8 @@
 # With suffixes for areas of mathematics:
 #
 # logic: l
-# set theory: s
-# vector: v
+# sets: s
+# vectors: v
 
 prefix = "CM"
 
