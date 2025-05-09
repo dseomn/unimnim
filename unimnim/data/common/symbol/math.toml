@@ -17,11 +17,11 @@
 #
 # With suffixes:
 #
-# "f": fractions
+# "f": fraction
 # "l": logic
 # "n": n-ary
-# "s": sets
-# "v": vectors
+# "s": set
+# "v": vector
 
 prefix = "CM"
 
