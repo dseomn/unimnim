@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# This file combines base symbols from a mix of math and programming:
+#
+# not: !
+# and: &
+# multiplication: *
+# subtraction: -
+# addition: +
+# equality: =
+# or: |
+# less: <
+# greater: >
+# division: /
+#
+# With suffixes for branches of mathematics:
+#
+# logic: l
+# set theory: s
+
+prefix = "CM"
+
+[base]
+"!l" = "U+00AC NOT SIGN: ¬"
+"+-" = "U+00B1 PLUS-MINUS SIGN: ±"
+"-" = "U+2212 MINUS SIGN: −"
+"-+" = "U+2213 MINUS-OR-PLUS SIGN: ∓"
+'-s' = "U+2216 SET MINUS: ∖"
+"&l" = "U+2227 LOGICAL AND: ∧"
+"|l" = "U+2228 LOGICAL OR: ∨"
+"&s" = "U+2229 INTERSECTION: ∩"
+"|s" = "U+222A UNION: ∪"
