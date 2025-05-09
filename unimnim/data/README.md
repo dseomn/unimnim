@@ -140,6 +140,24 @@ To differentiate characters that would otherwise have the same mnemonic:
 "TH" = "U+00DE LATIN CAPITAL LETTER THORN: Þ"
 ```
 
+### Based on another mnemonic (`based-on=group`)
+
+When a mnemonic is based on another mnemonic from a different group, use
+`based-on=` with the path of the other group relative to this directory, without
+the `.toml` extension.
+
+```toml
+# latin.toml
+prefix = "l"
+[base]
+"N" = "U+004E LATIN CAPITAL LETTER N: N"
+```
+
+```toml
+# common/symbol/math.toml
+"lN/" = "U+2115 DOUBLE-STRUCK CAPITAL N: ℕ"  # based-on=latin
+```
+
 ### Base mnemonics with empty results (`empty-for-combining`)
 
 Groups with combining characters can have a base mnemonic with an empty result
