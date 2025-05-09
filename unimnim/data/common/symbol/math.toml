@@ -32,6 +32,7 @@ prefix = "CM"
 "/.." = "U+00F7 DIVISION SIGN: ÷"  # suboptimal
 "/f" = "U+2044 FRACTION SLASH: ⁄"
 "-.." = "U+2052 COMMERCIAL MINUS SIGN: ⁒"  # suboptimal
+"0s" = "U+2205 EMPTY SET: ∅"
 "*n" = "U+220F N-ARY PRODUCT: ∏"
 "+n" = "U+2211 N-ARY SUMMATION: ∑"
 "-" = "U+2212 MINUS SIGN: −"
