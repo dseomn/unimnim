@@ -73,9 +73,6 @@ U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I: hi
 U+0301 COMBINING ACUTE ACCENT [combining]: á
 ```
 
-In general, the first form should be used for non-printing and combining
-characters, and the second form for everything else.
-
 ### Data files
 
 Data files are in [TOML](https://toml.io/) format:
