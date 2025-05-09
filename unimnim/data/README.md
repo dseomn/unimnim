@@ -224,15 +224,11 @@ final, even if they appear
 
 ### Character length (`length`)
 
-Long characters can use a `+` suffix and shorter characters can use a `-`
+Long characters can use a `>` suffix and shorter characters can use a `<`
 suffix.
 
-Unfortunately, this could be somewhat confusing when `-` is used for macron,
-which can also mean long in some contexts. So it's a trade-off, and ideas are
-welcome.
-
 ```toml
-"s+" = "U+017F LATIN SMALL LETTER LONG S: ſ"  # length
+"s>" = "U+017F LATIN SMALL LETTER LONG S: ſ"  # length
 ```
 
 ### Suboptimal (`suboptimal`)
