@@ -25,7 +25,7 @@ prefix = "CM"
 [base]
 "!l" = "U+00AC NOT SIGN: ¬"
 "+-" = "U+00B1 PLUS-MINUS SIGN: ±"
-"*x" = "U+00D7 MULTIPLICATION SIGN: ×"
+"*" = "U+00D7 MULTIPLICATION SIGN: ×"
 "/.." = "U+00F7 DIVISION SIGN: ÷"
 "/f" = "U+2044 FRACTION SLASH: ⁄"
 "-.." = "U+2052 COMMERCIAL MINUS SIGN: ⁒"
