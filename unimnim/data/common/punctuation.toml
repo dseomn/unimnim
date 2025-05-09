@@ -9,6 +9,7 @@ prefix = "C"
 "SS" = "U+00A7 SECTION SIGN: §"  # aka="double-s"
 "<<q" = "U+00AB LEFT-POINTING DOUBLE ANGLE QUOTATION MARK: «"
 "pi" = "U+00B6 PILCROW SIGN: ¶"
+".i" = "U+00B7 MIDDLE DOT: ·"  # aka="interpunct"
 ">>q" = "U+00BB RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK: »"
 "?I" = "U+00BF INVERTED QUESTION MARK: ¿"  # geometry
 "-h" = "U+2010 HYPHEN: ‐"
