@@ -15,10 +15,11 @@
 # greater: >
 # division: /
 #
-# With suffixes for branches of mathematics:
+# With suffixes for areas of mathematics:
 #
 # logic: l
 # set theory: s
+# vector: v
 
 prefix = "CM"
 
@@ -40,3 +41,4 @@ prefix = "CM"
 "/:" = "U+2236 RATIO: ∶"
 "*." = "U+22C5 DOT OPERATOR: ⋅"
 "/)" = "U+27CC LONG DIVISION: ⟌"
+"*v" = "U+2A2F VECTOR OR CROSS PRODUCT: ⨯"
