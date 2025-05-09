@@ -12,8 +12,27 @@ method](https://www.nongnu.org/m17n/manual-en/m17nDBData.html#mim-list) and
 [compose
 sequences](https://en.wikipedia.org/wiki/Compose_key#Compose_sequences).
 
-See the [data directory](unimnim/data) and its README for information about the
-mnemonics it uses.
+In general, a mnemonic starts with a prefix for the
+[script](https://en.wikipedia.org/wiki/Script_(Unicode)), then a base mnemonic
+for a letter or symbol, then some optional combining mnemonics for accents. For
+example:
+
+| Mnemonic | Meaning | Result |
+| --- | --- | --- |
+| `la'` |  Latin, a, acute | `á` |
+| `le^'` | Latin, e, circumflex, acute | `ế` |
+| `lAE-` | Latin, Æ, macron | `Ǣ` |
+| `cd` | Cyrillic, д | `д` |
+| `ga'` | Greek, α, tonos | `ά` |
+| `hk.`| Hebrew, כ, dagesh | `כּ` |
+| `C-m` | common, dash, em | `—` |
+| `C?!I` | common, interrobang, inverted | `⸘` |
+| `C$Rs` | common, currency, rupee | `₨` |
+| `CM0s` | common, math, zero/empty/null, set | `∅` |
+| `Cmb` | common, music, flat | `♭` |
+| `Cco` | common, copyright | `©` |
+
+See the [data directory](unimnim/data) and its README for more details.
 
 ## FAQ
 
