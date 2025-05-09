@@ -6,7 +6,9 @@ prefix = "C"
 
 [base]
 "!I" = "U+00A1 INVERTED EXCLAMATION MARK: ¡"  # geometry
+"SS" = "U+00A7 SECTION SIGN: §"  # aka="double-s"
 "<<q" = "U+00AB LEFT-POINTING DOUBLE ANGLE QUOTATION MARK: «"
+"pi" = "U+00B6 PILCROW SIGN: ¶"
 ">>q" = "U+00BB RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK: »"
 "?I" = "U+00BF INVERTED QUESTION MARK: ¿"  # geometry
 "-h" = "U+2010 HYPHEN: ‐"
@@ -26,6 +28,8 @@ prefix = "C"
 "|--" = "U+2021 DOUBLE DAGGER: ‡"
 "..." = "U+2026 HORIZONTAL ELLIPSIS: …"
 ".h" = "U+2027 HYPHENATION POINT: ‧"
+"%0" = "U+2030 PER MILLE SIGN: ‰"
+"%00" = "U+2031 PER TEN THOUSAND SIGN: ‱"
 "'p" = "U+2032 PRIME: ′"
 "''p" = "U+2033 DOUBLE PRIME: ″"
 "'''p" = "U+2034 TRIPLE PRIME: ‴"
@@ -39,6 +43,7 @@ prefix = "C"
 "?!" = "U+203D INTERROBANG: ‽"
 "***" = "U+2042 ASTERISM: ⁂"
 "??" = "U+2047 DOUBLE QUESTION MARK: ⁇"
+"piR" = "U+204B REVERSED PILCROW SIGN: ⁋"  # geometry
 "-~" = "U+2053 SWUNG DASH: ⁓"
 "''''p" = "U+2057 QUADRUPLE PRIME: ⁗"
 "!?I" = "U+2E18 INVERTED INTERROBANG: ⸘"  # geometry
