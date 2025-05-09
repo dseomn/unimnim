@@ -6,14 +6,26 @@
 
 # UNIcode MNemonic Input Method (unimnim)
 
-This is a very early alpha stage input method for using mnemonics to input as
-much of Unicode as possible. It's inspired by [m17n's RFC1345 input
+unimnim is an input method that uses mnemonics to input as much of Unicode as
+possible. It's inspired by [m17n's RFC1345 input
 method](https://www.nongnu.org/m17n/manual-en/m17nDBData.html#mim-list) and
 [compose
 sequences](https://en.wikipedia.org/wiki/Compose_key#Compose_sequences).
 
 See the [data directory](unimnim/data) and its README for information about the
 mnemonics it uses.
+
+## FAQ
+
+### How stable is this?
+
+The code only generates output files for other input method engines to use, so
+software stability hopefully isn't an issue.
+
+The data is α. There might still be significant changes to the mnemonics. At
+this point, internal consistency is valued over stability. When adding a new
+mnemonic, if it makes sense to first change other mnemonics so they can all use
+the same pattern, that change should generally be made.
 
 ## Licenses
 
