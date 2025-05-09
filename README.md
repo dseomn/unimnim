@@ -17,6 +17,12 @@ mnemonics it uses.
 
 ## FAQ
 
+### How is "unimnim" pronounced?
+
+`uni` and `mn` are pronounced however you'd pronounce them in Unicode and
+mnemonic. `im` is entirely up to you. Personally, I pronounce it the same as
+[uninym](https://en.wiktionary.org/wiki/uninym#English).
+
 ### How stable is this?
 
 The code only generates output files for other input method engines to use, so
