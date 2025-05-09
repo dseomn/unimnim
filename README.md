@@ -33,6 +33,28 @@ this point, internal consistency is valued over stability. When adding a new
 mnemonic, if it makes sense to first change other mnemonics so they can all use
 the same pattern, that change should generally be made.
 
+### Aren't these mnemonics all focused on an English (US) keyboard?
+
+Unfortunately yes. I tried to find data on the most common keyboard layouts and
+the keys shared by layouts used by the most people before starting this project,
+but I didn't find much.
+
+If you want to use this input method with another layout, please file a bug.
+
+For small changes like changing [the currency
+prefix](unimnim/data/common/symbol/currency.toml) from `C$` to `C` followed by a
+currency symbol on your keyboard, I think it would be easy enough to add support
+for prefix overrides.
+
+For medium changes like adding `læ'` as a mnemonic for `ǽ` in addition to the
+current `lae'` mnemonic, I think it would make sense to automatically generate
+parts of `[base]`. The input method templates might need modification too. E.g.,
+it looks like [m17n would need a different syntax for the
+mnemonics](https://savannah.nongnu.org/bugs/?66557).
+
+For large changes like adding mnemonics in a script other than Latin, I'm happy
+to think about it more. Maybe it makes sense to have separate data directories?
+
 ## Licenses
 
 This repo follows the [reuse](https://reuse.software/) specification. See file
