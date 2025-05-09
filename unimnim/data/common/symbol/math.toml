@@ -4,22 +4,22 @@
 
 # This file combines base symbols from a mix of math and programming:
 #
-# addition: +
-# and: &
-# division: /
-# equality: =
-# greater: >
-# less: <
-# multiplication: *
-# not: !
-# or: |
-# subtraction: -
+# "!": not
+# "&": and
+# "*": multiplication
+# "+": addition
+# "-": subtraction
+# "/": division
+# "<": less
+# "=": equality
+# ">": greater
+# "|": or
 #
 # With suffixes for areas of mathematics:
 #
-# logic: l
-# sets: s
-# vectors: v
+# "l": logic
+# "s": sets
+# "v": vectors
 
 prefix = "CM"
 
