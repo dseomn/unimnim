@@ -151,7 +151,7 @@ first and `l'` in the second.
 prefix = "l"
 [base]
 "_" = ""  # empty-for-combining
-[combining]
+[combining.append]
 "'" = "U+0301 COMBINING ACUTE ACCENT"
 ```
 
@@ -159,7 +159,7 @@ prefix = "l"
 prefix = "l"
 [base]
 "" = ""  # empty-for-combining
-[combining]
+[combining.append]
 "'" = "U+0301 COMBINING ACUTE ACCENT"
 ```
 
@@ -236,6 +236,6 @@ character.
 [base]
 "i" = "U+0069 LATIN SMALL LETTER I: i"
 "i-." = "U+0131 LATIN SMALL LETTER DOTLESS I: ı"  # uncombine
-[combining]
+[combining.append]
 "." = "U+0307 COMBINING DOT ABOVE"
 ```
