@@ -34,6 +34,27 @@ example:
 
 See the [data directory](unimnim/data) and its README for more details.
 
+## Usage
+
+The easiest way to try this out is probably by going to the [GitHub Actions
+workflows](https://github.com/dseomn/unimnim/actions?query=branch%3Amain+is%3Asuccess),
+clicking on the most recent build, and downloading the `python-3.13-output` zip
+file at the bottom of the page.
+
+### ibus-typing-booster
+
+Extract `m17n.mim` from the zip file above to `~/.m17n.d/unimnim.mim`. Then
+install
+[ibus-typing-booster](https://mike-fabian.github.io/ibus-typing-booster/), and
+configure it to use the `t-unimnim` input method.
+
+### Other input method engines
+
+If you'd like support for a different engine, please file a feature request. If
+you want to integrate unimnim's mnemonics into other software yourself,
+`map.json` in the zip file above is a simple JSON object with all the mnemonics
+and their results.
+
 ## FAQ
 
 ### How is "unimnim" pronounced?
