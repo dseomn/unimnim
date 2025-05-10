@@ -40,6 +40,10 @@ prefix = "CM"
 "lQ/" = "U+211A DOUBLE-STRUCK CAPITAL Q: ℚ"  # based-on=latin
 "lR/" = "U+211D DOUBLE-STRUCK CAPITAL R: ℝ"  # based-on=latin
 "lZ/" = "U+2124 DOUBLE-STRUCK CAPITAL Z: ℤ"  # based-on=latin
+"ha" = "U+2135 ALEF SYMBOL: ℵ"  #  based-on=hebrew
+"hv" = "U+2136 BET SYMBOL: ℶ"  #  based-on=hebrew
+"hg" = "U+2137 GIMEL SYMBOL: ℷ"  #  based-on=hebrew
+"hd" = "U+2138 DALET SYMBOL: ℸ"  #  based-on=hebrew
 "gp/" = "U+213C DOUBLE-STRUCK SMALL PI: ℼ"  # based-on=greek
 "gg/" = "U+213D DOUBLE-STRUCK SMALL GAMMA: ℽ"  # based-on=greek
 "gG/" = "U+213E DOUBLE-STRUCK CAPITAL GAMMA: ℾ"  # based-on=greek
