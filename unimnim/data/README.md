@@ -137,6 +137,15 @@ To differentiate characters that would otherwise have the same mnemonic:
 "TH" = "U+00DE LATIN CAPITAL LETTER THORN: Þ"
 ```
 
+### Amount (`amount`)
+
+A `>` suffix can be used to indicate a greater amount and `<` for a lesser
+amount, where "amount" can be interpreted very liberally.
+
+```toml
+"s>" = "U+017F LATIN SMALL LETTER LONG S: ſ"  # amount
+```
+
 ### Based on another mnemonic (`based-on=group`)
 
 When a mnemonic is based on another mnemonic from a different group, use
@@ -221,15 +230,6 @@ suffixes:
 Note that the opening `[` is always used for initial and the closing `]` for
 final, even if they appear
 [mirrored](https://www.unicode.org/reports/tr9/#Mirroring).
-
-### Character length (`length`)
-
-Long characters can use a `>` suffix and shorter characters can use a `<`
-suffix.
-
-```toml
-"s>" = "U+017F LATIN SMALL LETTER LONG S: ſ"  # length
-```
 
 ### Suboptimal (`suboptimal`)
 
