@@ -14,9 +14,10 @@ import unicodedata
 
 import icu
 
-# TODO: https://gitlab.pyicu.org/main/pyicu/-/issues/176 - Use a constant
-# instead of 6.
-_DEPRECATED_CODE_POINTS = frozenset(icu.Char.getBinaryPropertySet(6))
+# TODO: https://gitlab.pyicu.org/main/pyicu/-/issues/176 - Use a constant.
+_DEPRECATED_CODE_POINTS = frozenset(
+    icu.Char.getBinaryPropertySet(icu.Char.getPropertyEnum("Deprecated"))
+)
 
 
 def _parse_explicit_code_point(explicit: str) -> str:
