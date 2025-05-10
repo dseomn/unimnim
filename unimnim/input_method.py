@@ -22,6 +22,9 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
 
     The languages can be empty for known sequences with unknown language.
     """
+    # TODO: dseomn - Add sequences from
+    # https://www.unicode.org/Public/UNIDATA/NamedSequences.txt and
+    # https://www.unicode.org/Public/UNIDATA/NamedSequencesProv.txt
     sequences = collections.defaultdict(set)
 
     for language in icu.Locale.getISOLanguages():
@@ -75,6 +78,9 @@ def _generate_map_one_group(
     group: data.Group,
 ) -> Mapping[str, str]:
     """Returns a map from mnemonic to result for one group."""
+    # TODO: dseomn - Find some way to access
+    # https://www.unicode.org/Public/UNIDATA/DoNotEmit.txt from python and
+    # either raise an error or filter out results that match that file.
     mapping_all = {}
     mapping_known = {}
     combining_to_check = collections.deque[tuple[str, str]]()
