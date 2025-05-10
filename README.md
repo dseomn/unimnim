@@ -164,6 +164,15 @@ picker](https://mike-fabian.github.io/ibus-typing-booster/docs/user/#unicode-sym
 and [GNOME Character Map](https://wiki.gnome.org/Apps/Gucharmap) in addition to
 unimnim.
 
+### CLDR transliterations
+
+[CLDR has
+transliterations](https://cldr.unicode.org/index/cldr-spec/transliteration-guidelines)
+that have some similarities to the mnemonics that unimnim uses for different
+scripts. However, the transliterations seem much better suited to reading text
+than to writing it. E.g., they give an example of transliterating Αλφαβητικός to
+Alfavi̱tikós, which does not solve the problem of how to type `i̱` and `ó`.
+
 ### Others
 
 I don't have any experience with these, but [Input
