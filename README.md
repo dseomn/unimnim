@@ -155,6 +155,15 @@ Additionally, the m17n input method based on RFC 1345 uses `&` as a starter
 character to introduce a mnemonic, which makes using it while writing code in C
 or C++ somewhat annoying. (That could probably be made configurable though.)
 
+### Search
+
+If you only rarely need to type characters that aren't on your keyboard, some
+sort of character search is probably easier than remembering mnemonics. I
+personally use [ibus-typing-booster's search and emoji
+picker](https://mike-fabian.github.io/ibus-typing-booster/docs/user/#unicode-symbols-and-emoji-predictions)
+and [GNOME Character Map](https://wiki.gnome.org/Apps/Gucharmap) in addition to
+unimnim.
+
 ## Licenses
 
 This repo follows the [reuse](https://reuse.software/) specification. See file
