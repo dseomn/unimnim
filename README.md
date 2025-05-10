@@ -114,6 +114,19 @@ than to use unimnim. However, unimnim has advantages in other use cases:
     to use mnemonics than to remember a different keyboard layout and to keep
     track of which layout I'm currently using.
 
+### Compose sequences and dead keys
+
+For typing a limited set of accented characters in one script, [compose
+sequences](https://en.wikipedia.org/wiki/Compose_key#Compose_sequences) and/or
+[dead keys](https://en.wikipedia.org/wiki/Dead_key) might be easier and/or
+faster. When I've looked into it, the support for more obscure characters and
+multiple scripts didn't look as good though. Also, compose sequences [don't seem
+to support overlapping
+mnemonics](https://github.com/mike-fabian/ibus-typing-booster/issues/691#issuecomment-2822689423),
+which I think makes it harder to get visual feedback while typing a mnemonic.
+For example, after typing `lae`, unimnim should show `æ`, then typing the
+additional `'` changes that to `ǽ`.
+
 ## Licenses
 
 This repo follows the [reuse](https://reuse.software/) specification. See file
