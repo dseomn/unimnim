@@ -203,8 +203,8 @@ use one of these suffixes:
 | Suffix | Meaning | Example |
 | --- | --- | --- |
 | `I` | inverted | `"!I" = "U+00A1 INVERTED EXCLAMATION MARK: ¡"` |
-| `R` | reversed | |
-| `T` | turned | |
+| `R` | reversed | `"ER" = "U+018E LATIN CAPITAL LETTER REVERSED E: Ǝ"` |
+| `T` | turned | `"eT" = "U+01DD LATIN SMALL LETTER TURNED E: ǝ"` |
 
 ### Initial, medial, final, and isolated (`imfi`)
 
