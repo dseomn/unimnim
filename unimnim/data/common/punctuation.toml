@@ -13,6 +13,7 @@ prefix = "C"
 ">>q" = "U+00BB RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK: »"
 "?I" = "U+00BF INVERTED QUESTION MARK: ¿"  # geometry
 "-h" = "U+2010 HYPHEN: ‐"
+"-hnb" = "U+2011 NON-BREAKING HYPHEN: ‑"
 "-f" = "U+2012 FIGURE DASH: ‒"
 "-n" = "U+2013 EN DASH: –"
 "-m" = "U+2014 EM DASH: —"
