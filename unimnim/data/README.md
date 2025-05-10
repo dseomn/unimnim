@@ -144,6 +144,7 @@ amount, where "amount" can be interpreted very liberally.
 
 ```toml
 "s>" = "U+017F LATIN SMALL LETTER LONG S: ſ"  # amount
+"e<" = "U+0259 LATIN SMALL LETTER SCHWA: ə"  # aka="reduced vowel" amount
 ```
 
 ### Based on another mnemonic (`based-on=group`)
