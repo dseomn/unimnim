@@ -127,6 +127,34 @@ which I think makes it harder to get visual feedback while typing a mnemonic.
 For example, after typing `lae`, unimnim should show `æ`, then typing the
 additional `'` changes that to `ǽ`.
 
+### RFC 1345
+
+[RFC 1345](https://datatracker.ietf.org/doc/html/rfc1345) defined a somewhat
+similar set of mnemonics in 1992, and there's an [m17n input
+method](https://www.nongnu.org/m17n/manual-en/m17nDBData.html#mim-list) using
+those mnemonics. That served me very well for multiple decades, and I think it
+is a pretty good set of mnemonics. unimnim is very much inspired by it.
+
+However, it seems to have been intended for use in standards documents to define
+character sets, not for use in an input method to type those characters. That
+combined with its age leads to some drawbacks:
+
+*   No support for the many many characters that have been added to Unicode
+    since 1992.
+*   Since it tries to encode every character in old character sets, it includes
+    characters that are no longer recommended for use in new text. (Which is not
+    the same as characters for old writing systems. Those can still be
+    recommended for new transcripts of old writings or for discussing those
+    writing systems.)
+*   It has some patterns that it mostly follows in the mnemonics, but there are
+    many exceptions to remember.
+*   Its mnemonics are limited to a smaller character set than are available on
+    many modern keyboards, making some of the mnemonics a bit more awkward.
+
+Additionally, the m17n input method based on RFC 1345 uses `&` as a starter
+character to introduce a mnemonic, which makes using it while writing code in C
+or C++ somewhat annoying. (That could probably be made configurable though.)
+
 ## Licenses
 
 This repo follows the [reuse](https://reuse.software/) specification. See file
