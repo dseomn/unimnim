@@ -95,6 +95,25 @@ mnemonics](https://savannah.nongnu.org/bugs/?66557).
 For large changes like adding mnemonics in a script other than Latin, I'm happy
 to think about it more. Maybe it makes sense to have separate data directories?
 
+## Comparison
+
+### Switching keyboard layouts
+
+For many use cases, switching between a few [keyboard
+layouts](https://en.wikipedia.org/wiki/Keyboard_layout) is probably better than
+using mnemonics. For each language with a good keyboard layout, I think it's
+probably much faster for an experienced user of that layout to type directly
+than to use unimnim. However, unimnim has advantages in other use cases:
+
+*   There are a lot of mnemonics for characters that (as far as I know) aren't
+    common on normal keyboard layouts, like different types of
+    [dashes](https://en.wikipedia.org/wiki/Dash), mathematical symbols, music
+    symbols, other symbols (©, °, ℅, etc.), and [bidirectional formatting
+    characters](https://en.wikipedia.org/wiki/Bidirectional_text#Explicit_formatting).
+*   For a language I only type in once every few years, I find it a lot easier
+    to use mnemonics than to remember a different keyboard layout and to keep
+    track of which layout I'm currently using.
+
 ## Licenses
 
 This repo follows the [reuse](https://reuse.software/) specification. See file
