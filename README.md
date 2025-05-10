@@ -164,6 +164,15 @@ picker](https://mike-fabian.github.io/ibus-typing-booster/docs/user/#unicode-sym
 and [GNOME Character Map](https://wiki.gnome.org/Apps/Gucharmap) in addition to
 unimnim.
 
+### Others
+
+I don't have any experience with these, but [Input
+Pad](https://github.com/fujiwarat/input-pad/wiki) looks interesting, macOS seems
+to have a way to [press and hold a key to get
+accents](https://support.apple.com/lv-lv/guide/mac-help/mh27474/15.0/mac/15.0),
+and it might be possible to use an on-screen keyboard with a different layout
+than the physical keyboard.
+
 ## Licenses
 
 This repo follows the [reuse](https://reuse.software/) specification. See file
