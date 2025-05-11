@@ -19,18 +19,18 @@ example:
 
 | Mnemonic | Meaning | Result |
 | --- | --- | --- |
-| `la'` |  Latin, a, acute | `á` |
+| `la'` |  [Latin](unimnim/data/latin.toml), a, acute | `á` |
 | `le^'` | Latin, e, circumflex, acute | `ế` |
 | `lAE-` | Latin, Æ, macron | `Ǣ` |
-| `cd` | Cyrillic, д | `д` |
-| `ga'` | Greek, α, tonos | `ά` |
-| `hk.`| Hebrew, כ, dagesh | `כּ` |
-| `C-m` | common, dash, em | `—` |
-| `C?!I` | common, interrobang, inverted | `⸘` |
-| `C$Rs` | common, currency, rupee | `₨` |
-| `CM0s` | common, math, zero/empty/null, set | `∅` |
-| `Cmb` | common, music, flat | `♭` |
-| `Cco` | common, copyright | `©` |
+| `cd` | [Cyrillic](unimnim/data/cyrillic.toml), д | `д` |
+| `ga'` | [Greek](unimnim/data/greek.toml), α, tonos | `ά` |
+| `hk.`| [Hebrew](unimnim/data/hebrew.toml), כ, dagesh | `כּ` |
+| `C-m` | common, ([punctuation](unimnim/data/common/punctuation.toml)), dash, em | `—` |
+| `C?!I` | common, (punctuation), interrobang, inverted | `⸘` |
+| `C$Rs` | common, [currency](unimnim/data/common/symbol/currency.toml), rupee | `₨` |
+| `CM0s` | common, [math](unimnim/data/common/symbol/math.toml), zero/empty/null, set | `∅` |
+| `Cmb` | common, [music](unimnim/data/common/symbol/music.toml), flat | `♭` |
+| `Cco` | common, ([other symbols](unimnim/data/common/symbol/other.toml)), copyright | `©` |
 
 See the [data directory](unimnim/data) and its README for more details.
 
