@@ -25,12 +25,12 @@ example:
 | `cd` | [Cyrillic](unimnim/data/cyrillic.toml), д | `д` |
 | `ga'` | [Greek](unimnim/data/greek.toml), α, tonos | `ά` |
 | `hk.`| [Hebrew](unimnim/data/hebrew.toml), כ, dagesh | `כּ` |
-| `C-m` | common, ([punctuation](unimnim/data/common/punctuation.toml)), dash, em | `—` |
-| `C?!I` | common, (punctuation), interrobang, inverted | `⸘` |
+| `C-m` | common, dash ([punctuation](unimnim/data/common/punctuation.toml)), em | `—` |
+| `C?!I` | common, interrobang (punctuation), inverted | `⸘` |
 | `C$Rs` | common, [currency](unimnim/data/common/symbol/currency.toml), rupee | `₨` |
 | `CM0s` | common, [math](unimnim/data/common/symbol/math.toml), zero/empty/null, set | `∅` |
 | `Cmb` | common, [music](unimnim/data/common/symbol/music.toml), flat | `♭` |
-| `Cco` | common, ([other symbols](unimnim/data/common/symbol/other.toml)), copyright | `©` |
+| `Cco` | common, copyright ([other symbol](unimnim/data/common/symbol/other.toml)) | `©` |
 
 See the [data directory](unimnim/data) and its README for more details.
 
