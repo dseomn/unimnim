@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+prefix = "C"
+
+[base]
+"CGJ" = "U+034F COMBINING GRAPHEME JOINER"  # from=aliases
