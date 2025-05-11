@@ -20,6 +20,7 @@
 # "/": double-struck
 # "O": circled
 # "f": fraction
+# "g": geometry
 # "l": logic
 # "n": n-ary
 # "s": set
@@ -36,6 +37,7 @@ prefix = "CM"
 "+-" = "U+00B1 PLUS-MINUS SIGN: ±"
 "*" = "U+00D7 MULTIPLICATION SIGN: ×"
 "/.." = "U+00F7 DIVISION SIGN: ÷"  # suboptimal
+"||" = "U+2016 DOUBLE VERTICAL LINE: ‖"
 "/f" = "U+2044 FRACTION SLASH: ⁄"
 "-.." = "U+2052 COMMERCIAL MINUS SIGN: ⁒"  # suboptimal
 "lC/" = "U+2102 DOUBLE-STRUCK CAPITAL C: ℂ"  # based-on=latin
@@ -74,6 +76,9 @@ prefix = "CM"
 "rt3" = "U+221B CUBE ROOT: ∛"
 "rt4" = "U+221C FOURTH ROOT: ∜"
 "inf" = "U+221E INFINITY: ∞"
+"/|" = "U+2223 DIVIDES: ∣"
+"/|!" = "U+2224 DOES NOT DIVIDE [precomposed]: ∤"
+"||g" = "U+2225 PARALLEL TO: ∥"
 "&l" = "U+2227 LOGICAL AND: ∧"
 "|l" = "U+2228 LOGICAL OR: ∨"
 "&s" = "U+2229 INTERSECTION: ∩"
