@@ -53,6 +53,22 @@ might work too. I don't have a Mac to test on, but it looks like [there might be
 a way to use it on macOS too](https://github.com/fcitx-contrib/fcitx5-macos).
 Whichever you use, configure it to use the `t-unimnim` input method.
 
+If you type normally, unimnim stays out of the way. To use it, type
+<kbd>Alt</kbd> + <kbd>\\</kbd> followed by a mnemonic. To search mnemonics by
+prefix, type <kbd>Alt</kbd> + <kbd>\\</kbd> twice and start typing a mnemonic.
+If you want to use different key combinations, see [the documentation of
+`minput_event_to_key`](https://www.nongnu.org/m17n/manual-en/group__m17nInputMethodWin.html#ga58715c630a04fd33f12394e9c93f1bad)
+and add lines like these to `~/.m17n.d/config.mic`:
+
+```
+((input-method t unimnim)
+ (command
+   (start nil (C-`))
+   (search-prefix-start nil (C-` C-`))
+   )
+ )
+```
+
 ### Other input method engines
 
 If you'd like support for a different engine, please file a feature request. If
