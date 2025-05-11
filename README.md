@@ -41,12 +41,17 @@ workflows](https://github.com/dseomn/unimnim/actions?query=branch%3Amain+is%3Asu
 clicking on the most recent build, and downloading the `python-3.13-output` zip
 file at the bottom of the page.
 
-### ibus-typing-booster
+### m17n (Linux, BSDs, possibly macOS)
 
-Extract `m17n.mim` from the zip file above to `~/.m17n.d/unimnim.mim`. Then
-install
+Extract `m17n.mim` from the zip file above to `~/.m17n.d/unimnim.mim`, and
+install an input method that supports the [m17n](https://www.nongnu.org/m17n/)
+library. I'd recommend
 [ibus-typing-booster](https://mike-fabian.github.io/ibus-typing-booster/), and
-configure it to use the `t-unimnim` input method.
+I've used [ibus-m17n](https://github.com/ibus/ibus-m17n) in the past. I've never
+used [fcitx-m17n](https://github.com/fcitx/fcitx5-m17n), but it looks like it
+might work too. I don't have a Mac to test on, but it looks like [there might be
+a way to use it on macOS too](https://github.com/fcitx-contrib/fcitx5-macos).
+Whichever you use, configure it to use the `t-unimnim` input method.
 
 ### Other input method engines
 
