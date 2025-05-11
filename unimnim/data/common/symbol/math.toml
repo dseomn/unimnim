@@ -131,4 +131,7 @@ prefix = "CM"
   ['.*', 'CIRCLED \g<0>'],
   ['(.*) SIGN', 'CIRCLED \g<1>'],
 ]
-"n" = [['.*', 'N-ARY \g<0>']]
+"n" = [
+  ['.*', 'N-ARY \g<0>'],
+  ['.*', 'N-ARY \g<0> OPERATOR'],
+]
