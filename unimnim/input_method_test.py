@@ -167,7 +167,7 @@ def test_generate_map_error(
                     combining=data.Combining(
                         append={"'": "\N{COMBINING ACUTE ACCENT}"},
                         name_regex_replace={
-                            "/": (re.compile(r".*"), r"\g<0> WITH STROKE"),
+                            "/": ((re.compile(r".*"), r"\g<0> WITH STROKE"),),
                         },
                     ),
                 ),
@@ -180,6 +180,39 @@ def test_generate_map_error(
             },
         ),
         (
+            # A combining.name_regex_replace entry can have multiple replacement
+            # rules.
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    base={
+                        "O": "O",
+                        "o": "o",
+                    },
+                    combining=data.Combining(
+                        name_regex_replace={
+                            "/": (
+                                (
+                                    re.compile(r"LATIN CAPITAL LETTER .*"),
+                                    r"\g<0> WITH STROKE",
+                                ),
+                                (
+                                    re.compile(r"LATIN SMALL LETTER .*"),
+                                    r"\g<0> WITH STROKE",
+                                ),
+                            ),
+                        },
+                    ),
+                ),
+            },
+            {
+                "lO": "O",
+                "lO/": "\N{LATIN CAPITAL LETTER O WITH STROKE}",
+                "lo": "o",
+                "lo/": "\N{LATIN SMALL LETTER O WITH STROKE}",
+            },
+        ),
+        (
             # A regex that does not match is not an error.
             {
                 "latin": data.Group(
@@ -188,8 +221,10 @@ def test_generate_map_error(
                     combining=data.Combining(
                         name_regex_replace={
                             "/": (
-                                re.compile(r"no match"),
-                                r"\g<0> WITH STROKE",
+                                (
+                                    re.compile(r"no match"),
+                                    r"\g<0> WITH STROKE",
+                                ),
                             ),
                         },
                     ),
@@ -206,8 +241,10 @@ def test_generate_map_error(
                     combining=data.Combining(
                         name_regex_replace={
                             "/": (
-                                re.compile(r".*"),
-                                r"\g<0> WITH A FAKE ACCENT",
+                                (
+                                    re.compile(r".*"),
+                                    r"\g<0> WITH A FAKE ACCENT",
+                                ),
                             ),
                         },
                     ),

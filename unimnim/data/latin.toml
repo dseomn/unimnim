@@ -99,4 +99,4 @@ prefix = "l"
 ";" = "U+0328 COMBINING OGONEK [combining]: ą"  # from=rfc1345,xcompose suboptimal
 
 [combining.name_regex_replace]
-"/" = ['.*', '\g<0> WITH STROKE']
+"/" = [['.*', '\g<0> WITH STROKE']]

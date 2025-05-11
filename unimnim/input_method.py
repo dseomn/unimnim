@@ -132,22 +132,23 @@ def _generate_map_one_group(
         if (result_name := unicodedata.name(result, None)) is None:
             continue
 
-        for combining_mnemonic, (
-            combining_pattern,
-            combining_replacement,
+        for (
+            combining_mnemonic,
+            rules,
         ) in group.combining.name_regex_replace.items():
-            match = combining_pattern.fullmatch(result_name)
-            if match is None:
-                continue
-            combined_name = match.expand(combining_replacement)
-            try:
-                combined_result = unicodedata.normalize(
-                    "NFC", unicodedata.lookup(combined_name)
-                )
-            except KeyError:
-                continue
-            combined_mnemonic = mnemonic + combining_mnemonic
-            _add(combined_mnemonic, combined_result)
+            for combining_pattern, combining_replacement in rules:
+                match = combining_pattern.fullmatch(result_name)
+                if match is None:
+                    continue
+                combined_name = match.expand(combining_replacement)
+                try:
+                    combined_result = unicodedata.normalize(
+                        "NFC", unicodedata.lookup(combined_name)
+                    )
+                except KeyError:
+                    continue
+                combined_mnemonic = mnemonic + combining_mnemonic
+                _add(combined_mnemonic, combined_result)
 
     return mapping_known
 

@@ -121,4 +121,4 @@ prefix = "CM"
 "9/" = "U+1D7E1 MATHEMATICAL DOUBLE-STRUCK DIGIT NINE: 𝟡"
 
 [combining.name_regex_replace]
-"n" = ['.*', 'N-ARY \g<0>']
+"n" = [['.*', 'N-ARY \g<0>']]

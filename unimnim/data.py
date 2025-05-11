@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Data file parsing."""
 
-from collections.abc import Callable, Mapping
+from collections.abc import Callable, Collection, Mapping
 import dataclasses
 import pathlib
 import pprint
@@ -165,9 +165,9 @@ class Combining:
     """
 
     append: Mapping[str, str] = dataclasses.field(default_factory=dict)
-    name_regex_replace: Mapping[str, tuple[re.Pattern[str], str]] = (
-        dataclasses.field(default_factory=dict)
-    )
+    name_regex_replace: Mapping[
+        str, Collection[tuple[re.Pattern[str], str]]
+    ] = dataclasses.field(default_factory=dict)
 
     def __post_init__(self) -> None:
         _require_sorted_by_value_and_key(self.append, name="combining.append")
@@ -180,17 +180,18 @@ class Combining:
         """Returns the data parsed from the format used in data files."""
         if unexpected_keys := raw.keys() - {"append", "name_regex_replace"}:
             raise ValueError(f"Unexpected keys: {list(unexpected_keys)}")
+        name_regex_replace = {}
+        for key, rules in raw.get("name_regex_replace", {}).items():
+            name_regex_replace[key] = tuple(
+                (re.compile(regex_str), replacement)
+                for regex_str, replacement in rules
+            )
         return cls(
             append={
                 key: parse_explicit_string(value)
                 for key, value in raw.get("append", {}).items()
             },
-            name_regex_replace={
-                key: (re.compile(regex_str), replacement)
-                for key, (regex_str, replacement) in raw.get(
-                    "name_regex_replace", {}
-                ).items()
-            },
+            name_regex_replace=name_regex_replace,
         )
 
 
