@@ -20,6 +20,28 @@ _DEPRECATED_CODE_POINTS = frozenset(
 )
 
 
+@dataclasses.dataclass(frozen=True, kw_only=True)
+class _ExplicitStringFlags:
+    # This uses a dataclass instead of enum.Flag because it might make sense to
+    # add "flags" that are more like key-value pairs, and enum.Flag doesn't seem
+    # to help with parsing at all anyway.
+
+    combining: bool = False
+
+    @classmethod
+    def parse(cls, flags_str: str | None, /) -> Self:
+        if flags_str is None:
+            return cls()
+        kwargs = {}
+        for flag_str in flags_str.split(","):
+            match flag_str:
+                case "combining":
+                    kwargs["combining"] = True
+                case _:
+                    raise ValueError(f"Invalid flag: {flag_str!r}")
+        return cls(**kwargs)
+
+
 def _parse_explicit_code_point(explicit: str) -> str:
     match = re.fullmatch(
         (
@@ -75,26 +97,20 @@ def parse_explicit_string(explicit_string: str, /) -> str:
     if match is None:
         raise ValueError(f"Can't parse explicit string: {explicit_string!r}")
     encoded_string = match.group("encoded_string")
-    match flags := match.group("flags"):
-        case None:
-            flag_combining = False
-        case "combining":
-            flag_combining = True
-        case _:
-            raise ValueError(f"Invalid flags: {flags!r}")
+    flags = _ExplicitStringFlags.parse(match.group("flags"))
     expected_string = match.group("expected_string")
     decoded_string = "".join(
         map(_parse_explicit_code_point, encoded_string.split(", "))
     )
     if expected_string is not None:
-        if flag_combining and not unicodedata.normalize(
+        if flags.combining and not unicodedata.normalize(
             "NFD", expected_string
         ).endswith(decoded_string):
             raise ValueError(
                 f"{explicit_string!r} decodes to {decoded_string!r} which is "
                 f"not the combining sequence at the end of {expected_string!r}"
             )
-        elif not flag_combining and expected_string != decoded_string:
+        elif not flags.combining and expected_string != decoded_string:
             raise ValueError(
                 f"{explicit_string!r} decodes to {decoded_string!r} not "
                 f"{expected_string!r}"

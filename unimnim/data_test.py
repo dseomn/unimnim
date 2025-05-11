@@ -15,7 +15,7 @@ from unimnim import data
     "explicit_string,error_regex",
     (
         (":", r"Can't parse"),
-        ("U+0068 LATIN SMALL LETTER H [foo]", "Invalid flags: 'foo'"),
+        ("U+0068 LATIN SMALL LETTER H [foo]", "Invalid flag: 'foo'"),
         ("foo", r"not of the form"),
         ("U+0070 LATIN SMALL LETTER I", r"U\+0070 has name .* not"),
         ("U+0070 (NULL)", r"does not have alias"),  # alias for other char
