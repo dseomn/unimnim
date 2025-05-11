@@ -54,6 +54,9 @@ prefix = "CM"
 "gG/" = "U+213E DOUBLE-STRUCK CAPITAL GAMMA: ℾ"  # based-on=greek
 "gP/" = "U+213F DOUBLE-STRUCK CAPITAL PI: ℿ"  # based-on=greek
 "+n/" = "U+2140 DOUBLE-STRUCK N-ARY SUMMATION: ⅀"
+"FA" = "U+2200 FOR ALL: ∀"
+"TE" = "U+2203 THERE EXISTS: ∃"
+"TE!" = "U+2204 THERE DOES NOT EXIST [precomposed]: ∄"
 "0s" = "U+2205 EMPTY SET: ∅"
 "*n" = "U+220F N-ARY PRODUCT: ∏"
 "+n" = "U+2211 N-ARY SUMMATION: ∑"
