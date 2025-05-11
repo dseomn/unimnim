@@ -27,6 +27,7 @@ class _ExplicitStringFlags:
     # to help with parsing at all anyway.
 
     combining: bool = False
+    precomposed: bool = False
 
     @classmethod
     def parse(cls, flags_str: str | None, /) -> Self:
@@ -37,6 +38,8 @@ class _ExplicitStringFlags:
             match flag_str:
                 case "combining":
                     kwargs["combining"] = True
+                case "precomposed":
+                    kwargs["precomposed"] = True
                 case _:
                     raise ValueError(f"Invalid flag: {flag_str!r}")
         return cls(**kwargs)
@@ -117,11 +120,12 @@ def parse_explicit_string(explicit_string: str, /) -> str:
             )
     if not unicodedata.is_normalized("NFC", decoded_string):
         raise ValueError(f"{explicit_string!r} is not NFC normalized.")
-    if not unicodedata.is_normalized("NFD", decoded_string):
-        # This is meant to catch accidentally adding a precomposed result to
-        # base when a separate base and combining mnemonic would be better. It
-        # probably makes sense to add a flag to bypass this check if/when any
-        # base mnemonics want to intentionally have a precomposed result.
+    if unicodedata.is_normalized("NFD", decoded_string) and flags.precomposed:
+        raise ValueError(f"{explicit_string!r} is not precomposed.")
+    elif (
+        not unicodedata.is_normalized("NFD", decoded_string)
+        and not flags.precomposed
+    ):
         raise ValueError(f"{explicit_string!r} is precomposed.")
     if deprecated := frozenset(decoded_string) & _DEPRECATED_CODE_POINTS:
         raise ValueError(

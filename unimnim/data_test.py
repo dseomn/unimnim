@@ -33,6 +33,7 @@ from unimnim import data
             "U+0061 LATIN SMALL LETTER A, U+0301 COMBINING ACUTE ACCENT",
             r"not NFC normalized",
         ),
+        ("U+0068 LATIN SMALL LETTER H [precomposed]", r"is not precomposed"),
         ("U+00E0 LATIN SMALL LETTER A WITH GRAVE", r"is precomposed"),
         ("U+0149 LATIN SMALL LETTER N PRECEDED BY APOSTROPHE", r"deprecated"),
     ),
@@ -64,6 +65,10 @@ def test_parse_explicit_string_error(
                 "\N{LATIN SMALL LETTER A WITH ACUTE}"
             ),
             "\u0301",
+        ),
+        (
+            "U+00E0 LATIN SMALL LETTER A WITH GRAVE [precomposed]",
+            "\N{LATIN SMALL LETTER A WITH GRAVE}",
         ),
     ),
 )

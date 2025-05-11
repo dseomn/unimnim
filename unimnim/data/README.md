@@ -54,9 +54,15 @@ alias, or `U+01A2 LATIN CAPITAL LETTER OI (LATIN CAPITAL LETTER GHA)` for a code
 point with a corrected name. Code points are joined together by commas and
 spaces.
 
-After the code points, there can optionally be flags in square brackets.
-Currently the only flag is `combining` which affects how the expected string
-(see below) is matched.
+After the code points, there can optionally be comma-separated flags in square
+brackets.
+
+*   `combining`: Affects how the expected string (see below) is matched.
+*   `precomposed`: The string is
+    [precomposed](https://en.wikipedia.org/wiki/Precomposed_character). A
+    precomposed string without this flag is an error to prevent accidentally
+    adding it when a separate base and combining mnemonic would be better, but
+    sometimes it does make sense to add a precomposed string directly.
 
 At the end, there can optionally be a colon, then a space, then a normally
 encoded string to show what the explicit string actually looks like. Normally,
@@ -71,6 +77,7 @@ Examples:
 U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I
 U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I: hi
 U+0301 COMBINING ACUTE ACCENT [combining]: á
+U+2260 NOT EQUAL TO [precomposed]: ≠
 ```
 
 ### Data files
