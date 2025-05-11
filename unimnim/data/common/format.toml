@@ -6,6 +6,9 @@ prefix = "C"
 
 [base]
 "SHY" = "U+00AD SOFT HYPHEN"  # from=aliases
+"ZWSP" = "U+200B ZERO WIDTH SPACE"  # from=aliases
+"ZWNJ" = "U+200C ZERO WIDTH NON-JOINER"  # from=aliases
+"ZWJ" = "U+200D ZERO WIDTH JOINER"  # from=aliases
 "LRM" = "U+200E LEFT-TO-RIGHT MARK"  # from=aliases
 "RLM" = "U+200F RIGHT-TO-LEFT MARK"  # from=aliases
 "LRE" = "U+202A LEFT-TO-RIGHT EMBEDDING"  # from=aliases
@@ -13,7 +16,10 @@ prefix = "C"
 "PDF" = "U+202C POP DIRECTIONAL FORMATTING"  # from=aliases
 "LRO" = "U+202D LEFT-TO-RIGHT OVERRIDE"  # from=aliases
 "RLO" = "U+202E RIGHT-TO-LEFT OVERRIDE"  # from=aliases
+"WJ" = "U+2060 WORD JOINER"  # from=aliases
 "LRI" = "U+2066 LEFT-TO-RIGHT ISOLATE"  # from=aliases
 "RLI" = "U+2067 RIGHT-TO-LEFT ISOLATE"  # from=aliases
 "FSI" = "U+2068 FIRST STRONG ISOLATE"  # from=aliases
 "PDI" = "U+2069 POP DIRECTIONAL ISOLATE"  # from=aliases
+"BOM" = "U+FEFF ZERO WIDTH NO-BREAK SPACE (BYTE ORDER MARK)"  # from=aliases
+"ZWNBSP" = "U+FEFF ZERO WIDTH NO-BREAK SPACE (BYTE ORDER MARK)"  # from=aliases
