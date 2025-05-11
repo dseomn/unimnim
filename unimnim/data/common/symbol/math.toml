@@ -66,8 +66,19 @@ prefix = "CM"
 "&s" = "U+2229 INTERSECTION: ∩"
 "|s" = "U+222A UNION: ∪"
 "/:" = "U+2236 RATIO: ∶"  # suboptimal
+"=!" = "U+2260 NOT EQUAL TO [precomposed]: ≠"
+"==" = "U+2261 IDENTICAL TO: ≡"
+"===" = "U+2263 STRICTLY EQUIVALENT TO: ≣"
+"<=" = "U+2264 LESS-THAN OR EQUAL TO: ≤"
+">=" = "U+2265 GREATER-THAN OR EQUAL TO: ≥"
+"<<" = "U+226A MUCH LESS-THAN: ≪"
+">>" = "U+226B MUCH GREATER-THAN: ≫"
+"<>" = "U+2276 LESS-THAN OR GREATER-THAN: ≶"
+"><" = "U+2277 GREATER-THAN OR LESS-THAN: ≷"
 "*O" = "U+2297 CIRCLED TIMES: ⊗"
 "*." = "U+22C5 DOT OPERATOR: ⋅"
+"<<<" = "U+22D8 VERY MUCH LESS-THAN: ⋘"
+">>>" = "U+22D9 VERY MUCH GREATER-THAN: ⋙"
 "/)" = "U+27CC LONG DIVISION: ⟌"
 "*v" = "U+2A2F VECTOR OR CROSS PRODUCT: ⨯"
 "lA/" = "U+1D538 MATHEMATICAL DOUBLE-STRUCK CAPITAL A: 𝔸"  # based-on=latin
@@ -127,6 +138,11 @@ prefix = "CM"
 "9/" = "U+1D7E1 MATHEMATICAL DOUBLE-STRUCK DIGIT NINE: 𝟡"
 
 [combining.name_regex_replace]
+"!" = [
+  ['.*', 'NOT \g<0>'],
+  ['(.*) SIGN', 'NOT \g<1>'],
+  ['(.*) OR (.*)', 'NEITHER \g<1> NOR \g<2>'],
+]
 "O" = [
   ['.*', 'CIRCLED \g<0>'],
   ['(.*) SIGN', 'CIRCLED \g<1>'],
