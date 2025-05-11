@@ -20,9 +20,6 @@
   (search-prefix-prompt
     (_"What to show before a mnemonic prefix search")
     prompt)
-  (search-prefix-min-length
-    (_"How many characters to require before searching")
-    1)
   )
 
 (command
@@ -45,20 +42,16 @@
 
   (search-prefix-starter (search-prefix-start search-prefix-prompt))
   (search-prefix-map
-    {%- for prefix, results in prefix_map.items() %}
+    {%- for prefix, results in prefix_map.items() if prefix %}
     ({{ prefix | m17n_mtext }}
-      (>= {{ prefix | length }} search-prefix-min-length
-        (
-         (delete @<)
-         (
-          (
-           {%- for result in results %}
-           {{ result | m17n_mtext }}
-           {%- endfor %}
-           )
-          )
-         )
+      (delete @<)
+      (
+       (
+        {%- for result in results %}
+        {{ result | m17n_mtext }}
+        {%- endfor %}
         )
+       )
       )
     {%- endfor %}
     )
