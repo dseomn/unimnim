@@ -232,7 +232,7 @@ and bottom mean the same thing regardless of text direction.
 | Affix | Meaning | Example |
 | --- | --- | --- |
 | `-` | horizontal | `"-" = "U+2194 LEFT RIGHT ARROW: ↔"` |
-| `|` | vertical | `"|" = "U+2195 UP DOWN ARROW: ↕"` |
+| `\|` | vertical | `"\|" = "U+2195 UP DOWN ARROW: ↕"` |
 | `/` | diagonal, bottom left to top right | |
 | `\` | diagonal, top left to bottom right | |
 
