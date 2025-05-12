@@ -94,9 +94,11 @@ prefix = "l"
 "v" = "U+030C COMBINING CARON [combining]: ǎ"
 "``" = "U+030F COMBINING DOUBLE GRAVE ACCENT [combining]: ȁ"
 "+" = "U+031B COMBINING HORN [combining]: ơ"  # from=xcompose suboptimal
-"!" = "U+0323 COMBINING DOT BELOW [combining]: ạ"  # from=xcompose suboptimal
+".2" = "U+0323 COMBINING DOT BELOW [combining]: ạ"  # geometry
+",2" = "U+0326 COMBINING COMMA BELOW [combining]: ș"  # geometry
 "," = "U+0327 COMBINING CEDILLA [combining]: ç"
 ";" = "U+0328 COMBINING OGONEK [combining]: ą"  # from=rfc1345,xcompose suboptimal
+"-2" = "U+0331 COMBINING MACRON BELOW [combining]: ṉ"  # geometry
 
 [combining.name_regex_replace]
 "/" = [['.*', '\g<0> WITH STROKE']]
