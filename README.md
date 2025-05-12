@@ -164,7 +164,8 @@ combined with its age leads to some drawbacks:
 *   No support for the many many characters that have been added to Unicode
     since 1992.
 *   Since it tries to encode every character in old character sets, it includes
-    characters that are no longer recommended for use in new text. (Which is not
+    characters that are [no longer recommended for use in new
+    text](https://charlottebuff.com/unicode/charts/deprecated/). (Which is not
     the same as characters for old writing systems. Those can still be
     recommended for new transcripts of old writings or for discussing those
     writing systems.)
