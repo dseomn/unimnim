@@ -14,6 +14,6 @@ def test_main(tmp_path: pathlib.Path) -> None:
         "known_sequences.json",
         "map.json",
         "prefix_map.json",
-        "m17n.mim",
+        "unimnim.mim",
         "coverage.json",
     }

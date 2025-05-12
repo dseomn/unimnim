@@ -52,7 +52,7 @@ def main(
     prefix_map = input_method.generate_prefix_map(map_)
     _write_json(parsed_args.output / "prefix_map.json", prefix_map)
 
-    (parsed_args.output / "m17n.mim").write_text(
+    (parsed_args.output / "unimnim.mim").write_text(
         input_method.render_template(
             resources.files().joinpath("templates/m17n.mim.jinja").read_text(),
             map=map_,
