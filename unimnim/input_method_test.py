@@ -454,6 +454,7 @@ def test_generate_prefix_map(
         ("\\", r'"\\"'),
         ("f00 b@r", '"f00 b@r"'),
         ("\x00\x11", r'"\u0 \u11 "'),
+        ("\x00\N{CANCEL TAG}", '"\\u0 \N{CANCEL TAG}"'),
     ),
 )
 def test_m17n_mtext(s: str, expected: str) -> None:

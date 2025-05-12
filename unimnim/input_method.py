@@ -195,10 +195,12 @@ def m17n_mtext(s: str) -> str:
     # read_mtext_element() works in
     # https://git.savannah.nongnu.org/cgit/m17n/m17n-lib.git/tree/src/plist.c
     result = ['"']
-    for c in s:
+    for i, c in enumerate(s):
         if c in r"\"":
             result.append(f"\\{c}")
-        elif c.isprintable():
+        elif c.isprintable() or (ord(c) >= 0x80 and i > 0):
+            # TODO: https://savannah.nongnu.org/bugs/index.php?67107 - Remove
+            # all of the condition except for c.isprintable().
             result.append(c)
         else:
             # Note the space at the end. read_hexadesimal() seems to read hex
