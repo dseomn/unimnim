@@ -32,7 +32,7 @@ example:
 | `CM0s` | common, [math](unimnim/data/common/symbol/math.toml), zero/empty/null, set | `∅` |
 | `Cmb` | common, [music](unimnim/data/common/symbol/music.toml), flat | `♭` |
 | `Cco` | common, copyright ([other symbol](unimnim/data/common/symbol/other.toml)) | `©` |
-| `CRIUN` | common, [regional indicator](unimnim/data/common/symbol/regional_indicator.toml), UN | `🇺🇳` |
+| `CRIUN` | common, [regional indicator](unimnim/data/common/symbol/regional_indicator.toml), United Nations | `🇺🇳` |
 
 See the [data directory](unimnim/data) and its README for more details.
 
