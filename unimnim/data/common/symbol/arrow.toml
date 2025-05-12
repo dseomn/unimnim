@@ -17,3 +17,6 @@ prefix = "CA"
 "9" = "U+2197 NORTH EAST ARROW: ↗"
 "3" = "U+2198 SOUTH EAST ARROW: ↘"
 "1" = "U+2199 SOUTH WEST ARROW: ↙"
+
+[combining.name_regex_replace]
+"/" = [['.*', '\g<0> WITH STROKE']]
