@@ -48,7 +48,7 @@ jobs:
     - name: Generate input method
       run: |
         mkdir output
-        unimnim --output=output
+        unimnim --write-all=output
     - name: Upload input method
       uses: actions/upload-artifact@v4
       with:

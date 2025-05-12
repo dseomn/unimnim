@@ -31,39 +31,48 @@ def main(
     """
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--output",
-        default=pathlib.Path.cwd(),
+        "--write-all",
         type=pathlib.Path,
-        help="Directory to write output files to.",
+        help="Directory to write all output files to.",
     )
     parsed_args = parser.parse_args(args)
+
+    if parsed_args.write_all is not None:
+        parsed_args.write_all.mkdir(exist_ok=True)
 
     with resources.as_file(resources.files().joinpath("data")) as data_path:
         data_ = data.load(data_path)
 
-    _write_json(
-        parsed_args.output / "known_sequences.json",
-        input_method.known_sequences(),
-    )
+    if parsed_args.write_all is not None:
+        _write_json(
+            parsed_args.write_all / "known_sequences.json",
+            input_method.known_sequences(),
+        )
 
     map_ = input_method.generate_map(data_)
-    _write_json(parsed_args.output / "map.json", map_)
+    if parsed_args.write_all is not None:
+        _write_json(parsed_args.write_all / "map.json", map_)
 
     prefix_map = input_method.generate_prefix_map(map_)
-    _write_json(parsed_args.output / "prefix_map.json", prefix_map)
+    if parsed_args.write_all is not None:
+        _write_json(parsed_args.write_all / "prefix_map.json", prefix_map)
 
-    (parsed_args.output / "unimnim.mim").write_text(
-        input_method.render_template(
-            resources.files().joinpath("templates/m17n.mim.jinja").read_text(),
-            map=map_,
-            prefix_map=prefix_map,
+    if parsed_args.write_all is not None:
+        (parsed_args.write_all / "unimnim.mim").write_text(
+            input_method.render_template(
+                resources.files()
+                .joinpath("templates/m17n.mim.jinja")
+                .read_text(),
+                map=map_,
+                prefix_map=prefix_map,
+            )
         )
-    )
 
-    _write_json(
-        parsed_args.output / "coverage.json",
-        coverage.report(covered=frozenset(map_.values())),
-    )
+    if parsed_args.write_all is not None:
+        _write_json(
+            parsed_args.write_all / "coverage.json",
+            coverage.report(covered=frozenset(map_.values())),
+        )
 
 
 if __name__ == "__main__":
