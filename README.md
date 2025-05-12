@@ -27,6 +27,7 @@ example:
 | `hk.`| [Hebrew](unimnim/data/hebrew.toml), כ, dagesh | `כּ` |
 | `C-m` | common, dash ([punctuation](unimnim/data/common/punctuation.toml)), em | `—` |
 | `C?!I` | common, interrobang (punctuation), inverted | `⸘` |
+| `CA-` | common, [arrow](unimnim/data/common/symbol/arrow.toml), horizontal | `↔` |
 | `C$Rs` | common, [currency](unimnim/data/common/symbol/currency.toml), rupee | `₨` |
 | `CM0s` | common, [math](unimnim/data/common/symbol/math.toml), zero/empty/null, set | `∅` |
 | `Cmb` | common, [music](unimnim/data/common/symbol/music.toml), flat | `♭` |

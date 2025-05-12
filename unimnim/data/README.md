@@ -224,6 +224,34 @@ use one of these suffixes:
 | `R` | reversed | `"ER" = "U+018E LATIN CAPITAL LETTER REVERSED E: Ǝ"` |
 | `T` | turned | `"eT" = "U+01DD LATIN SMALL LETTER TURNED E: ǝ"` |
 
+To include an orientation in a mnemonic, use one of these affixes. Note that
+these characters are not
+[mirrored](https://www.unicode.org/reports/tr9/#Mirroring), so left, right, top,
+and bottom mean the same thing regardless of text direction.
+
+| Affix | Meaning | Example |
+| --- | --- | --- |
+| `-` | horizontal | `"-" = "U+2194 LEFT RIGHT ARROW: ↔"` |
+| `|` | vertical | `"|" = "U+2195 UP DOWN ARROW: ↕"` |
+| `/` | diagonal, bottom left to top right | |
+| `\` | diagonal, top left to bottom right | |
+
+To include a position relative to the center of a character, use one of these
+affixes based on a [numeric
+keypad](https://en.wikipedia.org/wiki/Numeric_keypad):
+
+| Affix | Meaning | Example |
+| --- | --- | --- |
+| 1 | bottom left | `"1" = "U+2199 SOUTH WEST ARROW: ↙"` |
+| 2 | bottom center | `"2" = "U+2193 DOWNWARDS ARROW: ↓"` |
+| 3 | bottom right | `"3" = "U+2198 SOUTH EAST ARROW: ↘"` |
+| 4 | center left | `"4" = "U+2190 LEFTWARDS ARROW: ←"` |
+| 5 | center | |
+| 6 | center right | `"6" = "U+2192 RIGHTWARDS ARROW: →"` |
+| 7 | top left | `"7" = "U+2196 NORTH WEST ARROW: ↖"` |
+| 8 | top center | `"8" = "U+2191 UPWARDS ARROW: ↑"` |
+| 9 | top right | `"9" = "U+2197 NORTH EAST ARROW: ↗"` |
+
 ### Initial, medial, final, and isolated (`imfi`)
 
 Mnemonics for characters with a specific IMFI position can use one of these

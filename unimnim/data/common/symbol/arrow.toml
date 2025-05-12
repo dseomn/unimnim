@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# Assume the #geometry convention for this entire file.
+
+prefix = "CA"
+
+[base]
+"4" = "U+2190 LEFTWARDS ARROW: ←"
+"8" = "U+2191 UPWARDS ARROW: ↑"
+"6" = "U+2192 RIGHTWARDS ARROW: →"
+"2" = "U+2193 DOWNWARDS ARROW: ↓"
+"-" = "U+2194 LEFT RIGHT ARROW: ↔"
+"|" = "U+2195 UP DOWN ARROW: ↕"
+"7" = "U+2196 NORTH WEST ARROW: ↖"
+"9" = "U+2197 NORTH EAST ARROW: ↗"
+"3" = "U+2198 SOUTH EAST ARROW: ↘"
+"1" = "U+2199 SOUTH WEST ARROW: ↙"
