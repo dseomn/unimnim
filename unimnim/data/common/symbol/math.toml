@@ -62,7 +62,6 @@ prefix = "CM"
 "TE!" = "U+2204 THERE DOES NOT EXIST [precomposed]: ∄"
 "0s" = "U+2205 EMPTY SET: ∅"
 "in" = "U+2208 ELEMENT OF: ∈"
-"in!" = "U+2209 NOT AN ELEMENT OF [precomposed]: ∉"
 "has" = "U+220B CONTAINS AS MEMBER: ∋"
 "has!" = "U+220C DOES NOT CONTAIN AS MEMBER [precomposed]: ∌"
 "QED" = "U+220E END OF PROOF: ∎"  # aka="q.e.d."
@@ -172,6 +171,8 @@ prefix = "CM"
 [combining.name_regex_replace]
 "!" = [
   ['.*', 'NOT \g<0>'],
+  ['.*', 'NOT A \g<0>'],
+  ['.*', 'NOT AN \g<0>'],
   ['(.*) (?:OPERATOR|SIGN)', 'NOT \g<1>'],
   ['(.*) OR (.*)', 'NEITHER \g<1> NOR \g<2>'],
 ]
