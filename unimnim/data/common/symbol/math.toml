@@ -88,6 +88,7 @@ prefix = "CM"
 "int2" = "U+222C DOUBLE INTEGRAL: ∬"
 "int3" = "U+222D TRIPLE INTEGRAL: ∭"
 "/:" = "U+2236 RATIO: ∶"  # suboptimal
+"~" = "U+223C TILDE OPERATOR: ∼"
 "=!" = "U+2260 NOT EQUAL TO [precomposed]: ≠"
 "==" = "U+2261 IDENTICAL TO: ≡"
 "===" = "U+2263 STRICTLY EQUIVALENT TO: ≣"
@@ -162,7 +163,7 @@ prefix = "CM"
 [combining.name_regex_replace]
 "!" = [
   ['.*', 'NOT \g<0>'],
-  ['(.*) SIGN', 'NOT \g<1>'],
+  ['(.*) (?:OPERATOR|SIGN)', 'NOT \g<1>'],
   ['(.*) OR (.*)', 'NEITHER \g<1> NOR \g<2>'],
 ]
 "O" = [
