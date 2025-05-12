@@ -242,15 +242,15 @@ keypad](https://en.wikipedia.org/wiki/Numeric_keypad):
 
 | Affix | Meaning | Example |
 | --- | --- | --- |
-| 1 | bottom left | `"1" = "U+2199 SOUTH WEST ARROW: ↙"` |
-| 2 | bottom center | `"2" = "U+2193 DOWNWARDS ARROW: ↓"` |
-| 3 | bottom right | `"3" = "U+2198 SOUTH EAST ARROW: ↘"` |
-| 4 | center left | `"4" = "U+2190 LEFTWARDS ARROW: ←"` |
-| 5 | center | |
-| 6 | center right | `"6" = "U+2192 RIGHTWARDS ARROW: →"` |
-| 7 | top left | `"7" = "U+2196 NORTH WEST ARROW: ↖"` |
-| 8 | top center | `"8" = "U+2191 UPWARDS ARROW: ↑"` |
-| 9 | top right | `"9" = "U+2197 NORTH EAST ARROW: ↗"` |
+| `1` | bottom left | `"1" = "U+2199 SOUTH WEST ARROW: ↙"` |
+| `2` | bottom center | `"2" = "U+2193 DOWNWARDS ARROW: ↓"` |
+| `3` | bottom right | `"3" = "U+2198 SOUTH EAST ARROW: ↘"` |
+| `4` | center left | `"4" = "U+2190 LEFTWARDS ARROW: ←"` |
+| `5` | center | |
+| `6` | center right | `"6" = "U+2192 RIGHTWARDS ARROW: →"` |
+| `7` | top left | `"7" = "U+2196 NORTH WEST ARROW: ↖"` |
+| `8` | top center | `"8" = "U+2191 UPWARDS ARROW: ↑"` |
+| `9` | top right | `"9" = "U+2197 NORTH EAST ARROW: ↗"` |
 
 ### Initial, medial, final, and isolated (`imfi`)
 
