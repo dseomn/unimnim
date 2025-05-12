@@ -13,6 +13,7 @@
 # "<": less
 # "=": equality
 # ">": greater
+# "^": xor
 # "|": or
 #
 # With suffixes:
@@ -115,6 +116,9 @@ prefix = "CM"
 "<=!s" = "U+228A SUBSET OF WITH NOT EQUAL TO: ⊊"  # suboptimal
 ">=!s" = "U+228B SUPERSET OF WITH NOT EQUAL TO: ⊋"  # suboptimal
 "*O" = "U+2297 CIRCLED TIMES: ⊗"
+"^l" = "U+22BB XOR: ⊻"
+"!&l" = "U+22BC NAND: ⊼"
+"!|l" = "U+22BD NOR: ⊽"
 "*." = "U+22C5 DOT OPERATOR: ⋅"
 "<<<" = "U+22D8 VERY MUCH LESS-THAN: ⋘"
 ">>>" = "U+22D9 VERY MUCH GREATER-THAN: ⋙"
