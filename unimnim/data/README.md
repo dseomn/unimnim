@@ -252,16 +252,19 @@ keypad](https://en.wikipedia.org/wiki/Numeric_keypad):
 | `8` | top center | `"8" = "U+2191 UPWARDS ARROW: ↑"` |
 | `9` | top right | `"9" = "U+2197 NORTH EAST ARROW: ↗"` |
 
-### Initial, medial, final, and isolated (`imfi`)
+### Logical order (`logical-order`)
 
-Mnemonics for characters with a specific IMFI position can use one of these
-suffixes:
+Mnemonics can be based on the logical order of text, i.e., the order the text is
+written or read in, not the direction it appears on screen. For example, some
+punctuation has different forms based on whether it's opening or closing, and
+some letters have different forms based on whether they're the initial, medial,
+final, or isolated letter in a word.
 
 | Suffix | Meaning | Example |
 | --- | --- | --- |
-| `[` | initial | |
+| `[` | opening/initial | |
 | no suffix | medial | |
-| `]` | final | `"s]" = "U+03C2 GREEK SMALL LETTER FINAL SIGMA: ς"` |
+| `]` | closing/final | `"s]" = "U+03C2 GREEK SMALL LETTER FINAL SIGMA: ς"` |
 | `[]` | isolated | |
 
 Note that the opening `[` is always used for initial and the closing `]` for
