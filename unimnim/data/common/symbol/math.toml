@@ -123,6 +123,7 @@ prefix = "CM"
 "<<<" = "U+22D8 VERY MUCH LESS-THAN: ⋘"
 ">>>" = "U+22D9 VERY MUCH GREATER-THAN: ⋙"
 "/)" = "U+27CC LONG DIVISION: ⟌"
+"int4" = "U+2A0C QUADRUPLE INTEGRAL OPERATOR: ⨌"
 "*v" = "U+2A2F VECTOR OR CROSS PRODUCT: ⨯"
 "lA/" = "U+1D538 MATHEMATICAL DOUBLE-STRUCK CAPITAL A: 𝔸"  # based-on=latin
 "lB/" = "U+1D539 MATHEMATICAL DOUBLE-STRUCK CAPITAL B: 𝔹"  # based-on=latin
