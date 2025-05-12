@@ -26,6 +26,7 @@ from unimnim import main
                 "output/coverage.json",
             },
         ),
+        (("--write-m17n=unimnim.mim",), {"unimnim.mim"}),
     ),
 )
 def test_main(

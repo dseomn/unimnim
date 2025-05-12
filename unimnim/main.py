@@ -35,6 +35,11 @@ def main(
         type=pathlib.Path,
         help="Directory to write all output files to.",
     )
+    parser.add_argument(
+        "--write-m17n",
+        type=pathlib.Path,
+        help="File to write unimnim.mim to.",
+    )
     parsed_args = parser.parse_args(args)
 
     if parsed_args.write_all is not None:
@@ -57,16 +62,15 @@ def main(
     if parsed_args.write_all is not None:
         _write_json(parsed_args.write_all / "prefix_map.json", prefix_map)
 
+    m17n_mim = input_method.render_template(
+        resources.files().joinpath("templates/m17n.mim.jinja").read_text(),
+        map=map_,
+        prefix_map=prefix_map,
+    )
     if parsed_args.write_all is not None:
-        (parsed_args.write_all / "unimnim.mim").write_text(
-            input_method.render_template(
-                resources.files()
-                .joinpath("templates/m17n.mim.jinja")
-                .read_text(),
-                map=map_,
-                prefix_map=prefix_map,
-            )
-        )
+        (parsed_args.write_all / "unimnim.mim").write_text(m17n_mim)
+    if parsed_args.write_m17n is not None:
+        parsed_args.write_m17n.write_text(m17n_mim)
 
     if parsed_args.write_all is not None:
         _write_json(
