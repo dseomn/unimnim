@@ -67,3 +67,8 @@ prefix = "g"
 [combining.append]
 "'" = "U+0301 COMBINING ACUTE ACCENT [combining]: ά"
 '"' = "U+0308 COMBINING DIAERESIS [combining]: ϊ"
+
+[combining.name_regex_replace]
+"2" = [  # geometry
+  ['GREEK (CAPITAL|SMALL) LETTER (.*)', 'GREEK SUBSCRIPT \g<1> LETTER \g<2>'],
+]
