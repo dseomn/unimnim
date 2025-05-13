@@ -93,3 +93,8 @@ prefix = "c"
 "''" = "U+030B COMBINING DOUBLE ACUTE ACCENT [combining]: ӳ"
 "v" = "U+030C COMBINING CARON [combining]: т̌"
 ";" = "U+0328 COMBINING OGONEK [combining]: к̨"  # from=rfc1345,xcompose suboptimal
+
+[combining.name_regex_replace]
+"2" = [  # geometry
+  ['CYRILLIC (CAPITAL|SMALL) LETTER (.*)', 'CYRILLIC SUBSCRIPT \g<1> LETTER \g<2>'],
+]
