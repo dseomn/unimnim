@@ -232,6 +232,45 @@ def test_generate_map_error(
             },
         ),
         (
+            # combining.name_regex_replace ignores incorrect names, but can
+            # match corrected names.
+            {
+                "math": data.Group(
+                    prefix="m",
+                    base={
+                        "B": "B",
+                        "P": "P",
+                        "W": "W",
+                    },
+                    combining=data.Combining(
+                        name_regex_replace={
+                            "F": (
+                                (
+                                    re.compile(r"LATIN CAPITAL LETTER (.*)"),
+                                    r"\g<1>EIERSTRASS ELLIPTIC FUNCTION",
+                                ),
+                            ),
+                            "S": (
+                                (
+                                    re.compile(r"LATIN CAPITAL LETTER (.*)"),
+                                    r"SCRIPT CAPITAL \g<1>",
+                                ),
+                            ),
+                        },
+                    ),
+                ),
+            },
+            {
+                "mB": "B",
+                "mBS": "\N{SCRIPT CAPITAL B}",
+                "mP": "P",
+                # U+2118 SCRIPT CAPITAL P has a corrected name, WEIERSTRASS
+                # ELLIPTIC FUNCTION, so mPS does not match.
+                "mW": "W",
+                "mWF": "\N{SCRIPT CAPITAL P}",  # But the correction does match.
+            },
+        ),
+        (
             # A regex that does not match is not an error.
             {
                 "latin": data.Group(

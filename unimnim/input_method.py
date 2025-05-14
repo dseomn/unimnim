@@ -144,11 +144,17 @@ def _generate_map_one_group(
                     continue
                 combined_name = match.expand(combining_replacement)
                 try:
-                    combined_result = unicodedata.normalize(
-                        "NFC", unicodedata.lookup(combined_name)
-                    )
+                    combined_raw = unicodedata.lookup(combined_name)
                 except KeyError:
                     continue
+                combined_name_corrected = icu.Char.charName(
+                    combined_raw, icu.UCharNameChoice.CHAR_NAME_ALIAS
+                )
+                if combined_name_corrected and (
+                    combined_name_corrected != combined_name
+                ):
+                    continue
+                combined_result = unicodedata.normalize("NFC", combined_raw)
                 combined_mnemonic = mnemonic + combining_mnemonic
                 _add(combined_mnemonic, combined_result)
 
