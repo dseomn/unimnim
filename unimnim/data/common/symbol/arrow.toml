@@ -41,8 +41,6 @@ prefix = "CA"
 "-" = [['(.*) ARROW', '\g<1> DASHED ARROW']]
 "/" = [['.*', '\g<0> WITH STROKE']]
 "//" = [['.*', '\g<0> WITH DOUBLE STROKE']]
-"4" = [['.*', '\g<0> WITH TIP LEFTWARDS']]
-"6" = [['.*', '\g<0> WITH TIP RIGHTWARDS']]
 "<" = [['.*', '\g<0> WITH TAIL']]
 "=" = [['(.*) ARROW', '\g<1> DOUBLE ARROW']]
 "==" = [['(.*) ARROW', '\g<1> TRIPLE ARROW']]
