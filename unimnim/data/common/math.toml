@@ -18,7 +18,7 @@
 #
 # With suffixes:
 #
-# "/": double-struck
+# "//": double-struck
 # "O": circled
 # "f": fraction
 # "g": geometry
@@ -195,7 +195,7 @@ prefix = "CM"
   ['(.*) (?:OPERATOR|SIGN)', 'NOT \g<1>'],
   ['(.*) OR (.*)', 'NEITHER \g<1> NOR \g<2>'],
 ]
-"/" = [
+"//" = [
   ['.*', 'DOUBLE-STRUCK \g<0>'],
   ['.*', 'MATHEMATICAL DOUBLE-STRUCK \g<0>'],
   ['(?:LATIN|GREEK) (CAPITAL|SMALL) LETTER (.*)', 'DOUBLE-STRUCK \g<1> \g<2>'],
