@@ -26,37 +26,94 @@
 # "n": n-ary
 # "s": set
 # "v": vector
+#
+# It also has a bunch of mnemonics that don't really belong, like Latin letters,
+# because they're useful for combining.
 
 prefix = "CM"
 
 [base]
 "+" = "U+002B PLUS SIGN: +"
+"0" = "U+0030 DIGIT ZERO: 0"
+"1" = "U+0031 DIGIT ONE: 1"
+"2" = "U+0032 DIGIT TWO: 2"
+"3" = "U+0033 DIGIT THREE: 3"
+"4" = "U+0034 DIGIT FOUR: 4"
+"5" = "U+0035 DIGIT FIVE: 5"
+"6" = "U+0036 DIGIT SIX: 6"
+"7" = "U+0037 DIGIT SEVEN: 7"
+"8" = "U+0038 DIGIT EIGHT: 8"
+"9" = "U+0039 DIGIT NINE: 9"
 "<" = "U+003C LESS-THAN SIGN: <"
 "=" = "U+003D EQUALS SIGN: ="
 ">" = "U+003E GREATER-THAN SIGN: >"
+"lA" = "U+0041 LATIN CAPITAL LETTER A: A"  # based-on=latin
+"lB" = "U+0042 LATIN CAPITAL LETTER B: B"  # based-on=latin
+"lC" = "U+0043 LATIN CAPITAL LETTER C: C"  # based-on=latin
+"lD" = "U+0044 LATIN CAPITAL LETTER D: D"  # based-on=latin
+"lE" = "U+0045 LATIN CAPITAL LETTER E: E"  # based-on=latin
+"lF" = "U+0046 LATIN CAPITAL LETTER F: F"  # based-on=latin
+"lG" = "U+0047 LATIN CAPITAL LETTER G: G"  # based-on=latin
+"lH" = "U+0048 LATIN CAPITAL LETTER H: H"  # based-on=latin
+"lI" = "U+0049 LATIN CAPITAL LETTER I: I"  # based-on=latin
+"lJ" = "U+004A LATIN CAPITAL LETTER J: J"  # based-on=latin
+"lK" = "U+004B LATIN CAPITAL LETTER K: K"  # based-on=latin
+"lL" = "U+004C LATIN CAPITAL LETTER L: L"  # based-on=latin
+"lM" = "U+004D LATIN CAPITAL LETTER M: M"  # based-on=latin
+"lN" = "U+004E LATIN CAPITAL LETTER N: N"  # based-on=latin
+"lO" = "U+004F LATIN CAPITAL LETTER O: O"  # based-on=latin
+"lP" = "U+0050 LATIN CAPITAL LETTER P: P"  # based-on=latin
+"lQ" = "U+0051 LATIN CAPITAL LETTER Q: Q"  # based-on=latin
+"lR" = "U+0052 LATIN CAPITAL LETTER R: R"  # based-on=latin
+"lS" = "U+0053 LATIN CAPITAL LETTER S: S"  # based-on=latin
+"lT" = "U+0054 LATIN CAPITAL LETTER T: T"  # based-on=latin
+"lU" = "U+0055 LATIN CAPITAL LETTER U: U"  # based-on=latin
+"lV" = "U+0056 LATIN CAPITAL LETTER V: V"  # based-on=latin
+"lW" = "U+0057 LATIN CAPITAL LETTER W: W"  # based-on=latin
+"lX" = "U+0058 LATIN CAPITAL LETTER X: X"  # based-on=latin
+"lY" = "U+0059 LATIN CAPITAL LETTER Y: Y"  # based-on=latin
+"lZ" = "U+005A LATIN CAPITAL LETTER Z: Z"  # based-on=latin
+"la" = "U+0061 LATIN SMALL LETTER A: a"  # based-on=latin
+"lb" = "U+0062 LATIN SMALL LETTER B: b"  # based-on=latin
+"lc" = "U+0063 LATIN SMALL LETTER C: c"  # based-on=latin
+"ld" = "U+0064 LATIN SMALL LETTER D: d"  # based-on=latin
+"le" = "U+0065 LATIN SMALL LETTER E: e"  # based-on=latin
+"lf" = "U+0066 LATIN SMALL LETTER F: f"  # based-on=latin
+"lg" = "U+0067 LATIN SMALL LETTER G: g"  # based-on=latin
+"lh" = "U+0068 LATIN SMALL LETTER H: h"  # based-on=latin
+"li" = "U+0069 LATIN SMALL LETTER I: i"  # based-on=latin
+"lj" = "U+006A LATIN SMALL LETTER J: j"  # based-on=latin
+"lk" = "U+006B LATIN SMALL LETTER K: k"  # based-on=latin
+"ll" = "U+006C LATIN SMALL LETTER L: l"  # based-on=latin
+"lm" = "U+006D LATIN SMALL LETTER M: m"  # based-on=latin
+"ln" = "U+006E LATIN SMALL LETTER N: n"  # based-on=latin
+"lo" = "U+006F LATIN SMALL LETTER O: o"  # based-on=latin
+"lp" = "U+0070 LATIN SMALL LETTER P: p"  # based-on=latin
+"lq" = "U+0071 LATIN SMALL LETTER Q: q"  # based-on=latin
+"lr" = "U+0072 LATIN SMALL LETTER R: r"  # based-on=latin
+"ls" = "U+0073 LATIN SMALL LETTER S: s"  # based-on=latin
+"lt" = "U+0074 LATIN SMALL LETTER T: t"  # based-on=latin
+"lu" = "U+0075 LATIN SMALL LETTER U: u"  # based-on=latin
+"lv" = "U+0076 LATIN SMALL LETTER V: v"  # based-on=latin
+"lw" = "U+0077 LATIN SMALL LETTER W: w"  # based-on=latin
+"lx" = "U+0078 LATIN SMALL LETTER X: x"  # based-on=latin
+"ly" = "U+0079 LATIN SMALL LETTER Y: y"  # based-on=latin
+"lz" = "U+007A LATIN SMALL LETTER Z: z"  # based-on=latin
 "!l" = "U+00AC NOT SIGN: ¬"
 "+-" = "U+00B1 PLUS-MINUS SIGN: ±"
 "*" = "U+00D7 MULTIPLICATION SIGN: ×"
 "/.." = "U+00F7 DIVISION SIGN: ÷"  # suboptimal
+"gG" = "U+0393 GREEK CAPITAL LETTER GAMMA: Γ"  # based-on=greek
+"gP" = "U+03A0 GREEK CAPITAL LETTER PI: Π"  # based-on=greek
+"gg" = "U+03B3 GREEK SMALL LETTER GAMMA: γ"  # based-on=greek
+"gp" = "U+03C0 GREEK SMALL LETTER PI: π"  # based-on=greek
 "||" = "U+2016 DOUBLE VERTICAL LINE: ‖"
 "/f" = "U+2044 FRACTION SLASH: ⁄"
 "-.." = "U+2052 COMMERCIAL MINUS SIGN: ⁒"  # suboptimal
-"lC/" = "U+2102 DOUBLE-STRUCK CAPITAL C: ℂ"  # based-on=latin
-"lH/" = "U+210D DOUBLE-STRUCK CAPITAL H: ℍ"  # based-on=latin
-"lN/" = "U+2115 DOUBLE-STRUCK CAPITAL N: ℕ"  # based-on=latin
-"lP/" = "U+2119 DOUBLE-STRUCK CAPITAL P: ℙ"  # based-on=latin
-"lQ/" = "U+211A DOUBLE-STRUCK CAPITAL Q: ℚ"  # based-on=latin
-"lR/" = "U+211D DOUBLE-STRUCK CAPITAL R: ℝ"  # based-on=latin
-"lZ/" = "U+2124 DOUBLE-STRUCK CAPITAL Z: ℤ"  # based-on=latin
 "ha" = "U+2135 ALEF SYMBOL: ℵ"  #  based-on=hebrew
 "hv" = "U+2136 BET SYMBOL: ℶ"  #  based-on=hebrew
 "hg" = "U+2137 GIMEL SYMBOL: ℷ"  #  based-on=hebrew
 "hd" = "U+2138 DALET SYMBOL: ℸ"  #  based-on=hebrew
-"gp/" = "U+213C DOUBLE-STRUCK SMALL PI: ℼ"  # based-on=greek
-"gg/" = "U+213D DOUBLE-STRUCK SMALL GAMMA: ℽ"  # based-on=greek
-"gG/" = "U+213E DOUBLE-STRUCK CAPITAL GAMMA: ℾ"  # based-on=greek
-"gP/" = "U+213F DOUBLE-STRUCK CAPITAL PI: ℿ"  # based-on=greek
-"+n/" = "U+2140 DOUBLE-STRUCK N-ARY SUMMATION: ⅀"
 "FA" = "U+2200 FOR ALL: ∀"
 "dp" = "U+2202 PARTIAL DIFFERENTIAL: ∂"
 "TE" = "U+2203 THERE EXISTS: ∃"
@@ -129,61 +186,6 @@ prefix = "CM"
 "/)" = "U+27CC LONG DIVISION: ⟌"
 "int4" = "U+2A0C QUADRUPLE INTEGRAL OPERATOR: ⨌"
 "*v" = "U+2A2F VECTOR OR CROSS PRODUCT: ⨯"
-"lA/" = "U+1D538 MATHEMATICAL DOUBLE-STRUCK CAPITAL A: 𝔸"  # based-on=latin
-"lB/" = "U+1D539 MATHEMATICAL DOUBLE-STRUCK CAPITAL B: 𝔹"  # based-on=latin
-"lD/" = "U+1D53B MATHEMATICAL DOUBLE-STRUCK CAPITAL D: 𝔻"  # based-on=latin
-"lE/" = "U+1D53C MATHEMATICAL DOUBLE-STRUCK CAPITAL E: 𝔼"  # based-on=latin
-"lF/" = "U+1D53D MATHEMATICAL DOUBLE-STRUCK CAPITAL F: 𝔽"  # based-on=latin
-"lG/" = "U+1D53E MATHEMATICAL DOUBLE-STRUCK CAPITAL G: 𝔾"  # based-on=latin
-"lI/" = "U+1D540 MATHEMATICAL DOUBLE-STRUCK CAPITAL I: 𝕀"  # based-on=latin
-"lJ/" = "U+1D541 MATHEMATICAL DOUBLE-STRUCK CAPITAL J: 𝕁"  # based-on=latin
-"lK/" = "U+1D542 MATHEMATICAL DOUBLE-STRUCK CAPITAL K: 𝕂"  # based-on=latin
-"lL/" = "U+1D543 MATHEMATICAL DOUBLE-STRUCK CAPITAL L: 𝕃"  # based-on=latin
-"lM/" = "U+1D544 MATHEMATICAL DOUBLE-STRUCK CAPITAL M: 𝕄"  # based-on=latin
-"lO/" = "U+1D546 MATHEMATICAL DOUBLE-STRUCK CAPITAL O: 𝕆"  # based-on=latin
-"lS/" = "U+1D54A MATHEMATICAL DOUBLE-STRUCK CAPITAL S: 𝕊"  # based-on=latin
-"lT/" = "U+1D54B MATHEMATICAL DOUBLE-STRUCK CAPITAL T: 𝕋"  # based-on=latin
-"lU/" = "U+1D54C MATHEMATICAL DOUBLE-STRUCK CAPITAL U: 𝕌"  # based-on=latin
-"lV/" = "U+1D54D MATHEMATICAL DOUBLE-STRUCK CAPITAL V: 𝕍"  # based-on=latin
-"lW/" = "U+1D54E MATHEMATICAL DOUBLE-STRUCK CAPITAL W: 𝕎"  # based-on=latin
-"lX/" = "U+1D54F MATHEMATICAL DOUBLE-STRUCK CAPITAL X: 𝕏"  # based-on=latin
-"lY/" = "U+1D550 MATHEMATICAL DOUBLE-STRUCK CAPITAL Y: 𝕐"  # based-on=latin
-"la/" = "U+1D552 MATHEMATICAL DOUBLE-STRUCK SMALL A: 𝕒"  # based-on=latin
-"lb/" = "U+1D553 MATHEMATICAL DOUBLE-STRUCK SMALL B: 𝕓"  # based-on=latin
-"lc/" = "U+1D554 MATHEMATICAL DOUBLE-STRUCK SMALL C: 𝕔"  # based-on=latin
-"ld/" = "U+1D555 MATHEMATICAL DOUBLE-STRUCK SMALL D: 𝕕"  # based-on=latin
-"le/" = "U+1D556 MATHEMATICAL DOUBLE-STRUCK SMALL E: 𝕖"  # based-on=latin
-"lf/" = "U+1D557 MATHEMATICAL DOUBLE-STRUCK SMALL F: 𝕗"  # based-on=latin
-"lg/" = "U+1D558 MATHEMATICAL DOUBLE-STRUCK SMALL G: 𝕘"  # based-on=latin
-"lh/" = "U+1D559 MATHEMATICAL DOUBLE-STRUCK SMALL H: 𝕙"  # based-on=latin
-"li/" = "U+1D55A MATHEMATICAL DOUBLE-STRUCK SMALL I: 𝕚"  # based-on=latin
-"lj/" = "U+1D55B MATHEMATICAL DOUBLE-STRUCK SMALL J: 𝕛"  # based-on=latin
-"lk/" = "U+1D55C MATHEMATICAL DOUBLE-STRUCK SMALL K: 𝕜"  # based-on=latin
-"ll/" = "U+1D55D MATHEMATICAL DOUBLE-STRUCK SMALL L: 𝕝"  # based-on=latin
-"lm/" = "U+1D55E MATHEMATICAL DOUBLE-STRUCK SMALL M: 𝕞"  # based-on=latin
-"ln/" = "U+1D55F MATHEMATICAL DOUBLE-STRUCK SMALL N: 𝕟"  # based-on=latin
-"lo/" = "U+1D560 MATHEMATICAL DOUBLE-STRUCK SMALL O: 𝕠"  # based-on=latin
-"lp/" = "U+1D561 MATHEMATICAL DOUBLE-STRUCK SMALL P: 𝕡"  # based-on=latin
-"lq/" = "U+1D562 MATHEMATICAL DOUBLE-STRUCK SMALL Q: 𝕢"  # based-on=latin
-"lr/" = "U+1D563 MATHEMATICAL DOUBLE-STRUCK SMALL R: 𝕣"  # based-on=latin
-"ls/" = "U+1D564 MATHEMATICAL DOUBLE-STRUCK SMALL S: 𝕤"  # based-on=latin
-"lt/" = "U+1D565 MATHEMATICAL DOUBLE-STRUCK SMALL T: 𝕥"  # based-on=latin
-"lu/" = "U+1D566 MATHEMATICAL DOUBLE-STRUCK SMALL U: 𝕦"  # based-on=latin
-"lv/" = "U+1D567 MATHEMATICAL DOUBLE-STRUCK SMALL V: 𝕧"  # based-on=latin
-"lw/" = "U+1D568 MATHEMATICAL DOUBLE-STRUCK SMALL W: 𝕨"  # based-on=latin
-"lx/" = "U+1D569 MATHEMATICAL DOUBLE-STRUCK SMALL X: 𝕩"  # based-on=latin
-"ly/" = "U+1D56A MATHEMATICAL DOUBLE-STRUCK SMALL Y: 𝕪"  # based-on=latin
-"lz/" = "U+1D56B MATHEMATICAL DOUBLE-STRUCK SMALL Z: 𝕫"  # based-on=latin
-"0/" = "U+1D7D8 MATHEMATICAL DOUBLE-STRUCK DIGIT ZERO: 𝟘"
-"1/" = "U+1D7D9 MATHEMATICAL DOUBLE-STRUCK DIGIT ONE: 𝟙"
-"2/" = "U+1D7DA MATHEMATICAL DOUBLE-STRUCK DIGIT TWO: 𝟚"
-"3/" = "U+1D7DB MATHEMATICAL DOUBLE-STRUCK DIGIT THREE: 𝟛"
-"4/" = "U+1D7DC MATHEMATICAL DOUBLE-STRUCK DIGIT FOUR: 𝟜"
-"5/" = "U+1D7DD MATHEMATICAL DOUBLE-STRUCK DIGIT FIVE: 𝟝"
-"6/" = "U+1D7DE MATHEMATICAL DOUBLE-STRUCK DIGIT SIX: 𝟞"
-"7/" = "U+1D7DF MATHEMATICAL DOUBLE-STRUCK DIGIT SEVEN: 𝟟"
-"8/" = "U+1D7E0 MATHEMATICAL DOUBLE-STRUCK DIGIT EIGHT: 𝟠"
-"9/" = "U+1D7E1 MATHEMATICAL DOUBLE-STRUCK DIGIT NINE: 𝟡"
 
 [combining.name_regex_replace]
 "!" = [
@@ -193,8 +195,14 @@ prefix = "CM"
   ['(.*) (?:OPERATOR|SIGN)', 'NOT \g<1>'],
   ['(.*) OR (.*)', 'NEITHER \g<1> NOR \g<2>'],
 ]
+"/" = [
+  ['.*', 'DOUBLE-STRUCK \g<0>'],
+  ['.*', 'MATHEMATICAL DOUBLE-STRUCK \g<0>'],
+  ['(?:LATIN|GREEK) (CAPITAL|SMALL) LETTER (.*)', 'DOUBLE-STRUCK \g<1> \g<2>'],
+  ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'MATHEMATICAL DOUBLE-STRUCK \g<1> \g<2>'],
+]
 "O" = [
-  ['.*', 'CIRCLED \g<0>'],
+  ['(?!(?:LATIN|GREEK) ).*', 'CIRCLED \g<0>'],
   ['(.*) SIGN', 'CIRCLED \g<1>'],
 ]
 "n" = [
