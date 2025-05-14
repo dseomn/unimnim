@@ -12,6 +12,21 @@ from unimnim import data
 
 
 @pytest.mark.parametrize(
+    "s,expected",
+    (
+        ("", ()),
+        ("kumquat", ()),
+        (
+            "foo\N{LATIN SMALL LETTER N PRECEDED BY APOSTROPHE}bar",
+            ("\N{LATIN SMALL LETTER N PRECEDED BY APOSTROPHE}",),
+        ),
+    ),
+)
+def test_discouraged_sequences(s: str, expected: tuple[str, ...]) -> None:
+    assert frozenset(data.discouraged_sequences(s)) == frozenset(expected)
+
+
+@pytest.mark.parametrize(
     "explicit_string,error_regex",
     (
         (":", r"Can't parse"),
@@ -35,7 +50,7 @@ from unimnim import data
         ),
         ("U+0068 LATIN SMALL LETTER H [precomposed]", r"is not precomposed"),
         ("U+00E0 LATIN SMALL LETTER A WITH GRAVE", r"is precomposed"),
-        ("U+0149 LATIN SMALL LETTER N PRECEDED BY APOSTROPHE", r"deprecated"),
+        ("U+0149 LATIN SMALL LETTER N PRECEDED BY APOSTROPHE", r"discouraged"),
     ),
 )
 def test_parse_explicit_string_error(

@@ -20,6 +20,14 @@ _DEPRECATED_CODE_POINTS = frozenset(
 )
 
 
+def discouraged_sequences(s: str, /) -> Collection[str]:
+    """Returns any discouraged sequences in the given string."""
+    # TODO: dseomn - Find some way to access
+    # https://www.unicode.org/Public/UNIDATA/DoNotEmit.txt from python and use
+    # it here.
+    return frozenset(s) & _DEPRECATED_CODE_POINTS
+
+
 @dataclasses.dataclass(frozen=True, kw_only=True)
 class _ExplicitStringFlags:
     # This uses a dataclass instead of enum.Flag because it might make sense to
@@ -127,10 +135,10 @@ def parse_explicit_string(explicit_string: str, /) -> str:
         and not flags.precomposed
     ):
         raise ValueError(f"{explicit_string!r} is precomposed.")
-    if deprecated := frozenset(decoded_string) & _DEPRECATED_CODE_POINTS:
+    if discouraged := discouraged_sequences(decoded_string):
         raise ValueError(
-            f"{explicit_string!r} contains deprecated code points "
-            f"{list(deprecated)}"
+            f"{explicit_string!r} contains discouraged sequences "
+            f"{list(discouraged)}"
         )
     return decoded_string
 

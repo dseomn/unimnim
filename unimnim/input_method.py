@@ -78,14 +78,16 @@ def _generate_map_one_group(
     group: data.Group,
 ) -> Mapping[str, str]:
     """Returns a map from mnemonic to result for one group."""
-    # TODO: dseomn - Find some way to access
-    # https://www.unicode.org/Public/UNIDATA/DoNotEmit.txt from python and
-    # either raise an error or filter out results that match that file.
     mapping_all = {}
     mapping_known = {}
     combining_to_check = collections.deque[tuple[str, str]]()
 
     def _add(mnemonic: str, result: str, *, is_known: bool = True) -> None:
+        if discouraged := data.discouraged_sequences(result):
+            raise ValueError(
+                f"Mnemonic {mnemonic!r} has result {result!r} with discouraged "
+                f"sequences {list(discouraged)}"
+            )
         # Allow duplicates only if the result is the same. That way if "." is
         # dot above and ".." is dot below, "..." can be generated in either
         # order without counting as a duplicate.

@@ -54,6 +54,25 @@ def test_known_sequences() -> None:
             {
                 "latin": data.Group(
                     prefix="l",
+                    base={"n": "n"},
+                    combining=data.Combining(
+                        name_regex_replace={
+                            "'": (
+                                (
+                                    re.compile(r".*"),
+                                    r"\g<0> PRECEDED BY APOSTROPHE",
+                                ),
+                            ),
+                        },
+                    ),
+                ),
+            },
+            r"Mnemonic \"ln'\" has result .* with discouraged sequences",
+        ),
+        (
+            {
+                "latin": data.Group(
+                    prefix="l",
                     base={"a": "a", "a'": "b"},
                     combining=data.Combining(
                         append={"'": "\N{COMBINING ACUTE ACCENT}"},
