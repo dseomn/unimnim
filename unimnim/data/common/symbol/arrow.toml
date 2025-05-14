@@ -3,6 +3,11 @@
 # SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
 
 # Assume the #geometry convention for this entire file.
+#
+# "," separates multiple arrows in the same character.
+#
+# In general, opening punctuation represents something at the end the arrow
+# points from, and closing punctuation at the end the arrow points to.
 
 prefix = "CA"
 
@@ -17,6 +22,34 @@ prefix = "CA"
 "9" = "U+2197 NORTH EAST ARROW: ↗"
 "3" = "U+2198 SOUTH EAST ARROW: ↘"
 "1" = "U+2199 SOUTH WEST ARROW: ↙"
+"4],6]" = "U+21B9 LEFTWARDS ARROW TO BAR OVER RIGHTWARDS ARROW TO BAR: ↹"
+"ACW" = "U+21BA ANTICLOCKWISE OPEN CIRCLE ARROW: ↺"
+"CCW" = "U+21BA ANTICLOCKWISE OPEN CIRCLE ARROW: ↺"  # aka="counterclockwise"
+"CW" = "U+21BB CLOCKWISE OPEN CIRCLE ARROW: ↻"
+"6,4" = "U+21C4 RIGHTWARDS ARROW OVER LEFTWARDS ARROW: ⇄"
+"8,2" = "U+21C5 UPWARDS ARROW LEFTWARDS OF DOWNWARDS ARROW: ⇅"
+"4,6" = "U+21C6 LEFTWARDS ARROW OVER RIGHTWARDS ARROW: ⇆"
+"4,4" = "U+21C7 LEFTWARDS PAIRED ARROWS: ⇇"
+"8,8" = "U+21C8 UPWARDS PAIRED ARROWS: ⇈"
+"6,6" = "U+21C9 RIGHTWARDS PAIRED ARROWS: ⇉"
+"2,2" = "U+21CA DOWNWARDS PAIRED ARROWS: ⇊"
+"2,8" = "U+21F5 DOWNWARDS ARROW LEFTWARDS OF UPWARDS ARROW: ⇵"
+"6,6,6" = "U+21F6 THREE RIGHTWARDS ARROWS: ⇶"
 
 [combining.name_regex_replace]
+"(" = [['.*', '\g<0> WITH HOOK']]
+"-" = [['(.*) ARROW', '\g<1> DASHED ARROW']]
 "/" = [['.*', '\g<0> WITH STROKE']]
+"//" = [['.*', '\g<0> WITH DOUBLE STROKE']]
+"4" = [['.*', '\g<0> WITH TIP LEFTWARDS']]
+"6" = [['.*', '\g<0> WITH TIP RIGHTWARDS']]
+"<" = [['.*', '\g<0> WITH TAIL']]
+"=" = [['(.*) ARROW', '\g<1> DOUBLE ARROW']]
+"==" = [['(.*) ARROW', '\g<1> TRIPLE ARROW']]
+">" = [['(.*) ARROW', '\g<1> TWO HEADED ARROW']]
+"[" = [['.*', '\g<0> FROM BAR']]
+"]" = [['.*', '\g<0> TO BAR']]
+"l" = [['.*', '\g<0> WITH LOOP']]
+"z" = [['(.*) ARROW', '\g<1> ZIGZAG ARROW']]
+"~" = [['(.*) ARROW', '\g<1> WAVE ARROW']]
+"~~" = [['(.*) ARROW', '\g<1> SQUIGGLE ARROW']]
