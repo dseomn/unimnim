@@ -169,7 +169,7 @@ prefix = "l"
 ```
 
 ```toml
-# common/symbol/math.toml
+# common/math.toml
 "lN/" = "U+2115 DOUBLE-STRUCK CAPITAL N: ℕ"  # based-on=latin
 ```
 
