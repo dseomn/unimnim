@@ -162,15 +162,15 @@ When a mnemonic is based on another mnemonic from a different group, use
 the `.toml` extension.
 
 ```toml
-# latin.toml
-prefix = "l"
+# hebrew.toml
+prefix = "h"
 [base]
-"N" = "U+004E LATIN CAPITAL LETTER N: N"
+"a" = "U+05D0 HEBREW LETTER ALEF: א"  # from=rfc1345 suboptimal
 ```
 
 ```toml
 # common/math.toml
-"lN/" = "U+2115 DOUBLE-STRUCK CAPITAL N: ℕ"  # based-on=latin
+"ha" = "U+2135 ALEF SYMBOL: ℵ"  #  based-on=hebrew
 ```
 
 ### Base mnemonics with empty results (`empty-for-combining`)
