@@ -8,8 +8,13 @@ from unimnim import coverage
 def test_report() -> None:
     report = coverage.report(covered={"a"})
 
-    assert report["en"]["total"] > 26 * 2
-    assert report["en"]["covered_count"] == 1
-    assert report["en"]["missing_count"] == report["en"]["total"] - 1
-    assert "a" not in report["en"]["missing"]
-    assert len(report["en"]["missing"]) == report["en"]["missing_count"]
+    language = report["language"]
+    assert language["en"]["total"] > 26 * 2
+    assert language["en"]["covered_count"] == 1
+    assert language["en"]["missing_count"] == language["en"]["total"] - 1
+    assert "a" not in language["en"]["missing"]
+    assert len(language["en"]["missing"]) == language["en"]["missing_count"]
+
+    script = report["script"]
+    assert script["Latn"]["total"] > 26 * 2
+    assert script["Latn"]["covered_count"] == 1
