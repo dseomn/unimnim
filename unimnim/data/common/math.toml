@@ -103,10 +103,6 @@ prefix = "CM"
 "+-" = "U+00B1 PLUS-MINUS SIGN: ±"
 "*" = "U+00D7 MULTIPLICATION SIGN: ×"
 "/.." = "U+00F7 DIVISION SIGN: ÷"  # suboptimal
-"gG" = "U+0393 GREEK CAPITAL LETTER GAMMA: Γ"  # based-on=greek
-"gP" = "U+03A0 GREEK CAPITAL LETTER PI: Π"  # based-on=greek
-"gg" = "U+03B3 GREEK SMALL LETTER GAMMA: γ"  # based-on=greek
-"gp" = "U+03C0 GREEK SMALL LETTER PI: π"  # based-on=greek
 "||" = "U+2016 DOUBLE VERTICAL LINE: ‖"
 "/f" = "U+2044 FRACTION SLASH: ⁄"
 "-.." = "U+2052 COMMERCIAL MINUS SIGN: ⁒"  # suboptimal
@@ -194,11 +190,11 @@ prefix = "CM"
 "//" = [
   ['.*', 'DOUBLE-STRUCK \g<0>'],
   ['.*', 'MATHEMATICAL DOUBLE-STRUCK \g<0>'],
-  ['(?:LATIN|GREEK) (CAPITAL|SMALL) LETTER (.*)', 'DOUBLE-STRUCK \g<1> \g<2>'],
+  ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'DOUBLE-STRUCK \g<1> \g<2>'],
   ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'MATHEMATICAL DOUBLE-STRUCK \g<1> \g<2>'],
 ]
 "O" = [
-  ['(?!(?:LATIN|GREEK) ).*', 'CIRCLED \g<0>'],
+  ['(?!LATIN ).*', 'CIRCLED \g<0>'],
   ['(.*) SIGN', 'CIRCLED \g<1>'],
 ]
 "n" = [

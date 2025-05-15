@@ -69,6 +69,7 @@ prefix = "g"
 '"' = "U+0308 COMBINING DIAERESIS [combining]: ϊ"
 
 [combining.name_regex_replace]
+"//" = [['GREEK (CAPITAL|SMALL) LETTER (.*)', 'DOUBLE-STRUCK \g<1> \g<2>']]
 "2" = [  # geometry
   ['GREEK (CAPITAL|SMALL) LETTER (.*)', 'GREEK SUBSCRIPT \g<1> LETTER \g<2>'],
 ]
