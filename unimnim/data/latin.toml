@@ -102,6 +102,10 @@ prefix = "l"
 
 [combining.name_regex_replace]
 "/" = [['.*', '\g<0> WITH STROKE']]
+"//" = [
+  ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'DOUBLE-STRUCK \g<1> \g<2>'],
+  ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'MATHEMATICAL DOUBLE-STRUCK \g<1> \g<2>'],
+]
 "2" = [  # geometry
   ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'LATIN SUBSCRIPT \g<1> LETTER \g<2>'],
 ]

@@ -26,9 +26,6 @@
 # "n": n-ary
 # "s": set
 # "v": vector
-#
-# It also has a bunch of mnemonics that don't really belong, like Latin letters,
-# because they're useful for combining.
 
 prefix = "CM"
 
@@ -47,58 +44,6 @@ prefix = "CM"
 "<" = "U+003C LESS-THAN SIGN: <"
 "=" = "U+003D EQUALS SIGN: ="
 ">" = "U+003E GREATER-THAN SIGN: >"
-"lA" = "U+0041 LATIN CAPITAL LETTER A: A"  # based-on=latin
-"lB" = "U+0042 LATIN CAPITAL LETTER B: B"  # based-on=latin
-"lC" = "U+0043 LATIN CAPITAL LETTER C: C"  # based-on=latin
-"lD" = "U+0044 LATIN CAPITAL LETTER D: D"  # based-on=latin
-"lE" = "U+0045 LATIN CAPITAL LETTER E: E"  # based-on=latin
-"lF" = "U+0046 LATIN CAPITAL LETTER F: F"  # based-on=latin
-"lG" = "U+0047 LATIN CAPITAL LETTER G: G"  # based-on=latin
-"lH" = "U+0048 LATIN CAPITAL LETTER H: H"  # based-on=latin
-"lI" = "U+0049 LATIN CAPITAL LETTER I: I"  # based-on=latin
-"lJ" = "U+004A LATIN CAPITAL LETTER J: J"  # based-on=latin
-"lK" = "U+004B LATIN CAPITAL LETTER K: K"  # based-on=latin
-"lL" = "U+004C LATIN CAPITAL LETTER L: L"  # based-on=latin
-"lM" = "U+004D LATIN CAPITAL LETTER M: M"  # based-on=latin
-"lN" = "U+004E LATIN CAPITAL LETTER N: N"  # based-on=latin
-"lO" = "U+004F LATIN CAPITAL LETTER O: O"  # based-on=latin
-"lP" = "U+0050 LATIN CAPITAL LETTER P: P"  # based-on=latin
-"lQ" = "U+0051 LATIN CAPITAL LETTER Q: Q"  # based-on=latin
-"lR" = "U+0052 LATIN CAPITAL LETTER R: R"  # based-on=latin
-"lS" = "U+0053 LATIN CAPITAL LETTER S: S"  # based-on=latin
-"lT" = "U+0054 LATIN CAPITAL LETTER T: T"  # based-on=latin
-"lU" = "U+0055 LATIN CAPITAL LETTER U: U"  # based-on=latin
-"lV" = "U+0056 LATIN CAPITAL LETTER V: V"  # based-on=latin
-"lW" = "U+0057 LATIN CAPITAL LETTER W: W"  # based-on=latin
-"lX" = "U+0058 LATIN CAPITAL LETTER X: X"  # based-on=latin
-"lY" = "U+0059 LATIN CAPITAL LETTER Y: Y"  # based-on=latin
-"lZ" = "U+005A LATIN CAPITAL LETTER Z: Z"  # based-on=latin
-"la" = "U+0061 LATIN SMALL LETTER A: a"  # based-on=latin
-"lb" = "U+0062 LATIN SMALL LETTER B: b"  # based-on=latin
-"lc" = "U+0063 LATIN SMALL LETTER C: c"  # based-on=latin
-"ld" = "U+0064 LATIN SMALL LETTER D: d"  # based-on=latin
-"le" = "U+0065 LATIN SMALL LETTER E: e"  # based-on=latin
-"lf" = "U+0066 LATIN SMALL LETTER F: f"  # based-on=latin
-"lg" = "U+0067 LATIN SMALL LETTER G: g"  # based-on=latin
-"lh" = "U+0068 LATIN SMALL LETTER H: h"  # based-on=latin
-"li" = "U+0069 LATIN SMALL LETTER I: i"  # based-on=latin
-"lj" = "U+006A LATIN SMALL LETTER J: j"  # based-on=latin
-"lk" = "U+006B LATIN SMALL LETTER K: k"  # based-on=latin
-"ll" = "U+006C LATIN SMALL LETTER L: l"  # based-on=latin
-"lm" = "U+006D LATIN SMALL LETTER M: m"  # based-on=latin
-"ln" = "U+006E LATIN SMALL LETTER N: n"  # based-on=latin
-"lo" = "U+006F LATIN SMALL LETTER O: o"  # based-on=latin
-"lp" = "U+0070 LATIN SMALL LETTER P: p"  # based-on=latin
-"lq" = "U+0071 LATIN SMALL LETTER Q: q"  # based-on=latin
-"lr" = "U+0072 LATIN SMALL LETTER R: r"  # based-on=latin
-"ls" = "U+0073 LATIN SMALL LETTER S: s"  # based-on=latin
-"lt" = "U+0074 LATIN SMALL LETTER T: t"  # based-on=latin
-"lu" = "U+0075 LATIN SMALL LETTER U: u"  # based-on=latin
-"lv" = "U+0076 LATIN SMALL LETTER V: v"  # based-on=latin
-"lw" = "U+0077 LATIN SMALL LETTER W: w"  # based-on=latin
-"lx" = "U+0078 LATIN SMALL LETTER X: x"  # based-on=latin
-"ly" = "U+0079 LATIN SMALL LETTER Y: y"  # based-on=latin
-"lz" = "U+007A LATIN SMALL LETTER Z: z"  # based-on=latin
 "!l" = "U+00AC NOT SIGN: ¬"
 "+-" = "U+00B1 PLUS-MINUS SIGN: ±"
 "*" = "U+00D7 MULTIPLICATION SIGN: ×"
@@ -190,11 +135,9 @@ prefix = "CM"
 "//" = [
   ['.*', 'DOUBLE-STRUCK \g<0>'],
   ['.*', 'MATHEMATICAL DOUBLE-STRUCK \g<0>'],
-  ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'DOUBLE-STRUCK \g<1> \g<2>'],
-  ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'MATHEMATICAL DOUBLE-STRUCK \g<1> \g<2>'],
 ]
 "O" = [
-  ['(?!LATIN ).*', 'CIRCLED \g<0>'],
+  ['.*', 'CIRCLED \g<0>'],
   ['(.*) SIGN', 'CIRCLED \g<1>'],
 ]
 "n" = [

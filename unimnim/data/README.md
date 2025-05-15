@@ -155,24 +155,6 @@ amount, where "amount" can be interpreted very liberally.
 "e<" = "U+0259 LATIN SMALL LETTER SCHWA: ə"  # aka="reduced vowel" amount
 ```
 
-### Based on another mnemonic (`based-on=group`)
-
-When a mnemonic is based on another mnemonic from a different group, use
-`based-on=` with the path of the other group relative to this directory, without
-the `.toml` extension.
-
-```toml
-# hebrew.toml
-prefix = "h"
-[base]
-"a" = "U+05D0 HEBREW LETTER ALEF: א"  # from=rfc1345 suboptimal
-```
-
-```toml
-# common/math.toml
-"ha" = "U+2135 ALEF SYMBOL: ℵ"  #  based-on=hebrew
-```
-
 ### Base mnemonics with empty results (`empty-for-combining`)
 
 Groups with combining characters can have a base mnemonic with an empty result
