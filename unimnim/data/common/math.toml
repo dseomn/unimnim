@@ -110,10 +110,6 @@ prefix = "CM"
 "||" = "U+2016 DOUBLE VERTICAL LINE: ‖"
 "/f" = "U+2044 FRACTION SLASH: ⁄"
 "-.." = "U+2052 COMMERCIAL MINUS SIGN: ⁒"  # suboptimal
-"ha" = "U+2135 ALEF SYMBOL: ℵ"  #  based-on=hebrew
-"hv" = "U+2136 BET SYMBOL: ℶ"  #  based-on=hebrew
-"hg" = "U+2137 GIMEL SYMBOL: ℷ"  #  based-on=hebrew
-"hd" = "U+2138 DALET SYMBOL: ℸ"  #  based-on=hebrew
 "FA" = "U+2200 FOR ALL: ∀"
 "dp" = "U+2202 PARTIAL DIFFERENTIAL: ∂"
 "TE" = "U+2203 THERE EXISTS: ∃"

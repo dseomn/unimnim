@@ -43,3 +43,6 @@ prefix = "h"
 "." = "U+05BC HEBREW POINT DAGESH OR MAPIQ [combining]: בּ"
 "h" = "U+05C1 HEBREW POINT SHIN DOT [combining]: שׁ"
 "s" = "U+05C2 HEBREW POINT SIN DOT [combining]: שׂ"
+
+[combining.name_regex_replace]
+"$" = [['HEBREW LETTER (.*)', '\g<1> SYMBOL']]  # suboptimal
