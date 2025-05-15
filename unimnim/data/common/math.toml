@@ -30,6 +30,8 @@
 prefix = "CM"
 
 [base]
+"(" = "U+0028 LEFT PARENTHESIS: ("
+")" = "U+0029 RIGHT PARENTHESIS: )"
 "+" = "U+002B PLUS SIGN: +"
 "0" = "U+0030 DIGIT ZERO: 0"
 "1" = "U+0031 DIGIT ONE: 1"
@@ -135,6 +137,16 @@ prefix = "CM"
 "//" = [
   ['.*', 'DOUBLE-STRUCK \g<0>'],
   ['.*', 'MATHEMATICAL DOUBLE-STRUCK \g<0>'],
+]
+"2" = [  # geometry
+  ['.*', 'SUBSCRIPT \g<0>'],
+  ['(.*) SIGN', 'SUBSCRIPT \g<1>'],
+  ['DIGIT (.*)', 'SUBSCRIPT \g<1>'],
+]
+"8" = [  # geometry
+  ['.*', 'SUPERSCRIPT \g<0>'],
+  ['(.*) SIGN', 'SUPERSCRIPT \g<1>'],
+  ['DIGIT (.*)', 'SUPERSCRIPT \g<1>'],
 ]
 "O" = [
   ['.*', 'CIRCLED \g<0>'],
