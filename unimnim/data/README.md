@@ -155,6 +155,14 @@ amount, where "amount" can be interpreted very liberally.
 "e<" = "U+0259 LATIN SMALL LETTER SCHWA: ə"  # aka="reduced vowel" amount
 ```
 
+It can also be used for upper or lower case:
+
+```toml
+"?>" = "U+0241 LATIN CAPITAL LETTER GLOTTAL STOP: Ɂ"  # amount
+"?<" = "U+0242 LATIN SMALL LETTER GLOTTAL STOP: ɂ"  # amount
+"?" = "U+0294 LATIN LETTER GLOTTAL STOP: ʔ"
+```
+
 ### Base mnemonics with empty results (`empty-for-combining`)
 
 Groups with combining characters can have a base mnemonic with an empty result
