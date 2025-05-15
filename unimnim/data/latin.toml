@@ -88,7 +88,7 @@ prefix = "l"
 "u" = "U+0306 COMBINING BREVE [combining]: ă"
 "." = "U+0307 COMBINING DOT ABOVE [combining]: ȧ"
 '"' = "U+0308 COMBINING DIAERESIS [combining]: ä"
-"?" = "U+0309 COMBINING HOOK ABOVE [combining]: ả"
+"?8" = "U+0309 COMBINING HOOK ABOVE [combining]: ả"  # geometry
 "o" = "U+030A COMBINING RING ABOVE [combining]: å"
 "''" = "U+030B COMBINING DOUBLE ACUTE ACCENT [combining]: ő"
 "v" = "U+030C COMBINING CARON [combining]: ǎ"
@@ -112,3 +112,5 @@ prefix = "l"
 "8" = [  # geometry
   ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'SUPERSCRIPT LATIN \g<1> LETTER \g<2>'],
 ]
+"?" = [['.*', '\g<0> WITH HOOK']]
+"?4" = [['.*', '\g<0> WITH LEFT HOOK']]  # geometry
