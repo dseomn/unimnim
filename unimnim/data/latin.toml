@@ -78,6 +78,7 @@ prefix = "l"
 "ZH" = "U+01B7 LATIN CAPITAL LETTER EZH: Ʒ"
 "|" = "U+01C0 LATIN LETTER DENTAL CLICK: ǀ"
 "||" = "U+01C1 LATIN LETTER LATERAL CLICK: ǁ"
+"|||" = "U+01C2 LATIN LETTER ALVEOLAR CLICK: ǂ"  # aka="double-barred vertical bar"
 "!" = "U+01C3 LATIN LETTER RETROFLEX CLICK: ǃ"
 "eT" = "U+01DD LATIN SMALL LETTER TURNED E: ǝ"  # geometry
 "e<" = "U+0259 LATIN SMALL LETTER SCHWA: ə"  # aka="reduced vowel" amount
@@ -119,3 +120,7 @@ prefix = "l"
 ]
 "?" = [['.*', '\g<0> WITH HOOK']]
 "?4" = [['.*', '\g<0> WITH LEFT HOOK']]  # geometry
+"|" = [
+  ['.*', '\g<0> BAR'],
+  ['.*', '\g<0> WITH BAR'],
+]
