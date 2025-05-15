@@ -68,6 +68,7 @@ prefix = "l"
 "dh" = "U+00F0 LATIN SMALL LETTER ETH: ð"  # aka="edh"
 "th" = "U+00FE LATIN SMALL LETTER THORN: þ"
 "i-." = "U+0131 LATIN SMALL LETTER DOTLESS I: ı"  # uncombine suboptimal
+"qk" = "U+0138 LATIN SMALL LETTER KRA: ĸ"
 "NG" = "U+014A LATIN CAPITAL LETTER ENG: Ŋ"
 "ng" = "U+014B LATIN SMALL LETTER ENG: ŋ"
 "OE" = "U+0152 LATIN CAPITAL LIGATURE OE: Œ"
