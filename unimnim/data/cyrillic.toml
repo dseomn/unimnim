@@ -121,4 +121,5 @@ prefix = "c"
 "2" = [  # geometry
   ['CYRILLIC (CAPITAL|SMALL) LETTER (.*)', 'CYRILLIC SUBSCRIPT \g<1> LETTER \g<2>'],
 ]
+"3" = [['.*', '\g<0> WITH DESCENDER']]  # geometry
 "?5" = [['.*', '\g<0> WITH MIDDLE HOOK']]  # geometry
