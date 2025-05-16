@@ -163,6 +163,13 @@ It can also be used for upper or lower case:
 "?" = "U+0294 LATIN LETTER GLOTTAL STOP: ʔ"
 ```
 
+Or for earlier or later forms of characters:
+
+```toml
+"6>" = "U+2185 ROMAN NUMERAL SIX LATE FORM: ↅ"  # amount
+"50<" = "U+2186 ROMAN NUMERAL FIFTY EARLY FORM: ↆ"  # amount
+```
+
 ### Base mnemonics with empty results (`empty-for-combining`)
 
 Groups with combining characters can have a base mnemonic with an empty result
