@@ -5,6 +5,7 @@
 prefix = "C"
 
 [base]
+"'" = "U+0027 APOSTROPHE: '"
 "!I" = "U+00A1 INVERTED EXCLAMATION MARK: ¡"  # geometry
 "SS" = "U+00A7 SECTION SIGN: §"  # aka="double-s"
 "<<q" = "U+00AB LEFT-POINTING DOUBLE ANGLE QUOTATION MARK: «"
@@ -50,6 +51,10 @@ prefix = "C"
 "''''p" = "U+2057 QUADRUPLE PRIME: ⁗"
 "!?I" = "U+2E18 INVERTED INTERROBANG: ⸘"  # geometry
 "?!I" = "U+2E18 INVERTED INTERROBANG: ⸘"  # geometry
+",T" = "U+2E32 TURNED COMMA: ⸲"  # geometry
 ",,qR" = "U+2E42 DOUBLE LOW-REVERSED-9 QUOTATION MARK: ⹂"  # geometry
 "|---" = "U+2E4B TRIPLE DAGGER: ⹋"
 '"d' = "U+3003 DITTO MARK: 〃"
+
+[combining.name_regex_replace]
+"l" = [['.*', 'MODIFIER LETTER \g<0>']]
