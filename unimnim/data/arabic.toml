@@ -45,6 +45,8 @@ prefix = "a"
 
 [combining.append]
 "~" = "U+0653 ARABIC MADDAH ABOVE [combining]: آ"
+"'8" = "U+0654 ARABIC HAMZA ABOVE [combining]: أ"  # geometry
+"'2" = "U+0655 ARABIC HAMZA BELOW [combining]: إ"  # geometry
 
 [combining.name_regex_replace]
 "//" = [['ARABIC LETTER (.*)', 'ARABIC MATHEMATICAL DOUBLE-STRUCK \g<1>']]
