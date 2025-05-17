@@ -32,6 +32,7 @@ prefix = "a"
 "n" = "U+0646 ARABIC LETTER NOON: ن"
 "h" = "U+0647 ARABIC LETTER HEH: ه"
 "w" = "U+0648 ARABIC LETTER WAW: و"
+"a]" = "U+0649 ARABIC LETTER ALEF MAKSURA: ى"  # logical-order suboptimal
 "y" = "U+064A ARABIC LETTER YEH: ي"
 
 [combining.append]
