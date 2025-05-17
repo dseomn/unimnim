@@ -8,6 +8,9 @@ prefix = "a"
 
 [base]
 "_" = ""  # empty-for-combining
+"," = "U+060C ARABIC COMMA: ،"
+";" = "U+061B ARABIC SEMICOLON: ؛"
+"?" = "U+061F ARABIC QUESTION MARK: ؟"
 "a" = "U+0627 ARABIC LETTER ALEF: ا"
 "b" = "U+0628 ARABIC LETTER BEH: ب"
 "t" = "U+062A ARABIC LETTER TEH: ت"
