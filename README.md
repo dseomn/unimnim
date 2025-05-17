@@ -22,6 +22,7 @@ example:
 | `la'` |  [Latin](unimnim/data/latin.toml), a, acute | `á` |
 | `le^'` | Latin, e, circumflex, acute | `ế` |
 | `lAE-` | Latin, Æ, macron | `Ǣ` |
+| `ab` | [Arabic](unimnim/data/arabic.toml), ب | `ب` |
 | `cd` | [Cyrillic](unimnim/data/cyrillic.toml), д | `д` |
 | `ga'` | [Greek](unimnim/data/greek.toml), α, tonos | `ά` |
 | `hk.`| [Hebrew](unimnim/data/hebrew.toml), כ, dagesh | `כּ` |
