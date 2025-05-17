@@ -8,6 +8,8 @@ prefix = "a"
 
 [base]
 "_" = ""  # empty-for-combining
+"%0" = "U+0609 ARABIC-INDIC PER MILLE SIGN: ؉"
+"%00" = "U+060A ARABIC-INDIC PER TEN THOUSAND SIGN: ؊"
 "," = "U+060C ARABIC COMMA: ،"
 ";" = "U+061B ARABIC SEMICOLON: ؛"
 "?" = "U+061F ARABIC QUESTION MARK: ؟"
@@ -52,6 +54,9 @@ prefix = "a"
 "7" = "U+0667 ARABIC-INDIC DIGIT SEVEN: ٧"
 "8" = "U+0668 ARABIC-INDIC DIGIT EIGHT: ٨"
 "9" = "U+0669 ARABIC-INDIC DIGIT NINE: ٩"
+"%" = "U+066A ARABIC PERCENT SIGN: ٪"
+"." = "U+066B ARABIC DECIMAL SEPARATOR: ٫"
+",k" = "U+066C ARABIC THOUSANDS SEPARATOR: ٬"  # si-prefix
 "p" = "U+067E ARABIC LETTER PEH: پ"
 "ch" = "U+0686 ARABIC LETTER TCHEH: چ"
 "J" = "U+0698 ARABIC LETTER JEH: ژ"  # suboptimal
