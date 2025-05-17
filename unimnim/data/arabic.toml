@@ -42,6 +42,15 @@ prefix = "a"
 "w" = "U+0648 ARABIC LETTER WAW: و"
 "a]" = "U+0649 ARABIC LETTER ALEF MAKSURA: ى"  # logical-order suboptimal
 "y" = "U+064A ARABIC LETTER YEH: ي"
+"p" = "U+067E ARABIC LETTER PEH: پ"
+"ch" = "U+0686 ARABIC LETTER TCHEH: چ"
+"J" = "U+0698 ARABIC LETTER JEH: ژ"  # suboptimal
+"v" = "U+06A4 ARABIC LETTER VEH: ڤ"
+"V" = "U+06A5 ARABIC LETTER FEH WITH THREE DOTS BELOW: ڥ"  # suboptimal
+"Q" = "U+06A8 ARABIC LETTER QAF WITH THREE DOTS ABOVE: ڨ"  # suboptimal
+"K" = "U+06A9 ARABIC LETTER KEHEH: ک"  # suboptimal
+"g" = "U+06AF ARABIC LETTER GAF: گ"
+"Y" = "U+06CC ARABIC LETTER FARSI YEH: ی"  # suboptimal
 
 [combining.append]
 "~" = "U+0653 ARABIC MADDAH ABOVE [combining]: آ"
