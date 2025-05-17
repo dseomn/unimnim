@@ -7,6 +7,7 @@
 prefix = "a"
 
 [base]
+"a" = "U+0627 ARABIC LETTER ALEF: ا"
 "b" = "U+0628 ARABIC LETTER BEH: ب"
 "t" = "U+062A ARABIC LETTER TEH: ت"
 "d" = "U+062F ARABIC LETTER DAL: د"
@@ -20,3 +21,6 @@ prefix = "a"
 "m" = "U+0645 ARABIC LETTER MEEM: م"
 "n" = "U+0646 ARABIC LETTER NOON: ن"
 "h" = "U+0647 ARABIC LETTER HEH: ه"
+
+[combining.append]
+"~" = "U+0653 ARABIC MADDAH ABOVE [combining]: آ"
