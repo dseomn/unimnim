@@ -14,6 +14,7 @@ prefix = "a"
 "'" = "U+0621 ARABIC LETTER HAMZA: ء"
 "a" = "U+0627 ARABIC LETTER ALEF: ا"
 "b" = "U+0628 ARABIC LETTER BEH: ب"
+"t]" = "U+0629 ARABIC LETTER TEH MARBUTA: ة"  # logical-order suboptimal
 "t" = "U+062A ARABIC LETTER TEH: ت"
 "th" = "U+062B ARABIC LETTER THEH: ث"
 "j" = "U+062C ARABIC LETTER JEEM: ج"
