@@ -29,6 +29,7 @@ prefix = "a"
 "D" = "U+0636 ARABIC LETTER DAD: ض"
 "T" = "U+0637 ARABIC LETTER TAH: ط"
 "zh" = "U+0638 ARABIC LETTER ZAH: ظ"  # suboptimal
+"`" = "U+0639 ARABIC LETTER AIN: ع"  # suboptimal
 "gh" = "U+063A ARABIC LETTER GHAIN: غ"
 "f" = "U+0641 ARABIC LETTER FEH: ف"
 "q" = "U+0642 ARABIC LETTER QAF: ق"
