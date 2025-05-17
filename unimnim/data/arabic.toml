@@ -45,3 +45,6 @@ prefix = "a"
 
 [combining.append]
 "~" = "U+0653 ARABIC MADDAH ABOVE [combining]: آ"
+
+[combining.name_regex_replace]
+"//" = [['ARABIC LETTER (.*)', 'ARABIC MATHEMATICAL DOUBLE-STRUCK \g<1>']]
