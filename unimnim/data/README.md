@@ -268,6 +268,15 @@ Note that the opening `[` is always used for initial and the closing `]` for
 final, even if they appear
 [mirrored](https://www.unicode.org/reports/tr9/#Mirroring).
 
+### SI prefix (`si-prefix`)
+
+[SI prefixes](https://en.wikipedia.org/wiki/Metric_prefix) can be used for
+number-related mnemonics.
+
+```toml
+"5k" = "U+2181 ROMAN NUMERAL FIVE THOUSAND: ↁ"  # si-prefix
+```
+
 ### Suboptimal (`suboptimal`)
 
 Hopefully not actually a convention, but mnemonics that are less than ideal can
