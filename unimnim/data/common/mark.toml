@@ -21,7 +21,9 @@ prefix = "C"
 "VS13" = "U+FE0C VARIATION SELECTOR-13"  # from=aliases
 "VS14" = "U+FE0D VARIATION SELECTOR-14"  # from=aliases
 "VS15" = "U+FE0E VARIATION SELECTOR-15"  # from=aliases
+"VST" = "U+FE0E VARIATION SELECTOR-15 [combining]: ‼︎"  # aka="text variation selector"
 "VS16" = "U+FE0F VARIATION SELECTOR-16"  # from=aliases
+"VSE" = "U+FE0F VARIATION SELECTOR-16 [combining]: ‼️"  # aka="emoji variation selector"
 "VS17" = "U+E0100 VARIATION SELECTOR-17"  # from=aliases
 "VS18" = "U+E0101 VARIATION SELECTOR-18"  # from=aliases
 "VS19" = "U+E0102 VARIATION SELECTOR-19"  # from=aliases
