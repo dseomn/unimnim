@@ -16,3 +16,7 @@ prefix = "C"
 "TM" = "U+2122 TRADE MARK SIGN: ™"
 "est" = "U+212E ESTIMATED SYMBOL: ℮"
 "POI" = "U+2318 PLACE OF INTEREST SIGN: ⌘"
+
+[combining.append]
+"VST" = "U+FE0E VARIATION SELECTOR-15 [combining]: ©︎"  # aka="text variation selector"
+"VSE" = "U+FE0F VARIATION SELECTOR-16 [combining]: ©️"  # aka="emoji variation selector"
