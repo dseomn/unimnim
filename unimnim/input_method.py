@@ -15,6 +15,9 @@ import jinja2
 
 from unimnim import data
 
+_TEXT_VARIATION_SELECTOR = "\N{VARIATION SELECTOR-15}"
+_EMOJI_VARIATION_SELECTOR = "\N{VARIATION SELECTOR-16}"
+
 
 @functools.cache
 def known_sequences() -> Mapping[str, Sequence[str]]:
@@ -57,6 +60,12 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
     for uproperty in (icu.UProperty.EMOJI, icu.UProperty.RGI_EMOJI):
         for emoji in icu.Char.getBinaryPropertySet(uproperty):
             sequences[emoji].add("emoji")
+            if len(emoji) == 2 and emoji[1] == _EMOJI_VARIATION_SELECTOR:
+                # TODO: dseomn - Use emoji-variation-sequences.txt for this
+                # instead of guessing based on RGI_EMOJI.
+                sequences[f"{emoji[0]}{_TEXT_VARIATION_SELECTOR}"].add(
+                    "text-presentation"
+                )
 
     return {
         sequence: sorted(languages) for sequence, languages in sequences.items()

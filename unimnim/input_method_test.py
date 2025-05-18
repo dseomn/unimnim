@@ -46,6 +46,11 @@ def test_known_sequences() -> None:
         ]
     )
 
+    assert (
+        "text-presentation"
+        in known_sequences["\N{DOUBLE EXCLAMATION MARK}\ufe0e"]
+    )
+
 
 @pytest.mark.parametrize(
     "groups,error_regex",
