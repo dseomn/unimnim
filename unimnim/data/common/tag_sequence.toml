@@ -4,7 +4,7 @@
 
 # https://www.unicode.org/reports/tr51/#valid-emoji-tag-sequences
 
-prefix = "CTS"
+prefix = "ZTS"
 
 [base]
 "F" = "U+1F3F4 WAVING BLACK FLAG: 🏴"

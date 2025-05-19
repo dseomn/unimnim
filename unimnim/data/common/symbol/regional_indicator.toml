@@ -4,7 +4,7 @@
 
 # https://www.unicode.org/reports/tr51/#Flags
 
-prefix = "CRI"
+prefix = "ZRI"
 
 [base]
 "" = ""  # empty-for-combining

@@ -6,7 +6,7 @@
 #
 # music-abc: ABC notation
 
-prefix = "Cm"
+prefix = "Zm"
 
 [base]
 "_" = ""  # empty-for-combining

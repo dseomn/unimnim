@@ -6,7 +6,7 @@
 # through with a prefix search. Where a space has an official alias, that's also
 # used as a mnemonic.
 
-prefix = "C"
+prefix = "Z"
 
 [base]
 "NBSP" = "U+00A0 NO-BREAK SPACE"  # from=aliases

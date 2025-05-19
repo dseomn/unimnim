@@ -26,14 +26,19 @@ example:
 | `cd` | [Cyrillic](unimnim/data/cyrillic.toml), д | `д` |
 | `ga'` | [Greek](unimnim/data/greek.toml), α, tonos | `ά` |
 | `hk.`| [Hebrew](unimnim/data/hebrew.toml), כ, dagesh | `כּ` |
-| `CM0s` | common, [math](unimnim/data/common/math.toml), zero/empty/null, set | `∅` |
-| `C-m` | common, dash ([punctuation](unimnim/data/common/punctuation.toml)), em | `—` |
-| `C?!I` | common, interrobang (punctuation), inverted | `⸘` |
-| `CA-` | common, [arrow](unimnim/data/common/symbol/arrow.toml), horizontal | `↔` |
-| `C$Rs` | common, [currency](unimnim/data/common/symbol/currency.toml), rupee | `₨` |
-| `Cmb` | common, [music](unimnim/data/common/symbol/music.toml), flat | `♭` |
-| `Cco` | common, copyright ([other symbol](unimnim/data/common/symbol/other.toml)) | `©` |
-| `CRIUN` | common, [regional indicator](unimnim/data/common/symbol/regional_indicator.toml), United Nations | `🇺🇳` |
+| `ZM0s` | common[^z-common], [math](unimnim/data/common/math.toml), zero/empty/null, set | `∅` |
+| `Z-m` | common, dash ([punctuation](unimnim/data/common/punctuation.toml)), em | `—` |
+| `Z?!I` | common, interrobang (punctuation), inverted | `⸘` |
+| `ZA-` | common, [arrow](unimnim/data/common/symbol/arrow.toml), horizontal | `↔` |
+| `Z$Rs` | common, [currency](unimnim/data/common/symbol/currency.toml), rupee | `₨` |
+| `Zmb` | common, [music](unimnim/data/common/symbol/music.toml), flat | `♭` |
+| `Zco` | common, copyright ([other symbol](unimnim/data/common/symbol/other.toml)) | `©` |
+| `ZRIUN` | common, [regional indicator](unimnim/data/common/symbol/regional_indicator.toml), United Nations | `🇺🇳` |
+
+[^z-common]:
+    A lot of script names in English start with `C`, but not as many with `Z`,
+    so `Z` is used to minimize conflicts with other scripts. Also [ISO 15924
+    uses `Z`](https://en.wikipedia.org/wiki/ISO_15924#Special_codes).
 
 See the [data directory](unimnim/data) and its README for more details.
 
@@ -106,7 +111,7 @@ but I didn't find much.
 If you want to use this input method with another layout, please file a bug.
 
 For small changes like changing [the currency
-prefix](unimnim/data/common/symbol/currency.toml) from `C$` to `C` followed by a
+prefix](unimnim/data/common/symbol/currency.toml) from `Z$` to `Z` followed by a
 currency symbol on your keyboard, I think it would be easy enough to add support
 for prefix overrides.
 

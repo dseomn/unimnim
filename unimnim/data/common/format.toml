@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
 
-prefix = "C"
+prefix = "Z"
 
 [base]
 "SHY" = "U+00AD SOFT HYPHEN"  # from=aliases

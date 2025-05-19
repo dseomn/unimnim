@@ -27,7 +27,7 @@
 # "s": set
 # "v": vector
 
-prefix = "CM"
+prefix = "ZM"
 
 [base]
 "(" = "U+0028 LEFT PARENTHESIS: ("
