@@ -42,6 +42,8 @@ def report(*, covered: Set[str]) -> Any:
     #
     # https://github.com/unicode-org/cldr/tree/main/keyboards looks interesting,
     # but somewhat limited, and I don't see an ICU API for it anyway.
+    # https://github.com/Vyshantha/multiscripteditor/tree/main/editorClient/src/assets/keyboard-layouts
+    # might work.
 
     characters_by_language = collections.defaultdict(set)
     for character, languages in input_method.known_sequences().items():
