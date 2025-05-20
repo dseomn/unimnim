@@ -140,6 +140,9 @@ def _generate_map_one_group(
 
         if len(result) != 1:
             continue
+        # TODO: dseomn - Check the control names from NameAliases.txt, so that
+        # name_regex_replace can be used for
+        # https://en.wikipedia.org/wiki/Control_Pictures
         result_name = icu.Char.charName(
             result, icu.UCharNameChoice.CHAR_NAME_ALIAS
         ) or unicodedata.name(result, "")
