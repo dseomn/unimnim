@@ -140,7 +140,10 @@ def _generate_map_one_group(
 
         if len(result) != 1:
             continue
-        if (result_name := unicodedata.name(result, None)) is None:
+        result_name = icu.Char.charName(
+            result, icu.UCharNameChoice.CHAR_NAME_ALIAS
+        ) or unicodedata.name(result, "")
+        if not result_name:
             continue
 
         for (

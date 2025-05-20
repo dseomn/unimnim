@@ -261,6 +261,20 @@ def test_generate_map_error(
                                     r"SCRIPT CAPITAL \g<1>",
                                 ),
                             ),
+                            "f": (
+                                (
+                                    re.compile(
+                                        r"(.*)EIERSTRASS ELLIPTIC FUNCTION"
+                                    ),
+                                    r"LATIN SMALL LETTER \g<1>",
+                                ),
+                            ),
+                            "s": (
+                                (
+                                    re.compile(r"SCRIPT CAPITAL (.*)"),
+                                    r"LATIN SMALL LETTER \g<1>",
+                                ),
+                            ),
                         },
                     ),
                 ),
@@ -268,11 +282,15 @@ def test_generate_map_error(
             {
                 "mB": "B",
                 "mBS": "\N{SCRIPT CAPITAL B}",
+                "mBSs": "b",
                 "mP": "P",
                 # U+2118 SCRIPT CAPITAL P has a corrected name, WEIERSTRASS
                 # ELLIPTIC FUNCTION, so mPS does not match.
                 "mW": "W",
                 "mWF": "\N{SCRIPT CAPITAL P}",  # But the correction does match.
+                # No "mWFs" because "SCRIPT CAPITAL P" is not checked against
+                # the regexes.
+                "mWFf": "w",  # But the correction is checked.
             },
         ),
         (
