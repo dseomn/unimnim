@@ -19,18 +19,13 @@ prefix = "h"
 "ch" = "U+05D7 HEBREW LETTER HET: ח"
 "t" = "U+05D8 HEBREW LETTER TET: ט"  # suboptimal
 "y" = "U+05D9 HEBREW LETTER YOD: י"
-"k]" = "U+05DA HEBREW LETTER FINAL KAF: ך"  # logical-order
 "k" = "U+05DB HEBREW LETTER KAF: כ"
 "l" = "U+05DC HEBREW LETTER LAMED: ל"
-"m]" = "U+05DD HEBREW LETTER FINAL MEM: ם"  # logical-order
 "m" = "U+05DE HEBREW LETTER MEM: מ"
-"n]" = "U+05DF HEBREW LETTER FINAL NUN: ן"  # logical-order
 "n" = "U+05E0 HEBREW LETTER NUN: נ"
 "s" = "U+05E1 HEBREW LETTER SAMEKH: ס"
 "e" = "U+05E2 HEBREW LETTER AYIN: ע"  # from=rfc1345 suboptimal
-"f]" = "U+05E3 HEBREW LETTER FINAL PE: ף"  # logical-order
 "f" = "U+05E4 HEBREW LETTER PE: פ"
-"tz]" = "U+05E5 HEBREW LETTER FINAL TSADI: ץ"  # logical-order
 "tz" = "U+05E6 HEBREW LETTER TSADI: צ"
 "c" = "U+05E7 HEBREW LETTER QOF: ק"
 "r" = "U+05E8 HEBREW LETTER RESH: ר"
@@ -46,3 +41,4 @@ prefix = "h"
 
 [combining.name_regex_replace]
 "$" = [['HEBREW LETTER (.*)', '\g<1> SYMBOL']]  # suboptimal
+"]" = [['(HEBREW LETTER) (.*)', '\g<1> FINAL \g<2>']]  # logical-order
