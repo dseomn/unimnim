@@ -5,10 +5,12 @@
 
 import argparse
 from collections.abc import Sequence
+from importlib import metadata
 from importlib import resources
 import json
 import pathlib
 import sys
+import typing
 from typing import Any
 
 from unimnim import coverage
@@ -66,6 +68,7 @@ def main(
         resources.files().joinpath("templates/m17n.mim.jinja").read_text(),
         map=map_,
         prefix_map=prefix_map,
+        version=metadata.version(typing.cast(str, __spec__.parent)),
     )
     if parsed_args.write_all is not None:
         (parsed_args.write_all / "unimnim.mim").write_text(m17n_mim)
