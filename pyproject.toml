@@ -5,17 +5,18 @@
 [build-system]
 requires = [
   "setuptools",
+  "setuptools-scm",
 ]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "unimnim"
-version = "0"
 requires-python = ">=3.12"
 dependencies = [
   "jinja2",
   "pyicu",
 ]
+dynamic = ["version"]
 
 [project.optional-dependencies]
 test = [
@@ -65,3 +66,7 @@ addopts = """\
 
 [tool.setuptools.packages.find]
 include = ["unimnim", "unimnim.*"]
+
+[tool.setuptools_scm]
+local_scheme = "node-and-timestamp"
+version_scheme = "no-guess-dev"
