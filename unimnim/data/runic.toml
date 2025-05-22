@@ -13,6 +13,8 @@
 # #amount in this file is used for rough ages of runes.
 #
 # "-" is used for SHORT-TWIG and "_" for LONG-BRANCH.
+#
+# "F" is used for FRANKS CASKET runes.
 
 prefix = "R"
 
@@ -101,3 +103,8 @@ prefix = "R"
 "k>>" = "U+16F1 RUNIC LETTER K: ᛱ"  # amount
 "sh" = "U+16F2 RUNIC LETTER SH: ᛲ"
 "oo" = "U+16F3 RUNIC LETTER OO: ᛳ"
+"oF" = "U+16F4 RUNIC LETTER FRANKS CASKET OS: ᛴ"
+"iF" = "U+16F5 RUNIC LETTER FRANKS CASKET IS: ᛵ"
+"eF" = "U+16F6 RUNIC LETTER FRANKS CASKET EH: ᛶ"
+"aF" = "U+16F7 RUNIC LETTER FRANKS CASKET AC: ᛷ"
+"aeF" = "U+16F8 RUNIC LETTER FRANKS CASKET AESC: ᛸ"
