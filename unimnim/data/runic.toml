@@ -21,6 +21,9 @@ prefix = "R"
 "h=" = "U+16BB RUNIC LETTER HAEGL H: ᚻ"  # aka="double-barred"
 "h>" = "U+16BC RUNIC LETTER LONG-BRANCH-HAGALL H: ᚼ"  # amount
 "h<" = "U+16BD RUNIC LETTER SHORT-TWIG-HAGALL H: ᚽ"  # amount
+"n" = "U+16BE RUNIC LETTER NAUDIZ NYD NAUD N: ᚾ"
+"n<" = "U+16BF RUNIC LETTER SHORT-TWIG-NAUD N: ᚿ"  # amount
+"n." = "U+16C0 RUNIC LETTER DOTTED-N: ᛀ"
 "b" = "U+16D2 RUNIC LETTER BERKANAN BEORC BJARKAN B: ᛒ"
 "b<" = "U+16D3 RUNIC LETTER SHORT-TWIG-BJARKAN B: ᛓ"  # amount
 "ea" = "U+16E0 RUNIC LETTER EAR: ᛠ"
