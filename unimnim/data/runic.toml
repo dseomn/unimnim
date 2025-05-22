@@ -10,8 +10,9 @@
 # https://en.wikipedia.org/wiki/Template:Runes seems to list different
 # transliterations under each letter.
 #
-# #amount in this file is used for both LONG-BRANCH vs SHORT-TWIG, and for rough
-# ages of runes.
+# #amount in this file is used for rough ages of runes.
+#
+# "-" is used for SHORT-TWIG and "_" for LONG-BRANCH.
 
 prefix = "R"
 
@@ -35,10 +36,10 @@ prefix = "R"
 "w" = "U+16B9 RUNIC LETTER WUNJO WYNN W: ᚹ"  # suboptimal
 "h" = "U+16BA RUNIC LETTER HAGLAZ H: ᚺ"
 "h=" = "U+16BB RUNIC LETTER HAEGL H: ᚻ"  # aka="double-barred"
-"h>" = "U+16BC RUNIC LETTER LONG-BRANCH-HAGALL H: ᚼ"  # amount
-"h<" = "U+16BD RUNIC LETTER SHORT-TWIG-HAGALL H: ᚽ"  # amount
+"h_" = "U+16BC RUNIC LETTER LONG-BRANCH-HAGALL H: ᚼ"
+"h-" = "U+16BD RUNIC LETTER SHORT-TWIG-HAGALL H: ᚽ"
 "n" = "U+16BE RUNIC LETTER NAUDIZ NYD NAUD N: ᚾ"
-"n<" = "U+16BF RUNIC LETTER SHORT-TWIG-NAUD N: ᚿ"  # amount
+"n-" = "U+16BF RUNIC LETTER SHORT-TWIG-NAUD N: ᚿ"
 "n." = "U+16C0 RUNIC LETTER DOTTED-N: ᛀ"
 "i" = "U+16C1 RUNIC LETTER ISAZ IS ISS I: ᛁ"
 "j<" = "U+16C3 RUNIC LETTER JERAN J: ᛃ"  # amount
@@ -46,20 +47,20 @@ prefix = "R"
 "p" = "U+16C8 RUNIC LETTER PERTHO PEORTH P: ᛈ"
 "z<" = "U+16C9 RUNIC LETTER ALGIZ EOLHX: ᛉ"  # amount
 "s" = "U+16CA RUNIC LETTER SOWILO S: ᛊ"
-"s>" = "U+16CB RUNIC LETTER SIGEL LONG-BRANCH-SOL S: ᛋ"  # amount
-"s<" = "U+16CC RUNIC LETTER SHORT-TWIG-SOL S: ᛌ"  # amount
+"s_" = "U+16CB RUNIC LETTER SIGEL LONG-BRANCH-SOL S: ᛋ"
+"s-" = "U+16CC RUNIC LETTER SHORT-TWIG-SOL S: ᛌ"
 "c>" = "U+16CD RUNIC LETTER C: ᛍ"  # amount
 "z>" = "U+16CE RUNIC LETTER Z: ᛎ"  # amount
 "t" = "U+16CF RUNIC LETTER TIWAZ TIR TYR T: ᛏ"
-"t<" = "U+16D0 RUNIC LETTER SHORT-TWIG-TYR T: ᛐ"  # amount
+"t-" = "U+16D0 RUNIC LETTER SHORT-TWIG-TYR T: ᛐ"
 "d." = "U+16D1 RUNIC LETTER D: ᛑ"  # aka="dotted"
 "b" = "U+16D2 RUNIC LETTER BERKANAN BEORC BJARKAN B: ᛒ"
-"b<" = "U+16D3 RUNIC LETTER SHORT-TWIG-BJARKAN B: ᛓ"  # amount
+"b-" = "U+16D3 RUNIC LETTER SHORT-TWIG-BJARKAN B: ᛓ"
 "p." = "U+16D4 RUNIC LETTER DOTTED-P: ᛔ"
 "P" = "U+16D5 RUNIC LETTER OPEN-P: ᛕ"
 "m" = "U+16D7 RUNIC LETTER MANNAZ MAN M: ᛗ"
-"m>" = "U+16D8 RUNIC LETTER LONG-BRANCH-MADR M: ᛘ"  # amount
-"m<" = "U+16D9 RUNIC LETTER SHORT-TWIG-MADR M: ᛙ"  # amount
+"m_" = "U+16D8 RUNIC LETTER LONG-BRANCH-MADR M: ᛘ"
+"m-" = "U+16D9 RUNIC LETTER SHORT-TWIG-MADR M: ᛙ"
 "l" = "U+16DA RUNIC LETTER LAUKAZ LAGU LOGR L: ᛚ"
 "l." = "U+16DB RUNIC LETTER DOTTED-L: ᛛ"
 "ng<" = "U+16DC RUNIC LETTER INGWAZ: ᛜ"  # amount
@@ -70,8 +71,8 @@ prefix = "R"
 "k" = "U+16E3 RUNIC LETTER CALC: ᛣ"
 "K" = "U+16E4 RUNIC LETTER CEALC: ᛤ"  # suboptimal
 "st" = "U+16E5 RUNIC LETTER STAN: ᛥ"
-"R>" = "U+16E6 RUNIC LETTER LONG-BRANCH-YR: ᛦ"  # amount
-"R<" = "U+16E7 RUNIC LETTER SHORT-TWIG-YR: ᛧ"  # amount
+"R_" = "U+16E6 RUNIC LETTER LONG-BRANCH-YR: ᛦ"
+"R-" = "U+16E7 RUNIC LETTER SHORT-TWIG-YR: ᛧ"
 "R" = "U+16E8 RUNIC LETTER ICELANDIC-YR: ᛨ"
 "Q" = "U+16E9 RUNIC LETTER Q: ᛩ"  # suboptimal
 "x" = "U+16EA RUNIC LETTER X: ᛪ"
