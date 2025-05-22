@@ -41,10 +41,12 @@ prefix = "R"
 "j<" = "U+16C3 RUNIC LETTER JERAN J: ᛃ"  # amount
 "j>" = "U+16C4 RUNIC LETTER GER: ᛄ"  # amount
 "p" = "U+16C8 RUNIC LETTER PERTHO PEORTH P: ᛈ"
+"z<" = "U+16C9 RUNIC LETTER ALGIZ EOLHX: ᛉ"  # amount
 "s" = "U+16CA RUNIC LETTER SOWILO S: ᛊ"
 "s>" = "U+16CB RUNIC LETTER SIGEL LONG-BRANCH-SOL S: ᛋ"  # amount
 "s<" = "U+16CC RUNIC LETTER SHORT-TWIG-SOL S: ᛌ"  # amount
 "c>" = "U+16CD RUNIC LETTER C: ᛍ"  # amount
+"z>" = "U+16CE RUNIC LETTER Z: ᛎ"  # amount
 "t" = "U+16CF RUNIC LETTER TIWAZ TIR TYR T: ᛏ"
 "t<" = "U+16D0 RUNIC LETTER SHORT-TWIG-TYR T: ᛐ"  # amount
 "d." = "U+16D1 RUNIC LETTER D: ᛑ"  # aka="dotted"
