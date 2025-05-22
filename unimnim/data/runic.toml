@@ -27,6 +27,7 @@ prefix = "R"
 "th." = "U+16A7 RUNIC LETTER ETH: ᚧ"  # aka="ᚦ with dot"
 "a<" = "U+16A8 RUNIC LETTER ANSUZ A: ᚨ"  # amount
 "a>" = "U+16AA RUNIC LETTER AC A: ᚪ"  # amount
+"ae" = "U+16AB RUNIC LETTER AESC: ᚫ"
 "r" = "U+16B1 RUNIC LETTER RAIDO RAD REID R: ᚱ"
 "k<" = "U+16B2 RUNIC LETTER KAUNA: ᚲ"  # amount
 "c<" = "U+16B3 RUNIC LETTER CEN: ᚳ"  # amount
