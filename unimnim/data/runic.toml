@@ -9,6 +9,9 @@
 #
 # https://en.wikipedia.org/wiki/Template:Runes seems to list different
 # transliterations under each letter.
+#
+# #amount in this file is used for both LONG-BRANCH vs SHORT-TWIG, and for rough
+# ages of runes.
 
 prefix = "R"
 
@@ -22,9 +25,9 @@ prefix = "R"
 "th" = "U+16A6 RUNIC LETTER THURISAZ THURS THORN: ᚦ"
 "th." = "U+16A7 RUNIC LETTER ETH: ᚧ"  # aka="ᚦ with dot"
 "r" = "U+16B1 RUNIC LETTER RAIDO RAD REID R: ᚱ"
-"k<" = "U+16B2 RUNIC LETTER KAUNA: ᚲ"  # aka="elder futhark k" amount
+"k<" = "U+16B2 RUNIC LETTER KAUNA: ᚲ"  # amount
 "c<" = "U+16B3 RUNIC LETTER CEN: ᚳ"  # amount
-"k>" = "U+16B4 RUNIC LETTER KAUN K: ᚴ"  # aka="younger futhark k" amount
+"k>" = "U+16B4 RUNIC LETTER KAUN K: ᚴ"  # amount
 "g." = "U+16B5 RUNIC LETTER G: ᚵ"  # aka="dotted"
 "ng>" = "U+16B6 RUNIC LETTER ENG: ᚶ"  # amount
 "g" = "U+16B7 RUNIC LETTER GEBO GYFU G: ᚷ"
