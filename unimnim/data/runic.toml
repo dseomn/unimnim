@@ -26,6 +26,7 @@ prefix = "R"
 "c<" = "U+16B3 RUNIC LETTER CEN: ᚳ"  # amount
 "k>" = "U+16B4 RUNIC LETTER KAUN K: ᚴ"  # aka="younger futhark k" amount
 "g." = "U+16B5 RUNIC LETTER G: ᚵ"  # aka="dotted"
+"ng>" = "U+16B6 RUNIC LETTER ENG: ᚶ"  # amount
 "g" = "U+16B7 RUNIC LETTER GEBO GYFU G: ᚷ"
 "g>" = "U+16B8 RUNIC LETTER GAR: ᚸ"  # amount
 "w" = "U+16B9 RUNIC LETTER WUNJO WYNN W: ᚹ"  # suboptimal
@@ -54,6 +55,8 @@ prefix = "R"
 "m<" = "U+16D9 RUNIC LETTER SHORT-TWIG-MADR M: ᛙ"  # amount
 "l" = "U+16DA RUNIC LETTER LAUKAZ LAGU LOGR L: ᛚ"
 "l." = "U+16DB RUNIC LETTER DOTTED-L: ᛛ"
+"ng<" = "U+16DC RUNIC LETTER INGWAZ: ᛜ"  # amount
+"ng" = "U+16DD RUNIC LETTER ING: ᛝ"
 "d" = "U+16DE RUNIC LETTER DAGAZ DAEG D: ᛞ"
 "ea" = "U+16E0 RUNIC LETTER EAR: ᛠ"
 "k" = "U+16E3 RUNIC LETTER CALC: ᛣ"
