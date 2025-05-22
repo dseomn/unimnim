@@ -51,6 +51,7 @@ prefix = "Z"
 "??" = "U+2047 DOUBLE QUESTION MARK: ⁇"
 "?,!" = "U+2048 QUESTION EXCLAMATION MARK: ⁈"
 "!,?" = "U+2049 EXCLAMATION QUESTION MARK: ⁉"
+"&t" = "U+204A TIRONIAN SIGN ET: ⁊"
 "piR" = "U+204B REVERSED PILCROW SIGN: ⁋"  # geometry
 "-~" = "U+2053 SWUNG DASH: ⁓"
 "''''p" = "U+2057 QUADRUPLE PRIME: ⁗"
@@ -62,6 +63,7 @@ prefix = "Z"
 "-m3" = "U+2E3B THREE-EM DASH: ⸻"
 ",,qR" = "U+2E42 DOUBLE LOW-REVERSED-9 QUOTATION MARK: ⹂"  # geometry
 "|---" = "U+2E4B TRIPLE DAGGER: ⹋"
+"&T" = "U+2E52 TIRONIAN SIGN CAPITAL ET: ⹒"
 '"d' = "U+3003 DITTO MARK: 〃"
 
 [combining.append]
