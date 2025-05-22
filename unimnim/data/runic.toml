@@ -25,6 +25,9 @@ prefix = "R"
 "k<" = "U+16B2 RUNIC LETTER KAUNA: ᚲ"  # aka="elder futhark k" amount
 "c<" = "U+16B3 RUNIC LETTER CEN: ᚳ"  # amount
 "k>" = "U+16B4 RUNIC LETTER KAUN K: ᚴ"  # aka="younger futhark k" amount
+"g." = "U+16B5 RUNIC LETTER G: ᚵ"  # aka="dotted"
+"g" = "U+16B7 RUNIC LETTER GEBO GYFU G: ᚷ"
+"g>" = "U+16B8 RUNIC LETTER GAR: ᚸ"  # amount
 "w" = "U+16B9 RUNIC LETTER WUNJO WYNN W: ᚹ"  # suboptimal
 "h" = "U+16BA RUNIC LETTER HAGLAZ H: ᚺ"
 "h=" = "U+16BB RUNIC LETTER HAEGL H: ᚻ"  # aka="double-barred"
