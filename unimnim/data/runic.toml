@@ -36,6 +36,7 @@ prefix = "R"
 "s<" = "U+16CC RUNIC LETTER SHORT-TWIG-SOL S: ᛌ"  # amount
 "t" = "U+16CF RUNIC LETTER TIWAZ TIR TYR T: ᛏ"
 "t<" = "U+16D0 RUNIC LETTER SHORT-TWIG-TYR T: ᛐ"  # amount
+"d." = "U+16D1 RUNIC LETTER D: ᛑ"  # aka="dotted"
 "b" = "U+16D2 RUNIC LETTER BERKANAN BEORC BJARKAN B: ᛒ"
 "b<" = "U+16D3 RUNIC LETTER SHORT-TWIG-BJARKAN B: ᛓ"  # amount
 "p." = "U+16D4 RUNIC LETTER DOTTED-P: ᛔ"
@@ -45,6 +46,7 @@ prefix = "R"
 "m<" = "U+16D9 RUNIC LETTER SHORT-TWIG-MADR M: ᛙ"  # amount
 "l" = "U+16DA RUNIC LETTER LAUKAZ LAGU LOGR L: ᛚ"
 "l." = "U+16DB RUNIC LETTER DOTTED-L: ᛛ"
+"d" = "U+16DE RUNIC LETTER DAGAZ DAEG D: ᛞ"
 "ea" = "U+16E0 RUNIC LETTER EAR: ᛠ"
 "st" = "U+16E5 RUNIC LETTER STAN: ᛥ"
 "R>" = "U+16E6 RUNIC LETTER LONG-BRANCH-YR: ᛦ"  # amount
