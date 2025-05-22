@@ -18,8 +18,10 @@ prefix = "R"
 "u" = "U+16A2 RUNIC LETTER URUZ UR U: ᚢ"
 "y" = "U+16A3 RUNIC LETTER YR: ᚣ"
 "u." = "U+16A4 RUNIC LETTER Y: ᚤ"  # aka="dotted Úr"
+"W" = "U+16A5 RUNIC LETTER W: ᚥ"  # suboptimal
 "th" = "U+16A6 RUNIC LETTER THURISAZ THURS THORN: ᚦ"
 "r" = "U+16B1 RUNIC LETTER RAIDO RAD REID R: ᚱ"
+"w" = "U+16B9 RUNIC LETTER WUNJO WYNN W: ᚹ"  # suboptimal
 "h" = "U+16BA RUNIC LETTER HAGLAZ H: ᚺ"
 "h=" = "U+16BB RUNIC LETTER HAEGL H: ᚻ"  # aka="double-barred"
 "h>" = "U+16BC RUNIC LETTER LONG-BRANCH-HAGALL H: ᚼ"  # amount
