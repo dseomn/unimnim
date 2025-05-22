@@ -66,6 +66,7 @@ prefix = "R"
 "ng" = "U+16DD RUNIC LETTER ING: ᛝ"
 "d" = "U+16DE RUNIC LETTER DAGAZ DAEG D: ᛞ"
 "ea" = "U+16E0 RUNIC LETTER EAR: ᛠ"
+"q" = "U+16E2 RUNIC LETTER CWEORTH: ᛢ"
 "k" = "U+16E3 RUNIC LETTER CALC: ᛣ"
 "K" = "U+16E4 RUNIC LETTER CEALC: ᛤ"  # suboptimal
 "st" = "U+16E5 RUNIC LETTER STAN: ᛥ"
