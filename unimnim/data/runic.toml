@@ -14,6 +14,7 @@ prefix = "R"
 
 [base]
 "f" = "U+16A0 RUNIC LETTER FEHU FEOH FE F: ᚠ"
+"v" = "U+16A1 RUNIC LETTER V: ᚡ"
 "u" = "U+16A2 RUNIC LETTER URUZ UR U: ᚢ"
 "y" = "U+16A3 RUNIC LETTER YR: ᚣ"
 "u." = "U+16A4 RUNIC LETTER Y: ᚤ"  # aka="dotted Úr"
