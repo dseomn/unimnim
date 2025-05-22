@@ -25,6 +25,8 @@ prefix = "R"
 "W" = "U+16A5 RUNIC LETTER W: ᚥ"  # suboptimal
 "th" = "U+16A6 RUNIC LETTER THURISAZ THURS THORN: ᚦ"
 "th." = "U+16A7 RUNIC LETTER ETH: ᚧ"  # aka="ᚦ with dot"
+"a<" = "U+16A8 RUNIC LETTER ANSUZ A: ᚨ"  # amount
+"a>" = "U+16AA RUNIC LETTER AC A: ᚪ"  # amount
 "r" = "U+16B1 RUNIC LETTER RAIDO RAD REID R: ᚱ"
 "k<" = "U+16B2 RUNIC LETTER KAUNA: ᚲ"  # amount
 "c<" = "U+16B3 RUNIC LETTER CEN: ᚳ"  # amount
@@ -44,6 +46,8 @@ prefix = "R"
 "i" = "U+16C1 RUNIC LETTER ISAZ IS ISS I: ᛁ"
 "j<" = "U+16C3 RUNIC LETTER JERAN J: ᛃ"  # amount
 "j>" = "U+16C4 RUNIC LETTER GER: ᛄ"  # amount
+"a_" = "U+16C5 RUNIC LETTER LONG-BRANCH-AR AE: ᛅ"
+"a-" = "U+16C6 RUNIC LETTER SHORT-TWIG-AR A: ᛆ"
 "p" = "U+16C8 RUNIC LETTER PERTHO PEORTH P: ᛈ"
 "z<" = "U+16C9 RUNIC LETTER ALGIZ EOLHX: ᛉ"  # amount
 "s" = "U+16CA RUNIC LETTER SOWILO S: ᛊ"
