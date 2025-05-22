@@ -81,5 +81,6 @@ prefix = "R"
 "17" = "U+16EE RUNIC ARLAUG SYMBOL: ᛮ"  # aka="golden number 17"
 "18" = "U+16EF RUNIC TVIMADUR SYMBOL: ᛯ"  # aka="golden number 18"
 "19" = "U+16F0 RUNIC BELGTHOR SYMBOL: ᛰ"  # aka="golden number 19"
+"k>>" = "U+16F1 RUNIC LETTER K: ᛱ"  # amount
 "sh" = "U+16F2 RUNIC LETTER SH: ᛲ"
 "oo" = "U+16F3 RUNIC LETTER OO: ᛳ"
