@@ -83,10 +83,10 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
 
 @functools.cache
 def _known_sequences_and_prefixes() -> Set[str]:
-    """Returns known sequences and prefixes of it with length > 1."""
+    """Returns known sequences and prefixes of it."""
     result = set()
     for sequence in known_sequences():
-        for prefix_len in range(2, len(sequence) + 1):
+        for prefix_len in range(1, len(sequence) + 1):
             result.add(sequence[:prefix_len])
     return result
 
@@ -132,19 +132,13 @@ def _generate_map_one_group(
             combined_result = unicodedata.normalize(
                 "NFC", result + combining_result
             )
-            if (
-                len(combined_result) != 1
-                and combined_result not in _known_sequences_and_prefixes()
-            ):
+            if combined_result not in _known_sequences_and_prefixes():
                 continue
             combined_mnemonic = mnemonic + combining_mnemonic
             _add(
                 combined_mnemonic,
                 combined_result,
-                is_known=(
-                    len(combined_result) == 1
-                    or combined_result in known_sequences()
-                ),
+                is_known=combined_result in known_sequences(),
             )
 
         if len(result) != 1:
