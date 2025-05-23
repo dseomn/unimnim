@@ -74,6 +74,8 @@ prefix = "l"
 "OE" = "U+0152 LATIN CAPITAL LIGATURE OE: Œ"
 "oe" = "U+0153 LATIN SMALL LIGATURE OE: œ"
 "s>" = "U+017F LATIN SMALL LETTER LONG S: ſ"  # amount
+"CT" = "U+0186 LATIN CAPITAL LETTER OPEN O: Ɔ"  # aka="turned c" geometry
+"DA" = "U+0189 LATIN CAPITAL LETTER AFRICAN D: Ɖ"
 "ER" = "U+018E LATIN CAPITAL LETTER REVERSED E: Ǝ"  #  geometry
 "E<" = "U+018F LATIN CAPITAL LETTER SCHWA: Ə"  # aka="reduced vowel" amount
 "ZH" = "U+01B7 LATIN CAPITAL LETTER EZH: Ʒ"
@@ -88,6 +90,8 @@ prefix = "l"
 "gh" = "U+021D LATIN SMALL LETTER YOGH: ȝ"
 "?>" = "U+0241 LATIN CAPITAL LETTER GLOTTAL STOP: Ɂ"  # amount
 "?<" = "U+0242 LATIN SMALL LETTER GLOTTAL STOP: ɂ"  # amount
+"cT" = "U+0254 LATIN SMALL LETTER OPEN O: ɔ"  # aka="turned c" geometry
+"d?3" = "U+0256 LATIN SMALL LETTER D WITH TAIL: ɖ"  # geometry
 "e<" = "U+0259 LATIN SMALL LETTER SCHWA: ə"  # aka="reduced vowel" amount
 "zh" = "U+0292 LATIN SMALL LETTER EZH: ʒ"
 "?" = "U+0294 LATIN LETTER GLOTTAL STOP: ʔ"
@@ -123,6 +127,7 @@ prefix = "l"
 ",2" = "U+0326 COMBINING COMMA BELOW [combining]: ș"  # geometry
 "," = "U+0327 COMBINING CEDILLA [combining]: ç"
 ";" = "U+0328 COMBINING OGONEK [combining]: ą"  # from=rfc1345,xcompose suboptimal
+"~2" = "U+0330 COMBINING TILDE BELOW [combining]: ṵ"  # geometry
 "-2" = "U+0331 COMBINING MACRON BELOW [combining]: ṉ"  # geometry
 
 [combining.name_regex_replace]
