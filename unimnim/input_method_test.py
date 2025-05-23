@@ -11,45 +11,43 @@ from unimnim import data
 from unimnim import input_method
 
 
-def test_known_sequences() -> None:
-    known_sequences = input_method.known_sequences()
+@pytest.mark.parametrize(
+    "sequence,expected_language",
+    (
+        ("a", "en"),  # From ES_STANDARD.
+        ("A", "en"),  # Needs icu.USET_ADD_CASE_MAPPINGS to get uppper case.
+        ("\N{LATIN SMALL LETTER I WITH DIAERESIS}", "en"),  # From ES_AUXILIARY.
+        ("!", "en"),  # From ES_PUNCTUATION.
+        ("0", "en"),  # From the numbering system.
+        (
+            (
+                "\N{REGIONAL INDICATOR SYMBOL LETTER U}"
+                "\N{REGIONAL INDICATOR SYMBOL LETTER N}"
+            ),
+            "emoji",
+        ),
+        ("\N{DOUBLE EXCLAMATION MARK}\ufe0e", "text-presentation"),
+    ),
+)
+def test_known_sequences_present_with_language(
+    sequence: str, expected_language: str
+) -> None:
+    assert expected_language in input_method.known_sequences()[sequence]
 
-    # From ES_STANDARD.
-    assert "en" in known_sequences["a"]
 
-    # Needs icu.USET_ADD_CASE_MAPPINGS to get uppper case.
-    assert "en" in known_sequences["A"]
-
-    # From ES_AUXILIARY.
-    assert "en" in known_sequences["\N{LATIN SMALL LETTER I WITH DIAERESIS}"]
-
-    # From ES_PUNCTUATION.
-    assert "en" in known_sequences["!"]
-
-    # From the numbering system.
-    assert "en" in known_sequences["0"]
-
-    # From checking NFC of all code points. To find another test case if this
-    # one is added to exemplar data:
+@pytest.mark.parametrize(
+    "sequence",
+    (
+        # NFC of a single code point.
+        "\N{HEBREW LETTER BET}\N{HEBREW POINT DAGESH OR MAPIQ}",
+    ),
+)
+def test_known_sequences_present_without_languages(sequence: str) -> None:
+    # To find other test cases if any of these are added to exemplar data:
     #
     # jq 'to_entries | .[] | select(.value == []) | .key' \
     #   < output/known_sequences.json
-    assert not known_sequences[
-        "\N{HEBREW LETTER BET}\N{HEBREW POINT DAGESH OR MAPIQ}"
-    ]
-
-    assert (
-        "emoji"
-        in known_sequences[
-            "\N{REGIONAL INDICATOR SYMBOL LETTER U}"
-            "\N{REGIONAL INDICATOR SYMBOL LETTER N}"
-        ]
-    )
-
-    assert (
-        "text-presentation"
-        in known_sequences["\N{DOUBLE EXCLAMATION MARK}\ufe0e"]
-    )
+    assert not input_method.known_sequences()[sequence]
 
 
 @pytest.mark.parametrize(
