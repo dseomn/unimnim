@@ -7,6 +7,7 @@
 prefix = "OG"
 
 [base]
+"SP" = "U+1680 OGHAM SPACE MARK"
 "b" = "U+1681 OGHAM LETTER BEITH: ᚁ"
 "l" = "U+1682 OGHAM LETTER LUIS: ᚂ"
 "f" = "U+1683 OGHAM LETTER FEARN: ᚃ"
@@ -32,3 +33,5 @@ prefix = "OG"
 "ui" = "U+1697 OGHAM LETTER UILLEANN: ᚗ"
 "io" = "U+1698 OGHAM LETTER IFIN: ᚘ"
 "ae" = "U+1699 OGHAM LETTER EAMHANCHOLL: ᚙ"
+"[" = "U+169B OGHAM FEATHER MARK: ᚛"  # logical-order
+"]" = "U+169C OGHAM REVERSED FEATHER MARK: ᚜"  # logical-order
