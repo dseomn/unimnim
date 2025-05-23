@@ -28,7 +28,12 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
     # TODO: dseomn - Add sequences from
     # https://www.unicode.org/Public/UNIDATA/NamedSequences.txt and
     # https://www.unicode.org/Public/UNIDATA/NamedSequencesProv.txt
-    sequences = collections.defaultdict(set)
+    sequences = collections.defaultdict[str, set[str]](set)
+
+    def _add(sequence: str, *, language: str | None = None) -> None:
+        languages = sequences[unicodedata.normalize("NFC", sequence)]
+        if language is not None:
+            languages.add(language)
 
     for language in icu.Locale.getISOLanguages():
         locale = icu.Locale(language)
@@ -43,11 +48,11 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
             for sequence in locale_data.getExemplarSet(
                 icu.USET_ADD_CASE_MAPPINGS, exemplar_type
             ):
-                sequences[unicodedata.normalize("NFC", sequence)].add(language)
+                _add(sequence, language=language)
         numbering_system = icu.NumberingSystem.createInstance(locale)
         if not numbering_system.isAlgorithmic():
             for digit in numbering_system.getDescription():
-                sequences[unicodedata.normalize("NFC", digit)].add(language)
+                _add(digit, language=language)
 
     # Some single code points like U+FB31 HEBREW LETTER BET WITH DAGESH are
     # neither NFC normalized, nor are their NFC normalizations in (current as of
@@ -55,16 +60,17 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
     for code_point in range(0x10FFFF + 1):
         code_point_nfc = unicodedata.normalize("NFC", chr(code_point))
         if len(code_point_nfc) > 1:
-            sequences[code_point_nfc]  # create it if it doesn't exist
+            _add(code_point_nfc)
 
     for uproperty in (icu.UProperty.EMOJI, icu.UProperty.RGI_EMOJI):
         for emoji in icu.Char.getBinaryPropertySet(uproperty):
-            sequences[emoji].add("emoji")
+            _add(emoji, language="emoji")
             if len(emoji) == 2 and emoji[1] == _EMOJI_VARIATION_SELECTOR:
                 # TODO: dseomn - Use emoji-variation-sequences.txt for this
                 # instead of guessing based on RGI_EMOJI.
-                sequences[f"{emoji[0]}{_TEXT_VARIATION_SELECTOR}"].add(
-                    "text-presentation"
+                _add(
+                    f"{emoji[0]}{_TEXT_VARIATION_SELECTOR}",
+                    language="text-presentation",
                 )
 
     return {
