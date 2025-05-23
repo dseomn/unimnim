@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Br%C3%ADatharogam
+
+prefix = "OG"
+
+[base]
+"b" = "U+1681 OGHAM LETTER BEITH: ᚁ"
+"l" = "U+1682 OGHAM LETTER LUIS: ᚂ"
+"f" = "U+1683 OGHAM LETTER FEARN: ᚃ"
+"s" = "U+1684 OGHAM LETTER SAIL: ᚄ"
+"n" = "U+1685 OGHAM LETTER NION: ᚅ"
+"h" = "U+1686 OGHAM LETTER UATH: ᚆ"
+"d" = "U+1687 OGHAM LETTER DAIR: ᚇ"
+"t" = "U+1688 OGHAM LETTER TINNE: ᚈ"
+"c" = "U+1689 OGHAM LETTER COLL: ᚉ"
+"q" = "U+168A OGHAM LETTER CEIRT: ᚊ"
+"m" = "U+168B OGHAM LETTER MUIN: ᚋ"
+"g" = "U+168C OGHAM LETTER GORT: ᚌ"
+"gg" = "U+168D OGHAM LETTER NGEADAL: ᚍ"
+"z" = "U+168E OGHAM LETTER STRAIF: ᚎ"
+"r" = "U+168F OGHAM LETTER RUIS: ᚏ"
+"a" = "U+1690 OGHAM LETTER AILM: ᚐ"
+"o" = "U+1691 OGHAM LETTER ONN: ᚑ"
+"u" = "U+1692 OGHAM LETTER UR: ᚒ"
+"e" = "U+1693 OGHAM LETTER EADHADH: ᚓ"
+"i" = "U+1694 OGHAM LETTER IODHADH: ᚔ"
+"ea" = "U+1695 OGHAM LETTER EABHADH: ᚕ"
+"oi" = "U+1696 OGHAM LETTER OR: ᚖ"
+"ui" = "U+1697 OGHAM LETTER UILLEANN: ᚗ"
+"io" = "U+1698 OGHAM LETTER IFIN: ᚘ"
+"ae" = "U+1699 OGHAM LETTER EAMHANCHOLL: ᚙ"
