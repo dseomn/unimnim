@@ -38,7 +38,8 @@ def test_known_sequences_present_with_language(
 @pytest.mark.parametrize(
     "sequence",
     (
-        # NFC of a single code point.
+        "\x00",  # Single code point in no languages.
+        # NFC of a single code point, missing from exemplar data.
         "\N{HEBREW LETTER BET}\N{HEBREW POINT DAGESH OR MAPIQ}",
     ),
 )
@@ -48,6 +49,18 @@ def test_known_sequences_present_without_languages(sequence: str) -> None:
     # jq 'to_entries | .[] | select(.value == []) | .key' \
     #   < output/known_sequences.json
     assert not input_method.known_sequences()[sequence]
+
+
+@pytest.mark.parametrize(
+    "sequence",
+    (
+        "\ue000",  # private use
+        "\ud800",  # surrogate
+        "\N{LATIN SMALL LETTER N PRECEDED BY APOSTROPHE}",  # deprecated
+    ),
+)
+def test_known_sequences_absent(sequence: str) -> None:
+    assert sequence not in input_method.known_sequences()
 
 
 @pytest.mark.parametrize(

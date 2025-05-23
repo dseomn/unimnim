@@ -31,9 +31,20 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
     sequences = collections.defaultdict[str, set[str]](set)
 
     def _add(sequence: str, *, language: str | None = None) -> None:
+        if data.discouraged_sequences(sequence):
+            return
         languages = sequences[unicodedata.normalize("NFC", sequence)]
         if language is not None:
             languages.add(language)
+
+    for code_point_num in range(0x10FFFF + 1):
+        code_point = chr(code_point_num)
+        if unicodedata.category(code_point) not in (
+            "Cn",  # unassigned
+            "Co",  # private use
+            "Cs",  # surrogate
+        ):
+            _add(code_point)
 
     for language in icu.Locale.getISOLanguages():
         locale = icu.Locale(language)
@@ -53,14 +64,6 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
         if not numbering_system.isAlgorithmic():
             for digit in numbering_system.getDescription():
                 _add(digit, language=language)
-
-    # Some single code points like U+FB31 HEBREW LETTER BET WITH DAGESH are
-    # neither NFC normalized, nor are their NFC normalizations in (current as of
-    # 2025-05-06) exemplar data.
-    for code_point in range(0x10FFFF + 1):
-        code_point_nfc = unicodedata.normalize("NFC", chr(code_point))
-        if len(code_point_nfc) > 1:
-            _add(code_point_nfc)
 
     for uproperty in (icu.UProperty.EMOJI, icu.UProperty.RGI_EMOJI):
         for emoji in icu.Char.getBinaryPropertySet(uproperty):
