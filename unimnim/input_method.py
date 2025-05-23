@@ -5,6 +5,7 @@
 
 import collections
 from collections.abc import Mapping, Sequence, Set
+import dataclasses
 import functools
 import pprint
 from typing import Any
@@ -91,16 +92,22 @@ def _known_sequences_and_prefixes() -> Set[str]:
     return result
 
 
-def _generate_map_one_group(
-    group_id: str,
-    group: data.Group,
-) -> Mapping[str, str]:
-    """Returns a map from mnemonic to result for one group."""
-    mapping_all = {}
-    mapping_known = {}
-    combining_to_check = collections.deque[tuple[str, str]]()
+@dataclasses.dataclass(frozen=True, kw_only=True)
+class _Map:
+    """An intermediate map from mnemonic to result.
 
-    def _add(mnemonic: str, result: str, *, is_known: bool = True) -> None:
+    Attributes:
+        group_id: Group ID that the map is from.
+        all_: Complete map, including unknown results.
+        known: Map with only known results.
+    """
+
+    group_id: str
+    all_: dict[str, str] = dataclasses.field(default_factory=dict)
+    known: dict[str, str] = dataclasses.field(default_factory=dict)
+
+    def add(self, mnemonic: str, result: str, *, is_known: bool = True) -> bool:
+        """Adds an entry to the map, and returns whether it's new or not."""
         if discouraged := data.discouraged_sequences(result):
             raise ValueError(
                 f"Mnemonic {mnemonic!r} has result {result!r} with discouraged "
@@ -109,15 +116,30 @@ def _generate_map_one_group(
         # Allow duplicates only if the result is the same. That way if "." is
         # dot above and ".." is dot below, "..." can be generated in either
         # order without counting as a duplicate.
-        if mnemonic not in mapping_all:
-            mapping_all[mnemonic] = result
+        if mnemonic not in self.all_:
+            self.all_[mnemonic] = result
             if is_known and result:
-                mapping_known[mnemonic] = result
-            combining_to_check.append((mnemonic, result))
-        elif mapping_all[mnemonic] != result:
+                self.known[mnemonic] = result
+            return True
+        elif self.all_[mnemonic] != result:
             raise ValueError(
-                f"Group {group_id!r} has duplicate mnemonic {mnemonic!r}"
+                f"Group {self.group_id!r} has duplicate mnemonic {mnemonic!r}"
             )
+        else:
+            return False
+
+
+def _generate_map_one_group(
+    group_id: str,
+    group: data.Group,
+) -> Mapping[str, str]:
+    """Returns a map from mnemonic to result for one group."""
+    map_ = _Map(group_id=group_id)
+    combining_to_check = collections.deque[tuple[str, str]]()
+
+    def _add(mnemonic: str, result: str, *, is_known: bool = True) -> None:
+        if map_.add(mnemonic, result, is_known=is_known):
+            combining_to_check.append((mnemonic, result))
 
     for mnemonic, result in group.base.items():
         _add(group.prefix + mnemonic, result)
@@ -176,7 +198,7 @@ def _generate_map_one_group(
                 combined_mnemonic = mnemonic + combining_mnemonic
                 _add(combined_mnemonic, combined_result)
 
-    return mapping_known
+    return map_.known
 
 
 def generate_map(groups: Mapping[str, data.Group]) -> Mapping[str, str]:
