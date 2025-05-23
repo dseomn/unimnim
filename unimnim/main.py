@@ -25,13 +25,25 @@ def _write_json(path: pathlib.Path, data: Any) -> None:
 def main(
     *,
     args: Sequence[str] = sys.argv[1:],
+    stdout: Any = sys.stdout,
 ) -> None:
     """Main.
 
     Args:
         args: Command line arguments.
+        stdout: sys.stdout or a mock.
     """
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--known-sequences-toml",
+        action="store_true",
+        help=(
+            "Print known sequences as toml lines to stdout. This is intended "
+            "to be used with grep to start a new data file. Note that there "
+            "might be syntax errors and it might need additional manual "
+            "changes."
+        ),
+    )
     parser.add_argument(
         "--write-all",
         type=pathlib.Path,
@@ -43,6 +55,10 @@ def main(
         help="File to write unimnim.mim to.",
     )
     parsed_args = parser.parse_args(args)
+
+    if parsed_args.known_sequences_toml:
+        for sequence in sorted(input_method.known_sequences()):
+            stdout.write(f'"" = "{data.to_explicit_string(sequence)}"\n')
 
     if parsed_args.write_all is not None:
         parsed_args.write_all.mkdir(exist_ok=True)
