@@ -143,6 +143,25 @@ def parse_explicit_string(explicit_string: str, /) -> str:
     return decoded_string
 
 
+def to_explicit_string(string: str, /) -> str:
+    """Returns an explicit string for the given regular string."""
+    code_points_explicit = []
+    for code_point in string:
+        code_point_parts = [f"U+{ord(code_point):04X}"]
+        if name := unicodedata.name(code_point, ""):
+            code_point_parts.append(name)
+        if correction := icu.Char.charName(
+            code_point, icu.UCharNameChoice.CHAR_NAME_ALIAS
+        ):
+            code_point_parts.append(f"({correction})")
+        code_points_explicit.append(" ".join(code_point_parts))
+    encoded = ", ".join(code_points_explicit)
+    if string and string.isprintable() and " " not in string:
+        return f"{encoded}: {string}"
+    else:
+        return encoded
+
+
 def _require_sorted(
     mapping: Mapping[str, Any],
     /,

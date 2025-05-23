@@ -92,6 +92,26 @@ def test_parse_explicit_string(explicit_string: str, expected: str) -> None:
 
 
 @pytest.mark.parametrize(
+    "string,expected",
+    (
+        ("", ""),
+        ("\x00", "U+0000"),  # This could be improved with a control alias.
+        ("h", "U+0068 LATIN SMALL LETTER H: h"),
+        ("hi", "U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I: hi"),
+        (
+            "\u01a2",
+            "U+01A2 LATIN CAPITAL LETTER OI (LATIN CAPITAL LETTER GHA): \u01a2",
+        ),
+        (" ", "U+0020 SPACE"),
+    ),
+)
+def test_to_explicit_string(string: str, expected: str) -> None:
+    actual = data.to_explicit_string(string)
+    assert actual == expected
+    assert data.parse_explicit_string(actual) == string
+
+
+@pytest.mark.parametrize(
     "raw,error_regex",
     (
         (dict(not_valid="foo"), r"Unexpected keys"),
