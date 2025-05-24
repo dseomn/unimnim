@@ -204,6 +204,24 @@ def test_map_duplicate_mnemonic_same_result(
         ),
         (
             {
+                "latin": data.Group(
+                    prefix="l",
+                    maps=dict(
+                        one={"a": "a"},
+                        two={"a": "b"},
+                    ),
+                    expressions=dict(
+                        main=[
+                            [["map", "one"]],
+                            [["map", "two"]],
+                        ],
+                    ),
+                ),
+            },
+            "Group 'latin' has duplicate",
+        ),
+        (
+            {
                 "latin1": data.Group(
                     prefix="l",
                     maps=dict(main={"a": "a"}),
