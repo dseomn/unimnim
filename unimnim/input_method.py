@@ -130,6 +130,30 @@ class _Map:
                 self.known[mnemonic] = result
             return False
 
+    def add_all(self, other: "_Map", /) -> None:
+        """Adds all entries from the other map."""
+        for mnemonic, result in other.all_.items():
+            self.add(mnemonic, result, is_known=mnemonic in other.known)
+
+
+def _cartesian_product(a: _Map, b: _Map, /) -> _Map:
+    """Returns the cartesian product of two maps."""
+    result = _Map(group_id=a.group_id)
+    for a_mnemonic, a_result in a.all_.items():
+        a_known = a_mnemonic in a.known or not a_result
+        for b_mnemonic, b_result in b.all_.items():
+            b_known = b_mnemonic in b.known or not b_result
+            combined_result = unicodedata.normalize("NFC", a_result + b_result)
+            result.add(
+                a_mnemonic + b_mnemonic,
+                combined_result,
+                is_known=(
+                    (a_known and b_known)
+                    or combined_result in known_sequences()
+                ),
+            )
+    return result
+
 
 def _apply_combining(map_: _Map, combining: data.Combining) -> None:
     """Applies combining config to a map."""
@@ -194,23 +218,107 @@ def _apply_combining(map_: _Map, combining: data.Combining) -> None:
                 _add(combined_mnemonic, combined_result)
 
 
+@dataclasses.dataclass(frozen=True)
+class _ReferenceTrackingDict[T]:
+    """Dict that keeps track of which items are references."""
+
+    data: dict[str, T]
+    _: dataclasses.KW_ONLY
+    referenced_keys: set[str] = dataclasses.field(default_factory=set)
+    error_context: str
+    type_name: str
+
+    def get(self, key: str) -> T:
+        """Returns the value for the given key."""
+        try:
+            value = self.data[key]
+        except KeyError:
+            raise ValueError(
+                f"{self.error_context} does not have {self.type_name} {key!r}"
+            ) from None
+        else:
+            self.referenced_keys.add(key)
+            return value
+
+    def require_all_referenced(self) -> None:
+        if unreferenced := self.data.keys() - self.referenced_keys:
+            raise ValueError(
+                f"{self.error_context} defines but does not use "
+                f"{self.type_name} {list(unreferenced)}"
+            )
+
+
 def _generate_map_one_group(
     group_id: str,
     group: data.Group,
 ) -> Mapping[str, str]:
     """Returns a map from mnemonic to result for one group."""
-    map_ = _Map(group_id=group_id)
-    if group.maps.keys() != {"main"}:
-        raise NotImplementedError("Currently only maps.main is supported.")
-    for mnemonic, result in group.maps["main"].items():
-        map_.add(mnemonic, result)
-    if group.combining.keys() - {"main"}:
-        raise NotImplementedError("Currently only combining.main is supported.")
+    # TODO: dseomn - Get expressions from the data files.
     if "main" in group.combining:
-        _apply_combining(map_, group.combining["main"])
+        default_expressions = dict(
+            main=[[["map", "main"], ["combining", "main"]]],
+        )
+    else:
+        default_expressions = dict(main=[[["map", "main"]]])
+
+    maps = _ReferenceTrackingDict[_Map](
+        {},
+        error_context=f"Group {group_id!r}",
+        type_name="map",
+    )
+    for map_name, map_data in group.maps.items():
+        maps.data[map_name] = _Map(group_id=group_id)
+        for mnemonic, result in map_data.items():
+            maps.data[map_name].add(mnemonic, result)
+
+    combining = _ReferenceTrackingDict[data.Combining](
+        dict(group.combining),
+        error_context=f"Group {group_id!r}",
+        type_name="combining",
+    )
+
+    expressions = _ReferenceTrackingDict[_Map](
+        {},
+        error_context=f"Group {group_id!r}",
+        type_name="expression",
+    )
+    for expression_name, expression in default_expressions.items():
+        expression_map = _Map(group_id=group_id)
+        for union_operand_expr in expression:
+            union_operand_map = _Map(group_id=group_id)
+            # Add an empty entry so that the cartesian product with another map
+            # returns that other map.
+            union_operand_map.add("", "")
+            for operation in union_operand_expr:
+                match operation:
+                    case ["map", str() as map_name]:
+                        union_operand_map = _cartesian_product(
+                            union_operand_map, maps.get(map_name)
+                        )
+                    case ["combining", str() as combining_name]:
+                        # TODO: dseomn - Test if it doesn't exist.
+                        _apply_combining(
+                            union_operand_map, combining.get(combining_name)
+                        )
+                    case _:
+                        # TODO: dseomn - Test this.
+                        raise ValueError(
+                            f"Group {group_id!r} has invalid expression: "
+                            f"{operation!r}"
+                        )
+            expression_map.add_all(union_operand_map)
+        expressions.data[expression_name] = expression_map
+
+    # TODO: dseomn - Test if this doesn't exist.
+    main_map = expressions.get("main")
+
+    maps.require_all_referenced()
+    combining.require_all_referenced()
+    expressions.require_all_referenced()  # TODO: dseomn - Test this.
+
     return {
         group.prefix + mnemonic: result
-        for mnemonic, result in map_.known.items()
+        for mnemonic, result in main_map.known.items()
     }
 
 

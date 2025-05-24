@@ -87,6 +87,32 @@ def test_map_duplicate_mnemonic_same_result(
     "groups,error_regex",
     (
         (
+            {"latin": data.Group(prefix="l", maps=dict(other={"a": "a"}))},
+            r"Group 'latin' does not have map 'main'",
+        ),
+        (
+            {
+                "latin": data.Group(
+                    prefix="l", maps=dict(main={}, other={"a": "a"})
+                ),
+            },
+            r"Group 'latin' defines but does not use map",
+        ),
+        (
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    maps=dict(main={"a": "a"}),
+                    combining=dict(
+                        other=data.Combining(
+                            append={"'": "\N{COMBINING ACUTE ACCENT}"},
+                        ),
+                    ),
+                ),
+            },
+            r"Group 'latin' defines but does not use combining",
+        ),
+        (
             {
                 "latin": data.Group(
                     prefix="l",
@@ -142,26 +168,6 @@ def test_generate_map_error(
 ) -> None:
     with pytest.raises(ValueError, match=error_regex):
         input_method.generate_map(groups)
-
-
-@pytest.mark.parametrize(
-    "group",
-    (
-        data.Group(prefix="l", maps=dict(other={"a": "a"})),
-        data.Group(
-            prefix="l",
-            maps=dict(main={"a": "a"}),
-            combining=dict(
-                other=data.Combining(
-                    append={"'": "\N{COMBINING ACUTE ACCENT}"},
-                ),
-            ),
-        ),
-    ),
-)
-def test_generate_map_not_implemented(group: data.Group) -> None:
-    with pytest.raises(NotImplementedError):
-        input_method.generate_map({"some-group": group})
 
 
 @pytest.mark.parametrize(
