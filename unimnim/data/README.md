@@ -91,7 +91,7 @@ prefix = "l"
 [maps.main]
 "A" = "U+0041 LATIN CAPITAL LETTER A: A"
 
-# Combinining mnemonics as a map from partial mnemonic (regular string) to a
+# Combining mnemonics as a map from partial mnemonic (regular string) to a
 # combining code point (explicit string). The partial mnemonic is appended to an
 # existing mnemonic and the code point is appended to that existing mnemonic's
 # result, then normalized. Must be sorted by result, then mnemonic. Currently
