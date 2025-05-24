@@ -64,6 +64,26 @@ def test_known_sequences_absent(sequence: str) -> None:
 
 
 @pytest.mark.parametrize(
+    "known_1,known_2,expected_known",
+    (
+        (False, False, {}),
+        (False, True, {"a": "b"}),
+        (True, False, {"a": "b"}),
+        (True, True, {"a": "b"}),
+    ),
+)
+def test_map_duplicate_mnemonic_same_result(
+    known_1: bool,
+    known_2: bool,
+    expected_known: Mapping[str, str],
+) -> None:
+    map_ = input_method._Map(group_id="kumquat")
+    map_.add("a", "b", is_known=known_1)
+    map_.add("a", "b", is_known=known_2)
+    assert map_.known == expected_known
+
+
+@pytest.mark.parametrize(
     "groups,error_regex",
     (
         (

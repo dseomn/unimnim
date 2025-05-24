@@ -126,6 +126,8 @@ class _Map:
                 f"Group {self.group_id!r} has duplicate mnemonic {mnemonic!r}"
             )
         else:
+            if is_known and result:
+                self.known[mnemonic] = result
             return False
 
 
