@@ -83,7 +83,7 @@ def test_known_sequences_absent(sequence: str) -> None:
                     ),
                 ),
             },
-            r"Mnemonic \"ln'\" has result .* with discouraged sequences",
+            r"Mnemonic \"n'\" has result .* with discouraged sequences",
         ),
         (
             {

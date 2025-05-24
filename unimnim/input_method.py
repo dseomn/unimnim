@@ -199,9 +199,12 @@ def _generate_map_one_group(
     """Returns a map from mnemonic to result for one group."""
     map_ = _Map(group_id=group_id)
     for mnemonic, result in group.base.items():
-        map_.add(group.prefix + mnemonic, result)
+        map_.add(mnemonic, result)
     _apply_combining(map_, group.combining)
-    return map_.known
+    return {
+        group.prefix + mnemonic: result
+        for mnemonic, result in map_.known.items()
+    }
 
 
 def generate_map(groups: Mapping[str, data.Group]) -> Mapping[str, str]:
