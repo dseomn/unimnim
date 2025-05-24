@@ -157,3 +157,6 @@ prefix = "ZM"
   ['.*', 'N-ARY \g<0>'],
   ['.*', 'N-ARY \g<0> OPERATOR'],
 ]
+
+[expressions]
+main = [[["map", "main"], ["combining", "main"]]]

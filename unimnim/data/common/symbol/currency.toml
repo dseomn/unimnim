@@ -21,3 +21,6 @@ prefix = "Z$"
 "R" = "U+20B9 INDIAN RUPEE SIGN: ₹"
 "RU" = "U+20BD RUBLE SIGN: ₽"
 "BTC" = "U+20BF BITCOIN SIGN: ₿"
+
+[expressions]
+main = [[["map", "main"]]]

@@ -87,13 +87,21 @@ def test_map_duplicate_mnemonic_same_result(
     "groups,error_regex",
     (
         (
-            {"latin": data.Group(prefix="l", maps=dict(other={"a": "a"}))},
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    maps={},
+                    expressions=dict(main=[[["map", "main"]]]),
+                ),
+            },
             r"Group 'latin' does not have map 'main'",
         ),
         (
             {
                 "latin": data.Group(
-                    prefix="l", maps=dict(main={}, other={"a": "a"})
+                    prefix="l",
+                    maps=dict(main={}),
+                    expressions=dict(main=[[]]),
                 ),
             },
             r"Group 'latin' defines but does not use map",
@@ -102,15 +110,56 @@ def test_map_duplicate_mnemonic_same_result(
             {
                 "latin": data.Group(
                     prefix="l",
-                    maps=dict(main={"a": "a"}),
-                    combining=dict(
-                        other=data.Combining(
-                            append={"'": "\N{COMBINING ACUTE ACCENT}"},
-                        ),
-                    ),
+                    maps={},
+                    combining={},
+                    expressions=dict(main=[[["combining", "main"]]]),
+                ),
+            },
+            r"Group 'latin' does not have combining 'main'",
+        ),
+        (
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    maps={},
+                    combining=dict(main=data.Combining()),
+                    expressions=dict(main=[[]]),
                 ),
             },
             r"Group 'latin' defines but does not use combining",
+        ),
+        (
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    maps={},
+                    expressions={},
+                ),
+            },
+            r"Group 'latin' does not have expression 'main'",
+        ),
+        (
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    maps={},
+                    expressions=dict(
+                        main=[[]],
+                        other=[[]],
+                    ),
+                ),
+            },
+            r"Group 'latin' defines but does not use expression",
+        ),
+        (
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    maps={},
+                    expressions=dict(main=[[["not valid at all"]]]),
+                ),
+            },
+            r"Group 'latin' has invalid expression",
         ),
         (
             {
@@ -129,6 +178,9 @@ def test_map_duplicate_mnemonic_same_result(
                             },
                         ),
                     ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
+                    ),
                 ),
             },
             r"Mnemonic \"n'\" has result .* with discouraged sequences",
@@ -143,6 +195,9 @@ def test_map_duplicate_mnemonic_same_result(
                             append={"'": "\N{COMBINING ACUTE ACCENT}"},
                         ),
                     ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
+                    ),
                 ),
             },
             "Group 'latin' has duplicate",
@@ -152,10 +207,12 @@ def test_map_duplicate_mnemonic_same_result(
                 "latin1": data.Group(
                     prefix="l",
                     maps=dict(main={"a": "a"}),
+                    expressions=dict(main=[[["map", "main"]]]),
                 ),
                 "latin2": data.Group(
                     prefix="l",
                     maps=dict(main={"a": "a"}),
+                    expressions=dict(main=[[["map", "main"]]]),
                 ),
             },
             "groups have the same mnemonics",
@@ -187,6 +244,9 @@ def test_generate_map_error(
                             },
                         ),
                     ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
+                    ),
                 ),
             },
             {
@@ -207,6 +267,9 @@ def test_generate_map_error(
                         main=data.Combining(
                             append={",": "\N{COMBINING CEDILLA}"},
                         ),
+                    ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
                     ),
                 ),
             },
@@ -239,6 +302,9 @@ def test_generate_map_error(
                             },
                         ),
                     ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
+                    ),
                 ),
             },
             {
@@ -261,6 +327,7 @@ def test_generate_map_error(
                             ),
                         },
                     ),
+                    expressions=dict(main=[[["map", "main"]]]),
                 ),
             },
             {
@@ -288,6 +355,9 @@ def test_generate_map_error(
                             },
                         ),
                     ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
+                    ),
                 ),
             },
             {"ZNULL": "\x00"},
@@ -308,6 +378,9 @@ def test_generate_map_error(
                                 ),
                             },
                         ),
+                    ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
                     ),
                 ),
             },
@@ -345,6 +418,9 @@ def test_generate_map_error(
                                 ),
                             },
                         ),
+                    ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
                     ),
                 ),
             },
@@ -404,6 +480,9 @@ def test_generate_map_error(
                             },
                         ),
                     ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
+                    ),
                 ),
             },
             {
@@ -438,6 +517,9 @@ def test_generate_map_error(
                             },
                         ),
                     ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
+                    ),
                 ),
             },
             {"lo": "o"},
@@ -460,6 +542,9 @@ def test_generate_map_error(
                             },
                         ),
                     ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
+                    ),
                 ),
             },
             {"lo": "o"},
@@ -479,6 +564,9 @@ def test_generate_map_error(
                         main=data.Combining(
                             append={"'": "\N{COMBINING ACUTE ACCENT}"},
                         ),
+                    ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
                     ),
                 ),
             },
@@ -504,6 +592,9 @@ def test_generate_map_error(
                             },
                         ),
                     ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
+                    ),
                 ),
             },
             {
@@ -527,6 +618,9 @@ def test_generate_map_error(
                             append={"~": "\N{COMBINING GREEK PERISPOMENI}"},
                         ),
                     ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
+                    ),
                 ),
                 "latin": data.Group(
                     prefix="l",
@@ -535,6 +629,9 @@ def test_generate_map_error(
                         main=data.Combining(
                             append={"~": "\N{COMBINING TILDE}"},
                         ),
+                    ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
                     ),
                 ),
             },
@@ -552,6 +649,7 @@ def test_generate_map_error(
                 "latin1": data.Group(
                     prefix="l",
                     maps=dict(main={"a": "a"}),
+                    expressions=dict(main=[[["map", "main"]]]),
                 ),
                 "latin2": data.Group(
                     prefix="la",
@@ -560,6 +658,9 @@ def test_generate_map_error(
                         main=data.Combining(
                             append={"~": "\N{COMBINING TILDE}"},
                         ),
+                    ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
                     ),
                 ),
             },
@@ -580,6 +681,9 @@ def test_generate_map_error(
                             append={"~": "\N{COMBINING TILDE}"},
                         ),
                     ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
+                    ),
                 ),
             },
             {"l_~": "\N{COMBINING TILDE}"},
@@ -595,6 +699,9 @@ def test_generate_map_error(
                         main=data.Combining(
                             append={"~": "\N{COMBINING TILDE}"},
                         ),
+                    ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
                     ),
                 ),
             },
@@ -614,6 +721,9 @@ def test_generate_map_error(
                             },
                         ),
                     ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
+                    ),
                 ),
             },
             {
@@ -627,6 +737,50 @@ def test_generate_map_error(
                     "\N{REGIONAL INDICATOR SYMBOL LETTER U}"
                     "\N{REGIONAL INDICATOR SYMBOL LETTER N}"
                 ),
+            },
+        ),
+        (
+            # Cartesian products work and can produce unkown sequences.
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    maps=dict(
+                        consonants={
+                            "b": "b",
+                            "c": "c",
+                        },
+                        vowels={
+                            "a": "a",
+                            "e": "e",
+                        },
+                        final_consonants={
+                            "d": "d",
+                        },
+                    ),
+                    expressions=dict(
+                        main=[
+                            [
+                                ["map", "consonants"],
+                                ["map", "vowels"],
+                            ],
+                            [
+                                ["map", "consonants"],
+                                ["map", "vowels"],
+                                ["map", "final_consonants"],
+                            ],
+                        ],
+                    ),
+                ),
+            },
+            {
+                "lba": "ba",
+                "lbe": "be",
+                "lca": "ca",
+                "lce": "ce",
+                "lbad": "bad",
+                "lbed": "bed",
+                "lcad": "cad",
+                "lced": "ced",
             },
         ),
     ),

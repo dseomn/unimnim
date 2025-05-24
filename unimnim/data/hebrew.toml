@@ -42,3 +42,6 @@ prefix = "h"
 [combining.main.name_regex_replace]
 "$" = [['HEBREW LETTER (.*)', '\g<1> SYMBOL']]  # suboptimal
 "]" = [['(HEBREW LETTER) (.*)', '\g<1> FINAL \g<2>']]  # logical-order
+
+[expressions]
+main = [[["map", "main"], ["combining", "main"]]]

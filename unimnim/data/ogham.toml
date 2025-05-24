@@ -36,3 +36,6 @@ prefix = "OG"
 "p" = "U+169A OGHAM LETTER PEITH: ᚚ"
 "[" = "U+169B OGHAM FEATHER MARK: ᚛"  # logical-order
 "]" = "U+169C OGHAM REVERSED FEATHER MARK: ᚜"  # logical-order
+
+[expressions]
+main = [[["map", "main"]]]

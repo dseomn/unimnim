@@ -36,3 +36,6 @@ prefix = "ZRI"
 "X" = "U+1F1FD REGIONAL INDICATOR SYMBOL LETTER X"
 "Y" = "U+1F1FE REGIONAL INDICATOR SYMBOL LETTER Y"
 "Z" = "U+1F1FF REGIONAL INDICATOR SYMBOL LETTER Z"
+
+[expressions]
+main = [[["map", "main"], ["combining", "main"]]]

@@ -264,3 +264,6 @@ prefix = "Z"
 "VS254" = "U+E01ED VARIATION SELECTOR-254"  # from=aliases
 "VS255" = "U+E01EE VARIATION SELECTOR-255"  # from=aliases
 "VS256" = "U+E01EF VARIATION SELECTOR-256"  # from=aliases
+
+[expressions]
+main = [[["map", "main"]]]

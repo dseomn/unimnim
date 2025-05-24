@@ -47,3 +47,6 @@ prefix = "ZTS"
 "y" = "U+E0079 TAG LATIN SMALL LETTER Y"
 "z" = "U+E007A TAG LATIN SMALL LETTER Z"
 "." = "U+E007F CANCEL TAG"
+
+[expressions]
+main = [[["map", "main"], ["combining", "main"]]]

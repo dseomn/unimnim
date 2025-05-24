@@ -126,3 +126,6 @@ prefix = "c"
 ]
 "3" = [['.*', '\g<0> WITH DESCENDER']]  # geometry
 "?5" = [['.*', '\g<0> WITH MIDDLE HOOK']]  # geometry
+
+[expressions]
+main = [[["map", "main"], ["combining", "main"]]]

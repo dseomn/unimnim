@@ -87,15 +87,15 @@ Data files are in [TOML](https://toml.io/) format:
 prefix = "l"
 
 # Maps from mnemonic (regular string) to result (explicit string). Must be
-# sorted by result, then mnemonic. Currently only "main" is supported.
+# sorted by result, then mnemonic. This defines a map named "main":
 [maps.main]
 "A" = "U+0041 LATIN CAPITAL LETTER A: A"
 
 # Combining mnemonics as a map from partial mnemonic (regular string) to a
 # combining code point (explicit string). The partial mnemonic is appended to an
 # existing mnemonic and the code point is appended to that existing mnemonic's
-# result, then normalized. Must be sorted by result, then mnemonic. Currently
-# only "main" is supported.
+# result, then normalized. Must be sorted by result, then mnemonic. This defines
+# a combining config named "main":
 [combining.main.append]
 "`" = "U+0300 COMBINING GRAVE ACCENT [combining]: à"
 
@@ -108,9 +108,19 @@ prefix = "l"
 # syntaxes. See
 # https://www.unicode.org/versions/Unicode16.0.0/core-spec/chapter-2/#G27986 for
 # why some mnemonics use this instead of `append`. Must be sorted by mnemonic.
-# Currently only "main" is supported.
+# This adds to the combining config named "main":
 [combining.main.name_regex_replace]
 "/" = [['.*', '\g<0> WITH STROKE']]
+
+# Expressions for how the above definitions are combined. The elements in the
+# outer array are unioned together. ["map", name] results in the cartesian
+# product of the given map with whatever comes before, or just the given map if
+# there's nothing before it. ["combining", name] applies the given combining
+# config. Currently only "main" is supported.
+[expressions]
+main = [
+  [["map", "main"], ["combining", "main"]],
+]
 ```
 
 ## Conventions

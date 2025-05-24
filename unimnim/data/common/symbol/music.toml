@@ -56,3 +56,6 @@ prefix = "Zm"
 [combining.main.append]
 ">" = "U+1D17B MUSICAL SYMBOL COMBINING ACCENT [combining]: 𝅘𝅥𝅻"
 "." = "U+1D17C MUSICAL SYMBOL COMBINING STACCATO [combining]: 𝅘𝅥𝅼"
+
+[expressions]
+main = [[["map", "main"], ["combining", "main"]]]

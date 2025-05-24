@@ -72,3 +72,6 @@ prefix = "Z"
 
 [combining.main.name_regex_replace]
 "l" = [['.*', 'MODIFIER LETTER \g<0>']]
+
+[expressions]
+main = [[["map", "main"], ["combining", "main"]]]

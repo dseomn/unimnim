@@ -85,3 +85,6 @@ prefix = "a"
 
 [combining.main.name_regex_replace]
 "//" = [['ARABIC LETTER (.*)', 'ARABIC MATHEMATICAL DOUBLE-STRUCK \g<1>']]
+
+[expressions]
+main = [[["map", "main"], ["combining", "main"]]]

@@ -73,3 +73,6 @@ prefix = "g"
 "2" = [  # geometry
   ['GREEK (CAPITAL|SMALL) LETTER (.*)', 'GREEK SUBSCRIPT \g<1> LETTER \g<2>'],
 ]
+
+[expressions]
+main = [[["map", "main"], ["combining", "main"]]]

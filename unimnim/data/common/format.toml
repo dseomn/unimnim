@@ -23,3 +23,6 @@ prefix = "Z"
 "PDI" = "U+2069 POP DIRECTIONAL ISOLATE"  # from=aliases
 "BOM" = "U+FEFF ZERO WIDTH NO-BREAK SPACE (BYTE ORDER MARK)"  # from=aliases
 "ZWNBSP" = "U+FEFF ZERO WIDTH NO-BREAK SPACE (BYTE ORDER MARK)"  # from=aliases
+
+[expressions]
+main = [[["map", "main"]]]

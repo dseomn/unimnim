@@ -253,14 +253,6 @@ def _generate_map_one_group(
     group: data.Group,
 ) -> Mapping[str, str]:
     """Returns a map from mnemonic to result for one group."""
-    # TODO: dseomn - Get expressions from the data files.
-    if "main" in group.combining:
-        default_expressions = dict(
-            main=[[["map", "main"], ["combining", "main"]]],
-        )
-    else:
-        default_expressions = dict(main=[[["map", "main"]]])
-
     maps = _ReferenceTrackingDict[_Map](
         {},
         error_context=f"Group {group_id!r}",
@@ -282,7 +274,7 @@ def _generate_map_one_group(
         error_context=f"Group {group_id!r}",
         type_name="expression",
     )
-    for expression_name, expression in default_expressions.items():
+    for expression_name, expression in group.expressions.items():
         expression_map = _Map(group_id=group_id)
         for union_operand_expr in expression:
             union_operand_map = _Map(group_id=group_id)
@@ -296,12 +288,10 @@ def _generate_map_one_group(
                             union_operand_map, maps.get(map_name)
                         )
                     case ["combining", str() as combining_name]:
-                        # TODO: dseomn - Test if it doesn't exist.
                         _apply_combining(
                             union_operand_map, combining.get(combining_name)
                         )
                     case _:
-                        # TODO: dseomn - Test this.
                         raise ValueError(
                             f"Group {group_id!r} has invalid expression: "
                             f"{operation!r}"
@@ -309,12 +299,11 @@ def _generate_map_one_group(
             expression_map.add_all(union_operand_map)
         expressions.data[expression_name] = expression_map
 
-    # TODO: dseomn - Test if this doesn't exist.
     main_map = expressions.get("main")
 
     maps.require_all_referenced()
     combining.require_all_referenced()
-    expressions.require_all_referenced()  # TODO: dseomn - Test this.
+    expressions.require_all_referenced()
 
     return {
         group.prefix + mnemonic: result

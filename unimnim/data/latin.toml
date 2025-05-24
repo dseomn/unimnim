@@ -148,3 +148,6 @@ prefix = "l"
   ['.*', '\g<0> BAR'],
   ['.*', '\g<0> WITH BAR'],
 ]
+
+[expressions]
+main = [[["map", "main"], ["combining", "main"]]]

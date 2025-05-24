@@ -22,3 +22,6 @@ prefix = "Z"
 [combining.main.append]
 "VST" = "U+FE0E VARIATION SELECTOR-15 [combining]: ©︎"  # aka="text variation selector"
 "VSE" = "U+FE0F VARIATION SELECTOR-16 [combining]: ©️"  # aka="emoji variation selector"
+
+[expressions]
+main = [[["map", "main"], ["combining", "main"]]]

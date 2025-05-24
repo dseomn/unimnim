@@ -108,3 +108,6 @@ prefix = "R"
 "eF" = "U+16F6 RUNIC LETTER FRANKS CASKET EH: ᛶ"
 "aF" = "U+16F7 RUNIC LETTER FRANKS CASKET AC: ᛷ"
 "aeF" = "U+16F8 RUNIC LETTER FRANKS CASKET AESC: ᛸ"
+
+[expressions]
+main = [[["map", "main"]]]

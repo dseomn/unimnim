@@ -250,11 +250,13 @@ class Group:
         prefix: Prefix for all of the group's mnemonics.
         maps: Maps from mnemonic (not including prefix) to a result.
         combining: Sets of rules for combining partial mnemonics with a map.
+        expressions: How the above are combined.
     """
 
     prefix: str
     maps: Mapping[str, Mapping[str, str]]
     combining: Mapping[str, Combining] = dataclasses.field(default_factory=dict)
+    expressions: Mapping[str, Any]
 
     def __post_init__(self) -> None:
         for map_name, map_ in self.maps.items():
@@ -263,7 +265,12 @@ class Group:
     @classmethod
     def parse(cls, raw: Any, /) -> Self:
         """Returns the data parsed from the format used in data files."""
-        if unexpected_keys := raw.keys() - {"prefix", "maps", "combining"}:
+        if unexpected_keys := raw.keys() - {
+            "prefix",
+            "maps",
+            "combining",
+            "expressions",
+        }:
             raise ValueError(f"Unexpected keys: {list(unexpected_keys)}")
         maps = {}
         for map_name, map_ in raw["maps"].items():
@@ -277,6 +284,7 @@ class Group:
                 name: Combining.parse(combining_data)
                 for name, combining_data in raw.get("combining", {}).items()
             },
+            expressions=raw["expressions"],
         )
 
 

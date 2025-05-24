@@ -27,3 +27,6 @@ prefix = "Z"
 "MMSP" = "U+205F MEDIUM MATHEMATICAL SPACE"  # from=aliases
 "SPMM" = "U+205F MEDIUM MATHEMATICAL SPACE"
 "SPI" = "U+3000 IDEOGRAPHIC SPACE"
+
+[expressions]
+main = [[["map", "main"]]]

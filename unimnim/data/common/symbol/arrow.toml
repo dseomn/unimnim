@@ -55,3 +55,6 @@ prefix = "ZA"
 "z" = [['(.*) ARROW', '\g<1> ZIGZAG ARROW']]
 "~" = [['(.*) ARROW', '\g<1> WAVE ARROW']]
 "~~" = [['(.*) ARROW', '\g<1> SQUIGGLE ARROW']]
+
+[expressions]
+main = [[["map", "main"], ["combining", "main"]]]

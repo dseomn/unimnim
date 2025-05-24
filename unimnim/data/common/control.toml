@@ -67,3 +67,6 @@ prefix = "Z"
 "OSC" = "U+009D (OPERATING SYSTEM COMMAND)"  # from=aliases
 "PM" = "U+009E (PRIVACY MESSAGE)"  # from=aliases
 "APC" = "U+009F (APPLICATION PROGRAM COMMAND)"  # from=aliases
+
+[expressions]
+main = [[["map", "main"]]]

@@ -35,3 +35,6 @@ prefix = "GO"
 "hw" = "U+10348 GOTHIC LETTER HWAIR: 𐍈"
 "o" = "U+10349 GOTHIC LETTER OTHAL: 𐍉"
 "900" = "U+1034A GOTHIC LETTER NINE HUNDRED: 𐍊"
+
+[expressions]
+main = [[["map", "main"]]]
