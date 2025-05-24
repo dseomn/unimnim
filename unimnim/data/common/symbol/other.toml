@@ -17,6 +17,7 @@ prefix = "Z"
 "est" = "U+212E ESTIMATED SYMBOL: ℮"
 "O/" = "U+2300 DIAMETER SIGN: ⌀"
 "POI" = "U+2318 PLACE OF INTEREST SIGN: ⌘"
+"O." = "U+25CC DOTTED CIRCLE: ◌"
 
 [combining.main.append]
 "VST" = "U+FE0E VARIATION SELECTOR-15 [combining]: ©︎"  # aka="text variation selector"
