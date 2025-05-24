@@ -4,7 +4,7 @@
 
 prefix = "Z"
 
-[base]
+[maps.main]
 "NUL" = "U+0000 (NULL)"  # from=aliases
 "SOH" = "U+0001 (START OF HEADING)"  # from=aliases
 "STX" = "U+0002 (START OF TEXT)"  # from=aliases

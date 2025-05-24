@@ -8,7 +8,7 @@
 
 prefix = "Zm"
 
-[base]
+[maps.main]
 "_" = ""  # empty-for-combining
 "b" = "U+266D MUSIC FLAT SIGN: ♭"
 "=" = "U+266E MUSIC NATURAL SIGN: ♮"  # music-abc
@@ -53,6 +53,6 @@ prefix = "Zm"
 "<" = "U+1D192 MUSICAL SYMBOL CRESCENDO: 𝆒"
 ">" = "U+1D193 MUSICAL SYMBOL DECRESCENDO: 𝆓"
 
-[combining.append]
+[combining.main.append]
 ">" = "U+1D17B MUSICAL SYMBOL COMBINING ACCENT [combining]: 𝅘𝅥𝅻"
 "." = "U+1D17C MUSICAL SYMBOL COMBINING STACCATO [combining]: 𝅘𝅥𝅼"

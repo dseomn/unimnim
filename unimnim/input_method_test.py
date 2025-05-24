@@ -70,16 +70,18 @@ def test_known_sequences_absent(sequence: str) -> None:
             {
                 "latin": data.Group(
                     prefix="l",
-                    base={"n": "n"},
-                    combining=data.Combining(
-                        name_regex_replace={
-                            "'": (
-                                (
-                                    re.compile(r".*"),
-                                    r"\g<0> PRECEDED BY APOSTROPHE",
+                    maps=dict(main={"n": "n"}),
+                    combining=dict(
+                        main=data.Combining(
+                            name_regex_replace={
+                                "'": (
+                                    (
+                                        re.compile(r".*"),
+                                        r"\g<0> PRECEDED BY APOSTROPHE",
+                                    ),
                                 ),
-                            ),
-                        },
+                            },
+                        ),
                     ),
                 ),
             },
@@ -89,9 +91,11 @@ def test_known_sequences_absent(sequence: str) -> None:
             {
                 "latin": data.Group(
                     prefix="l",
-                    base={"a": "a", "a'": "b"},
-                    combining=data.Combining(
-                        append={"'": "\N{COMBINING ACUTE ACCENT}"},
+                    maps=dict(main={"a": "a", "a'": "b"}),
+                    combining=dict(
+                        main=data.Combining(
+                            append={"'": "\N{COMBINING ACUTE ACCENT}"},
+                        ),
                     ),
                 ),
             },
@@ -101,11 +105,11 @@ def test_known_sequences_absent(sequence: str) -> None:
             {
                 "latin1": data.Group(
                     prefix="l",
-                    base={"a": "a"},
+                    maps=dict(main={"a": "a"}),
                 ),
                 "latin2": data.Group(
                     prefix="l",
-                    base={"a": "a"},
+                    maps=dict(main={"a": "a"}),
                 ),
             },
             "groups have the same mnemonics",
@@ -121,6 +125,26 @@ def test_generate_map_error(
 
 
 @pytest.mark.parametrize(
+    "group",
+    (
+        data.Group(prefix="l", maps=dict(other={"a": "a"})),
+        data.Group(
+            prefix="l",
+            maps=dict(main={"a": "a"}),
+            combining=dict(
+                other=data.Combining(
+                    append={"'": "\N{COMBINING ACUTE ACCENT}"},
+                ),
+            ),
+        ),
+    ),
+)
+def test_generate_map_not_implemented(group: data.Group) -> None:
+    with pytest.raises(NotImplementedError):
+        input_method.generate_map({"some-group": group})
+
+
+@pytest.mark.parametrize(
     "groups,expected",
     (
         (
@@ -128,12 +152,14 @@ def test_generate_map_error(
             {
                 "latin": data.Group(
                     prefix="l",
-                    base={"s": "s"},
-                    combining=data.Combining(
-                        append={
-                            "*": "\N{COMBINING DOT ABOVE}",
-                            ".": "\N{COMBINING DOT BELOW}",
-                        },
+                    maps=dict(main={"s": "s"}),
+                    combining=dict(
+                        main=data.Combining(
+                            append={
+                                "*": "\N{COMBINING DOT ABOVE}",
+                                ".": "\N{COMBINING DOT BELOW}",
+                            },
+                        ),
                     ),
                 ),
             },
@@ -150,9 +176,11 @@ def test_generate_map_error(
             {
                 "latin": data.Group(
                     prefix="l",
-                    base={"a": "a"},
-                    combining=data.Combining(
-                        append={",": "\N{COMBINING CEDILLA}"},
+                    maps=dict(main={"a": "a"}),
+                    combining=dict(
+                        main=data.Combining(
+                            append={",": "\N{COMBINING CEDILLA}"},
+                        ),
                     ),
                 ),
             },
@@ -176,12 +204,14 @@ def test_generate_map_error(
             {
                 "latin": data.Group(
                     prefix="l",
-                    base={"j": "j"},
-                    combining=data.Combining(
-                        append={
-                            "~": "\N{COMBINING TILDE}",
-                            ".": "\N{COMBINING DOT ABOVE}",
-                        },
+                    maps=dict(main={"j": "j"}),
+                    combining=dict(
+                        main=data.Combining(
+                            append={
+                                "~": "\N{COMBINING TILDE}",
+                                ".": "\N{COMBINING DOT ABOVE}",
+                            },
+                        ),
                     ),
                 ),
             },
@@ -198,12 +228,16 @@ def test_generate_map_error(
             {
                 "latin": data.Group(
                     prefix="l",
-                    base={"o": "o"},
-                    combining=data.Combining(
-                        append={"'": "\N{COMBINING ACUTE ACCENT}"},
-                        name_regex_replace={
-                            "/": ((re.compile(r".*"), r"\g<0> WITH STROKE"),),
-                        },
+                    maps=dict(main={"o": "o"}),
+                    combining=dict(
+                        main=data.Combining(
+                            append={"'": "\N{COMBINING ACUTE ACCENT}"},
+                            name_regex_replace={
+                                "/": (
+                                    (re.compile(r".*"), r"\g<0> WITH STROKE"),
+                                ),
+                            },
+                        ),
                     ),
                 ),
             },
@@ -220,23 +254,27 @@ def test_generate_map_error(
             {
                 "latin": data.Group(
                     prefix="l",
-                    base={
-                        "O": "O",
-                        "o": "o",
-                    },
-                    combining=data.Combining(
-                        name_regex_replace={
-                            "/": (
-                                (
-                                    re.compile(r"LATIN CAPITAL LETTER .*"),
-                                    r"\g<0> WITH STROKE",
-                                ),
-                                (
-                                    re.compile(r"LATIN SMALL LETTER .*"),
-                                    r"\g<0> WITH STROKE",
-                                ),
-                            ),
+                    maps=dict(
+                        main={
+                            "O": "O",
+                            "o": "o",
                         },
+                    ),
+                    combining=dict(
+                        main=data.Combining(
+                            name_regex_replace={
+                                "/": (
+                                    (
+                                        re.compile(r"LATIN CAPITAL LETTER .*"),
+                                        r"\g<0> WITH STROKE",
+                                    ),
+                                    (
+                                        re.compile(r"LATIN SMALL LETTER .*"),
+                                        r"\g<0> WITH STROKE",
+                                    ),
+                                ),
+                            },
+                        ),
                     ),
                 ),
             },
@@ -253,40 +291,48 @@ def test_generate_map_error(
             {
                 "math": data.Group(
                     prefix="m",
-                    base={
-                        "B": "B",
-                        "P": "P",
-                        "W": "W",
-                    },
-                    combining=data.Combining(
-                        name_regex_replace={
-                            "F": (
-                                (
-                                    re.compile(r"LATIN CAPITAL LETTER (.*)"),
-                                    r"\g<1>EIERSTRASS ELLIPTIC FUNCTION",
-                                ),
-                            ),
-                            "S": (
-                                (
-                                    re.compile(r"LATIN CAPITAL LETTER (.*)"),
-                                    r"SCRIPT CAPITAL \g<1>",
-                                ),
-                            ),
-                            "f": (
-                                (
-                                    re.compile(
-                                        r"(.*)EIERSTRASS ELLIPTIC FUNCTION"
-                                    ),
-                                    r"LATIN SMALL LETTER \g<1>",
-                                ),
-                            ),
-                            "s": (
-                                (
-                                    re.compile(r"SCRIPT CAPITAL (.*)"),
-                                    r"LATIN SMALL LETTER \g<1>",
-                                ),
-                            ),
+                    maps=dict(
+                        main={
+                            "B": "B",
+                            "P": "P",
+                            "W": "W",
                         },
+                    ),
+                    combining=dict(
+                        main=data.Combining(
+                            name_regex_replace={
+                                "F": (
+                                    (
+                                        re.compile(
+                                            r"LATIN CAPITAL LETTER (.*)"
+                                        ),
+                                        r"\g<1>EIERSTRASS ELLIPTIC FUNCTION",
+                                    ),
+                                ),
+                                "S": (
+                                    (
+                                        re.compile(
+                                            r"LATIN CAPITAL LETTER (.*)"
+                                        ),
+                                        r"SCRIPT CAPITAL \g<1>",
+                                    ),
+                                ),
+                                "f": (
+                                    (
+                                        re.compile(
+                                            r"(.*)EIERSTRASS ELLIPTIC FUNCTION"
+                                        ),
+                                        r"LATIN SMALL LETTER \g<1>",
+                                    ),
+                                ),
+                                "s": (
+                                    (
+                                        re.compile(r"SCRIPT CAPITAL (.*)"),
+                                        r"LATIN SMALL LETTER \g<1>",
+                                    ),
+                                ),
+                            },
+                        ),
                     ),
                 ),
             },
@@ -309,16 +355,18 @@ def test_generate_map_error(
             {
                 "latin": data.Group(
                     prefix="l",
-                    base={"o": "o"},
-                    combining=data.Combining(
-                        name_regex_replace={
-                            "/": (
-                                (
-                                    re.compile(r"no match"),
-                                    r"\g<0> WITH STROKE",
+                    maps=dict(main={"o": "o"}),
+                    combining=dict(
+                        main=data.Combining(
+                            name_regex_replace={
+                                "/": (
+                                    (
+                                        re.compile(r"no match"),
+                                        r"\g<0> WITH STROKE",
+                                    ),
                                 ),
-                            ),
-                        },
+                            },
+                        ),
                     ),
                 ),
             },
@@ -329,32 +377,38 @@ def test_generate_map_error(
             {
                 "latin": data.Group(
                     prefix="l",
-                    base={"o": "o"},
-                    combining=data.Combining(
-                        name_regex_replace={
-                            "/": (
-                                (
-                                    re.compile(r".*"),
-                                    r"\g<0> WITH A FAKE ACCENT",
+                    maps=dict(main={"o": "o"}),
+                    combining=dict(
+                        main=data.Combining(
+                            name_regex_replace={
+                                "/": (
+                                    (
+                                        re.compile(r".*"),
+                                        r"\g<0> WITH A FAKE ACCENT",
+                                    ),
                                 ),
-                            ),
-                        },
+                            },
+                        ),
                     ),
                 ),
             },
             {"lo": "o"},
         ),
         (
-            # Base mnemonics can overlap.
+            # Mnemonics can overlap.
             {
                 "latin": data.Group(
                     prefix="l",
-                    base={
-                        "a": "a",
-                        "ae": "\N{LATIN SMALL LETTER AE}",
-                    },
-                    combining=data.Combining(
-                        append={"'": "\N{COMBINING ACUTE ACCENT}"},
+                    maps=dict(
+                        main={
+                            "a": "a",
+                            "ae": "\N{LATIN SMALL LETTER AE}",
+                        },
+                    ),
+                    combining=dict(
+                        main=data.Combining(
+                            append={"'": "\N{COMBINING ACUTE ACCENT}"},
+                        ),
                     ),
                 ),
             },
@@ -371,12 +425,14 @@ def test_generate_map_error(
             {
                 "latin": data.Group(
                     prefix="l",
-                    base={"s": "s"},
-                    combining=data.Combining(
-                        append={
-                            ".": "\N{COMBINING DOT ABOVE}",
-                            "..": "\N{COMBINING DOT BELOW}",
-                        },
+                    maps=dict(main={"s": "s"}),
+                    combining=dict(
+                        main=data.Combining(
+                            append={
+                                ".": "\N{COMBINING DOT ABOVE}",
+                                "..": "\N{COMBINING DOT BELOW}",
+                            },
+                        ),
                     ),
                 ),
             },
@@ -395,16 +451,20 @@ def test_generate_map_error(
             {
                 "greek": data.Group(
                     prefix="g",
-                    base={"a": "\N{GREEK SMALL LETTER ALPHA}"},
-                    combining=data.Combining(
-                        append={"~": "\N{COMBINING GREEK PERISPOMENI}"},
+                    maps=dict(main={"a": "\N{GREEK SMALL LETTER ALPHA}"}),
+                    combining=dict(
+                        main=data.Combining(
+                            append={"~": "\N{COMBINING GREEK PERISPOMENI}"},
+                        ),
                     ),
                 ),
                 "latin": data.Group(
                     prefix="l",
-                    base={"a": "a"},
-                    combining=data.Combining(
-                        append={"~": "\N{COMBINING TILDE}"},
+                    maps=dict(main={"a": "a"}),
+                    combining=dict(
+                        main=data.Combining(
+                            append={"~": "\N{COMBINING TILDE}"},
+                        ),
                     ),
                 ),
             },
@@ -421,13 +481,15 @@ def test_generate_map_error(
             {
                 "latin1": data.Group(
                     prefix="l",
-                    base={"a": "a"},
+                    maps=dict(main={"a": "a"}),
                 ),
                 "latin2": data.Group(
                     prefix="la",
-                    base={"": ""},
-                    combining=data.Combining(
-                        append={"~": "\N{COMBINING TILDE}"},
+                    maps=dict(main={"": ""}),
+                    combining=dict(
+                        main=data.Combining(
+                            append={"~": "\N{COMBINING TILDE}"},
+                        ),
                     ),
                 ),
             },
@@ -437,44 +499,50 @@ def test_generate_map_error(
             },
         ),
         (
-            # A base mnemonic can have an empty result to allow typing combining
+            # A mnemonic can have an empty result to allow typing combining
             # characters.
             {
                 "latin": data.Group(
                     prefix="l",
-                    base={"_": ""},
-                    combining=data.Combining(
-                        append={"~": "\N{COMBINING TILDE}"},
+                    maps=dict(main={"_": ""}),
+                    combining=dict(
+                        main=data.Combining(
+                            append={"~": "\N{COMBINING TILDE}"},
+                        ),
                     ),
                 ),
             },
             {"l_~": "\N{COMBINING TILDE}"},
         ),
         (
-            # A base mnemonic can itself be empty to allow typing combining
+            # A mnemonic can itself be empty to allow typing combining
             # characters without any additional prefix.
             {
                 "latin": data.Group(
                     prefix="l",
-                    base={"": ""},
-                    combining=data.Combining(
-                        append={"~": "\N{COMBINING TILDE}"},
+                    maps=dict(main={"": ""}),
+                    combining=dict(
+                        main=data.Combining(
+                            append={"~": "\N{COMBINING TILDE}"},
+                        ),
                     ),
                 ),
             },
             {"l~": "\N{COMBINING TILDE}"},
         ),
         (
-            # Combining characters can stack over an empty base result.
+            # Combining characters can stack over an empty result.
             {
                 "regions": data.Group(
                     prefix="r",
-                    base={"": ""},
-                    combining=data.Combining(
-                        append={
-                            "N": "\N{REGIONAL INDICATOR SYMBOL LETTER N}",
-                            "U": "\N{REGIONAL INDICATOR SYMBOL LETTER U}",
-                        },
+                    maps=dict(main={"": ""}),
+                    combining=dict(
+                        main=data.Combining(
+                            append={
+                                "N": "\N{REGIONAL INDICATOR SYMBOL LETTER N}",
+                                "U": "\N{REGIONAL INDICATOR SYMBOL LETTER U}",
+                            },
+                        ),
                     ),
                 ),
             },

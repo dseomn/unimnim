@@ -165,26 +165,30 @@ def test_combining_parse(raw: Any, expected: Any) -> None:
 @pytest.mark.parametrize(
     "raw,error_regex",
     (
-        (dict(prefix="l", base={}, not_valid="foo"), r"Unexpected keys"),
+        (dict(prefix="l", maps={}, not_valid="foo"), r"Unexpected keys"),
         (
             dict(
                 prefix="l",
-                base={
-                    "b": "U+0062 LATIN SMALL LETTER B",
-                    "a": "U+0061 LATIN SMALL LETTER A",
-                },
+                maps=dict(
+                    main={
+                        "b": "U+0062 LATIN SMALL LETTER B",
+                        "a": "U+0061 LATIN SMALL LETTER A",
+                    },
+                ),
             ),
-            r"base is not sorted",
+            r"maps\.main is not sorted",
         ),
         (
             dict(
                 prefix="l",
-                base={
-                    "b": "U+0061 LATIN SMALL LETTER A",
-                    "a": "U+0061 LATIN SMALL LETTER A",
-                },
+                maps=dict(
+                    main={
+                        "b": "U+0061 LATIN SMALL LETTER A",
+                        "a": "U+0061 LATIN SMALL LETTER A",
+                    },
+                ),
             ),
-            r"base is not sorted",
+            r"maps\.main is not sorted",
         ),
     ),
 )
@@ -197,20 +201,27 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
     "raw,expected",
     (
         (
-            dict(prefix="l", base={"a": "U+0061 LATIN SMALL LETTER A"}),
-            dict(prefix="l", base={"a": "a"}),
+            dict(
+                prefix="l",
+                maps=dict(main={"a": "U+0061 LATIN SMALL LETTER A"}),
+            ),
+            dict(prefix="l", maps=dict(main={"a": "a"})),
         ),
         (
             dict(
                 prefix="l",
-                base={"a": "U+0061 LATIN SMALL LETTER A"},
-                combining=dict(append={"'": "U+0301 COMBINING ACUTE ACCENT"}),
+                maps=dict(main={"a": "U+0061 LATIN SMALL LETTER A"}),
+                combining=dict(
+                    main=dict(append={"'": "U+0301 COMBINING ACUTE ACCENT"}),
+                ),
             ),
             dict(
                 prefix="l",
-                base={"a": "a"},
-                combining=data.Combining.parse(
-                    dict(append={"'": "U+0301 COMBINING ACUTE ACCENT"})
+                maps=dict(main={"a": "a"}),
+                combining=dict(
+                    main=data.Combining.parse(
+                        dict(append={"'": "U+0301 COMBINING ACUTE ACCENT"})
+                    ),
                 ),
             ),
         ),
@@ -225,14 +236,14 @@ def test_load(tmp_path: pathlib.Path) -> None:
     (tmp_path / "subdir" / "latin.toml").write_text(
         """
         prefix = "l"
-        [base]
+        [maps.main]
         "a" = "U+0061 LATIN SMALL LETTER A"
         """
     )
     (tmp_path / "greek.toml").write_text(
         """
         prefix = "g"
-        [base]
+        [maps.main]
         "a" = "U+03B1 GREEK SMALL LETTER ALPHA"
         """
     )
@@ -241,9 +252,15 @@ def test_load(tmp_path: pathlib.Path) -> None:
 
     assert actual == {
         "subdir/latin.toml": data.Group.parse(
-            dict(prefix="l", base={"a": "U+0061 LATIN SMALL LETTER A"})
+            dict(
+                prefix="l",
+                maps=dict(main={"a": "U+0061 LATIN SMALL LETTER A"}),
+            )
         ),
         "greek.toml": data.Group.parse(
-            dict(prefix="g", base={"a": "U+03B1 GREEK SMALL LETTER ALPHA"})
+            dict(
+                prefix="g",
+                maps=dict(main={"a": "U+03B1 GREEK SMALL LETTER ALPHA"}),
+            )
         ),
     }

@@ -7,7 +7,7 @@
 
 prefix = "c"
 
-[base]
+[maps.main]
 "_" = ""  # empty-for-combining
 "DJ" = "U+0402 CYRILLIC CAPITAL LETTER DJE: Ђ"
 "JE" = "U+0404 CYRILLIC CAPITAL LETTER UKRAINIAN IE: Є"
@@ -106,7 +106,7 @@ prefix = "c"
 "W" = "U+051C CYRILLIC CAPITAL LETTER WE: Ԝ"
 "w" = "U+051D CYRILLIC SMALL LETTER WE: ԝ"
 
-[combining.append]
+[combining.main.append]
 "`" = "U+0300 COMBINING GRAVE ACCENT [combining]: ѐ"
 "'" = "U+0301 COMBINING ACUTE ACCENT [combining]: ќ"
 "^" = "U+0302 COMBINING CIRCUMFLEX ACCENT [combining]: а̂"
@@ -118,7 +118,7 @@ prefix = "c"
 "v" = "U+030C COMBINING CARON [combining]: т̌"
 ";" = "U+0328 COMBINING OGONEK [combining]: к̨"  # from=rfc1345,xcompose suboptimal
 
-[combining.name_regex_replace]
+[combining.main.name_regex_replace]
 "," = [['.*', '\g<0> WITH TAIL']]
 "/" = [['.*', '\g<0> WITH STROKE']]
 "2" = [  # geometry

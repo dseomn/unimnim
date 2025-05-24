@@ -248,29 +248,35 @@ class Group:
 
     Attributes:
         prefix: Prefix for all of the group's mnemonics.
-        base: Map from mnemonic (not including prefix) to a result.
-        combining: Rules for combining partial mnemonics with base.
+        maps: Maps from mnemonic (not including prefix) to a result.
+        combining: Sets of rules for combining partial mnemonics with a map.
     """
 
     prefix: str
-    base: Mapping[str, str]
-    combining: Combining = dataclasses.field(default_factory=Combining)
+    maps: Mapping[str, Mapping[str, str]]
+    combining: Mapping[str, Combining] = dataclasses.field(default_factory=dict)
 
     def __post_init__(self) -> None:
-        _require_sorted_by_value_and_key(self.base, name="base")
+        for map_name, map_ in self.maps.items():
+            _require_sorted_by_value_and_key(map_, name=f"maps.{map_name}")
 
     @classmethod
     def parse(cls, raw: Any, /) -> Self:
         """Returns the data parsed from the format used in data files."""
-        if unexpected_keys := raw.keys() - {"prefix", "base", "combining"}:
+        if unexpected_keys := raw.keys() - {"prefix", "maps", "combining"}:
             raise ValueError(f"Unexpected keys: {list(unexpected_keys)}")
+        maps = {}
+        for map_name, map_ in raw["maps"].items():
+            maps[map_name] = {
+                key: parse_explicit_string(value) for key, value in map_.items()
+            }
         return cls(
             prefix=raw["prefix"],
-            base={
-                key: parse_explicit_string(value)
-                for key, value in raw["base"].items()
+            maps=maps,
+            combining={
+                name: Combining.parse(combining_data)
+                for name, combining_data in raw.get("combining", {}).items()
             },
-            combining=Combining.parse(raw.get("combining", {})),
         )
 
 

@@ -4,7 +4,7 @@
 
 prefix = "Z"
 
-[base]
+[maps.main]
 "'" = "U+0027 APOSTROPHE: '"
 "!I" = "U+00A1 INVERTED EXCLAMATION MARK: ¡"  # geometry
 "SS" = "U+00A7 SECTION SIGN: §"  # aka="double-s"
@@ -66,9 +66,9 @@ prefix = "Z"
 "&T" = "U+2E52 TIRONIAN SIGN CAPITAL ET: ⹒"
 '"d' = "U+3003 DITTO MARK: 〃"
 
-[combining.append]
+[combining.main.append]
 "VST" = "U+FE0E VARIATION SELECTOR-15 [combining]: ‼︎"  # aka="text variation selector"
 "VSE" = "U+FE0F VARIATION SELECTOR-16 [combining]: ‼️"  # aka="emoji variation selector"
 
-[combining.name_regex_replace]
+[combining.main.name_regex_replace]
 "l" = [['.*', 'MODIFIER LETTER \g<0>']]

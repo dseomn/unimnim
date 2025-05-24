@@ -18,7 +18,7 @@
 
 prefix = "R"
 
-[base]
+[maps.main]
 "f" = "U+16A0 RUNIC LETTER FEHU FEOH FE F: ᚠ"
 "v" = "U+16A1 RUNIC LETTER V: ᚡ"
 "u" = "U+16A2 RUNIC LETTER URUZ UR U: ᚢ"

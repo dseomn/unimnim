@@ -6,7 +6,7 @@
 
 prefix = "a"
 
-[base]
+[maps.main]
 "_" = ""  # empty-for-combining
 "%0" = "U+0609 ARABIC-INDIC PER MILLE SIGN: ؉"
 "%00" = "U+060A ARABIC-INDIC PER TEN THOUSAND SIGN: ؊"
@@ -78,10 +78,10 @@ prefix = "a"
 "8>" = "U+06F8 EXTENDED ARABIC-INDIC DIGIT EIGHT: ۸"  # amount
 "9>" = "U+06F9 EXTENDED ARABIC-INDIC DIGIT NINE: ۹"  # amount
 
-[combining.append]
+[combining.main.append]
 "~" = "U+0653 ARABIC MADDAH ABOVE [combining]: آ"
 "'8" = "U+0654 ARABIC HAMZA ABOVE [combining]: أ"  # geometry
 "'2" = "U+0655 ARABIC HAMZA BELOW [combining]: إ"  # geometry
 
-[combining.name_regex_replace]
+[combining.main.name_regex_replace]
 "//" = [['ARABIC LETTER (.*)', 'ARABIC MATHEMATICAL DOUBLE-STRUCK \g<1>']]

@@ -8,7 +8,7 @@
 
 prefix = "Z"
 
-[base]
+[maps.main]
 "NBSP" = "U+00A0 NO-BREAK SPACE"  # from=aliases
 "SPNB" = "U+00A0 NO-BREAK SPACE"
 "SPN" = "U+2002 EN SPACE"

@@ -12,7 +12,7 @@
 
 prefix = "g"
 
-[base]
+[maps.main]
 "_" = ""  # empty-for-combining
 "A" = "U+0391 GREEK CAPITAL LETTER ALPHA: Α"
 "V" = "U+0392 GREEK CAPITAL LETTER BETA: Β"
@@ -64,11 +64,11 @@ prefix = "g"
 "ps" = "U+03C8 GREEK SMALL LETTER PSI: ψ"
 "w" = "U+03C9 GREEK SMALL LETTER OMEGA: ω"  # greek-beta-code suboptimal
 
-[combining.append]
+[combining.main.append]
 "'" = "U+0301 COMBINING ACUTE ACCENT [combining]: ά"
 '"' = "U+0308 COMBINING DIAERESIS [combining]: ϊ"
 
-[combining.name_regex_replace]
+[combining.main.name_regex_replace]
 "//" = [['GREEK (CAPITAL|SMALL) LETTER (.*)', 'DOUBLE-STRUCK \g<1> \g<2>']]
 "2" = [  # geometry
   ['GREEK (CAPITAL|SMALL) LETTER (.*)', 'GREEK SUBSCRIPT \g<1> LETTER \g<2>'],

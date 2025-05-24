@@ -4,7 +4,7 @@
 
 prefix = "Z"
 
-[base]
+[maps.main]
 "SHY" = "U+00AD SOFT HYPHEN"  # from=aliases
 "ZWSP" = "U+200B ZERO WIDTH SPACE"  # from=aliases
 "ZWNJ" = "U+200C ZERO WIDTH NON-JOINER"  # from=aliases

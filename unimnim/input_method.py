@@ -198,9 +198,14 @@ def _generate_map_one_group(
 ) -> Mapping[str, str]:
     """Returns a map from mnemonic to result for one group."""
     map_ = _Map(group_id=group_id)
-    for mnemonic, result in group.base.items():
+    if group.maps.keys() != {"main"}:
+        raise NotImplementedError("Currently only maps.main is supported.")
+    for mnemonic, result in group.maps["main"].items():
         map_.add(mnemonic, result)
-    _apply_combining(map_, group.combining)
+    if group.combining.keys() - {"main"}:
+        raise NotImplementedError("Currently only combining.main is supported.")
+    if "main" in group.combining:
+        _apply_combining(map_, group.combining["main"])
     return {
         group.prefix + mnemonic: result
         for mnemonic, result in map_.known.items()

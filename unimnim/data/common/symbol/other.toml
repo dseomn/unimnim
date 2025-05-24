@@ -4,7 +4,7 @@
 
 prefix = "Z"
 
-[base]
+[maps.main]
 "co" = "U+00A9 COPYRIGHT SIGN: ©"
 "re" = "U+00AE REGISTERED SIGN: ®"
 "de" = "U+00B0 DEGREE SIGN: °"
@@ -18,6 +18,6 @@ prefix = "Z"
 "O/" = "U+2300 DIAMETER SIGN: ⌀"
 "POI" = "U+2318 PLACE OF INTEREST SIGN: ⌘"
 
-[combining.append]
+[combining.main.append]
 "VST" = "U+FE0E VARIATION SELECTOR-15 [combining]: ©︎"  # aka="text variation selector"
 "VSE" = "U+FE0F VARIATION SELECTOR-16 [combining]: ©️"  # aka="emoji variation selector"

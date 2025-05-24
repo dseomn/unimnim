@@ -6,7 +6,7 @@
 
 prefix = "h"
 
-[base]
+[maps.main]
 "_" = ""  # empty-for-combining
 "-" = "U+05BE HEBREW PUNCTUATION MAQAF: ־"
 "a" = "U+05D0 HEBREW LETTER ALEF: א"  # from=rfc1345 suboptimal
@@ -34,11 +34,11 @@ prefix = "h"
 "'" = "U+05F3 HEBREW PUNCTUATION GERESH: ׳"
 '"' = "U+05F4 HEBREW PUNCTUATION GERSHAYIM: ״"
 
-[combining.append]
+[combining.main.append]
 "." = "U+05BC HEBREW POINT DAGESH OR MAPIQ [combining]: בּ"
 "h" = "U+05C1 HEBREW POINT SHIN DOT [combining]: שׁ"
 "s" = "U+05C2 HEBREW POINT SIN DOT [combining]: שׂ"
 
-[combining.name_regex_replace]
+[combining.main.name_regex_replace]
 "$" = [['HEBREW LETTER (.*)', '\g<1> SYMBOL']]  # suboptimal
 "]" = [['(HEBREW LETTER) (.*)', '\g<1> FINAL \g<2>']]  # logical-order

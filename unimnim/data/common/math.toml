@@ -29,7 +29,7 @@
 
 prefix = "ZM"
 
-[base]
+[maps.main]
 "(" = "U+0028 LEFT PARENTHESIS: ("
 ")" = "U+0029 RIGHT PARENTHESIS: )"
 "+" = "U+002B PLUS SIGN: +"
@@ -127,7 +127,7 @@ prefix = "ZM"
 "int4" = "U+2A0C QUADRUPLE INTEGRAL OPERATOR: ⨌"
 "*v" = "U+2A2F VECTOR OR CROSS PRODUCT: ⨯"
 
-[combining.name_regex_replace]
+[combining.main.name_regex_replace]
 "!" = [
   ['.*', 'NOT \g<0>'],
   ['.*', 'NOT A \g<0>'],

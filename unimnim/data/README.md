@@ -30,14 +30,12 @@ override prefixes in the future, e.g., to let users who primarily type math
 symbols with this input method to override a math symbol group to use a shorter
 (or empty) prefix. Please file a bug if that's something you want.
 
-*base*: Mnemonics in a group that directly follow the group's prefix. E.g., for
-the Latin script's group with a prefix of `l`, the base `a` creates the mnemonic
-`la` with the result `a`.
+*map*: A map from mnemonic to result.
 
-*combining*: Mnemonics in a group that modify the preceding mnemonic. E.g., for
-the Latin script's group, the combining `'` modifies the `la` mnemonic to create
-the mnemonic `la'` with the result `á`. Combining mnemonics can stack, e.g., the
-mnemonic `le^'` has the result `ế`.
+*combining*: Mnemonics that modify other mnemonics. E.g., for the Latin script's
+group, the combining `'` modifies the `la` mnemonic to create the mnemonic `la'`
+with the result `á`. Combining mnemonics can stack, e.g., the mnemonic `le^'`
+has the result `ế`.
 
 ## Data format
 
@@ -88,16 +86,17 @@ Data files are in [TOML](https://toml.io/) format:
 # See "pefix" in Terminology section above.
 prefix = "l"
 
-# Base mnemonics, as a map from mnemonic (regular string) to result (explicit
-# string). Must be sorted by result, then mnemonic.
-[base]
+# Maps from mnemonic (regular string) to result (explicit string). Must be
+# sorted by result, then mnemonic. Currently only "main" is supported.
+[maps.main]
 "A" = "U+0041 LATIN CAPITAL LETTER A: A"
 
 # Combinining mnemonics as a map from partial mnemonic (regular string) to a
 # combining code point (explicit string). The partial mnemonic is appended to an
 # existing mnemonic and the code point is appended to that existing mnemonic's
-# result, then normalized. Must be sorted by result, then mnemonic.
-[combining.append]
+# result, then normalized. Must be sorted by result, then mnemonic. Currently
+# only "main" is supported.
+[combining.main.append]
 "`" = "U+0300 COMBINING GRAVE ACCENT [combining]: à"
 
 # Combining mnemonics as a map from partial mnemonic to an array of regex and
@@ -108,9 +107,9 @@ prefix = "l"
 # https://docs.python.org/3/library/re.html for the regex and replacement
 # syntaxes. See
 # https://www.unicode.org/versions/Unicode16.0.0/core-spec/chapter-2/#G27986 for
-# why some mnemonics use this instead of combining.append. Must be sorted by
-# mnemonic.
-[combining.name_regex_replace]
+# why some mnemonics use this instead of `append`. Must be sorted by mnemonic.
+# Currently only "main" is supported.
+[combining.main.name_regex_replace]
 "/" = [['.*', '\g<0> WITH STROKE']]
 ```
 
@@ -170,26 +169,26 @@ Or for earlier or later forms of characters:
 "50<" = "U+2186 ROMAN NUMERAL FIFTY EARLY FORM: ↆ"  # amount
 ```
 
-### Base mnemonics with empty results (`empty-for-combining`)
+### Mnemonics with empty results (`empty-for-combining`)
 
-Groups with combining characters can have a base mnemonic with an empty result
-to make it possible to type raw combining characters. Both of the following
+Groups with combining characters can have a mnemonic with an empty result to
+make it possible to type raw combining characters. Both of the following
 examples provide mnemonics to type a combining acute character, `l_'` in the
 first and `l'` in the second.
 
 ```toml
 prefix = "l"
-[base]
+[maps.main]
 "_" = ""  # empty-for-combining
-[combining.append]
+[combining.main.append]
 "'" = "U+0301 COMBINING ACUTE ACCENT"
 ```
 
 ```toml
 prefix = "l"
-[base]
+[maps.main]
 "" = ""  # empty-for-combining
-[combining.append]
+[combining.main.append]
 "'" = "U+0301 COMBINING ACUTE ACCENT"
 ```
 
@@ -290,9 +289,9 @@ removed, the mnemonic can be based on the other character and the combining
 character.
 
 ```toml
-[base]
+[maps.main]
 "i" = "U+0069 LATIN SMALL LETTER I: i"
 "i-." = "U+0131 LATIN SMALL LETTER DOTLESS I: ı"  # uncombine
-[combining.append]
+[combining.main.append]
 "." = "U+0307 COMBINING DOT ABOVE"
 ```

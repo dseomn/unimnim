@@ -4,7 +4,7 @@
 
 prefix = "Z"
 
-[base]
+[maps.main]
 "CGJ" = "U+034F COMBINING GRAPHEME JOINER"  # from=aliases
 "VS1" = "U+FE00 VARIATION SELECTOR-1"  # from=aliases
 "VS2" = "U+FE01 VARIATION SELECTOR-2"  # from=aliases

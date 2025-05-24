@@ -6,10 +6,10 @@
 
 prefix = "ZTS"
 
-[base]
+[maps.main]
 "F" = "U+1F3F4 WAVING BLACK FLAG: 🏴"
 
-[combining.append]
+[combining.main.append]
 "0" = "U+E0030 TAG DIGIT ZERO"
 "1" = "U+E0031 TAG DIGIT ONE"
 "2" = "U+E0032 TAG DIGIT TWO"

@@ -13,8 +13,8 @@ method](https://www.nongnu.org/m17n/manual-en/m17nDBData.html#mim-list) and
 sequences](https://en.wikipedia.org/wiki/Compose_key#Compose_sequences).
 
 In general, a mnemonic starts with a prefix for the
-[script](https://en.wikipedia.org/wiki/Script_(Unicode)), then a base mnemonic
-for a letter or symbol, then some optional combining mnemonics for accents. For
+[script](https://en.wikipedia.org/wiki/Script_(Unicode)), then a mnemonic for a
+letter or symbol, then some optional combining mnemonics for accents. For
 example:
 
 | Mnemonic | Meaning | Result |
@@ -120,8 +120,8 @@ for prefix overrides.
 
 For medium changes like adding `læ'` as a mnemonic for `ǽ` in addition to the
 current `lae'` mnemonic, I think it would make sense to automatically generate
-parts of `[base]`. The input method templates might need modification too. E.g.,
-it looks like [m17n would need a different syntax for the
+parts of `[maps.main]`. The input method templates might need modification too.
+E.g., it looks like [m17n would need a different syntax for the
 mnemonics](https://savannah.nongnu.org/bugs/?66557).
 
 For large changes like adding mnemonics in a script other than Latin, I'm happy

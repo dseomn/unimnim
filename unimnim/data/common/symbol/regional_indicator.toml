@@ -6,10 +6,10 @@
 
 prefix = "ZRI"
 
-[base]
+[maps.main]
 "" = ""  # empty-for-combining
 
-[combining.append]
+[combining.main.append]
 "A" = "U+1F1E6 REGIONAL INDICATOR SYMBOL LETTER A"
 "B" = "U+1F1E7 REGIONAL INDICATOR SYMBOL LETTER B"
 "C" = "U+1F1E8 REGIONAL INDICATOR SYMBOL LETTER C"

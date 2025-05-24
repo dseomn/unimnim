@@ -7,7 +7,7 @@
 
 prefix = "Z$"
 
-[base]
+[maps.main]
 "CT" = "U+00A2 CENT SIGN: ¢"
 "LB" = "U+00A3 POUND SIGN: £"
 "" = "U+00A4 CURRENCY SIGN: ¤"

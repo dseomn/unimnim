@@ -11,7 +11,7 @@
 
 prefix = "ZA"
 
-[base]
+[maps.main]
 "4" = "U+2190 LEFTWARDS ARROW: ←"
 "8" = "U+2191 UPWARDS ARROW: ↑"
 "6" = "U+2192 RIGHTWARDS ARROW: →"
@@ -36,11 +36,11 @@ prefix = "ZA"
 "2,8" = "U+21F5 DOWNWARDS ARROW LEFTWARDS OF UPWARDS ARROW: ⇵"
 "6,6,6" = "U+21F6 THREE RIGHTWARDS ARROWS: ⇶"
 
-[combining.append]
+[combining.main.append]
 "VST" = "U+FE0E VARIATION SELECTOR-15 [combining]: ↔︎"  # aka="text variation selector"
 "VSE" = "U+FE0F VARIATION SELECTOR-16 [combining]: ↔️"  # aka="emoji variation selector"
 
-[combining.name_regex_replace]
+[combining.main.name_regex_replace]
 "(" = [['.*', '\g<0> WITH HOOK']]
 "-" = [['(.*) ARROW', '\g<1> DASHED ARROW']]
 "/" = [['.*', '\g<0> WITH STROKE']]
