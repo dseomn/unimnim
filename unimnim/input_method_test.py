@@ -243,6 +243,28 @@ def test_generate_map_not_implemented(group: data.Group) -> None:
             },
         ),
         (
+            # Unknown sequences can be produced if they're explicitly in a map.
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    maps=dict(
+                        main={
+                            "a": (
+                                "a\N{ARABIC MADDAH ABOVE}"
+                                "\N{HEBREW POINT DAGESH OR MAPIQ}"
+                            ),
+                        },
+                    ),
+                ),
+            },
+            {
+                "la": (
+                    "a\N{ARABIC MADDAH ABOVE}"
+                    "\N{HEBREW POINT DAGESH OR MAPIQ}"
+                ),
+            },
+        ),
+        (
             # Characters without names are ignored by
             # combining.name_regex_replace.
             {
