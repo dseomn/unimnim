@@ -35,13 +35,8 @@ prefix = "HA"
 "u" = "U+1733 HANUNOO VOWEL SIGN U [combining]: ᜣᜳ"
 "" = "U+1734 HANUNOO SIGN PAMUDPOD [combining]: ᜣ᜴"
 
-[maps.punctuation]
-"/" = "U+1735 PHILIPPINE SINGLE PUNCTUATION: ᜵"
-"//" = "U+1736 PHILIPPINE DOUBLE PUNCTUATION: ᜶"
-
 [expressions]
 main = [
   [["map", "consonants"], ["map", "vowel_signs"]],
   [["map", "independent_vowels"]],
-  [["map", "punctuation"]],
 ]
