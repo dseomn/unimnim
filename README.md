@@ -26,6 +26,7 @@ example:
 | `cd` | [Cyrillic](unimnim/data/cyrillic.toml), д | `д` |
 | `GOa` | [Gothic](unimnim/data/gothic.toml), 𐌰 | `𐌰` |
 | `ga'` | [Greek](unimnim/data/greek.toml), α, tonos | `ά` |
+| `HAki` | [Hanunoo](unimnim/data/hanunoo.toml), ᜣ, ◌ᜲ | `ᜣᜲ` |
 | `hk.`| [Hebrew](unimnim/data/hebrew.toml), כ, dagesh | `כּ` |
 | `OGb` | [Ogham](unimnim/data/ogham.toml), ᚁ | `ᚁ` |
 | `Rb` | [Runic](unimnim/data/runic.toml), ᛒ | `ᛒ` |

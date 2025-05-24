@@ -1,0 +1,47 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Hanunoo_script
+
+prefix = "HA"
+
+[maps.consonants]
+"_" = ""  # empty-for-combining
+"k" = "U+1723 HANUNOO LETTER KA: ᜣ"
+"g" = "U+1724 HANUNOO LETTER GA: ᜤ"
+"ng" = "U+1725 HANUNOO LETTER NGA: ᜥ"
+"t" = "U+1726 HANUNOO LETTER TA: ᜦ"
+"d" = "U+1727 HANUNOO LETTER DA: ᜧ"
+"n" = "U+1728 HANUNOO LETTER NA: ᜨ"
+"p" = "U+1729 HANUNOO LETTER PA: ᜩ"
+"b" = "U+172A HANUNOO LETTER BA: ᜪ"
+"m" = "U+172B HANUNOO LETTER MA: ᜫ"
+"y" = "U+172C HANUNOO LETTER YA: ᜬ"
+"r" = "U+172D HANUNOO LETTER RA: ᜭ"
+"l" = "U+172E HANUNOO LETTER LA: ᜮ"
+"w" = "U+172F HANUNOO LETTER WA: ᜯ"
+"s" = "U+1730 HANUNOO LETTER SA: ᜰ"
+"h" = "U+1731 HANUNOO LETTER HA: ᜱ"
+
+[maps.independent_vowels]
+"a" = "U+1720 HANUNOO LETTER A: ᜠ"
+"i" = "U+1721 HANUNOO LETTER I: ᜡ"
+"u" = "U+1722 HANUNOO LETTER U: ᜢ"
+
+[maps.vowel_signs]
+"a" = ""
+"i" = "U+1732 HANUNOO VOWEL SIGN I [combining]: ᜣᜲ"
+"u" = "U+1733 HANUNOO VOWEL SIGN U [combining]: ᜣᜳ"
+"" = "U+1734 HANUNOO SIGN PAMUDPOD [combining]: ᜣ᜴"
+
+[maps.punctuation]
+"/" = "U+1735 PHILIPPINE SINGLE PUNCTUATION: ᜵"
+"//" = "U+1736 PHILIPPINE DOUBLE PUNCTUATION: ᜶"
+
+[expressions]
+main = [
+  [["map", "consonants"], ["map", "vowel_signs"]],
+  [["map", "independent_vowels"]],
+  [["map", "punctuation"]],
+]
