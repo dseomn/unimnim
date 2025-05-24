@@ -223,6 +223,29 @@ def test_generate_map_not_implemented(group: data.Group) -> None:
             },
         ),
         (
+            # Characters without names are ignored by
+            # combining.name_regex_replace.
+            {
+                "common": data.Group(
+                    prefix="Z",
+                    maps=dict(main={"NULL": "\x00"}),
+                    combining=dict(
+                        main=data.Combining(
+                            name_regex_replace={
+                                "a": (
+                                    (
+                                        re.compile(r".*"),
+                                        r"LATIN SMALL LETTER A",
+                                    ),
+                                ),
+                            },
+                        ),
+                    ),
+                ),
+            },
+            {"ZNULL": "\x00"},
+        ),
+        (
             # combining.name_regex_replace works and can stack with
             # combining.append.
             {
