@@ -10,6 +10,7 @@ from importlib import resources
 import json
 import pathlib
 import sys
+import textwrap
 import typing
 from typing import Any
 
@@ -25,25 +26,13 @@ def _write_json(path: pathlib.Path, data: Any) -> None:
 def main(
     *,
     args: Sequence[str] = sys.argv[1:],
-    stdout: Any = sys.stdout,
 ) -> None:
     """Main.
 
     Args:
         args: Command line arguments.
-        stdout: sys.stdout or a mock.
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--known-sequences-toml",
-        action="store_true",
-        help=(
-            "Print known sequences as toml lines to stdout. This is intended "
-            "to be used with grep to start a new data file. Note that there "
-            "might be syntax errors and it might need additional manual "
-            "changes."
-        ),
-    )
     parser.add_argument(
         "--write-all",
         type=pathlib.Path,
@@ -56,10 +45,6 @@ def main(
     )
     parsed_args = parser.parse_args(args)
 
-    if parsed_args.known_sequences_toml:
-        for sequence in sorted(input_method.known_sequences()):
-            stdout.write(f'"" = "{data.to_explicit_string(sequence)}"\n')
-
     if parsed_args.write_all is not None:
         parsed_args.write_all.mkdir(exist_ok=True)
 
@@ -71,6 +56,19 @@ def main(
             parsed_args.write_all / "known_sequences.json",
             input_method.known_sequences(),
         )
+        with (parsed_args.write_all / "known_sequences.toml").open("w") as f:
+            f.write(
+                textwrap.dedent(
+                    """\
+                    # This file is intended to help with starting a new data
+                    # file. Note that there might be syntax errors, combining
+                    # characters aren't represented with `[combining]`, and it
+                    # might need other manual changes.
+                    """
+                )
+            )
+            for sequence in sorted(input_method.known_sequences()):
+                f.write(f'"" = "{data.to_explicit_string(sequence)}"\n')
 
     map_ = input_method.generate_map(data_)
     if parsed_args.write_all is not None:

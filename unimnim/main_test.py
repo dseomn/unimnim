@@ -4,7 +4,6 @@
 
 from collections.abc import Sequence, Set
 import contextlib
-import io
 import pathlib
 
 import pytest
@@ -21,6 +20,7 @@ from unimnim import main
             {
                 "output",
                 "output/known_sequences.json",
+                "output/known_sequences.toml",
                 "output/map.json",
                 "output/prefix_map.json",
                 "output/unimnim.mim",
@@ -41,9 +41,3 @@ def test_main(
     assert {
         str(f.relative_to(tmp_path)) for f in tmp_path.glob("**/*")
     } == expected_files
-
-
-def test_main_known_sequences_toml() -> None:
-    stdout = io.StringIO()
-    main.main(args=("--known-sequences-toml",), stdout=stdout)
-    assert '\n"" = "U+0068 LATIN SMALL LETTER H: h"\n' in stdout.getvalue()
