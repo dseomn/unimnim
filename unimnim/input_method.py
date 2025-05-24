@@ -129,20 +129,13 @@ class _Map:
             return False
 
 
-def _generate_map_one_group(
-    group_id: str,
-    group: data.Group,
-) -> Mapping[str, str]:
-    """Returns a map from mnemonic to result for one group."""
-    map_ = _Map(group_id=group_id)
-    combining_to_check = collections.deque[tuple[str, str]]()
+def _apply_combining(map_: _Map, combining: data.Combining) -> None:
+    """Applies combining config to a map."""
+    combining_to_check = collections.deque[tuple[str, str]](map_.all_.items())
 
     def _add(mnemonic: str, result: str, *, is_known: bool = True) -> None:
         if map_.add(mnemonic, result, is_known=is_known):
             combining_to_check.append((mnemonic, result))
-
-    for mnemonic, result in group.base.items():
-        _add(group.prefix + mnemonic, result)
 
     while combining_to_check:
         mnemonic, result = combining_to_check.popleft()
@@ -150,7 +143,7 @@ def _generate_map_one_group(
         for (
             combining_mnemonic,
             combining_result,
-        ) in group.combining.append.items():
+        ) in combining.append.items():
             combined_result = unicodedata.normalize(
                 "NFC", result + combining_result
             )
@@ -177,7 +170,7 @@ def _generate_map_one_group(
         for (
             combining_mnemonic,
             rules,
-        ) in group.combining.name_regex_replace.items():
+        ) in combining.name_regex_replace.items():
             for combining_pattern, combining_replacement in rules:
                 match = combining_pattern.fullmatch(result_name)
                 if match is None:
@@ -198,6 +191,16 @@ def _generate_map_one_group(
                 combined_mnemonic = mnemonic + combining_mnemonic
                 _add(combined_mnemonic, combined_result)
 
+
+def _generate_map_one_group(
+    group_id: str,
+    group: data.Group,
+) -> Mapping[str, str]:
+    """Returns a map from mnemonic to result for one group."""
+    map_ = _Map(group_id=group_id)
+    for mnemonic, result in group.base.items():
+        map_.add(group.prefix + mnemonic, result)
+    _apply_combining(map_, group.combining)
     return map_.known
 
 
