@@ -250,8 +250,8 @@ def test_generate_map_not_implemented(group: data.Group) -> None:
                     maps=dict(
                         main={
                             "a": (
-                                "a\N{ARABIC MADDAH ABOVE}"
-                                "\N{HEBREW POINT DAGESH OR MAPIQ}"
+                                "a\N{HEBREW POINT DAGESH OR MAPIQ}"
+                                "\N{ARABIC MADDAH ABOVE}"
                             ),
                         },
                     ),
@@ -259,8 +259,7 @@ def test_generate_map_not_implemented(group: data.Group) -> None:
             },
             {
                 "la": (
-                    "a\N{ARABIC MADDAH ABOVE}"
-                    "\N{HEBREW POINT DAGESH OR MAPIQ}"
+                    "a\N{HEBREW POINT DAGESH OR MAPIQ}\N{ARABIC MADDAH ABOVE}"
                 ),
             },
         ),
