@@ -332,9 +332,15 @@ def generate_map(groups: Mapping[str, data.Group]) -> Mapping[str, str]:
             "Some groups have the same mnemonics:\n"
             f"{pprint.pformat(duplicates)}"
         )
-    return {
+    result_by_mnemonic = {
         mnemonic: result
         for mnemonic, ((result, _),) in result_and_group_id_by_mnemonic.items()
+    }
+    return {
+        mnemonic: result
+        for mnemonic, result in sorted(
+            result_by_mnemonic.items(), key=lambda kv: (kv[1], kv[0])
+        )
     }
 
 
