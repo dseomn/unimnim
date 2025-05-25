@@ -65,6 +65,13 @@ prefix = "Zm"
 "v." = "U+1D180 MUSICAL SYMBOL COMBINING MARCATO-STACCATO [combining]: 𝅘𝅥𝆀"
 ">." = "U+1D181 MUSICAL SYMBOL COMBINING ACCENT-STACCATO [combining]: 𝅘𝅥𝆁"
 
+[maps.augmentation]
+"" = ""
+".1" = "U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT [combining]: 𝅘𝅥𝅭"
+".2" = "U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT, U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT [combining]: 𝅘𝅥𝅭𝅭"
+".3" = "U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT, U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT, U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT [combining]: 𝅘𝅥𝅭𝅭𝅭"
+".4" = "U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT, U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT, U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT, U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT [combining]: 𝅘𝅥𝅭𝅭𝅭𝅭"
+
 [maps.empty_for_combining]
 "_" = ""  # empty-for-combining
 
@@ -79,6 +86,7 @@ events = [
 ]
 main = [
   [["map", "main"]],
-  [["expression", "events"]],
+  [["expression", "events"], ["map", "augmentation"]],
   [["map", "empty_for_combining"], ["map", "articulation"]],
+  [["map", "empty_for_combining"], ["map", "augmentation"]],
 ]
