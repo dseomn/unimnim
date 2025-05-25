@@ -15,6 +15,10 @@ def test_report() -> None:
     assert "a" not in language["en"]["missing"]
     assert len(language["en"]["missing"]) == language["en"]["missing_count"]
 
-    script = report["script"]
-    assert script["Latn"]["total"] > 26 * 2
-    assert script["Latn"]["covered_count"] == 1
+    script_all = report["scriptAll"]
+    assert script_all["Latn"]["total"] > 26 * 2
+    assert script_all["Latn"]["covered_count"] == 1
+
+    script_exemplar = report["scriptExemplar"]
+    assert script_exemplar["Latn"]["total"] > 26 * 2
+    assert script_exemplar["Latn"]["covered_count"] == 1
