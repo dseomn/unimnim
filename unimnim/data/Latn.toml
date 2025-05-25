@@ -164,6 +164,7 @@ prefix = "l"
 ]
 "8" = [  # geometry
   ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'SUPERSCRIPT LATIN \g<1> LETTER \g<2>'],
+  ['LATIN (CAPITAL |SMALL |)LETTER (.*)', 'MODIFIER LETTER \g<1>\g<2>'],
 ]
 "?" = [['.*', '\g<0> WITH HOOK']]
 "?4" = [['.*', '\g<0> WITH LEFT HOOK']]  # geometry

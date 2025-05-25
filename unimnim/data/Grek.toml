@@ -73,6 +73,15 @@ prefix = "Gr"
 "2" = [  # geometry
   ['GREEK (CAPITAL|SMALL) LETTER (.*)', 'GREEK SUBSCRIPT \g<1> LETTER \g<2>'],
 ]
+"8" = [  # geometry
+  [
+    # The excluded ones are Latin modifier letters with the same name as Greek
+    # letters.
+    'GREEK (CAPITAL|SMALL) LETTER (?!ALPHA|GAMMA|IOTA|UPSILON|PHI)(.*)',
+    'MODIFIER LETTER \g<1> \g<2>'
+  ],
+  ['GREEK (CAPITAL|SMALL) LETTER (.*)', 'MODIFIER LETTER \g<1> GREEK \g<2>'],
+]
 
 [expressions]
 main = [[["map", "main"], ["combining", "main"]]]
