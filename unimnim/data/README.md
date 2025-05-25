@@ -128,6 +128,8 @@ general principles for picking a prefix, in descending order of importance:
 1.  Ideally the prefix should be based on the script's [ISO
     15924](https://en.wikipedia.org/wiki/ISO_15924) 4-letter code, but other
     options can make sense too if many scripts have similar codes.
+1.  One-letter prefixes should be lower case. Two-letter prefixes should start
+    with an uppercase letter.
 1.  More common scripts should generally get shorter prefixes, and
     ancient/historic scripts should generally get longer prefixes.
     https://en.wikipedia.org/wiki/List_of_writing_systems#List_of_writing_systems_by_adoption
