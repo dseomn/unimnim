@@ -2,6 +2,10 @@
 #
 # SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
 
+# Local conventions:
+#
+# Latn-Grek: "G" suffix for Latin letters based on Greek letters.
+
 prefix = "l"
 
 [maps.main]
@@ -78,8 +82,12 @@ prefix = "l"
 "DA" = "U+0189 LATIN CAPITAL LETTER AFRICAN D: Ɖ"
 "ER" = "U+018E LATIN CAPITAL LETTER REVERSED E: Ǝ"  #  geometry
 "E<" = "U+018F LATIN CAPITAL LETTER SCHWA: Ə"  # aka="reduced vowel" amount
+"EG" = "U+0190 LATIN CAPITAL LETTER OPEN E: Ɛ"  # Latn-Grek aka="epsilon"
+"GG" = "U+0194 LATIN CAPITAL LETTER GAMMA: Ɣ"  # Latn-Grek
+"IG" = "U+0196 LATIN CAPITAL LETTER IOTA: Ɩ"  # Latn-Grek
 "O|" = "U+019F LATIN CAPITAL LETTER O WITH MIDDLE TILDE: Ɵ"  # aka="barred o"
 "SH" = "U+01A9 LATIN CAPITAL LETTER ESH: Ʃ"
+"UG" = "U+01B1 LATIN CAPITAL LETTER UPSILON: Ʊ"  # Latn-Grek
 "ZH" = "U+01B7 LATIN CAPITAL LETTER EZH: Ʒ"
 "w<" = "U+01BF LATIN LETTER WYNN: ƿ"  # amount
 "|" = "U+01C0 LATIN LETTER DENTAL CLICK: ǀ"
@@ -93,11 +101,16 @@ prefix = "l"
 "?>" = "U+0241 LATIN CAPITAL LETTER GLOTTAL STOP: Ɂ"  # amount
 "?<" = "U+0242 LATIN SMALL LETTER GLOTTAL STOP: ɂ"  # amount
 "VT" = "U+0245 LATIN CAPITAL LETTER TURNED V: Ʌ"  # geometry
+"aG" = "U+0251 LATIN SMALL LETTER ALPHA: ɑ"  # Latn-Grek
 "cT" = "U+0254 LATIN SMALL LETTER OPEN O: ɔ"  # aka="turned c" geometry
 "d?3" = "U+0256 LATIN SMALL LETTER D WITH TAIL: ɖ"  # geometry
 "e<" = "U+0259 LATIN SMALL LETTER SCHWA: ə"  # aka="reduced vowel" amount
+"eG" = "U+025B LATIN SMALL LETTER OPEN E: ɛ"  # Latn-Grek aka="epsilon"
+"gG" = "U+0263 LATIN SMALL LETTER GAMMA: ɣ"  # Latn-Grek
 "hT" = "U+0265 LATIN SMALL LETTER TURNED H: ɥ"  # geometry
+"iG" = "U+0269 LATIN SMALL LETTER IOTA: ɩ"  # Latn-Grek
 "sh" = "U+0283 LATIN SMALL LETTER ESH: ʃ"
+"uG" = "U+028A LATIN SMALL LETTER UPSILON: ʊ"  # Latn-Grek
 "vT" = "U+028C LATIN SMALL LETTER TURNED V: ʌ"  # geometry
 "zh" = "U+0292 LATIN SMALL LETTER EZH: ʒ"
 "?" = "U+0294 LATIN LETTER GLOTTAL STOP: ʔ"
@@ -111,6 +124,7 @@ prefix = "l"
 "50<" = "U+2186 ROMAN NUMERAL FIFTY EARLY FORM: ↆ"  # amount
 "50k" = "U+2187 ROMAN NUMERAL FIFTY THOUSAND: ↇ"  # si-prefix
 "100k" = "U+2188 ROMAN NUMERAL ONE HUNDRED THOUSAND: ↈ"  # si-prefix
+"AG" = "U+2C6D LATIN CAPITAL LETTER ALPHA: Ɑ"  # Latn-Grek
 "'>" = "U+A78B LATIN CAPITAL LETTER SALTILLO: Ꞌ"  # amount
 "'<" = "U+A78C LATIN SMALL LETTER SALTILLO: ꞌ"  # amount
 "HT" = "U+A78D LATIN CAPITAL LETTER TURNED H: Ɥ"  # geometry
@@ -140,8 +154,8 @@ prefix = "l"
 [combining.main.name_regex_replace]
 "/" = [['.*', '\g<0> WITH STROKE']]
 "//" = [
-  ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'DOUBLE-STRUCK \g<1> \g<2>'],
-  ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'MATHEMATICAL DOUBLE-STRUCK \g<1> \g<2>'],
+  ['LATIN (CAPITAL|SMALL) LETTER (.)', 'DOUBLE-STRUCK \g<1> \g<2>'],
+  ['LATIN (CAPITAL|SMALL) LETTER (.)', 'MATHEMATICAL DOUBLE-STRUCK \g<1> \g<2>'],
 ]
 "/d" = [['.*', '\g<0> WITH DIAGONAL STROKE']]
 "/o" = [['.*', '\g<0> WITH OBLIQUE STROKE']]
