@@ -143,6 +143,8 @@ prefix = "l"
   ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'DOUBLE-STRUCK \g<1> \g<2>'],
   ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'MATHEMATICAL DOUBLE-STRUCK \g<1> \g<2>'],
 ]
+"/d" = [['.*', '\g<0> WITH DIAGONAL STROKE']]
+"/o" = [['.*', '\g<0> WITH OBLIQUE STROKE']]
 "2" = [  # geometry
   ['LATIN (CAPITAL|SMALL) LETTER (.*)', 'LATIN SUBSCRIPT \g<1> LETTER \g<2>'],
 ]
