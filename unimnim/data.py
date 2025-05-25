@@ -289,13 +289,13 @@ class Group:
 
 
 def load(path: pathlib.Path, /) -> Mapping[str, Group]:
-    """Loads groups from .toml files in a directory.
+    """Loads groups from a directory.
 
     Returns:
         Map from a group identifier to the group data.
     """
     return {
-        str(file.relative_to(path)): Group.parse(
+        str(file.relative_to(path)).removesuffix(".toml"): Group.parse(
             tomllib.loads(file.read_text())
         )
         for file in path.glob("**/*.toml")

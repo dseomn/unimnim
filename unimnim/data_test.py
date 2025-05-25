@@ -271,14 +271,14 @@ def test_load(tmp_path: pathlib.Path) -> None:
     actual = data.load(tmp_path)
 
     assert actual == {
-        "subdir/latin.toml": data.Group.parse(
+        "subdir/latin": data.Group.parse(
             dict(
                 prefix="l",
                 maps=dict(main={"a": "U+0061 LATIN SMALL LETTER A"}),
                 expressions=dict(main=[[["map", "main"]]]),
             )
         ),
-        "greek.toml": data.Group.parse(
+        "greek": data.Group.parse(
             dict(
                 prefix="g",
                 maps=dict(main={"a": "U+03B1 GREEK SMALL LETTER ALPHA"}),
