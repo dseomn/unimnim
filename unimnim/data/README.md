@@ -116,7 +116,9 @@ prefix = "l"
 # outer array are unioned together. ["map", name] results in the cartesian
 # product of the given map with whatever comes before, or just the given map if
 # there's nothing before it. ["combining", name] applies the given combining
-# config. Currently only "main" is supported.
+# config. ["expression", name] behaves like ["map", name], but references a
+# previously defined expression instead of a map. The "main" expression is used
+# as the final map of the group.
 [expressions]
 main = [
   [["map", "main"], ["combining", "main"]],

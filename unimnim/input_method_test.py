@@ -143,6 +143,16 @@ def test_map_duplicate_mnemonic_same_result(
                 "latin": data.Group(
                     prefix="l",
                     maps={},
+                    expressions=dict(main=[[["expression", "other"]]]),
+                ),
+            },
+            r"Group 'latin' does not have expression 'other'",
+        ),
+        (
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    maps={},
                     expressions=dict(
                         main=[[]],
                         other=[[]],
@@ -776,17 +786,11 @@ def test_generate_map_error(
                         },
                     ),
                     expressions=dict(
-                        main=[
-                            [
-                                ["map", "consonants"],
-                                ["map", "vowels"],
-                            ],
-                            [
-                                ["map", "consonants"],
-                                ["map", "vowels"],
-                                ["map", "final_consonants"],
-                            ],
+                        rimes=[
+                            [["map", "vowels"]],
+                            [["map", "vowels"], ["map", "final_consonants"]],
                         ],
+                        main=[[["map", "consonants"], ["expression", "rimes"]]],
                     ),
                 ),
             },

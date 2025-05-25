@@ -291,6 +291,10 @@ def _generate_map_one_group(
                         _apply_combining(
                             union_operand_map, combining.get(combining_name)
                         )
+                    case ["expression", str() as ref_name]:
+                        union_operand_map = _cartesian_product(
+                            union_operand_map, expressions.get(ref_name)
+                        )
                     case _:
                         raise ValueError(
                             f"Group {group_id!r} has invalid expression: "
