@@ -19,17 +19,17 @@ example:
 
 | Mnemonic | Meaning | Result |
 | --- | --- | --- |
-| `la'` |  [Latin](unimnim/data/latin.toml), a, acute | `á` |
+| `la'` |  [Latin](unimnim/data/Latn.toml), a, acute | `á` |
 | `le^'` | Latin, e, circumflex, acute | `ế` |
 | `lAE-` | Latin, Æ, macron | `Ǣ` |
-| `ab` | [Arabic](unimnim/data/arabic.toml), ب | `ب` |
-| `cd` | [Cyrillic](unimnim/data/cyrillic.toml), д | `д` |
-| `GOa` | [Gothic](unimnim/data/gothic.toml), 𐌰 | `𐌰` |
-| `ga'` | [Greek](unimnim/data/greek.toml), α, tonos | `ά` |
-| `HAki` | [Hanunoo](unimnim/data/hanunoo.toml), ᜣ,  ᜲ | `ᜣᜲ` |
-| `hk.`| [Hebrew](unimnim/data/hebrew.toml), כ, dagesh | `כּ` |
-| `OGb` | [Ogham](unimnim/data/ogham.toml), ᚁ | `ᚁ` |
-| `Rb` | [Runic](unimnim/data/runic.toml), ᛒ | `ᛒ` |
+| `ab` | [Arabic](unimnim/data/Arab.toml), ب | `ب` |
+| `cd` | [Cyrillic](unimnim/data/Cyrl.toml), д | `д` |
+| `GOa` | [Gothic](unimnim/data/Goth.toml), 𐌰 | `𐌰` |
+| `ga'` | [Greek](unimnim/data/Grek.toml), α, tonos | `ά` |
+| `HAki` | [Hanunoo](unimnim/data/Hano.toml), ᜣ,  ᜲ | `ᜣᜲ` |
+| `hk.`| [Hebrew](unimnim/data/Hebr.toml), כ, dagesh | `כּ` |
+| `OGb` | [Ogham](unimnim/data/Ogam.toml), ᚁ | `ᚁ` |
+| `Rb` | [Runic](unimnim/data/Runr.toml), ᛒ | `ᛒ` |
 | `ZM0s` | common[^z-common], [math](unimnim/data/common/math.toml), zero/empty/null, set | `∅` |
 | `Z-m` | common, dash ([punctuation](unimnim/data/common/punctuation.toml)), em | `—` |
 | `Z?!I` | common, interrobang (punctuation), inverted | `⸘` |

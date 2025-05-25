@@ -12,8 +12,8 @@
 the same pattern of combining characters used to generate accented results.
 Currently this maps 1:1 to files in this directory. In the future it might be
 possible for users to configure overrides, so a single group could be defined in
-both `path/to/unimnim/data/latin.toml` and
-`~/path/to/unimnim-config/latin.toml`.
+both `path/to/unimnim/data/Latn.toml` and
+`~/path/to/unimnim-config/Latn.toml`.
 
 *mnemonic*: Key sequence that a user types.
 
