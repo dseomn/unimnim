@@ -19,16 +19,7 @@ both `path/to/unimnim/data/Latn.toml` and
 
 *result*: Text that results from typing a mnemonic.
 
-*prefix*: Prefix for a group's mnemonics. In general, groups where users are
-likely to type more mnemonics should get shorter and easier to type prefixes
-than other groups. E.g., while some users might type math symbols frequently,
-they probably do not type as many math symbols at a time as a user typing in a
-natural language. So a group for math symbols should probably have a longer
-prefix than a group for a more common script. One of the reasons that the prefix
-is its own field in data files is to hopefully make it easier for users to
-override prefixes in the future, e.g., to let users who primarily type math
-symbols with this input method to override a math symbol group to use a shorter
-(or empty) prefix. Please file a bug if that's something you want.
+*prefix*: Prefix for all of a group's mnemonics.
 
 *map*: A map from mnemonic to result.
 
@@ -124,6 +115,36 @@ main = [
   [["map", "main"], ["combining", "main"]],
 ]
 ```
+
+## Prefixes
+
+https://en.wikipedia.org/wiki/Script_(Unicode) says "Unicode 16.0 defines 168
+separate scripts, including 99 modern scripts and 69 ancient or historic
+scripts." Each script can't get its own single-key prefix, but two keys should
+be enough for the foreseeable future. To keep mnemonics both as short and as
+memorable as possible without causing conflicts between scripts, here are some
+general principles for picking a prefix, in descending order of importance:
+
+1.  Ideally the prefix should be based on the script's [ISO
+    15924](https://en.wikipedia.org/wiki/ISO_15924) 4-letter code, but other
+    options can make sense too if many scripts have similar codes.
+1.  More common scripts should generally get shorter prefixes, and
+    ancient/historic scripts should generally get longer prefixes.
+    https://en.wikipedia.org/wiki/List_of_writing_systems#List_of_writing_systems_by_adoption
+    has a table that can be sorted by how many people actively use a script.
+1.  The information density of each mnemonic in a script can be used to decide
+    between a one- or two-key prefix. E.g., a small alphabet could get a shorter
+    prefix than a large logography. Each single-logograph mnemonic encodes more
+    information than each single-letter mnemonic, so the overhead of typing the
+    prefix is less significant for the logography.
+
+This is still going to be far from perfect, with lots of extra keystrokes for a
+user who regularly types in a small alphabet with a 2-key prefix. One of the
+reasons that the prefix is its own field in data files is to hopefully make it
+easier to add per-user configuration later. E.g., maybe users could configure
+prefix overrides, or maybe an input method could use a different starter key
+combination to start a mnemonic with a prefix already filled in. Please file a
+feature request if that's something you want.
 
 ## Conventions
 
