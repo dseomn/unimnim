@@ -9,7 +9,6 @@
 prefix = "Zm"
 
 [maps.main]
-"_" = ""  # empty-for-combining
 "b" = "U+266D MUSIC FLAT SIGN: ♭"
 "=" = "U+266E MUSIC NATURAL SIGN: ♮"  # music-abc
 "#" = "U+266F MUSIC SHARP SIGN: ♯"
@@ -29,15 +28,13 @@ prefix = "Zm"
 "8vb" = "U+1D137 MUSICAL SYMBOL OTTAVA BASSA: 𝄷"
 "15ma" = "U+1D138 MUSICAL SYMBOL QUINDICESIMA ALTA: 𝄸"
 "15mb" = "U+1D139 MUSICAL SYMBOL QUINDICESIMA BASSA: 𝄹"
-"r2" = "U+1D13A MUSICAL SYMBOL MULTI REST: 𝄺"  # aka="double whole-rest"
-"r1" = "U+1D13B MUSICAL SYMBOL WHOLE REST: 𝄻"
-"r/2" = "U+1D13C MUSICAL SYMBOL HALF REST: 𝄼"
-"r/4" = "U+1D13D MUSICAL SYMBOL QUARTER REST: 𝄽"
-"r/8" = "U+1D13E MUSICAL SYMBOL EIGHTH REST: 𝄾"
-"r/16" = "U+1D13F MUSICAL SYMBOL SIXTEENTH REST: 𝄿"
-"r/32" = "U+1D140 MUSICAL SYMBOL THIRTY-SECOND REST: 𝅀"
-"r/64" = "U+1D141 MUSICAL SYMBOL SIXTY-FOURTH REST: 𝅁"
-"r/128" = "U+1D142 MUSICAL SYMBOL ONE HUNDRED TWENTY-EIGHTH REST: 𝅂"
+"p" = "U+1D18F MUSICAL SYMBOL PIANO: 𝆏"
+"m" = "U+1D190 MUSICAL SYMBOL MEZZO: 𝆐"
+"f" = "U+1D191 MUSICAL SYMBOL FORTE: 𝆑"
+"<" = "U+1D192 MUSICAL SYMBOL CRESCENDO: 𝆒"
+">" = "U+1D193 MUSICAL SYMBOL DECRESCENDO: 𝆓"
+
+[maps.notes]
 "n/2" = "U+1D157 MUSICAL SYMBOL VOID NOTEHEAD, U+1D165 MUSICAL SYMBOL COMBINING STEM: 𝅗𝅥"
 "n/4" = "U+1D158 MUSICAL SYMBOL NOTEHEAD BLACK, U+1D165 MUSICAL SYMBOL COMBINING STEM: 𝅘𝅥"
 "n/8" = "U+1D158 MUSICAL SYMBOL NOTEHEAD BLACK, U+1D165 MUSICAL SYMBOL COMBINING STEM, U+1D16E MUSICAL SYMBOL COMBINING FLAG-1: 𝅘𝅥𝅮"
@@ -47,15 +44,36 @@ prefix = "Zm"
 "n/128" = "U+1D158 MUSICAL SYMBOL NOTEHEAD BLACK, U+1D165 MUSICAL SYMBOL COMBINING STEM, U+1D172 MUSICAL SYMBOL COMBINING FLAG-5: 𝅘𝅥𝅲"
 "n2" = "U+1D15C MUSICAL SYMBOL BREVE: 𝅜"
 "n1" = "U+1D15D MUSICAL SYMBOL WHOLE NOTE: 𝅝"
-"p" = "U+1D18F MUSICAL SYMBOL PIANO: 𝆏"
-"m" = "U+1D190 MUSICAL SYMBOL MEZZO: 𝆐"
-"f" = "U+1D191 MUSICAL SYMBOL FORTE: 𝆑"
-"<" = "U+1D192 MUSICAL SYMBOL CRESCENDO: 𝆒"
-">" = "U+1D193 MUSICAL SYMBOL DECRESCENDO: 𝆓"
 
-[combining.main.append]
+[maps.rests]
+"r2" = "U+1D13A MUSICAL SYMBOL MULTI REST: 𝄺"  # aka="double whole-rest"
+"r1" = "U+1D13B MUSICAL SYMBOL WHOLE REST: 𝄻"
+"r/2" = "U+1D13C MUSICAL SYMBOL HALF REST: 𝄼"
+"r/4" = "U+1D13D MUSICAL SYMBOL QUARTER REST: 𝄽"
+"r/8" = "U+1D13E MUSICAL SYMBOL EIGHTH REST: 𝄾"
+"r/16" = "U+1D13F MUSICAL SYMBOL SIXTEENTH REST: 𝄿"
+"r/32" = "U+1D140 MUSICAL SYMBOL THIRTY-SECOND REST: 𝅀"
+"r/64" = "U+1D141 MUSICAL SYMBOL SIXTY-FOURTH REST: 𝅁"
+"r/128" = "U+1D142 MUSICAL SYMBOL ONE HUNDRED TWENTY-EIGHTH REST: 𝅂"
+
+[maps.articulation]
 ">" = "U+1D17B MUSICAL SYMBOL COMBINING ACCENT [combining]: 𝅘𝅥𝅻"
 "." = "U+1D17C MUSICAL SYMBOL COMBINING STACCATO [combining]: 𝅘𝅥𝅼"
 
+[maps.empty_for_combining]
+"_" = ""  # empty-for-combining
+
 [expressions]
-main = [[["map", "main"], ["combining", "main"]]]
+notes = [
+  [["map", "notes"]],
+  [["map", "notes"], ["map", "articulation"]],
+]
+events = [
+  [["expression", "notes"]],
+  [["map", "rests"]],
+]
+main = [
+  [["map", "main"]],
+  [["expression", "events"]],
+  [["map", "empty_for_combining"], ["map", "articulation"]],
+]
