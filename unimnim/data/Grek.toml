@@ -10,7 +10,7 @@
 #
 # greek-beta-code: Mnemonics based on https://en.wikipedia.org/wiki/Beta_Code
 
-prefix = "g"
+prefix = "Gr"
 
 [maps.main]
 "_" = ""  # empty-for-combining

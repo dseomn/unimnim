@@ -4,7 +4,7 @@
 
 # https://en.wikipedia.org/wiki/Hanunoo_script
 
-prefix = "HA"
+prefix = "Ho"
 
 [maps.consonants]
 "_" = ""  # empty-for-combining

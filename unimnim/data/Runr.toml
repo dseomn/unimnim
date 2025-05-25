@@ -16,7 +16,7 @@
 #
 # "F" is used for FRANKS CASKET runes.
 
-prefix = "R"
+prefix = "RU"
 
 [maps.main]
 "f" = "U+16A0 RUNIC LETTER FEHU FEOH FE F: ᚠ"

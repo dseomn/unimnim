@@ -25,11 +25,11 @@ example:
 | `ab` | [Arabic](unimnim/data/Arab.toml), ب | `ب` |
 | `cd` | [Cyrillic](unimnim/data/Cyrl.toml), д | `д` |
 | `GOa` | [Gothic](unimnim/data/Goth.toml), 𐌰 | `𐌰` |
-| `ga'` | [Greek](unimnim/data/Grek.toml), α, tonos | `ά` |
-| `HAki` | [Hanunoo](unimnim/data/Hano.toml), ᜣ,  ᜲ | `ᜣᜲ` |
-| `hk.`| [Hebrew](unimnim/data/Hebr.toml), כ, dagesh | `כּ` |
+| `Gra'` | [Greek](unimnim/data/Grek.toml), α, tonos | `ά` |
+| `Hoki` | [Hanunoo](unimnim/data/Hano.toml), ᜣ,  ᜲ | `ᜣᜲ` |
+| `Hek.`| [Hebrew](unimnim/data/Hebr.toml), כ, dagesh | `כּ` |
 | `OGb` | [Ogham](unimnim/data/Ogam.toml), ᚁ | `ᚁ` |
-| `Rb` | [Runic](unimnim/data/Runr.toml), ᛒ | `ᛒ` |
+| `RUb` | [Runic](unimnim/data/Runr.toml), ᛒ | `ᛒ` |
 | `ZM0s` | common[^z-common], [math](unimnim/data/common/math.toml), zero/empty/null, set | `∅` |
 | `Z-m` | common, dash ([punctuation](unimnim/data/common/punctuation.toml)), em | `—` |
 | `Z?!I` | common, interrobang (punctuation), inverted | `⸘` |
