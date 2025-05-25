@@ -8,7 +8,7 @@
 #
 # Local conventions:
 #
-# greek-beta-code: Mnemonics based on https://en.wikipedia.org/wiki/Beta_Code
+# Grek-beta-code: Mnemonics based on https://en.wikipedia.org/wiki/Beta_Code
 
 prefix = "Gr"
 
@@ -20,7 +20,7 @@ prefix = "Gr"
 "D" = "U+0394 GREEK CAPITAL LETTER DELTA: Δ"
 "E" = "U+0395 GREEK CAPITAL LETTER EPSILON: Ε"
 "Z" = "U+0396 GREEK CAPITAL LETTER ZETA: Ζ"
-"H" = "U+0397 GREEK CAPITAL LETTER ETA: Η"  # greek-beta-code suboptimal
+"H" = "U+0397 GREEK CAPITAL LETTER ETA: Η"  # Grek-beta-code suboptimal
 "TH" = "U+0398 GREEK CAPITAL LETTER THETA: Θ"
 "I" = "U+0399 GREEK CAPITAL LETTER IOTA: Ι"
 "K" = "U+039A GREEK CAPITAL LETTER KAPPA: Κ"
@@ -37,14 +37,14 @@ prefix = "Gr"
 "F" = "U+03A6 GREEK CAPITAL LETTER PHI: Φ"
 "CH" = "U+03A7 GREEK CAPITAL LETTER CHI: Χ"
 "PS" = "U+03A8 GREEK CAPITAL LETTER PSI: Ψ"
-"W" = "U+03A9 GREEK CAPITAL LETTER OMEGA: Ω"  # greek-beta-code suboptimal
+"W" = "U+03A9 GREEK CAPITAL LETTER OMEGA: Ω"  # Grek-beta-code suboptimal
 "a" = "U+03B1 GREEK SMALL LETTER ALPHA: α"
 "v" = "U+03B2 GREEK SMALL LETTER BETA: β"
 "g" = "U+03B3 GREEK SMALL LETTER GAMMA: γ"
 "d" = "U+03B4 GREEK SMALL LETTER DELTA: δ"
 "e" = "U+03B5 GREEK SMALL LETTER EPSILON: ε"
 "z" = "U+03B6 GREEK SMALL LETTER ZETA: ζ"
-"h" = "U+03B7 GREEK SMALL LETTER ETA: η"  # greek-beta-code suboptimal
+"h" = "U+03B7 GREEK SMALL LETTER ETA: η"  # Grek-beta-code suboptimal
 "th" = "U+03B8 GREEK SMALL LETTER THETA: θ"
 "i" = "U+03B9 GREEK SMALL LETTER IOTA: ι"
 "k" = "U+03BA GREEK SMALL LETTER KAPPA: κ"
@@ -62,7 +62,7 @@ prefix = "Gr"
 "f" = "U+03C6 GREEK SMALL LETTER PHI: φ"
 "ch" = "U+03C7 GREEK SMALL LETTER CHI: χ"
 "ps" = "U+03C8 GREEK SMALL LETTER PSI: ψ"
-"w" = "U+03C9 GREEK SMALL LETTER OMEGA: ω"  # greek-beta-code suboptimal
+"w" = "U+03C9 GREEK SMALL LETTER OMEGA: ω"  # Grek-beta-code suboptimal
 
 [combining.main.append]
 "'" = "U+0301 COMBINING ACUTE ACCENT [combining]: ά"
