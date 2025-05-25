@@ -6,9 +6,7 @@
 
 prefix = "h"
 
-[maps.main]
-"_" = ""  # empty-for-combining
-"-" = "U+05BE HEBREW PUNCTUATION MAQAF: ־"
+[maps.consonants]
 "a" = "U+05D0 HEBREW LETTER ALEF: א"  # from=rfc1345 suboptimal
 "v" = "U+05D1 HEBREW LETTER BET: ב"
 "g" = "U+05D2 HEBREW LETTER GIMEL: ג"
@@ -31,17 +29,45 @@ prefix = "h"
 "r" = "U+05E8 HEBREW LETTER RESH: ר"
 "sh" = "U+05E9 HEBREW LETTER SHIN: ש"
 "T" = "U+05EA HEBREW LETTER TAV: ת"  # suboptimal
+
+[maps.vowels]
+"i" = "U+05B4 HEBREW POINT HIRIQ [combining]: אִ"
+"eh" = "U+05B5 HEBREW POINT TSERE [combining]: אֵ"
+"e" = "U+05B6 HEBREW POINT SEGOL [combining]: אֶ"
+"a" = "U+05B7 HEBREW POINT PATAH [combining]: אַ"
+"ah" = "U+05B8 HEBREW POINT QAMATS [combining]: אָ"
+"o" = "U+05B9 HEBREW POINT HOLAM [combining]: אֹ"
+"u" = "U+05BB HEBREW POINT QUBUTS [combining]: אֻ"
+
+[maps.punctuation]
+"-" = "U+05BE HEBREW PUNCTUATION MAQAF: ־"
 "'" = "U+05F3 HEBREW PUNCTUATION GERESH: ׳"
 '"' = "U+05F4 HEBREW PUNCTUATION GERSHAYIM: ״"
 
-[combining.main.append]
+[maps.empty_for_combining]
+"_" = ""  # empty-for-combining
+
+[combining.consonants.append]
 "." = "U+05BC HEBREW POINT DAGESH OR MAPIQ [combining]: בּ"
 "h" = "U+05C1 HEBREW POINT SHIN DOT [combining]: שׁ"
 "s" = "U+05C2 HEBREW POINT SIN DOT [combining]: שׂ"
 
-[combining.main.name_regex_replace]
-"$" = [['HEBREW LETTER (.*)', '\g<1> SYMBOL']]  # suboptimal
+[combining.consonants.name_regex_replace]
 "]" = [['(HEBREW LETTER) (.*)', '\g<1> FINAL \g<2>']]  # logical-order
 
+[combining.symbols.name_regex_replace]
+"$" = [['HEBREW LETTER (.*)', '\g<1> SYMBOL']]  # suboptimal
+
 [expressions]
-main = [[["map", "main"], ["combining", "main"]]]
+consonants = [[["map", "consonants"], ["combining", "consonants"]]]
+letters = [
+  [["expression", "consonants"]],
+  [["expression", "consonants"], ["map", "vowels"]],
+]
+main = [
+  [["expression", "letters"]],
+  [["expression", "letters"], ["combining", "symbols"]],
+  [["map", "punctuation"]],
+  [["map", "empty_for_combining"], ["map", "vowels"]],
+  [["map", "empty_for_combining"], ["combining", "consonants"]],
+]
