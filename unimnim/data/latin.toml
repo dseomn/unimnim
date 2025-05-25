@@ -78,6 +78,7 @@ prefix = "l"
 "DA" = "U+0189 LATIN CAPITAL LETTER AFRICAN D: Ɖ"
 "ER" = "U+018E LATIN CAPITAL LETTER REVERSED E: Ǝ"  #  geometry
 "E<" = "U+018F LATIN CAPITAL LETTER SCHWA: Ə"  # aka="reduced vowel" amount
+"O|" = "U+019F LATIN CAPITAL LETTER O WITH MIDDLE TILDE: Ɵ"  # aka="barred o"
 "SH" = "U+01A9 LATIN CAPITAL LETTER ESH: Ʃ"
 "ZH" = "U+01B7 LATIN CAPITAL LETTER EZH: Ʒ"
 "w<" = "U+01BF LATIN LETTER WYNN: ƿ"  # amount
@@ -153,6 +154,7 @@ prefix = "l"
 "|" = [
   ['.*', '\g<0> BAR'],
   ['.*', '\g<0> WITH BAR'],
+  ['(LATIN (?:CAPITAL|SMALL) LETTER) (.*)', '\g<1> BARRED \g<2>'],
 ]
 "||" = [['.*', '\g<0> WITH DOUBLE BAR']]
 
