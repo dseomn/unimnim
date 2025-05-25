@@ -59,6 +59,11 @@ prefix = "Zm"
 [maps.articulation]
 ">" = "U+1D17B MUSICAL SYMBOL COMBINING ACCENT [combining]: 𝅘𝅥𝅻"
 "." = "U+1D17C MUSICAL SYMBOL COMBINING STACCATO [combining]: 𝅘𝅥𝅼"
+"-" = "U+1D17D MUSICAL SYMBOL COMBINING TENUTO [combining]: 𝅘𝅥𝅽"
+"'" = "U+1D17E MUSICAL SYMBOL COMBINING STACCATISSIMO [combining]: 𝅘𝅥𝅾"
+"v" = "U+1D17F MUSICAL SYMBOL COMBINING MARCATO [combining]: 𝅘𝅥𝅿"
+"v." = "U+1D180 MUSICAL SYMBOL COMBINING MARCATO-STACCATO [combining]: 𝅘𝅥𝆀"
+">." = "U+1D181 MUSICAL SYMBOL COMBINING ACCENT-STACCATO [combining]: 𝅘𝅥𝆁"
 
 [maps.empty_for_combining]
 "_" = ""  # empty-for-combining
