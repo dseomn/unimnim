@@ -1,0 +1,76 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Devanagari_transliteration, mostly based on
+# https://en.wikipedia.org/wiki/Harvard-Kyoto
+
+prefix = "d"
+
+[maps.independent_vowels]
+"a" = "U+0905 DEVANAGARI LETTER A: अ"
+"A" = "U+0906 DEVANAGARI LETTER AA: आ"
+"i" = "U+0907 DEVANAGARI LETTER I: इ"
+"I" = "U+0908 DEVANAGARI LETTER II: ई"
+"u" = "U+0909 DEVANAGARI LETTER U: उ"
+"U" = "U+090A DEVANAGARI LETTER UU: ऊ"
+"e" = "U+090F DEVANAGARI LETTER E: ए"
+"ai" = "U+0910 DEVANAGARI LETTER AI: ऐ"
+"o" = "U+0913 DEVANAGARI LETTER O: ओ"
+"au" = "U+0914 DEVANAGARI LETTER AU: औ"
+
+[maps.consonants]
+"_" = ""  # empty-for-combining
+"k" = "U+0915 DEVANAGARI LETTER KA: क"
+"kh" = "U+0916 DEVANAGARI LETTER KHA: ख"
+"g" = "U+0917 DEVANAGARI LETTER GA: ग"
+"gh" = "U+0918 DEVANAGARI LETTER GHA: घ"
+"G" = "U+0919 DEVANAGARI LETTER NGA: ङ"
+"c" = "U+091A DEVANAGARI LETTER CA: च"
+"ch" = "U+091B DEVANAGARI LETTER CHA: छ"
+"j" = "U+091C DEVANAGARI LETTER JA: ज"
+"jh" = "U+091D DEVANAGARI LETTER JHA: झ"
+"J" = "U+091E DEVANAGARI LETTER NYA: ञ"
+"T" = "U+091F DEVANAGARI LETTER TTA: ट"
+"Th" = "U+0920 DEVANAGARI LETTER TTHA: ठ"
+"D" = "U+0921 DEVANAGARI LETTER DDA: ड"
+"Dh" = "U+0922 DEVANAGARI LETTER DDHA: ढ"
+"N" = "U+0923 DEVANAGARI LETTER NNA: ण"
+"t" = "U+0924 DEVANAGARI LETTER TA: त"
+"th" = "U+0925 DEVANAGARI LETTER THA: थ"
+"d" = "U+0926 DEVANAGARI LETTER DA: द"
+"dh" = "U+0927 DEVANAGARI LETTER DHA: ध"
+"n" = "U+0928 DEVANAGARI LETTER NA: न"
+"p" = "U+092A DEVANAGARI LETTER PA: प"
+"ph" = "U+092B DEVANAGARI LETTER PHA: फ"
+"b" = "U+092C DEVANAGARI LETTER BA: ब"
+"bh" = "U+092D DEVANAGARI LETTER BHA: भ"
+"m" = "U+092E DEVANAGARI LETTER MA: म"
+"y" = "U+092F DEVANAGARI LETTER YA: य"
+"r" = "U+0930 DEVANAGARI LETTER RA: र"
+"l" = "U+0932 DEVANAGARI LETTER LA: ल"
+"L" = "U+0933 DEVANAGARI LETTER LLA: ळ"
+"v" = "U+0935 DEVANAGARI LETTER VA: व"
+"z" = "U+0936 DEVANAGARI LETTER SHA: श"
+"S" = "U+0937 DEVANAGARI LETTER SSA: ष"
+"s" = "U+0938 DEVANAGARI LETTER SA: स"
+"h" = "U+0939 DEVANAGARI LETTER HA: ह"
+
+[maps.vowel_signs]
+"a" = ""
+"A" = "U+093E DEVANAGARI VOWEL SIGN AA [combining]: का"
+"i" = "U+093F DEVANAGARI VOWEL SIGN I [combining]: कि"
+"I" = "U+0940 DEVANAGARI VOWEL SIGN II [combining]: की"
+"u" = "U+0941 DEVANAGARI VOWEL SIGN U [combining]: कु"
+"U" = "U+0942 DEVANAGARI VOWEL SIGN UU [combining]: कू"
+"e" = "U+0947 DEVANAGARI VOWEL SIGN E [combining]: के"
+"ai" = "U+0948 DEVANAGARI VOWEL SIGN AI [combining]: कै"
+"o" = "U+094B DEVANAGARI VOWEL SIGN O [combining]: को"
+"au" = "U+094C DEVANAGARI VOWEL SIGN AU [combining]: कौ"
+"" = "U+094D DEVANAGARI SIGN VIRAMA [combining]: क्"
+
+[expressions]
+main = [
+  [["map", "independent_vowels"]],
+  [["map", "consonants"], ["map", "vowel_signs"]],
+]
