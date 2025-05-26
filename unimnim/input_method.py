@@ -92,6 +92,17 @@ def _known_sequences_and_prefixes() -> Set[str]:
     return result
 
 
+def _lookup_correct_name(name: str) -> str:
+    """Like unicodedata.lookup, but excludes incorrect names."""
+    result = unicodedata.lookup(name)
+    name_corrected = icu.Char.charName(
+        result, icu.UCharNameChoice.CHAR_NAME_ALIAS
+    )
+    if name_corrected and name_corrected != name:
+        raise KeyError(name)
+    return result
+
+
 @dataclasses.dataclass(frozen=True, kw_only=True)
 class _Map:
     """An intermediate map from mnemonic to result.
@@ -203,15 +214,8 @@ def _apply_combining(map_: _Map, combining: data.Combining) -> None:
                     continue
                 combined_name = match.expand(combining_replacement)
                 try:
-                    combined_raw = unicodedata.lookup(combined_name)
+                    combined_raw = _lookup_correct_name(combined_name)
                 except KeyError:
-                    continue
-                combined_name_corrected = icu.Char.charName(
-                    combined_raw, icu.UCharNameChoice.CHAR_NAME_ALIAS
-                )
-                if combined_name_corrected and (
-                    combined_name_corrected != combined_name
-                ):
                     continue
                 combined_result = unicodedata.normalize("NFC", combined_raw)
                 combined_mnemonic = mnemonic + combining_mnemonic
