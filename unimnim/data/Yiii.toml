@@ -1,0 +1,89 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Yi_script#Yi_in_pinyin
+
+prefix = "Yi"
+
+[name_maps.prefix]
+"" = "YI SYLLABLE "
+
+[name_maps.consonants]
+"" = ""
+"b" = "B"
+"p" = "P"
+"bb" = "BB"
+"nb" = "NB"
+"hm" = "HM"
+"m" = "M"
+"f" = "F"
+"v" = "V"
+"d" = "D"
+"t" = "T"
+"dd" = "DD"
+"nd" = "ND"
+"hn" = "HN"
+"n" = "N"
+"hl" = "HL"
+"l" = "L"
+"g" = "G"
+"k" = "K"
+"gg" = "GG"
+"mg" = "MG"
+"hx" = "HX"
+"ng" = "NG"
+"h" = "H"
+"w" = "W"
+"z" = "Z"
+"c" = "C"
+"zz" = "ZZ"
+"nz" = "NZ"
+"s" = "S"
+"ss" = "SS"
+"zh" = "ZH"
+"ch" = "CH"
+"rr" = "RR"
+"nr" = "NR"
+"sh" = "SH"
+"r" = "R"
+"j" = "J"
+"q" = "Q"
+"jj" = "JJ"
+"nj" = "NJ"
+"ny" = "NY"
+"x" = "X"
+"y" = "Y"
+
+[name_maps.vowels]
+"i" = "I"
+"ie" = "IE"
+"a" = "A"
+"uo" = "UO"
+"o" = "O"
+"e" = "E"
+"u" = "U"
+"ur" = "UR"
+"y" = "Y"
+"yr" = "YR"
+
+[name_maps.tones]
+"" = ""
+"t" = "T"
+"x" = "X"
+"p" = "P"
+
+[maps.main]
+"w" = "U+A015 YI SYLLABLE WU (YI SYLLABLE ITERATION MARK): ꀕ"
+
+[combining.radicals.name_regex_replace]
+"R" = [['YI SYLLABLE (.*)', 'YI RADICAL \g<1>']]
+
+[expressions]
+main = [
+  [
+    ["name_maps", "prefix", "consonants", "vowels", "tones"],
+    ["combining", "radicals"],
+  ],
+  [["map", "main"]],
+]
