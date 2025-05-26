@@ -90,7 +90,6 @@ def test_map_duplicate_mnemonic_same_result(
             {
                 "latin": data.Group(
                     prefix="l",
-                    maps={},
                     expressions=dict(main=[[["map", "main"]]]),
                 ),
             },
@@ -110,7 +109,6 @@ def test_map_duplicate_mnemonic_same_result(
             {
                 "latin": data.Group(
                     prefix="l",
-                    maps={},
                     combining={},
                     expressions=dict(main=[[["combining", "main"]]]),
                 ),
@@ -121,7 +119,6 @@ def test_map_duplicate_mnemonic_same_result(
             {
                 "latin": data.Group(
                     prefix="l",
-                    maps={},
                     combining=dict(main=data.Combining()),
                     expressions=dict(main=[[]]),
                 ),
@@ -130,11 +127,7 @@ def test_map_duplicate_mnemonic_same_result(
         ),
         (
             {
-                "latin": data.Group(
-                    prefix="l",
-                    maps={},
-                    expressions={},
-                ),
+                "latin": data.Group(prefix="l", expressions={}),
             },
             r"Group 'latin' does not have expression 'main'",
         ),
@@ -142,7 +135,6 @@ def test_map_duplicate_mnemonic_same_result(
             {
                 "latin": data.Group(
                     prefix="l",
-                    maps={},
                     expressions=dict(main=[[["expression", "other"]]]),
                 ),
             },
@@ -152,7 +144,6 @@ def test_map_duplicate_mnemonic_same_result(
             {
                 "latin": data.Group(
                     prefix="l",
-                    maps={},
                     expressions=dict(
                         main=[[]],
                         other=[[]],
@@ -165,7 +156,6 @@ def test_map_duplicate_mnemonic_same_result(
             {
                 "latin": data.Group(
                     prefix="l",
-                    maps={},
                     expressions=dict(main=[[["not valid at all"]]]),
                 ),
             },

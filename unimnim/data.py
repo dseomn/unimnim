@@ -254,7 +254,9 @@ class Group:
     """
 
     prefix: str
-    maps: Mapping[str, Mapping[str, str]]
+    maps: Mapping[str, Mapping[str, str]] = dataclasses.field(
+        default_factory=dict
+    )
     combining: Mapping[str, Combining] = dataclasses.field(default_factory=dict)
     expressions: Mapping[str, Any]
 
@@ -273,7 +275,7 @@ class Group:
         }:
             raise ValueError(f"Unexpected keys: {list(unexpected_keys)}")
         maps = {}
-        for map_name, map_ in raw["maps"].items():
+        for map_name, map_ in raw.get("maps", {}).items():
             maps[map_name] = {
                 key: parse_explicit_string(value) for key, value in map_.items()
             }

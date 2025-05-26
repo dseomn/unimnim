@@ -166,7 +166,7 @@ def test_combining_parse(raw: Any, expected: Any) -> None:
     "raw,error_regex",
     (
         (
-            dict(prefix="l", maps={}, expressions={}, not_valid="foo"),
+            dict(prefix="l", expressions={}, not_valid="foo"),
             r"Unexpected keys",
         ),
         (
@@ -206,16 +206,8 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
     "raw,expected",
     (
         (
-            dict(
-                prefix="l",
-                maps=dict(main={"a": "U+0061 LATIN SMALL LETTER A"}),
-                expressions=dict(main=[[["map", "main"]]]),
-            ),
-            dict(
-                prefix="l",
-                maps=dict(main={"a": "a"}),
-                expressions=dict(main=[[["map", "main"]]]),
-            ),
+            dict(prefix="l", expressions=dict(main=[[]])),
+            dict(prefix="l", expressions=dict(main=[[]])),
         ),
         (
             dict(
