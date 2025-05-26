@@ -4,9 +4,10 @@
 """Generates the input method from data."""
 
 import collections
-from collections.abc import Mapping, Sequence, Set
+from collections.abc import Iterable, Mapping, Sequence, Set
 import dataclasses
 import functools
+import itertools
 import pprint
 from typing import Any
 import unicodedata
@@ -147,6 +148,29 @@ class _Map:
             self.add(mnemonic, result, is_known=mnemonic in other.known)
 
 
+def _names_maps_to_map(
+    name_maps: Iterable[Mapping[str, str]], *, group_id: str
+) -> _Map:
+    """Returns a map from the cartesian product of name maps."""
+    map_ = _Map(group_id=group_id)
+    for items in itertools.product(
+        *(name_map.items() for name_map in name_maps)
+    ):
+        mnemonic_parts = []
+        name_parts = []
+        for mnemonic_part, name_part in items:
+            mnemonic_parts.append(mnemonic_part)
+            name_parts.append(name_part)
+        try:
+            result_raw = _lookup_correct_name("".join(name_parts))
+        except KeyError:
+            continue
+        map_.add(
+            "".join(mnemonic_parts), unicodedata.normalize("NFC", result_raw)
+        )
+    return map_
+
+
 def _cartesian_product(a: _Map, b: _Map, /) -> _Map:
     """Returns the cartesian product of two maps."""
     result = _Map(group_id=a.group_id)
@@ -257,6 +281,12 @@ def _generate_map_one_group(
     group: data.Group,
 ) -> Mapping[str, str]:
     """Returns a map from mnemonic to result for one group."""
+    name_maps = _ReferenceTrackingDict[Mapping[str, str]](
+        dict(group.name_maps),
+        error_context=f"Group {group_id!r}",
+        type_name="name_map",
+    )
+
     maps = _ReferenceTrackingDict[_Map](
         {},
         error_context=f"Group {group_id!r}",
@@ -287,6 +317,16 @@ def _generate_map_one_group(
             union_operand_map.add("", "")
             for operation in union_operand_expr:
                 match operation:
+                    case ["name_maps", *name_map_names] if all(
+                        isinstance(name, str) for name in name_map_names
+                    ):
+                        union_operand_map = _cartesian_product(
+                            union_operand_map,
+                            _names_maps_to_map(
+                                map(name_maps.get, name_map_names),
+                                group_id=group_id,
+                            ),
+                        )
                     case ["map", str() as map_name]:
                         union_operand_map = _cartesian_product(
                             union_operand_map, maps.get(map_name)
@@ -309,6 +349,7 @@ def _generate_map_one_group(
 
     main_map = expressions.get("main")
 
+    name_maps.require_all_referenced()
     maps.require_all_referenced()
     combining.require_all_referenced()
     expressions.require_all_referenced()

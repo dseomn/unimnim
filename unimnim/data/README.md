@@ -108,11 +108,35 @@ prefix = "l"
 # product of the given map with whatever comes before, or just the given map if
 # there's nothing before it. ["combining", name] applies the given combining
 # config. ["expression", name] behaves like ["map", name], but references a
-# previously defined expression instead of a map. The "main" expression is used
-# as the final map of the group.
+# previously defined expression instead of a map. See the next example below for
+# now ["name_maps", ...] works. The "main" expression is used as the final map
+# of the group.
 [expressions]
 main = [
   [["map", "main"], ["combining", "main"]],
+]
+```
+
+```toml
+# This example shows how name_maps works. The name_maps tables are maps from
+# mnemonic (regular string) to part of a character name (regular string). The
+# name_maps expression takes the cartesian product of the given name maps, so
+# this example would product the mnemonics lCa -> A, lCb -> B, lsa -> a, and lsb
+# -> b. Which is not very useful for Latin, since it's designed for syllabaries.
+
+prefix = "l"
+
+[name_maps.prefixes]
+"C" = "LATIN CAPITAL LETTER "
+"s" = "LATIN SMALL LETTER "
+
+[name_maps.letters]
+"a" = "A"
+"b" = "B"
+
+[expressions]
+main = [
+  [["name_maps", "prefixes", "letters"]],
 ]
 ```
 

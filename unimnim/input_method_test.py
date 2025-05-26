@@ -90,6 +90,25 @@ def test_map_duplicate_mnemonic_same_result(
             {
                 "latin": data.Group(
                     prefix="l",
+                    expressions=dict(main=[[["name_maps", "main"]]]),
+                ),
+            },
+            r"Group 'latin' does not have name_map 'main'",
+        ),
+        (
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    name_maps=dict(main={}),
+                    expressions=dict(main=[[]]),
+                ),
+            },
+            r"Group 'latin' defines but does not use name_map",
+        ),
+        (
+            {
+                "latin": data.Group(
+                    prefix="l",
                     expressions=dict(main=[[["map", "main"]]]),
                 ),
             },
@@ -248,6 +267,42 @@ def test_generate_map_error(
 @pytest.mark.parametrize(
     "groups,expected",
     (
+        (
+            # Name maps produce the cartesian product of their name parts,
+            # ignoring names that don't exist.
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    name_maps=dict(
+                        prefixes={
+                            "C": "LATIN CAPITAL LETTER ",
+                            "s": "LATIN SMALL LETTER ",
+                        },
+                        letters={
+                            "a": "A",
+                            "b": "B",
+                        },
+                        suffixes={
+                            "": "",
+                            "e": "E",
+                        },
+                    ),
+                    expressions=dict(
+                        main=[
+                            [["name_maps", "prefixes", "letters", "suffixes"]],
+                        ],
+                    ),
+                ),
+            },
+            {
+                "lCa": "A",
+                "lCae": "\N{LATIN CAPITAL LETTER AE}",
+                "lCb": "B",
+                "lsa": "a",
+                "lsae": "\N{LATIN SMALL LETTER AE}",
+                "lsb": "b",
+            },
+        ),
         (
             # Combining characters can stack, in any valid order.
             {
