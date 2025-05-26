@@ -46,6 +46,25 @@ prefix = "Zm"
 [maps.note_prefix]
 "n" = ""
 
+[maps.noteheads]
+"x" = "U+1D143 MUSICAL SYMBOL X NOTEHEAD: 𝅃"
+"+" = "U+1D144 MUSICAL SYMBOL PLUS NOTEHEAD: 𝅄"
+"()" = "U+1D156 MUSICAL SYMBOL PARENTHESIS NOTEHEAD: 𝅖"
+"o" = "U+1D157 MUSICAL SYMBOL VOID NOTEHEAD: 𝅗"
+"*" = "U+1D158 MUSICAL SYMBOL NOTEHEAD BLACK: 𝅘"
+
+[maps.stems]
+"|" = "U+1D165 MUSICAL SYMBOL COMBINING STEM [combining]: 𝅘𝅥"
+"|x" = "U+1D166 MUSICAL SYMBOL COMBINING SPRECHGESANG STEM [combining]: 𝅘𝅦"
+
+[maps.flags]
+"" = ""
+"1" = "U+1D16E MUSICAL SYMBOL COMBINING FLAG-1 [combining]: 𝅘𝅥𝅮"
+"2" = "U+1D16F MUSICAL SYMBOL COMBINING FLAG-2 [combining]: 𝅘𝅥𝅯"
+"3" = "U+1D170 MUSICAL SYMBOL COMBINING FLAG-3 [combining]: 𝅘𝅥𝅰"
+"4" = "U+1D171 MUSICAL SYMBOL COMBINING FLAG-4 [combining]: 𝅘𝅥𝅱"
+"5" = "U+1D172 MUSICAL SYMBOL COMBINING FLAG-5 [combining]: 𝅘𝅥𝅲"
+
 [maps.notes]
 "/2" = "U+1D157 MUSICAL SYMBOL VOID NOTEHEAD, U+1D165 MUSICAL SYMBOL COMBINING STEM: 𝅗𝅥"
 "/4" = "U+1D158 MUSICAL SYMBOL NOTEHEAD BLACK, U+1D165 MUSICAL SYMBOL COMBINING STEM: 𝅘𝅥"
@@ -90,6 +109,13 @@ prefix = "Zm"
 
 [expressions]
 notes = [
+  [
+    ["map", "note_prefix"],
+    ["map", "noteheads"],
+    ["map", "stems"],
+    ["map", "flags"],
+    ["map", "articulation"],
+  ],
   [["map", "note_prefix"], ["map", "notes"], ["map", "articulation"]],
 ]
 events = [
