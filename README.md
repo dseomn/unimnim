@@ -30,6 +30,7 @@ example:
 | `Hek.`| [Hebrew](unimnim/data/Hebr.toml), כ, dagesh | `כּ` |
 | `OGb` | [Ogham](unimnim/data/Ogam.toml), ᚁ | `ᚁ` |
 | `RUb` | [Runic](unimnim/data/Runr.toml), ᛒ | `ᛒ` |
+| `Tbka` | [Tagbanwa](unimnim/data/Tagb.toml), ᝣ | `ᝣ` |
 | `ZM0s` | common[^z-common], [math](unimnim/data/common/math.toml), zero/empty/null, set | `∅` |
 | `Z-m` | common, dash ([punctuation](unimnim/data/common/punctuation.toml)), em | `—` |
 | `Z?!I` | common, interrobang (punctuation), inverted | `⸘` |

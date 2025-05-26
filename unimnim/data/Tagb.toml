@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Tagbanwa_script
+
+prefix = "Tb"
+
+[maps.independent_vowels]
+"a" = "U+1760 TAGBANWA LETTER A: ᝠ"
+"i" = "U+1761 TAGBANWA LETTER I: ᝡ"
+"u" = "U+1762 TAGBANWA LETTER U: ᝢ"
+
+[maps.consonants]
+"_" = ""  # empty-for-combining
+"k" = "U+1763 TAGBANWA LETTER KA: ᝣ"
+"g" = "U+1764 TAGBANWA LETTER GA: ᝤ"
+"ng" = "U+1765 TAGBANWA LETTER NGA: ᝥ"
+"t" = "U+1766 TAGBANWA LETTER TA: ᝦ"
+"d" = "U+1767 TAGBANWA LETTER DA: ᝧ"
+"n" = "U+1768 TAGBANWA LETTER NA: ᝨ"
+"p" = "U+1769 TAGBANWA LETTER PA: ᝩ"
+"b" = "U+176A TAGBANWA LETTER BA: ᝪ"
+"m" = "U+176B TAGBANWA LETTER MA: ᝫ"
+"y" = "U+176C TAGBANWA LETTER YA: ᝬ"
+"l" = "U+176E TAGBANWA LETTER LA: ᝮ"
+"w" = "U+176F TAGBANWA LETTER WA: ᝯ"
+"s" = "U+1770 TAGBANWA LETTER SA: ᝰ"
+
+[maps.vowel_signs]
+"a" = ""
+"i" = "U+1772 TAGBANWA VOWEL SIGN I [combining]: ᝣᝲ"
+"u" = "U+1773 TAGBANWA VOWEL SIGN U [combining]: ᝣᝳ"
+
+[expressions]
+main = [
+  [["map", "independent_vowels"]],
+  [["map", "consonants"], ["map", "vowel_signs"]],
+]
