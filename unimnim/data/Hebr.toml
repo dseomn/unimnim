@@ -57,7 +57,7 @@ prefix = "He"
 "]" = [['(HEBREW LETTER) (.*)', '\g<1> FINAL \g<2>']]  # logical-order
 
 [combining.symbols.name_regex_replace]
-"$" = [['HEBREW LETTER (.*)', '\g<1> SYMBOL']]  # suboptimal
+"$" = [['HEBREW LETTER (.*)', '\g<1> SYMBOL']]  # category
 
 [expressions]
 consonants = [[["map", "consonants"], ["combining", "consonants"]]]

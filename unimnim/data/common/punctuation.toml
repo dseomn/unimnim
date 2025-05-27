@@ -76,7 +76,7 @@ prefix = "Z"
 "VSE" = "U+FE0F VARIATION SELECTOR-16 [combining]: ‼️"  # aka="emoji variation selector"
 
 [combining.main.name_regex_replace]
-"l" = [['.*', 'MODIFIER LETTER \g<0>']]
+"l" = [['.*', 'MODIFIER LETTER \g<0>']]  # category
 
 [expressions]
 main = [[["map", "main"], ["combining", "main"]]]

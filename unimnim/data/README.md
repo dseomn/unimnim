@@ -232,6 +232,18 @@ Or for earlier or later forms of characters:
 "50<" = "U+2186 ROMAN NUMERAL FIFTY EARLY FORM: ↆ"  # amount
 ```
 
+### Character category (`category`)
+
+Sometimes a character of one category is based on a character of another
+category, e.g., U+02BC MODIFIER LETTER APOSTROPHE is a letter based on the
+punctuation character U+0027 APOSTROPHE. To convert a mnemonic from one category
+to another, these suffixes can be used:
+
+| Suffix | Meaning | Example |
+| --- | --- | --- |
+| `l` or `L` | letter | `"l" = [['.*', 'MODIFIER LETTER \g<0>']]` |
+| `$` | symbol | `"$" = [['HEBREW LETTER (.*)', '\g<1> SYMBOL']]` |
+
 ### Mnemonics with empty results (`empty-for-combining`)
 
 Groups with combining characters can have a mnemonic with an empty result to
