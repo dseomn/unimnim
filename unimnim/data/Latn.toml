@@ -132,6 +132,7 @@ prefix = "l"
 "HT" = "U+A78D LATIN CAPITAL LETTER TURNED H: Ɥ"  # geometry
 
 [combining.main.append]
+"" = ""
 "`" = "U+0300 COMBINING GRAVE ACCENT [combining]: à"
 "'" = "U+0301 COMBINING ACUTE ACCENT [combining]: á"
 "^" = "U+0302 COMBINING CIRCUMFLEX ACCENT [combining]: â"

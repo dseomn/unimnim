@@ -37,6 +37,7 @@ prefix = "ZA"
 "6,6,6" = "U+21F6 THREE RIGHTWARDS ARROWS: ⇶"
 
 [combining.main.append]
+"" = ""
 "VST" = "U+FE0E VARIATION SELECTOR-15 [combining]: ↔︎"  # aka="text variation selector"
 "VSE" = "U+FE0F VARIATION SELECTOR-16 [combining]: ↔️"  # aka="emoji variation selector"
 

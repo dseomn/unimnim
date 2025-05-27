@@ -76,6 +76,9 @@ prefix = "Yi"
 [maps.main]
 "w" = "U+A015 YI SYLLABLE WU (YI SYLLABLE ITERATION MARK): ꀕ"
 
+[combining.radicals.append]
+"" = ""
+
 [combining.radicals.name_regex_replace]
 "R" = [['YI SYLLABLE (.*)', 'YI RADICAL \g<1>']]
 

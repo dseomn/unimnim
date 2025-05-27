@@ -127,6 +127,9 @@ prefix = "ZM"
 "int4" = "U+2A0C QUADRUPLE INTEGRAL OPERATOR: ⨌"
 "*v" = "U+2A2F VECTOR OR CROSS PRODUCT: ⨯"
 
+[combining.main.append]
+"" = ""
+
 [combining.main.name_regex_replace]
 "!" = [
   ['.*', 'NOT \g<0>'],

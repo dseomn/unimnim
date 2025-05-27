@@ -85,9 +85,13 @@ prefix = "l"
 # Combining mnemonics as a map from partial mnemonic (regular string) to a
 # combining code point (explicit string). The partial mnemonic is appended to an
 # existing mnemonic and the code point is appended to that existing mnemonic's
-# result, then normalized. Must be sorted by result, then mnemonic. This defines
-# a combining config named "main":
+# result, then normalized. Must be sorted by result, then mnemonic. The original
+# map itself is not included in the result of combining by default. However, an
+# empty entry like `"" = ""` combines with the original map to produce that same
+# map, which is useful to produce both the original map and other things
+# combined with it. This defines a combining config named "main":
 [combining.main.append]
+"" = ""
 "`" = "U+0300 COMBINING GRAVE ACCENT [combining]: à"
 
 # Combining mnemonics as a map from partial mnemonic to an array of regex and

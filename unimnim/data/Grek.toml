@@ -65,6 +65,7 @@ prefix = "Gr"
 "w" = "U+03C9 GREEK SMALL LETTER OMEGA: ω"  # Grek-beta-code suboptimal
 
 [combining.main.append]
+"" = ""
 "'" = "U+0301 COMBINING ACUTE ACCENT [combining]: ά"
 '"' = "U+0308 COMBINING DIAERESIS [combining]: ϊ"
 

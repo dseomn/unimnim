@@ -195,12 +195,13 @@ def _cartesian_product(a: _Map, b: _Map, /) -> _Map:
     return result
 
 
-def _apply_combining(map_: _Map, combining: data.Combining) -> None:
+def _apply_combining(map_: _Map, combining: data.Combining) -> _Map:
     """Applies combining config to a map."""
+    combined_map = _Map(group_id=map_.group_id)
     combining_to_check = collections.deque[tuple[str, str]](map_.all_.items())
 
     def _add(mnemonic: str, result: str, *, is_known: bool = True) -> None:
-        if map_.add(mnemonic, result, is_known=is_known):
+        if combined_map.add(mnemonic, result, is_known=is_known):
             combining_to_check.append((mnemonic, result))
 
     while combining_to_check:
@@ -248,6 +249,8 @@ def _apply_combining(map_: _Map, combining: data.Combining) -> None:
                     continue
                 combined_mnemonic = mnemonic + combining_mnemonic
                 _add(combined_mnemonic, combined_raw)
+
+    return combined_map
 
 
 @dataclasses.dataclass(frozen=True)
@@ -336,7 +339,7 @@ def _generate_map_one_group(
                             union_operand_map, maps.get(map_name)
                         )
                     case ["combining", str() as combining_name]:
-                        _apply_combining(
+                        union_operand_map = _apply_combining(
                             union_operand_map, combining.get(combining_name)
                         )
                     case ["expression", str() as ref_name]:

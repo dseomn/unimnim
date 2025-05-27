@@ -302,6 +302,31 @@ def test_generate_map_error(
             },
         ),
         (
+            # combining.append can have an empty entry to include the map it
+            # combines with too.
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    maps=dict(main={"a": "a"}),
+                    combining=dict(
+                        main=data.Combining(
+                            append={
+                                "": "",
+                                "'": "\N{COMBINING ACUTE ACCENT}",
+                            },
+                        ),
+                    ),
+                    expressions=dict(
+                        main=[[["map", "main"], ["combining", "main"]]],
+                    ),
+                ),
+            },
+            {
+                "la": "a",
+                "la'": "\N{LATIN SMALL LETTER A WITH ACUTE}",
+            },
+        ),
+        (
             # Combining characters can stack, in any valid order.
             {
                 "latin": data.Group(
@@ -321,7 +346,6 @@ def test_generate_map_error(
                 ),
             },
             {
-                "ls": "s",
                 "ls*": "\N{LATIN SMALL LETTER S WITH DOT ABOVE}",
                 "ls.": "\N{LATIN SMALL LETTER S WITH DOT BELOW}",
                 "ls*.": "\N{LATIN SMALL LETTER S WITH DOT BELOW AND DOT ABOVE}",
@@ -344,10 +368,7 @@ def test_generate_map_error(
                     ),
                 ),
             },
-            {
-                "la": "a",
-                "la,": "a\N{COMBINING CEDILLA}",
-            },
+            {"la,": "a\N{COMBINING CEDILLA}"},
         ),
         (
             # Known sequences of length > 2 can be produced even if they start
@@ -379,7 +400,6 @@ def test_generate_map_error(
                 ),
             },
             {
-                "lj": "j",
                 "lj~": "j\N{COMBINING TILDE}",
                 # Note that "lj." is not present.
                 "lj.~": "j\N{COMBINING DOT ABOVE}\N{COMBINING TILDE}",
@@ -431,7 +451,7 @@ def test_generate_map_error(
                     ),
                 ),
             },
-            {"ZNULL": "\x00"},
+            {},
         ),
         (
             # combining.name_regex_replace works and can stack with
@@ -456,7 +476,6 @@ def test_generate_map_error(
                 ),
             },
             {
-                "lo": "o",
                 "lo'": "\N{LATIN SMALL LETTER O WITH ACUTE}",
                 "lo/": "\N{LATIN SMALL LETTER O WITH STROKE}",
                 "lo/'": "\N{LATIN SMALL LETTER O WITH STROKE AND ACUTE}",
@@ -496,9 +515,7 @@ def test_generate_map_error(
                 ),
             },
             {
-                "lO": "O",
                 "lO/": "\N{LATIN CAPITAL LETTER O WITH STROKE}",
-                "lo": "o",
                 "lo/": "\N{LATIN SMALL LETTER O WITH STROKE}",
             },
         ),
@@ -557,13 +574,10 @@ def test_generate_map_error(
                 ),
             },
             {
-                "mB": "B",
                 "mBS": "\N{SCRIPT CAPITAL B}",
                 "mBSs": "b",
-                "mP": "P",
                 # U+2118 SCRIPT CAPITAL P has a corrected name, WEIERSTRASS
                 # ELLIPTIC FUNCTION, so mPS does not match.
-                "mW": "W",
                 "mWF": "\N{SCRIPT CAPITAL P}",  # But the correction does match.
                 # No "mWFs" because "SCRIPT CAPITAL P" is not checked against
                 # the regexes.
@@ -593,7 +607,7 @@ def test_generate_map_error(
                     ),
                 ),
             },
-            {"lo": "o"},
+            {},
         ),
         (
             # A regex that produces a name that does not exist is not an error.
@@ -618,7 +632,7 @@ def test_generate_map_error(
                     ),
                 ),
             },
-            {"lo": "o"},
+            {},
         ),
         (
             # Mnemonics can overlap.
@@ -633,7 +647,10 @@ def test_generate_map_error(
                     ),
                     combining=dict(
                         main=data.Combining(
-                            append={"'": "\N{COMBINING ACUTE ACCENT}"},
+                            append={
+                                "": "",
+                                "'": "\N{COMBINING ACUTE ACCENT}",
+                            },
                         ),
                     ),
                     expressions=dict(
@@ -669,7 +686,6 @@ def test_generate_map_error(
                 ),
             },
             {
-                "ls": "s",
                 "ls.": "\N{LATIN SMALL LETTER S WITH DOT ABOVE}",
                 "ls..": "\N{LATIN SMALL LETTER S WITH DOT BELOW}",
                 "ls...": (
@@ -707,9 +723,7 @@ def test_generate_map_error(
                 ),
             },
             {
-                "ga": "\N{GREEK SMALL LETTER ALPHA}",
                 "ga~": "\N{GREEK SMALL LETTER ALPHA WITH PERISPOMENI}",
-                "la": "a",
                 "la~": "\N{LATIN SMALL LETTER A WITH TILDE}",
             },
         ),
@@ -727,7 +741,10 @@ def test_generate_map_error(
                     maps=dict(main={"": ""}),
                     combining=dict(
                         main=data.Combining(
-                            append={"~": "\N{COMBINING TILDE}"},
+                            append={
+                                "": "",
+                                "~": "\N{COMBINING TILDE}",
+                            },
                         ),
                     ),
                     expressions=dict(

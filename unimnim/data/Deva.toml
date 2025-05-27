@@ -119,6 +119,7 @@ prefix = "d"
 "." = "U+093C DEVANAGARI SIGN NUKTA [combining]: क़"
 
 [combining.consonants.append]
+"" = ""
 "." = "U+093C DEVANAGARI SIGN NUKTA [combining]: क़"
 
 [expressions]
