@@ -48,6 +48,10 @@ prefix = "k"
 [maps.empty_for_combining]
 "_" = ""  # empty-for-combining
 
+[maps.main]
+"-2" = "U+30A0 KATAKANA-HIRAGANA DOUBLE HYPHEN: ゠"
+">" = "U+30FC KATAKANA-HIRAGANA PROLONGED SOUND MARK: ー"  # amount
+
 [combining.letters.append]
 "" = ""
 
@@ -69,4 +73,5 @@ main = [
   [["expression", "letters"], ["combining", "letters"]],
   [["name_maps", "prefixes", "iteration_mark"], ["combining", "voicing"]],
   [["map", "empty_for_combining"], ["combining", "voicing"]],
+  [["map", "main"]],
 ]
