@@ -38,10 +38,16 @@ prefix = "k"
 [name_maps.codas]
 "n" = "N"
 
+[combining.letters.append]
+"" = ""
+
+[combining.letters.name_regex_replace]
+"<" = [['(HIRAGANA|KATAKANA) LETTER (.*)', '\g<1> LETTER SMALL \g<2>']]  # amount
+
 [expressions]
 letters = [
   [["name_maps", "prefixes", "vowels"]],
   [["name_maps", "prefixes", "consonants", "vowels"]],
   [["name_maps", "prefixes", "codas"]],
 ]
-main = [[["expression", "letters"]]]
+main = [[["expression", "letters"], ["combining", "letters"]]]
