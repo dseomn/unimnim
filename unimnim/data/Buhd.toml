@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Buhid_script
+
+prefix = "Bd"
+
+[maps.independent_vowels]
+"a" = "U+1740 BUHID LETTER A: ᝀ"
+"i" = "U+1741 BUHID LETTER I: ᝁ"
+"u" = "U+1742 BUHID LETTER U: ᝂ"
+
+[maps.consonants]
+"k" = "U+1743 BUHID LETTER KA: ᝃ"
+"g" = "U+1744 BUHID LETTER GA: ᝄ"
+"ng" = "U+1745 BUHID LETTER NGA: ᝅ"
+"t" = "U+1746 BUHID LETTER TA: ᝆ"
+"d" = "U+1747 BUHID LETTER DA: ᝇ"
+"n" = "U+1748 BUHID LETTER NA: ᝈ"
+"p" = "U+1749 BUHID LETTER PA: ᝉ"
+"b" = "U+174A BUHID LETTER BA: ᝊ"
+"m" = "U+174B BUHID LETTER MA: ᝋ"
+"y" = "U+174C BUHID LETTER YA: ᝌ"
+"r" = "U+174D BUHID LETTER RA: ᝍ"
+"l" = "U+174E BUHID LETTER LA: ᝎ"
+"w" = "U+174F BUHID LETTER WA: ᝏ"
+"s" = "U+1750 BUHID LETTER SA: ᝐ"
+"h" = "U+1751 BUHID LETTER HA: ᝑ"
+
+[maps.vowel_signs]
+"a" = ""
+"i" = "U+1752 BUHID VOWEL SIGN I [combining]: ᝃᝒ"
+"u" = "U+1753 BUHID VOWEL SIGN U [combining]: ᝃᝓ"
+
+[expressions]
+main = [
+  [["map", "independent_vowels"]],
+  [["map", "consonants"], ["map", "vowel_signs"]],
+]
