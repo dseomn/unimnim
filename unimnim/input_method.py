@@ -118,8 +118,15 @@ class _Map:
     all_: dict[str, str] = dataclasses.field(default_factory=dict)
     known: dict[str, str] = dataclasses.field(default_factory=dict)
 
-    def add(self, mnemonic: str, result: str, *, is_known: bool = True) -> bool:
+    def add(
+        self,
+        mnemonic: str,
+        result_raw: str,
+        *,
+        is_known: bool = True,
+    ) -> bool:
         """Adds an entry to the map, and returns whether it's new or not."""
+        result = unicodedata.normalize("NFC", result_raw)
         if discouraged := data.discouraged_sequences(result):
             raise ValueError(
                 f"Mnemonic {mnemonic!r} has result {result!r} with discouraged "
@@ -165,9 +172,7 @@ def _names_maps_to_map(
             result_raw = _lookup_correct_name("".join(name_parts))
         except KeyError:
             continue
-        map_.add(
-            "".join(mnemonic_parts), unicodedata.normalize("NFC", result_raw)
-        )
+        map_.add("".join(mnemonic_parts), result_raw)
     return map_
 
 
@@ -241,9 +246,8 @@ def _apply_combining(map_: _Map, combining: data.Combining) -> None:
                     combined_raw = _lookup_correct_name(combined_name)
                 except KeyError:
                     continue
-                combined_result = unicodedata.normalize("NFC", combined_raw)
                 combined_mnemonic = mnemonic + combining_mnemonic
-                _add(combined_mnemonic, combined_result)
+                _add(combined_mnemonic, combined_raw)
 
 
 @dataclasses.dataclass(frozen=True)
