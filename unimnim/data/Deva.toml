@@ -22,6 +22,7 @@ prefix = "d"
 "7" = "U+096D DEVANAGARI DIGIT SEVEN: ७"
 "8" = "U+096E DEVANAGARI DIGIT EIGHT: ८"
 "9" = "U+096F DEVANAGARI DIGIT NINE: ९"
+"." = "U+0970 DEVANAGARI ABBREVIATION SIGN: ॰"
 
 [maps.independent_vowels]
 "a<" = "U+0904 DEVANAGARI LETTER SHORT A: ऄ"  # amount
