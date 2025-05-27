@@ -1,0 +1,51 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Lontara_script
+
+prefix = "Bu"
+
+[maps.letters]
+"_" = ""  # empty-for-combining
+"k" = "U+1A00 BUGINESE LETTER KA: ᨀ"
+"g" = "U+1A01 BUGINESE LETTER GA: ᨁ"
+"ng" = "U+1A02 BUGINESE LETTER NGA: ᨂ"
+"ngk" = "U+1A03 BUGINESE LETTER NGKA: ᨃ"
+"p" = "U+1A04 BUGINESE LETTER PA: ᨄ"
+"b" = "U+1A05 BUGINESE LETTER BA: ᨅ"
+"m" = "U+1A06 BUGINESE LETTER MA: ᨆ"
+"mp" = "U+1A07 BUGINESE LETTER MPA: ᨇ"
+"t" = "U+1A08 BUGINESE LETTER TA: ᨈ"
+"d" = "U+1A09 BUGINESE LETTER DA: ᨉ"
+"n" = "U+1A0A BUGINESE LETTER NA: ᨊ"
+"nr" = "U+1A0B BUGINESE LETTER NRA: ᨋ"
+"c" = "U+1A0C BUGINESE LETTER CA: ᨌ"
+"j" = "U+1A0D BUGINESE LETTER JA: ᨍ"
+"ny" = "U+1A0E BUGINESE LETTER NYA: ᨎ"
+"nc" = "U+1A0F BUGINESE LETTER NYCA: ᨏ"
+"y" = "U+1A10 BUGINESE LETTER YA: ᨐ"
+"r" = "U+1A11 BUGINESE LETTER RA: ᨑ"
+"l" = "U+1A12 BUGINESE LETTER LA: ᨒ"
+"w" = "U+1A13 BUGINESE LETTER VA: ᨓ"
+"s" = "U+1A14 BUGINESE LETTER SA: ᨔ"
+"" = "U+1A15 BUGINESE LETTER A: ᨕ"
+"h" = "U+1A16 BUGINESE LETTER HA: ᨖ"
+
+[maps.vowel_signs]
+"a" = ""
+"i" = "U+1A17 BUGINESE VOWEL SIGN I [combining]: ᨀᨗ"
+"u" = "U+1A18 BUGINESE VOWEL SIGN U [combining]: ᨀᨘ"
+"e" = "U+1A19 BUGINESE VOWEL SIGN E [combining]: ᨀᨙ"  # suboptimal
+"o" = "U+1A1A BUGINESE VOWEL SIGN O [combining]: ᨀᨚ"
+"E" = "U+1A1B BUGINESE VOWEL SIGN AE [combining]: ᨀᨛ"  # suboptimal
+
+[maps.punctuation]
+"," = "U+1A1E BUGINESE PALLAWA: ᨞"
+"." = "U+1A1F BUGINESE END OF SECTION: ᨟"
+
+[expressions]
+main = [
+  [["map", "letters"], ["map", "vowel_signs"]],
+  [["map", "punctuation"]],
+]

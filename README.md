@@ -23,6 +23,7 @@ example:
 | `le^'` | Latin, e, circumflex, acute | `ế` |
 | `lAE-` | Latin, Æ, macron | `Ǣ` |
 | `ab` | [Arabic](unimnim/data/Arab.toml), ب | `ب` |
+| `Buka` | [Lontara/Bugis/Bugis-Makassar/Urupu Sulapa’ Eppa’](unimnim/data/Bugi.toml), ᨀ | `ᨀ` |
 | `Bdka` | [Buhid](unimnim/data/Buhd.toml), ᝃ | `ᝃ` |
 | `cd` | [Cyrillic](unimnim/data/Cyrl.toml), д | `д` |
 | `dka` | [Devanagari](unimnim/data/Deva.toml), क | `क` |
