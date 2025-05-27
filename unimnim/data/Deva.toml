@@ -17,10 +17,14 @@ prefix = "d"
 "I" = "U+0908 DEVANAGARI LETTER II: ई"
 "u" = "U+0909 DEVANAGARI LETTER U: उ"
 "U" = "U+090A DEVANAGARI LETTER UU: ऊ"
+".r" = "U+090B DEVANAGARI LETTER VOCALIC R: ऋ"  # suboptimal
+".l" = "U+090C DEVANAGARI LETTER VOCALIC L: ऌ"  # suboptimal
 "e" = "U+090F DEVANAGARI LETTER E: ए"
 "ai" = "U+0910 DEVANAGARI LETTER AI: ऐ"
 "o" = "U+0913 DEVANAGARI LETTER O: ओ"
 "au" = "U+0914 DEVANAGARI LETTER AU: औ"
+".R" = "U+0960 DEVANAGARI LETTER VOCALIC RR: ॠ"  # suboptimal
+".L" = "U+0961 DEVANAGARI LETTER VOCALIC LL: ॡ"  # suboptimal
 
 [maps.consonants]
 "k" = "U+0915 DEVANAGARI LETTER KA: क"
@@ -68,10 +72,14 @@ prefix = "d"
 "I" = "U+0940 DEVANAGARI VOWEL SIGN II [combining]: की"
 "u" = "U+0941 DEVANAGARI VOWEL SIGN U [combining]: कु"
 "U" = "U+0942 DEVANAGARI VOWEL SIGN UU [combining]: कू"
+"r" = "U+0943 DEVANAGARI VOWEL SIGN VOCALIC R [combining]: कृ"
+"R" = "U+0944 DEVANAGARI VOWEL SIGN VOCALIC RR [combining]: कॄ"
 "e" = "U+0947 DEVANAGARI VOWEL SIGN E [combining]: के"
 "ai" = "U+0948 DEVANAGARI VOWEL SIGN AI [combining]: कै"
 "o" = "U+094B DEVANAGARI VOWEL SIGN O [combining]: को"
 "au" = "U+094C DEVANAGARI VOWEL SIGN AU [combining]: कौ"
+"l" = "U+0962 DEVANAGARI VOWEL SIGN VOCALIC L [combining]: कॢ"
+"L" = "U+0963 DEVANAGARI VOWEL SIGN VOCALIC LL [combining]: कॣ"
 
 [maps.after_vowels]
 "n" = "U+0901 DEVANAGARI SIGN CANDRABINDU [combining]: कँ"
