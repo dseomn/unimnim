@@ -105,15 +105,27 @@ prefix = "d"
 "m" = "U+0902 DEVANAGARI SIGN ANUSVARA [combining]: कं"
 "h" = "U+0903 DEVANAGARI SIGN VISARGA [combining]: कः"
 
+# `[["map", "empty_for_combining"], ["map", "virama"]]` creates a non-empty
+# result for the `_` mnemonic, so combining configs can't also be used with
+# empty_for_combining, because they would create a conflicting empty result for
+# `_`. This works around that by duplicating combining mnemonics here.
+[maps.extra_combining]
+"." = "U+093C DEVANAGARI SIGN NUKTA [combining]: क़"
+
+[combining.consonants.append]
+"." = "U+093C DEVANAGARI SIGN NUKTA [combining]: क़"
+
 [expressions]
+consonants = [[["map", "consonants"], ["combining", "consonants"]]]
 main = [
   [["map", "empty_for_combining"], ["map", "virama"]],
   [["map", "empty_for_combining"], ["map", "vowel_signs"]],
   [["map", "empty_for_combining"], ["map", "after_vowels"]],
+  [["map", "empty_for_combining"], ["map", "extra_combining"]],
   [["map", "main"]],
   [["map", "independent_vowels"]],
   [["map", "independent_vowels"], ["map", "after_vowels"]],
-  [["map", "consonants"], ["map", "virama"]],
-  [["map", "consonants"], ["map", "vowel_signs"]],
-  [["map", "consonants"], ["map", "vowel_signs"], ["map", "after_vowels"]],
+  [["expression", "consonants"], ["map", "virama"]],
+  [["expression", "consonants"], ["map", "vowel_signs"]],
+  [["expression", "consonants"], ["map", "vowel_signs"], ["map", "after_vowels"]],
 ]
