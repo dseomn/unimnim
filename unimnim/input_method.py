@@ -124,8 +124,8 @@ class _Map:
         result_raw: str,
         *,
         is_known: bool = True,
-    ) -> bool:
-        """Adds an entry to the map, and returns whether it's new or not."""
+    ) -> None:
+        """Adds an entry to the map."""
         result = unicodedata.normalize("NFC", result_raw)
         if discouraged := data.discouraged_sequences(result):
             raise ValueError(
@@ -139,15 +139,12 @@ class _Map:
             self.all_[mnemonic] = result
             if is_known and result:
                 self.known[mnemonic] = result
-            return True
         elif self.all_[mnemonic] != result:
             raise ValueError(
                 f"Group {self.group_id!r} has duplicate mnemonic {mnemonic!r}"
             )
-        else:
-            if is_known and result:
-                self.known[mnemonic] = result
-            return False
+        elif is_known and result:
+            self.known[mnemonic] = result
 
     def add_all(self, other: "_Map", /) -> None:
         """Adds all entries from the other map."""
@@ -199,10 +196,13 @@ def _apply_combining(map_: _Map, combining: data.Combining) -> _Map:
     """Applies combining config to a map."""
     combined_map = _Map(group_id=map_.group_id)
     combining_to_check = collections.deque[tuple[str, str]](map_.all_.items())
+    added_to_queue = set(map_.all_)
 
     def _add(mnemonic: str, result: str, *, is_known: bool = True) -> None:
-        if combined_map.add(mnemonic, result, is_known=is_known):
+        combined_map.add(mnemonic, result, is_known=is_known)
+        if mnemonic not in added_to_queue:
             combining_to_check.append((mnemonic, result))
+            added_to_queue.add(mnemonic)
 
     while combining_to_check:
         mnemonic, result = combining_to_check.popleft()
