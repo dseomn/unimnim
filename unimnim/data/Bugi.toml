@@ -35,14 +35,20 @@ prefix = "Bu"
 [maps.vowel_signs]
 "a" = ""
 "i" = "U+1A17 BUGINESE VOWEL SIGN I [combining]: ᨀᨗ"
+"i2" = "U+1A17 BUGINESE VOWEL SIGN I, U+1A17 BUGINESE VOWEL SIGN I [combining]: ᨀᨗᨗ"
 "u" = "U+1A18 BUGINESE VOWEL SIGN U [combining]: ᨀᨘ"
+"u2" = "U+1A18 BUGINESE VOWEL SIGN U, U+1A18 BUGINESE VOWEL SIGN U [combining]: ᨀᨘᨘ"
 "e" = "U+1A19 BUGINESE VOWEL SIGN E [combining]: ᨀᨙ"  # suboptimal
+"e2" = "U+1A19 BUGINESE VOWEL SIGN E, U+1A19 BUGINESE VOWEL SIGN E [combining]: ᨀᨙᨙ"  # suboptimal
 "o" = "U+1A1A BUGINESE VOWEL SIGN O [combining]: ᨀᨚ"
+"o2" = "U+1A1A BUGINESE VOWEL SIGN O, U+1A1A BUGINESE VOWEL SIGN O [combining]: ᨀᨚᨚ"
 "E" = "U+1A1B BUGINESE VOWEL SIGN AE [combining]: ᨀᨛ"  # suboptimal
+"E2" = "U+1A1B BUGINESE VOWEL SIGN AE, U+1A1B BUGINESE VOWEL SIGN AE [combining]: ᨀᨛᨛ"  # suboptimal
 
 [maps.punctuation]
 "," = "U+1A1E BUGINESE PALLAWA: ᨞"
 "." = "U+1A1F BUGINESE END OF SECTION: ᨟"
+"2" = "U+A9CF JAVANESE PANGRANGKEP: ꧏ"
 
 [expressions]
 main = [
