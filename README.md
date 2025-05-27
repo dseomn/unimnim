@@ -24,6 +24,7 @@ example:
 | `lAE-` | Latin, Æ, macron | `Ǣ` |
 | `ab` | [Arabic](unimnim/data/Arab.toml), ب | `ب` |
 | `cd` | [Cyrillic](unimnim/data/Cyrl.toml), д | `д` |
+| `dka` | [Devanagari](unimnim/data/Deva.toml), क | `क` |
 | `GOa` | [Gothic](unimnim/data/Goth.toml), 𐌰 | `𐌰` |
 | `Gra'` | [Greek](unimnim/data/Grek.toml), α, tonos | `ά` |
 | `Hoki` | [Hanunoo](unimnim/data/Hano.toml), ᜣ,  ᜲ | `ᜣᜲ` |
