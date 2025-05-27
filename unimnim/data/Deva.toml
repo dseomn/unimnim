@@ -42,6 +42,7 @@ prefix = "d"
 "au" = "U+0914 DEVANAGARI LETTER AU: औ"
 ".R" = "U+0960 DEVANAGARI LETTER VOCALIC RR: ॠ"  # suboptimal
 ".L" = "U+0961 DEVANAGARI LETTER VOCALIC LL: ॡ"  # suboptimal
+"ae" = "U+0972 DEVANAGARI LETTER CANDRA A: ॲ"  # suboptimal
 
 [maps.consonants]
 "k" = "U+0915 DEVANAGARI LETTER KA: क"
