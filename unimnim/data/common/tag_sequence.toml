@@ -6,11 +6,10 @@
 
 prefix = "ZTS"
 
-[maps.main]
+[maps.base]
 "F" = "U+1F3F4 WAVING BLACK FLAG: 🏴"
 
-[combining.main.append]
-"" = ""
+[combining.spec.append]
 "0" = "U+E0030 TAG DIGIT ZERO"
 "1" = "U+E0031 TAG DIGIT ONE"
 "2" = "U+E0032 TAG DIGIT TWO"
@@ -47,7 +46,9 @@ prefix = "ZTS"
 "x" = "U+E0078 TAG LATIN SMALL LETTER X"
 "y" = "U+E0079 TAG LATIN SMALL LETTER Y"
 "z" = "U+E007A TAG LATIN SMALL LETTER Z"
-"." = "U+E007F CANCEL TAG"
+
+[combining.end.append]
+"" = "U+E007F CANCEL TAG"
 
 [expressions]
-main = [[["map", "main"], ["combining", "main"]]]
+main = [[["map", "base"], ["combining", "spec"], ["combining", "end"]]]
