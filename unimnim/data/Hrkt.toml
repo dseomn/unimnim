@@ -9,8 +9,11 @@
 prefix = "k"
 
 [name_maps.prefixes]
-"h" = "HIRAGANA LETTER "
-"k" = "KATAKANA LETTER "
+"h" = "HIRAGANA "
+"k" = "KATAKANA "
+
+[name_maps.letter_prefix]
+"" = "LETTER "
 
 [name_maps.consonants]
 "k" = "K"
@@ -39,6 +42,9 @@ prefix = "k"
 [name_maps.codas]
 "n" = "N"
 
+[name_maps.iteration_mark]
+"2" = "ITERATION MARK"
+
 [maps.empty_for_combining]
 "_" = ""  # empty-for-combining
 
@@ -49,16 +55,18 @@ prefix = "k"
 "<" = [['(HIRAGANA|KATAKANA) LETTER (.*)', '\g<1> LETTER SMALL \g<2>']]  # amount
 
 [combining.voicing.append]
+"" = ""
 "V" = "U+3099 COMBINING KATAKANA-HIRAGANA VOICED SOUND MARK [combining]: ば"
 "v" = "U+309A COMBINING KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK [combining]: ぱ"
 
 [expressions]
 letters = [
-  [["name_maps", "prefixes", "vowels"]],
-  [["name_maps", "prefixes", "consonants", "vowels"]],
-  [["name_maps", "prefixes", "codas"]],
+  [["name_maps", "prefixes", "letter_prefix", "vowels"]],
+  [["name_maps", "prefixes", "letter_prefix", "consonants", "vowels"]],
+  [["name_maps", "prefixes", "letter_prefix", "codas"]],
 ]
 main = [
   [["expression", "letters"], ["combining", "letters"]],
+  [["name_maps", "prefixes", "iteration_mark"], ["combining", "voicing"]],
   [["map", "empty_for_combining"], ["combining", "voicing"]],
 ]
