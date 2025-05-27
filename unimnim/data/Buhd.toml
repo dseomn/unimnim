@@ -12,6 +12,7 @@ prefix = "Bd"
 "u" = "U+1742 BUHID LETTER U: ᝂ"
 
 [maps.consonants]
+"_" = ""  # empty-for-combining
 "k" = "U+1743 BUHID LETTER KA: ᝃ"
 "g" = "U+1744 BUHID LETTER GA: ᝄ"
 "ng" = "U+1745 BUHID LETTER NGA: ᝅ"
