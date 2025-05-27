@@ -27,6 +27,7 @@ prefix = "k"
 "y" = "Y"
 "r" = "R"
 "w" = "W"
+"v" = "V"
 
 [name_maps.vowels]
 "a" = "A"
