@@ -39,11 +39,18 @@ prefix = "k"
 [name_maps.codas]
 "n" = "N"
 
+[maps.empty_for_combining]
+"_" = ""  # empty-for-combining
+
 [combining.letters.append]
 "" = ""
 
 [combining.letters.name_regex_replace]
 "<" = [['(HIRAGANA|KATAKANA) LETTER (.*)', '\g<1> LETTER SMALL \g<2>']]  # amount
+
+[combining.voicing.append]
+"V" = "U+3099 COMBINING KATAKANA-HIRAGANA VOICED SOUND MARK [combining]: ば"
+"v" = "U+309A COMBINING KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK [combining]: ぱ"
 
 [expressions]
 letters = [
@@ -51,4 +58,7 @@ letters = [
   [["name_maps", "prefixes", "consonants", "vowels"]],
   [["name_maps", "prefixes", "codas"]],
 ]
-main = [[["expression", "letters"], ["combining", "letters"]]]
+main = [
+  [["expression", "letters"], ["combining", "letters"]],
+  [["map", "empty_for_combining"], ["combining", "voicing"]],
+]
