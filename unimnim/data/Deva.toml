@@ -7,6 +7,9 @@
 
 prefix = "d"
 
+[maps.empty_for_combining]
+"_" = ""  # empty-for-combining
+
 [maps.independent_vowels]
 "a" = "U+0905 DEVANAGARI LETTER A: अ"
 "A" = "U+0906 DEVANAGARI LETTER AA: आ"
@@ -20,7 +23,6 @@ prefix = "d"
 "au" = "U+0914 DEVANAGARI LETTER AU: औ"
 
 [maps.consonants]
-"_" = ""  # empty-for-combining
 "k" = "U+0915 DEVANAGARI LETTER KA: क"
 "kh" = "U+0916 DEVANAGARI LETTER KHA: ख"
 "g" = "U+0917 DEVANAGARI LETTER GA: ग"
@@ -56,6 +58,9 @@ prefix = "d"
 "s" = "U+0938 DEVANAGARI LETTER SA: स"
 "h" = "U+0939 DEVANAGARI LETTER HA: ह"
 
+[maps.virama]
+"" = "U+094D DEVANAGARI SIGN VIRAMA [combining]: क्"
+
 [maps.vowel_signs]
 "a" = ""
 "A" = "U+093E DEVANAGARI VOWEL SIGN AA [combining]: का"
@@ -67,10 +72,20 @@ prefix = "d"
 "ai" = "U+0948 DEVANAGARI VOWEL SIGN AI [combining]: कै"
 "o" = "U+094B DEVANAGARI VOWEL SIGN O [combining]: को"
 "au" = "U+094C DEVANAGARI VOWEL SIGN AU [combining]: कौ"
-"" = "U+094D DEVANAGARI SIGN VIRAMA [combining]: क्"
+
+[maps.after_vowels]
+"n" = "U+0901 DEVANAGARI SIGN CANDRABINDU [combining]: कँ"
+"m" = "U+0902 DEVANAGARI SIGN ANUSVARA [combining]: कं"
+"h" = "U+0903 DEVANAGARI SIGN VISARGA [combining]: कः"
 
 [expressions]
 main = [
+  [["map", "empty_for_combining"], ["map", "virama"]],
+  [["map", "empty_for_combining"], ["map", "vowel_signs"]],
+  [["map", "empty_for_combining"], ["map", "after_vowels"]],
   [["map", "independent_vowels"]],
+  [["map", "independent_vowels"], ["map", "after_vowels"]],
+  [["map", "consonants"], ["map", "virama"]],
   [["map", "consonants"], ["map", "vowel_signs"]],
+  [["map", "consonants"], ["map", "vowel_signs"], ["map", "after_vowels"]],
 ]
