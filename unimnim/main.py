@@ -48,7 +48,9 @@ def main(
     if parsed_args.write_all is not None:
         parsed_args.write_all.mkdir(exist_ok=True)
 
-    with resources.as_file(resources.files().joinpath("data")) as data_path:
+    with resources.as_file(
+        resources.files("unimnim").joinpath("data")
+    ) as data_path:
         data_ = data.load(data_path)
 
     if parsed_args.write_all is not None:
@@ -79,7 +81,11 @@ def main(
         _write_json(parsed_args.write_all / "prefix_map.json", prefix_map)
 
     m17n_mim = input_method.render_template(
-        resources.files().joinpath("templates/m17n.mim.jinja").read_text(),
+        (
+            resources.files("unimnim")
+            .joinpath("templates/m17n.mim.jinja")
+            .read_text()
+        ),
         map=map_,
         prefix_map=prefix_map,
         version=metadata.version(typing.cast(str, __spec__.parent)),
