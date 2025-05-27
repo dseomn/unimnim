@@ -391,13 +391,11 @@ def generate_map(groups: Mapping[str, data.Group]) -> Mapping[str, str]:
 
 def generate_prefix_map(map_: Mapping[str, str]) -> Mapping[str, Sequence[str]]:
     """Returns a map from mnemonic prefix to matching results."""
-    prefix_map = collections.defaultdict[str, list[str]](list)
+    prefix_map = collections.defaultdict[str, set[str]](set)
     for mnemonic, result in map_.items():
         for prefix_len in range(len(mnemonic) + 1):
-            results = prefix_map[mnemonic[:prefix_len]]
-            if result not in results:
-                results.append(result)
-    return prefix_map
+            prefix_map[mnemonic[:prefix_len]].add(result)
+    return {prefix: sorted(results) for prefix, results in prefix_map.items()}
 
 
 def m17n_mtext(s: str) -> str:
