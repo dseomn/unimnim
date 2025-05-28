@@ -7,7 +7,7 @@
 prefix = "OG"
 
 [maps.main]
-"SP" = "U+1680 OGHAM SPACE MARK"
+"_" = "U+1680 OGHAM SPACE MARK"
 "b" = "U+1681 OGHAM LETTER BEITH: ᚁ"
 "l" = "U+1682 OGHAM LETTER LUIS: ᚂ"
 "f" = "U+1683 OGHAM LETTER FEARN: ᚃ"

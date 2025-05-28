@@ -2,31 +2,31 @@
 #
 # SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
 
-# All spaces have a mnemonic starting with SP to make them easier to look
-# through with a prefix search. Where a space has an official alias, that's also
-# used as a mnemonic.
+# All spaces have a mnemonic starting with _ to make them easier to look through
+# with a prefix search. Where a space has an official alias, that's also used as
+# a mnemonic.
 
 prefix = "Z"
 
 [maps.main]
 "NBSP" = "U+00A0 NO-BREAK SPACE"  # from=aliases
-"SPNB" = "U+00A0 NO-BREAK SPACE"
-"SPN" = "U+2002 EN SPACE"
-"SPM" = "U+2003 EM SPACE"
-"SPM/3" = "U+2004 THREE-PER-EM SPACE"
-"SPM/4" = "U+2005 FOUR-PER-EM SPACE"
-"SPM/6" = "U+2006 SIX-PER-EM SPACE"
-"SPF" = "U+2007 FIGURE SPACE"
-"SPP" = "U+2008 PUNCTUATION SPACE"
-"SPT" = "U+2009 THIN SPACE"
-"SPH" = "U+200A HAIR SPACE"
+"_NB" = "U+00A0 NO-BREAK SPACE"
+"_N" = "U+2002 EN SPACE"
+"_M" = "U+2003 EM SPACE"
+"_M/3" = "U+2004 THREE-PER-EM SPACE"
+"_M/4" = "U+2005 FOUR-PER-EM SPACE"
+"_M/6" = "U+2006 SIX-PER-EM SPACE"
+"_F" = "U+2007 FIGURE SPACE"
+"_P" = "U+2008 PUNCTUATION SPACE"
+"_T" = "U+2009 THIN SPACE"
+"_H" = "U+200A HAIR SPACE"
 "LS" = "U+2028 LINE SEPARATOR"
 "PS" = "U+2029 PARAGRAPH SEPARATOR"
 "NNBSP" = "U+202F NARROW NO-BREAK SPACE"  # from=aliases
-"SPNBN" = "U+202F NARROW NO-BREAK SPACE"
+"_NBN" = "U+202F NARROW NO-BREAK SPACE"
 "MMSP" = "U+205F MEDIUM MATHEMATICAL SPACE"  # from=aliases
-"SPMM" = "U+205F MEDIUM MATHEMATICAL SPACE"
-"SPI" = "U+3000 IDEOGRAPHIC SPACE"
+"_MM" = "U+205F MEDIUM MATHEMATICAL SPACE"
+"_I" = "U+3000 IDEOGRAPHIC SPACE"
 
 [expressions]
 main = [[["map", "main"]]]
