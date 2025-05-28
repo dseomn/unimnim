@@ -54,5 +54,12 @@ prefix = "Bo"
 "gn" = "U+312C BOPOMOFO LETTER GN: ㄬ"
 "i" = "U+312D BOPOMOFO LETTER IH: ㄭ"
 
+[combining.main.append]
+"" = ""
+
+[combining.main.name_regex_replace]
+"." = [['.*', '\g<0> WITH DOT ABOVE']]
+"]" = [['(BOPOMOFO) (LETTER .*)', '\g<1> FINAL \g<2>']]  # logical-order
+
 [expressions]
-main = [[["map", "main"]]]
+main = [[["map", "main"], ["combining", "main"]]]
