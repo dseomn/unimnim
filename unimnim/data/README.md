@@ -77,6 +77,12 @@ Data files are in [TOML](https://toml.io/) format:
 # See "pefix" in Terminology section above.
 prefix = "l"
 
+# Map from mnemonic (regular string) to result (explicit string) to show how the
+# group works.
+[examples]
+"A" = "U+0041 LATIN CAPITAL LETTER A: A"
+"A`" = "U+00C0 LATIN CAPITAL LETTER A WITH GRAVE: À"
+
 # Maps from mnemonic (regular string) to result (explicit string). Must be
 # sorted by result, then mnemonic. This defines a map named "main":
 [maps.main]

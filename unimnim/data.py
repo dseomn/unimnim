@@ -248,6 +248,8 @@ class Group:
 
     Attributes:
         prefix: Prefix for all of the group's mnemonics.
+        examples: Map from mnemonic (not including prefix) to result, to give as
+            examples of how the group works.
         name_maps: Maps from part of a mnemonic to part of a character name.
         maps: Maps from mnemonic (not including prefix) to a result.
         combining: Sets of rules for combining partial mnemonics with a map.
@@ -255,6 +257,7 @@ class Group:
     """
 
     prefix: str
+    examples: Mapping[str, str] = dataclasses.field(default_factory=dict)
     name_maps: Mapping[str, Mapping[str, str]] = dataclasses.field(
         default_factory=dict
     )
@@ -273,6 +276,7 @@ class Group:
         """Returns the data parsed from the format used in data files."""
         if unexpected_keys := raw.keys() - {
             "prefix",
+            "examples",
             "name_maps",
             "maps",
             "combining",
@@ -286,6 +290,10 @@ class Group:
             }
         return cls(
             prefix=raw["prefix"],
+            examples={
+                key: parse_explicit_string(value)
+                for key, value in raw.get("examples", {}).items()
+            },
             name_maps=raw.get("name_maps", {}),
             maps=maps,
             combining={

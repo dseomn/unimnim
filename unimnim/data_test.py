@@ -212,6 +212,7 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
         (
             dict(
                 prefix="l",
+                examples={"a": "U+0061 LATIN SMALL LETTER A"},
                 name_maps=dict(main={"a": "A"}),
                 maps=dict(main={"a": "U+0061 LATIN SMALL LETTER A"}),
                 combining=dict(
@@ -223,6 +224,7 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
             ),
             dict(
                 prefix="l",
+                examples={"a": "a"},
                 name_maps=dict(main={"a": "A"}),
                 maps=dict(main={"a": "a"}),
                 combining=dict(

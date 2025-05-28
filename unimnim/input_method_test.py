@@ -269,6 +269,28 @@ def test_map_duplicate_mnemonic_same_result(
         ),
         (
             {
+                "latin": data.Group(
+                    prefix="l",
+                    examples={"a": "a"},
+                    maps=dict(main={}),
+                    expressions=dict(main=[[["map", "main"]]]),
+                ),
+            },
+            "Group 'latin' has example 'a' that does not exist",
+        ),
+        (
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    examples={"a": "a"},
+                    maps=dict(main={"a": "b"}),
+                    expressions=dict(main=[[["map", "main"]]]),
+                ),
+            },
+            "Group 'latin' has example 'a' that should map to",
+        ),
+        (
+            {
                 "latin1": data.Group(
                     prefix="l",
                     maps=dict(main={"a": "a"}),
@@ -894,6 +916,18 @@ def test_generate_map_error(
                 "lcad": "cad",
                 "lced": "ced",
             },
+        ),
+        (
+            # Examples work.
+            {
+                "latin": data.Group(
+                    prefix="l",
+                    examples={"a": "a"},
+                    maps=dict(main={"a": "a"}),
+                    expressions=dict(main=[[["map", "main"]]]),
+                ),
+            },
+            {"la": "a"},
         ),
     ),
 )

@@ -376,6 +376,19 @@ def _generate_map_one_group(
     combining.require_all_referenced()
     expressions.require_all_referenced()
 
+    for example_mnemonic, example_result in group.examples.items():
+        if example_mnemonic not in main_map.known:
+            raise ValueError(
+                f"Group {group_id!r} has example {example_mnemonic!r} that "
+                "does not exist."
+            )
+        elif main_map.known[example_mnemonic] != example_result:
+            raise ValueError(
+                f"Group {group_id!r} has example {example_mnemonic!r} that "
+                f"should map to {example_result!r} but actually maps to "
+                f"{main_map.known[example_mnemonic]!r}."
+            )
+
     return {
         group.prefix + mnemonic: result
         for mnemonic, result in main_map.known.items()
