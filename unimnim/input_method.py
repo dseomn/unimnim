@@ -21,6 +21,18 @@ _TEXT_VARIATION_SELECTOR = "\N{VARIATION SELECTOR-15}"
 _EMOJI_VARIATION_SELECTOR = "\N{VARIATION SELECTOR-16}"
 
 
+def _extended_grapheme_clusters(s: str, /) -> Iterable[str]:
+    if len(s) == 1:
+        # This optimization makes the tests take about ~88% as long as without
+        # it.
+        yield s
+        return
+    it = icu.BreakIterator.createCharacterInstance(icu.Locale.getRoot())
+    it.setText(s)
+    for start, end in itertools.pairwise(itertools.chain((0,), it)):
+        yield s[start:end]
+
+
 @functools.cache
 def known_sequences() -> Mapping[str, Sequence[str]]:
     """Returns a map from known sequences to languages they're from.
@@ -35,9 +47,12 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
     def _add(sequence: str, *, language: str | None = None) -> None:
         if data.discouraged_sequences(sequence):
             return
-        languages = sequences[unicodedata.normalize("NFC", sequence)]
-        if language is not None:
-            languages.add(language)
+        for extended_grapheme_cluster in _extended_grapheme_clusters(
+            unicodedata.normalize("NFC", sequence)
+        ):
+            languages = sequences[extended_grapheme_cluster]
+            if language is not None:
+                languages.add(language)
 
     for code_point_num in range(0x10FFFF + 1):
         code_point = chr(code_point_num)

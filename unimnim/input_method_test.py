@@ -12,6 +12,35 @@ from unimnim import input_method
 
 
 @pytest.mark.parametrize(
+    "s,expected",
+    (
+        ("", []),
+        ("a", ["a"]),
+        ("ab", ["a", "b"]),
+        (
+            "\N{LATIN SMALL LETTER A WITH ACUTE}",
+            ["\N{LATIN SMALL LETTER A WITH ACUTE}"],
+        ),
+        ("a\N{COMBINING ACUTE ACCENT}", ["a\N{COMBINING ACUTE ACCENT}"]),
+        (
+            (
+                "\N{REGIONAL INDICATOR SYMBOL LETTER U}"
+                "\N{REGIONAL INDICATOR SYMBOL LETTER N}"
+            ),
+            [
+                (
+                    "\N{REGIONAL INDICATOR SYMBOL LETTER U}"
+                    "\N{REGIONAL INDICATOR SYMBOL LETTER N}"
+                ),
+            ],
+        ),
+    ),
+)
+def test_extended_grapheme_clusters(s: str, expected: Sequence[str]) -> None:
+    assert list(input_method._extended_grapheme_clusters(s)) == list(expected)
+
+
+@pytest.mark.parametrize(
     "sequence,expected_language",
     (
         ("a", "en"),  # From ES_STANDARD.
@@ -57,6 +86,7 @@ def test_known_sequences_present_without_languages(sequence: str) -> None:
         "\ue000",  # private use
         "\ud800",  # surrogate
         "\N{LATIN SMALL LETTER N PRECEDED BY APOSTROPHE}",  # deprecated
+        "ij",  # should be split into "i" and "j"
     ),
 )
 def test_known_sequences_absent(sequence: str) -> None:
