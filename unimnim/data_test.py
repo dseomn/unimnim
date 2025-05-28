@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
+from collections.abc import Mapping
 import pathlib
 import re
 from typing import Any
@@ -61,17 +62,26 @@ def test_parse_explicit_string_error(
 
 
 @pytest.mark.parametrize(
-    "explicit_string,expected",
+    "explicit_string,kwargs,expected",
     (
-        ("", ""),
-        ("U+0000 (NULL)", "\x00"),
-        ("U+0068 LATIN SMALL LETTER H", "h"),
-        ("U+0068 LATIN SMALL LETTER H: h", "h"),
-        ("U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I", "hi"),
-        ("U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I: hi", "hi"),
-        ("U+01A2 LATIN CAPITAL LETTER OI (LATIN CAPITAL LETTER GHA)", "\u01a2"),
+        ("", {}, ""),
+        ("U+0000 (NULL)", {}, "\x00"),
+        ("U+0068 LATIN SMALL LETTER H", {}, "h"),
+        ("U+0068 LATIN SMALL LETTER H: h", {}, "h"),
+        ("U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I", {}, "hi"),
+        (
+            "U+0068 LATIN SMALL LETTER H, U+0069 LATIN SMALL LETTER I: hi",
+            {},
+            "hi",
+        ),
+        (
+            "U+01A2 LATIN CAPITAL LETTER OI (LATIN CAPITAL LETTER GHA)",
+            {},
+            "\u01a2",
+        ),
         (
             "U+01A2 LATIN CAPITAL LETTER OI (LATIN CAPITAL LETTER GHA): \u01a2",
+            {},
             "\u01a2",
         ),
         (
@@ -79,16 +89,27 @@ def test_parse_explicit_string_error(
                 "U+0301 COMBINING ACUTE ACCENT [combining]: "
                 "\N{LATIN SMALL LETTER A WITH ACUTE}"
             ),
+            {},
             "\u0301",
         ),
         (
             "U+00E0 LATIN SMALL LETTER A WITH GRAVE [precomposed]",
+            {},
+            "\N{LATIN SMALL LETTER A WITH GRAVE}",
+        ),
+        (
+            "U+00E0 LATIN SMALL LETTER A WITH GRAVE",
+            dict(check_precomposed=False),
             "\N{LATIN SMALL LETTER A WITH GRAVE}",
         ),
     ),
 )
-def test_parse_explicit_string(explicit_string: str, expected: str) -> None:
-    assert data.parse_explicit_string(explicit_string) == expected
+def test_parse_explicit_string(
+    explicit_string: str,
+    kwargs: Mapping[str, Any],
+    expected: str,
+) -> None:
+    assert data.parse_explicit_string(explicit_string, **kwargs) == expected
 
 
 @pytest.mark.parametrize(
@@ -212,7 +233,7 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
         (
             dict(
                 prefix="l",
-                examples={"a": "U+0061 LATIN SMALL LETTER A"},
+                examples={"a'": "U+00E1 LATIN SMALL LETTER A WITH ACUTE"},
                 name_maps=dict(main={"a": "A"}),
                 maps=dict(main={"a": "U+0061 LATIN SMALL LETTER A"}),
                 combining=dict(
@@ -224,7 +245,7 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
             ),
             dict(
                 prefix="l",
-                examples={"a": "a"},
+                examples={"a'": "\N{LATIN SMALL LETTER A WITH ACUTE}"},
                 name_maps=dict(main={"a": "A"}),
                 maps=dict(main={"a": "a"}),
                 combining=dict(

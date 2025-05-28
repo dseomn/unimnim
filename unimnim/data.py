@@ -93,7 +93,12 @@ def _parse_explicit_code_point(explicit: str) -> str:
     return code_point
 
 
-def parse_explicit_string(explicit_string: str, /) -> str:
+def parse_explicit_string(
+    explicit_string: str,
+    /,
+    *,
+    check_precomposed: bool = True,
+) -> str:
     """Returns the value of an explicit string."""
     if not explicit_string:
         return ""
@@ -131,7 +136,8 @@ def parse_explicit_string(explicit_string: str, /) -> str:
     if unicodedata.is_normalized("NFD", decoded_string) and flags.precomposed:
         raise ValueError(f"{explicit_string!r} is not precomposed.")
     elif (
-        not unicodedata.is_normalized("NFD", decoded_string)
+        check_precomposed
+        and not unicodedata.is_normalized("NFD", decoded_string)
         and not flags.precomposed
     ):
         raise ValueError(f"{explicit_string!r} is precomposed.")
@@ -291,7 +297,7 @@ class Group:
         return cls(
             prefix=raw["prefix"],
             examples={
-                key: parse_explicit_string(value)
+                key: parse_explicit_string(value, check_precomposed=False)
                 for key, value in raw.get("examples", {}).items()
             },
             name_maps=raw.get("name_maps", {}),
