@@ -7,6 +7,9 @@
 
 prefix = "Z$"
 
+[examples]
+"Rs" = "U+20A8 RUPEE SIGN: ₨"
+
 [maps.main]
 "CT" = "U+00A2 CENT SIGN: ¢"
 "LB" = "U+00A3 POUND SIGN: £"

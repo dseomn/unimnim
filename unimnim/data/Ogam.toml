@@ -6,6 +6,9 @@
 
 prefix = "OG"
 
+[examples]
+"b" = "U+1681 OGHAM LETTER BEITH: ᚁ"
+
 [maps.main]
 "_" = "U+1680 OGHAM SPACE MARK"
 "b" = "U+1681 OGHAM LETTER BEITH: ᚁ"

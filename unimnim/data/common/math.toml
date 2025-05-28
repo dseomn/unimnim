@@ -29,6 +29,14 @@
 
 prefix = "ZM"
 
+[examples]
+"0s" = "U+2205 EMPTY SET: ∅"
+"+n" = "U+2211 N-ARY SUMMATION: ∑"
+"&l" = "U+2227 LOGICAL AND: ∧"
+"&s" = "U+2229 INTERSECTION: ∩"
+"==" = "U+2261 IDENTICAL TO: ≡"
+"==!" = "U+2262 NOT IDENTICAL TO: ≢"
+
 [maps.main]
 "(" = "U+0028 LEFT PARENTHESIS: ("
 ")" = "U+0029 RIGHT PARENTHESIS: )"

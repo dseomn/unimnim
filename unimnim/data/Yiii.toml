@@ -6,6 +6,10 @@
 
 prefix = "Yi"
 
+[examples]
+"it" = "U+A000 YI SYLLABLE IT: ꀀ"
+"qotR" = "U+A490 YI RADICAL QOT: ꒐"
+
 [name_maps.prefix]
 "" = "YI SYLLABLE "
 

@@ -6,6 +6,9 @@
 
 prefix = "ZRI"
 
+[examples]
+"UN" = "U+1F1FA REGIONAL INDICATOR SYMBOL LETTER U, U+1F1F3 REGIONAL INDICATOR SYMBOL LETTER N: 🇺🇳"
+
 [maps.main]
 "" = ""  # empty-for-combining
 

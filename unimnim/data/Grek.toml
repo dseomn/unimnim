@@ -12,6 +12,10 @@
 
 prefix = "Gr"
 
+[examples]
+"a" = "U+03B1 GREEK SMALL LETTER ALPHA: α"
+"a'" = "U+03AC GREEK SMALL LETTER ALPHA WITH TONOS: ά"
+
 [maps.main]
 "_" = ""  # empty-for-combining
 "A" = "U+0391 GREEK CAPITAL LETTER ALPHA: Α"

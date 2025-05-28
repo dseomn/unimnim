@@ -8,6 +8,12 @@
 
 prefix = "l"
 
+[examples]
+"o" = "U+006F LATIN SMALL LETTER O: o"
+"o/" = "U+00F8 LATIN SMALL LETTER O WITH STROKE: ø"
+"o/'" = "U+01FF LATIN SMALL LETTER O WITH STROKE AND ACUTE: ǿ"
+"oe" = "U+0153 LATIN SMALL LIGATURE OE: œ"
+
 [maps.main]
 "_" = ""  # empty-for-combining
 "A" = "U+0041 LATIN CAPITAL LETTER A: A"

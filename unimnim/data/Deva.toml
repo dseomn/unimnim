@@ -7,6 +7,11 @@
 
 prefix = "d"
 
+[examples]
+"k" = "U+0915 DEVANAGARI LETTER KA, U+094D DEVANAGARI SIGN VIRAMA: क्"
+"ka" = "U+0915 DEVANAGARI LETTER KA: क"
+"kim" = "U+0915 DEVANAGARI LETTER KA, U+093F DEVANAGARI VOWEL SIGN I, U+0902 DEVANAGARI SIGN ANUSVARA: किं"
+
 [maps.empty_for_combining]
 "_" = ""  # empty-for-combining
 

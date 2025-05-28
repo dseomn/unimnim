@@ -6,6 +6,10 @@
 
 prefix = "Bd"
 
+[examples]
+"ka" = "U+1743 BUHID LETTER KA: ᝃ"
+"ki" = "U+1743 BUHID LETTER KA, U+1752 BUHID VOWEL SIGN I: ᝃᝒ"
+
 [maps.independent_vowels]
 "a" = "U+1740 BUHID LETTER A: ᝀ"
 "i" = "U+1741 BUHID LETTER I: ᝁ"

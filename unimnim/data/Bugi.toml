@@ -6,6 +6,10 @@
 
 prefix = "Bu"
 
+[examples]
+"ka" = "U+1A00 BUGINESE LETTER KA: ᨀ"
+"ki" = "U+1A00 BUGINESE LETTER KA, U+1A17 BUGINESE VOWEL SIGN I: ᨀᨗ"
+
 [maps.letters]
 "_" = ""  # empty-for-combining
 "k" = "U+1A00 BUGINESE LETTER KA: ᨀ"

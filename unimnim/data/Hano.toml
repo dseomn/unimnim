@@ -6,6 +6,11 @@
 
 prefix = "Ho"
 
+[examples]
+"k" = "U+1723 HANUNOO LETTER KA, U+1734 HANUNOO SIGN PAMUDPOD: ᜣ᜴"
+"ka" = "U+1723 HANUNOO LETTER KA: ᜣ"
+"ki" = "U+1723 HANUNOO LETTER KA, U+1732 HANUNOO VOWEL SIGN I: ᜣᜲ"
+
 [maps.consonants]
 "_" = ""  # empty-for-combining
 "k" = "U+1723 HANUNOO LETTER KA: ᜣ"

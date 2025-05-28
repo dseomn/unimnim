@@ -6,6 +6,10 @@
 
 prefix = "Tb"
 
+[examples]
+"ka" = "U+1763 TAGBANWA LETTER KA: ᝣ"
+"ki" = "U+1763 TAGBANWA LETTER KA, U+1772 TAGBANWA VOWEL SIGN I: ᝣᝲ"
+
 [maps.independent_vowels]
 "a" = "U+1760 TAGBANWA LETTER A: ᝠ"
 "i" = "U+1761 TAGBANWA LETTER I: ᝡ"

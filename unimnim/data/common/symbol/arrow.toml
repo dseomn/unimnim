@@ -11,6 +11,10 @@
 
 prefix = "ZA"
 
+[examples]
+"-" = "U+2194 LEFT RIGHT ARROW: ↔"
+"|" = "U+2195 UP DOWN ARROW: ↕"
+
 [maps.main]
 "4" = "U+2190 LEFTWARDS ARROW: ←"
 "8" = "U+2191 UPWARDS ARROW: ↑"

@@ -6,6 +6,12 @@
 
 prefix = "He"
 
+[examples]
+"k" = "U+05DB HEBREW LETTER KAF: כ"
+"k]" = "U+05DA HEBREW LETTER FINAL KAF: ך"
+"k." = "U+05DB HEBREW LETTER KAF, U+05BC HEBREW POINT DAGESH OR MAPIQ: כּ"
+"ke" = "U+05DB HEBREW LETTER KAF, U+05B6 HEBREW POINT SEGOL: כֶ"
+
 [maps.consonants]
 "a" = "U+05D0 HEBREW LETTER ALEF: א"  # from=rfc1345 suboptimal
 "v" = "U+05D1 HEBREW LETTER BET: ב"

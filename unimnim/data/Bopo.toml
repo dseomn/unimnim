@@ -6,6 +6,9 @@
 
 prefix = "Bo"
 
+[examples]
+"b" = "U+3105 BOPOMOFO LETTER B: ㄅ"
+
 [maps.main]
 "3" = "U+02C7 CARON: ˇ"
 "1" = "U+02C9 MODIFIER LETTER MACRON: ˉ"

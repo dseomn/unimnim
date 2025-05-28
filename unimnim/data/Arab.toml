@@ -6,6 +6,9 @@
 
 prefix = "a"
 
+[examples]
+"b" = "U+0628 ARABIC LETTER BEH: ب"
+
 [maps.main]
 "_" = ""  # empty-for-combining
 "%0" = "U+0609 ARABIC-INDIC PER MILLE SIGN: ؉"

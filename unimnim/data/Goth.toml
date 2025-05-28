@@ -6,6 +6,9 @@
 
 prefix = "GO"
 
+[examples]
+"a" = "U+10330 GOTHIC LETTER AHSA: 𐌰"
+
 [maps.main]
 "a" = "U+10330 GOTHIC LETTER AHSA: 𐌰"
 "b" = "U+10331 GOTHIC LETTER BAIRKAN: 𐌱"

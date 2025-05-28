@@ -8,6 +8,10 @@
 
 prefix = "k"
 
+[examples]
+"hka" = "U+304B HIRAGANA LETTER KA: か"
+"kka" = "U+30AB KATAKANA LETTER KA: カ"
+
 [name_maps.prefixes]
 "h" = "HIRAGANA "
 "k" = "KATAKANA "

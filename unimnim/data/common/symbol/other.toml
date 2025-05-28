@@ -4,6 +4,9 @@
 
 prefix = "Z"
 
+[examples]
+"co" = "U+00A9 COPYRIGHT SIGN: ©"
+
 [maps.main]
 "co" = "U+00A9 COPYRIGHT SIGN: ©"
 "re" = "U+00AE REGISTERED SIGN: ®"

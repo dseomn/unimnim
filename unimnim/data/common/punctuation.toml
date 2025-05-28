@@ -4,6 +4,14 @@
 
 prefix = "Z"
 
+[examples]
+"-h" = "U+2010 HYPHEN: ‐"
+"-m" = "U+2014 EM DASH: —"
+"'q" = "U+2019 RIGHT SINGLE QUOTATION MARK: ’"
+"'p" = "U+2032 PRIME: ′"
+"?!" = "U+203D INTERROBANG: ‽"
+"?!I" = "U+2E18 INVERTED INTERROBANG: ⸘"  # geometry
+
 [maps.main]
 "'" = "U+0027 APOSTROPHE: '"
 "!I" = "U+00A1 INVERTED EXCLAMATION MARK: ¡"  # geometry

@@ -7,6 +7,10 @@
 
 prefix = "c"
 
+[examples]
+"k" = "U+043A CYRILLIC SMALL LETTER KA: к"
+"k'" = "U+045C CYRILLIC SMALL LETTER KJE: ќ"
+
 [maps.main]
 "_" = ""  # empty-for-combining
 "DJ" = "U+0402 CYRILLIC CAPITAL LETTER DJE: Ђ"
