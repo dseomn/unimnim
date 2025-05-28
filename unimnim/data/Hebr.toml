@@ -39,6 +39,12 @@ prefix = "He"
 "o" = "U+05B9 HEBREW POINT HOLAM [combining]: אֹ"
 "u" = "U+05BB HEBREW POINT QUBUTS [combining]: אֻ"
 
+[maps.letters]
+"ww" = "U+05F0 HEBREW LIGATURE YIDDISH DOUBLE VAV: װ"
+"wy" = "U+05F1 HEBREW LIGATURE YIDDISH VAV YOD: ױ"
+"yy" = "U+05F2 HEBREW LIGATURE YIDDISH DOUBLE YOD: ײ"
+"yya" = "U+05F2 HEBREW LIGATURE YIDDISH DOUBLE YOD, U+05B7 HEBREW POINT PATAH: ײַ"
+
 [maps.punctuation]
 "-" = "U+05BE HEBREW PUNCTUATION MAQAF: ־"
 "'" = "U+05F3 HEBREW PUNCTUATION GERESH: ׳"
@@ -65,6 +71,7 @@ consonants = [[["map", "consonants"], ["combining", "consonants"]]]
 letters = [
   [["expression", "consonants"]],
   [["expression", "consonants"], ["map", "vowels"]],
+  [["map", "letters"]],
 ]
 main = [
   [["expression", "letters"]],
