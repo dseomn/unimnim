@@ -31,6 +31,10 @@ prefix = "He"
 "T" = "U+05EA HEBREW LETTER TAV: ת"  # suboptimal
 
 [maps.vowels]
+"'" = "U+05B0 HEBREW POINT SHEVA [combining]: אְ"
+"e<" = "U+05B1 HEBREW POINT HATAF SEGOL [combining]: אֱ"  # aka="reduced segol" amount
+"a<" = "U+05B2 HEBREW POINT HATAF PATAH [combining]: אֲ"  # aka="reduced patah" amount
+"ah<" = "U+05B3 HEBREW POINT HATAF QAMATS [combining]: אֳ"  # aka="reduced qamats" amount
 "i" = "U+05B4 HEBREW POINT HIRIQ [combining]: אִ"
 "eh" = "U+05B5 HEBREW POINT TSERE [combining]: אֵ"
 "e" = "U+05B6 HEBREW POINT SEGOL [combining]: אֶ"
