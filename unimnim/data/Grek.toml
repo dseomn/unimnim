@@ -66,8 +66,15 @@ prefix = "Gr"
 
 [combining.main.append]
 "" = ""
+"`" = "U+0300 COMBINING GRAVE ACCENT [combining]: ὰ"
 "'" = "U+0301 COMBINING ACUTE ACCENT [combining]: ά"
+"-" = "U+0304 COMBINING MACRON [combining]: ᾱ"
+"u" = "U+0306 COMBINING BREVE [combining]: ᾰ"
 '"' = "U+0308 COMBINING DIAERESIS [combining]: ϊ"
+"," = "U+0313 COMBINING COMMA ABOVE [combining]: ἀ"
+",R" = "U+0314 COMBINING REVERSED COMMA ABOVE [combining]: ἁ"  # geometry
+"^" = "U+0342 COMBINING GREEK PERISPOMENI [combining]: ᾶ"
+"i" = "U+0345 COMBINING GREEK YPOGEGRAMMENI [combining]: ᾳ"  # aka="iota subscript"
 
 [combining.main.name_regex_replace]
 "//" = [['GREEK (CAPITAL|SMALL) LETTER (.*)', 'DOUBLE-STRUCK \g<1> \g<2>']]
