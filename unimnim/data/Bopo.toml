@@ -1,0 +1,58 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Bopomofo
+
+prefix = "Bo"
+
+[maps.main]
+"3" = "U+02C7 CARON: ˇ"
+"1" = "U+02C9 MODIFIER LETTER MACRON: ˉ"
+"2" = "U+02CA MODIFIER LETTER ACUTE ACCENT: ˊ"
+"4" = "U+02CB MODIFIER LETTER GRAVE ACCENT: ˋ"
+"5" = "U+02D9 DOT ABOVE: ˙"
+"b" = "U+3105 BOPOMOFO LETTER B: ㄅ"
+"p" = "U+3106 BOPOMOFO LETTER P: ㄆ"
+"m" = "U+3107 BOPOMOFO LETTER M: ㄇ"
+"f" = "U+3108 BOPOMOFO LETTER F: ㄈ"
+"d" = "U+3109 BOPOMOFO LETTER D: ㄉ"
+"t" = "U+310A BOPOMOFO LETTER T: ㄊ"
+"n" = "U+310B BOPOMOFO LETTER N: ㄋ"
+"l" = "U+310C BOPOMOFO LETTER L: ㄌ"
+"g" = "U+310D BOPOMOFO LETTER G: ㄍ"
+"k" = "U+310E BOPOMOFO LETTER K: ㄎ"
+"h" = "U+310F BOPOMOFO LETTER H: ㄏ"
+"j" = "U+3110 BOPOMOFO LETTER J: ㄐ"
+"q" = "U+3111 BOPOMOFO LETTER Q: ㄑ"
+"x" = "U+3112 BOPOMOFO LETTER X: ㄒ"
+"zh" = "U+3113 BOPOMOFO LETTER ZH: ㄓ"
+"ch" = "U+3114 BOPOMOFO LETTER CH: ㄔ"
+"sh" = "U+3115 BOPOMOFO LETTER SH: ㄕ"
+"r" = "U+3116 BOPOMOFO LETTER R: ㄖ"
+"z" = "U+3117 BOPOMOFO LETTER Z: ㄗ"
+"c" = "U+3118 BOPOMOFO LETTER C: ㄘ"
+"s" = "U+3119 BOPOMOFO LETTER S: ㄙ"
+"a" = "U+311A BOPOMOFO LETTER A: ㄚ"
+"o" = "U+311B BOPOMOFO LETTER O: ㄛ"
+"e" = "U+311C BOPOMOFO LETTER E: ㄜ"
+"ie" = "U+311D BOPOMOFO LETTER EH: ㄝ"
+"ai" = "U+311E BOPOMOFO LETTER AI: ㄞ"
+"ei" = "U+311F BOPOMOFO LETTER EI: ㄟ"
+"ao" = "U+3120 BOPOMOFO LETTER AU: ㄠ"
+"ou" = "U+3121 BOPOMOFO LETTER OU: ㄡ"
+"an" = "U+3122 BOPOMOFO LETTER AN: ㄢ"
+"en" = "U+3123 BOPOMOFO LETTER EN: ㄣ"
+"ang" = "U+3124 BOPOMOFO LETTER ANG: ㄤ"
+"eng" = "U+3125 BOPOMOFO LETTER ENG: ㄥ"
+"er" = "U+3126 BOPOMOFO LETTER ER: ㄦ"
+"y" = "U+3127 BOPOMOFO LETTER I: ㄧ"
+"w" = "U+3128 BOPOMOFO LETTER U: ㄨ"
+"yu" = "U+3129 BOPOMOFO LETTER IU: ㄩ"
+"v" = "U+312A BOPOMOFO LETTER V: ㄪ"
+"ng" = "U+312B BOPOMOFO LETTER NG: ㄫ"
+"gn" = "U+312C BOPOMOFO LETTER GN: ㄬ"
+"i" = "U+312D BOPOMOFO LETTER IH: ㄭ"
+
+[expressions]
+main = [[["map", "main"]]]
