@@ -53,13 +53,13 @@ def report(*, covered: Set[str]) -> Any:
     all_characters_by_script = collections.defaultdict(set)
     exemplar_characters_by_script = collections.defaultdict(set)
     for character, languages in input_method.known_sequences().items():
-        script = icu.Char.getPropertyValueName(
-            icu.UProperty.SCRIPT,
-            icu.Char.getIntPropertyValue(character, icu.UProperty.SCRIPT),
-        )
-        all_characters_by_script[script].add(character)
-        if languages:
-            exemplar_characters_by_script[script].add(character)
+        for script_int in icu.Script.getScriptExtensions(character[0]):
+            script = icu.Char.getPropertyValueName(
+                icu.UProperty.SCRIPT, script_int
+            )
+            all_characters_by_script[script].add(character)
+            if languages:
+                exemplar_characters_by_script[script].add(character)
 
     return {
         "language": _report_section(characters_by_language, covered=covered),
