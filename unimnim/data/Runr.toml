@@ -24,7 +24,7 @@ prefix = "RU"
 "u" = "U+16A2 RUNIC LETTER URUZ UR U: ᚢ"
 "y" = "U+16A3 RUNIC LETTER YR: ᚣ"
 "u." = "U+16A4 RUNIC LETTER Y: ᚤ"  # aka="dotted Úr"
-"W" = "U+16A5 RUNIC LETTER W: ᚥ"  # suboptimal
+"W" = "U+16A5 RUNIC LETTER W: ᚥ"
 "th" = "U+16A6 RUNIC LETTER THURISAZ THURS THORN: ᚦ"
 "th." = "U+16A7 RUNIC LETTER ETH: ᚧ"  # aka="ᚦ with dot"
 "a<" = "U+16A8 RUNIC LETTER ANSUZ A: ᚨ"  # amount
@@ -44,7 +44,7 @@ prefix = "RU"
 "ng>" = "U+16B6 RUNIC LETTER ENG: ᚶ"  # amount
 "g" = "U+16B7 RUNIC LETTER GEBO GYFU G: ᚷ"
 "g>" = "U+16B8 RUNIC LETTER GAR: ᚸ"  # amount
-"w" = "U+16B9 RUNIC LETTER WUNJO WYNN W: ᚹ"  # suboptimal
+"w" = "U+16B9 RUNIC LETTER WUNJO WYNN W: ᚹ"
 "h" = "U+16BA RUNIC LETTER HAGLAZ H: ᚺ"
 "h=" = "U+16BB RUNIC LETTER HAEGL H: ᚻ"  # aka="double-barred"
 "h_" = "U+16BC RUNIC LETTER LONG-BRANCH-HAGALL H: ᚼ"
@@ -87,12 +87,12 @@ prefix = "RU"
 "io" = "U+16E1 RUNIC LETTER IOR: ᛡ"
 "q" = "U+16E2 RUNIC LETTER CWEORTH: ᛢ"
 "k" = "U+16E3 RUNIC LETTER CALC: ᛣ"
-"K" = "U+16E4 RUNIC LETTER CEALC: ᛤ"  # suboptimal
+"K" = "U+16E4 RUNIC LETTER CEALC: ᛤ"
 "st" = "U+16E5 RUNIC LETTER STAN: ᛥ"
 "R_" = "U+16E6 RUNIC LETTER LONG-BRANCH-YR: ᛦ"
 "R-" = "U+16E7 RUNIC LETTER SHORT-TWIG-YR: ᛧ"
 "R" = "U+16E8 RUNIC LETTER ICELANDIC-YR: ᛨ"
-"Q" = "U+16E9 RUNIC LETTER Q: ᛩ"  # suboptimal
+"Q" = "U+16E9 RUNIC LETTER Q: ᛩ"
 "x" = "U+16EA RUNIC LETTER X: ᛪ"
 "." = "U+16EB RUNIC SINGLE PUNCTUATION: ᛫"
 ":" = "U+16EC RUNIC MULTIPLE PUNCTUATION: ᛬"

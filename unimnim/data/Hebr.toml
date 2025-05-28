@@ -15,7 +15,7 @@ prefix = "He"
 "w" = "U+05D5 HEBREW LETTER VAV: ו"
 "z" = "U+05D6 HEBREW LETTER ZAYIN: ז"
 "ch" = "U+05D7 HEBREW LETTER HET: ח"
-"t" = "U+05D8 HEBREW LETTER TET: ט"  # suboptimal
+"t" = "U+05D8 HEBREW LETTER TET: ט"
 "y" = "U+05D9 HEBREW LETTER YOD: י"
 "k" = "U+05DB HEBREW LETTER KAF: כ"
 "l" = "U+05DC HEBREW LETTER LAMED: ל"
@@ -28,7 +28,7 @@ prefix = "He"
 "c" = "U+05E7 HEBREW LETTER QOF: ק"
 "r" = "U+05E8 HEBREW LETTER RESH: ר"
 "sh" = "U+05E9 HEBREW LETTER SHIN: ש"
-"T" = "U+05EA HEBREW LETTER TAV: ת"  # suboptimal
+"T" = "U+05EA HEBREW LETTER TAV: ת"
 
 [maps.vowels]
 "'" = "U+05B0 HEBREW POINT SHEVA [combining]: אְ"
