@@ -96,6 +96,10 @@ prefix = "Z"
 ">" = "U+3009 RIGHT ANGLE BRACKET: 〉"
 "<<" = "U+300A LEFT DOUBLE ANGLE BRACKET: 《"
 ">>" = "U+300B RIGHT DOUBLE ANGLE BRACKET: 》"
+"L[" = "U+300C LEFT CORNER BRACKET: 「"  # logical-order
+"L]" = "U+300D RIGHT CORNER BRACKET: 」"  # logical-order
+"L_[" = "U+300E LEFT WHITE CORNER BRACKET: 『"  # logical-order
+"L_]" = "U+300F RIGHT WHITE CORNER BRACKET: 』"  # logical-order
 "[(" = "U+3010 LEFT BLACK LENTICULAR BRACKET: 【"
 ")]" = "U+3011 RIGHT BLACK LENTICULAR BRACKET: 】"
 "[{" = "U+3014 LEFT TORTOISE SHELL BRACKET: 〔"
@@ -105,6 +109,9 @@ prefix = "Z"
 "[_{" = "U+3018 LEFT WHITE TORTOISE SHELL BRACKET: 〘"
 "}_]" = "U+3019 RIGHT WHITE TORTOISE SHELL BRACKET: 〙"
 "-w" = "U+301C WAVE DASH: 〜"
+'"9' = "U+301D REVERSED DOUBLE PRIME QUOTATION MARK: 〝"  # geometry
+'"7' = "U+301E DOUBLE PRIME QUOTATION MARK: 〞"  # geometry
+'"1' = "U+301F LOW DOUBLE PRIME QUOTATION MARK: 〟"  # geometry
 "-W" = "U+3030 WAVY DASH: 〰"
 
 [combining.main.append]
