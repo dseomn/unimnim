@@ -10,7 +10,7 @@
 #
 # Grek-beta-code: Mnemonics based on https://en.wikipedia.org/wiki/Beta_Code
 
-prefix = "Gr"
+prefix = "gr"
 
 [examples]
 "a" = "U+03B1 GREEK SMALL LETTER ALPHA: α"

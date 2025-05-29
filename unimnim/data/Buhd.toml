@@ -4,7 +4,7 @@
 
 # https://en.wikipedia.org/wiki/Buhid_script
 
-prefix = "Bd"
+prefix = "bd"
 
 [examples]
 "ka" = "U+1743 BUHID LETTER KA: ᝃ"

@@ -6,7 +6,7 @@
 # https://en.wikipedia.org/wiki/Hiragana
 # https://en.wikipedia.org/wiki/Katakana
 
-prefix = "k"
+prefix = "K"
 
 [examples]
 "hka" = "U+304B HIRAGANA LETTER KA: か"

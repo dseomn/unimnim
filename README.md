@@ -38,7 +38,7 @@ example:
               </a>
             </th>
             <td rowspan="1">
-              <kbd>a</kbd>
+              <kbd>A</kbd>
             </td>
           <td><kbd>b</kbd></td>
           <td dir="auto">ب</td>
@@ -52,7 +52,7 @@ example:
               </a>
             </th>
             <td rowspan="1">
-              <kbd>Bo</kbd>
+              <kbd>bo</kbd>
             </td>
           <td><kbd>b</kbd></td>
           <td dir="auto">ㄅ</td>
@@ -66,7 +66,7 @@ example:
               </a>
             </th>
             <td rowspan="2">
-              <kbd>Bu</kbd>
+              <kbd>bu</kbd>
             </td>
           <td><kbd>ka</kbd></td>
           <td dir="auto">ᨀ</td>
@@ -84,7 +84,7 @@ example:
               </a>
             </th>
             <td rowspan="2">
-              <kbd>Bd</kbd>
+              <kbd>bd</kbd>
             </td>
           <td><kbd>ka</kbd></td>
           <td dir="auto">ᝃ</td>
@@ -102,7 +102,7 @@ example:
               </a>
             </th>
             <td rowspan="2">
-              <kbd>c</kbd>
+              <kbd>C</kbd>
             </td>
           <td><kbd>k</kbd></td>
           <td dir="auto">к</td>
@@ -120,7 +120,7 @@ example:
               </a>
             </th>
             <td rowspan="3">
-              <kbd>d</kbd>
+              <kbd>D</kbd>
             </td>
           <td><kbd>k</kbd></td>
           <td dir="auto">क्</td>
@@ -142,7 +142,7 @@ example:
               </a>
             </th>
             <td rowspan="1">
-              <kbd>GO</kbd>
+              <kbd>gO</kbd>
             </td>
           <td><kbd>a</kbd></td>
           <td dir="auto">𐌰</td>
@@ -156,7 +156,7 @@ example:
               </a>
             </th>
             <td rowspan="2">
-              <kbd>Gr</kbd>
+              <kbd>gr</kbd>
             </td>
           <td><kbd>a</kbd></td>
           <td dir="auto">α</td>
@@ -174,7 +174,7 @@ example:
               </a>
             </th>
             <td rowspan="3">
-              <kbd>Ho</kbd>
+              <kbd>ho</kbd>
             </td>
           <td><kbd>k</kbd></td>
           <td dir="auto">ᜣ᜴</td>
@@ -196,7 +196,7 @@ example:
               </a>
             </th>
             <td rowspan="4">
-              <kbd>He</kbd>
+              <kbd>he</kbd>
             </td>
           <td><kbd>k</kbd></td>
           <td dir="auto">כ</td>
@@ -222,7 +222,7 @@ example:
               </a>
             </th>
             <td rowspan="2">
-              <kbd>k</kbd>
+              <kbd>K</kbd>
             </td>
           <td><kbd>hka</kbd></td>
           <td dir="auto">か</td>
@@ -240,7 +240,7 @@ example:
               </a>
             </th>
             <td rowspan="4">
-              <kbd>l</kbd>
+              <kbd>L</kbd>
             </td>
           <td><kbd>o</kbd></td>
           <td dir="auto">o</td>
@@ -266,7 +266,7 @@ example:
               </a>
             </th>
             <td rowspan="1">
-              <kbd>OG</kbd>
+              <kbd>oG</kbd>
             </td>
           <td><kbd>b</kbd></td>
           <td dir="auto">ᚁ</td>
@@ -280,7 +280,7 @@ example:
               </a>
             </th>
             <td rowspan="1">
-              <kbd>RU</kbd>
+              <kbd>rU</kbd>
             </td>
           <td><kbd>b</kbd></td>
           <td dir="auto">ᛒ</td>
@@ -294,7 +294,7 @@ example:
               </a>
             </th>
             <td rowspan="2">
-              <kbd>Tb</kbd>
+              <kbd>tb</kbd>
             </td>
           <td><kbd>ka</kbd></td>
           <td dir="auto">ᝣ</td>
@@ -312,7 +312,7 @@ example:
               </a>
             </th>
             <td rowspan="2">
-              <kbd>Yi</kbd>
+              <kbd>yi</kbd>
             </td>
           <td><kbd>it</kbd></td>
           <td dir="auto">ꀀ</td>

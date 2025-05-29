@@ -6,7 +6,7 @@
 #
 # Latn-Grek: "G" suffix for Latin letters based on Greek letters.
 
-prefix = "l"
+prefix = "L"
 
 [examples]
 "o" = "U+006F LATIN SMALL LETTER O: o"

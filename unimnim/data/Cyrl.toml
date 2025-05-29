@@ -5,7 +5,7 @@
 # https://en.wikipedia.org/wiki/ISO_9#ISO_9:1995 has a useful table of
 # transliterations.
 
-prefix = "c"
+prefix = "C"
 
 [examples]
 "k" = "U+043A CYRILLIC SMALL LETTER KA: к"

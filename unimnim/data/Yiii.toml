@@ -4,7 +4,7 @@
 
 # https://en.wikipedia.org/wiki/Yi_script#Yi_in_pinyin
 
-prefix = "Yi"
+prefix = "yi"
 
 [examples]
 "it" = "U+A000 YI SYLLABLE IT: ꀀ"

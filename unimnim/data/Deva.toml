@@ -5,7 +5,7 @@
 # https://en.wikipedia.org/wiki/Devanagari_transliteration, mostly based on
 # https://en.wikipedia.org/wiki/Harvard-Kyoto
 
-prefix = "d"
+prefix = "D"
 
 [examples]
 "k" = "U+0915 DEVANAGARI LETTER KA, U+094D DEVANAGARI SIGN VIRAMA: क्"

@@ -4,7 +4,7 @@
 
 # https://en.wikipedia.org/wiki/Hanunoo_script
 
-prefix = "Ho"
+prefix = "ho"
 
 [examples]
 "k" = "U+1723 HANUNOO LETTER KA, U+1734 HANUNOO SIGN PAMUDPOD: ᜣ᜴"

@@ -4,7 +4,7 @@
 
 # https://en.wikipedia.org/wiki/Lontara_script
 
-prefix = "Bu"
+prefix = "bu"
 
 [examples]
 "ka" = "U+1A00 BUGINESE LETTER KA: ᨀ"
