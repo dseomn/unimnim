@@ -31,8 +31,7 @@
             </td>
           {%- endif %}
           <td><kbd>{{ mnemonic | escape }}</kbd></td>
-          {#- GitHub markdown doesn't seem to support <bdi> #}
-          <td><span dir="auto">{{ result | escape }}</span></td>
+          <td dir="auto">{{ result | escape }}</td>
         </tr>
       {%- endfor %}
     {%- endfor %}
