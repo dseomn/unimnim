@@ -9,8 +9,10 @@ prefix = "a"
 [examples]
 "b" = "U+0628 ARABIC LETTER BEH: ب"
 
-[maps.main]
+[maps.empty_for_combining]
 "_" = ""  # empty-for-combining
+
+[maps.main]
 "#" = "U+0600 ARABIC NUMBER SIGN: ؀"
 "#y" = "U+0601 ARABIC SIGN SANAH: ؁"  # aka="year"
 "#f" = "U+0602 ARABIC FOOTNOTE MARKER: ؂"
@@ -45,6 +47,7 @@ prefix = "a"
 "zh" = "U+0638 ARABIC LETTER ZAH: ظ"  # suboptimal
 "`" = "U+0639 ARABIC LETTER AIN: ع"  # suboptimal
 "gh" = "U+063A ARABIC LETTER GHAIN: غ"
+"_" = "U+0640 ARABIC TATWEEL: ـ"
 "f" = "U+0641 ARABIC LETTER FEH: ف"
 "q" = "U+0642 ARABIC LETTER QAF: ق"
 "k" = "U+0643 ARABIC LETTER KAF: ك"
@@ -99,4 +102,7 @@ prefix = "a"
 "//" = [['ARABIC LETTER (.*)', 'ARABIC MATHEMATICAL DOUBLE-STRUCK \g<1>']]
 
 [expressions]
-main = [[["map", "main"], ["combining", "main"]]]
+main = [
+  [["map", "empty_for_combining"], ["combining", "main"]],
+  [["map", "main"], ["combining", "main"]],
+]
