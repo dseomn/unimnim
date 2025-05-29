@@ -16,16 +16,17 @@
       <th></th>
     </tr>
   </thead>
-  <tbody>
-    {%- for group_id, group in data | dictsort(case_sensitive=true) %}
+  {%- for group_id, group in data | dictsort(case_sensitive=true)
+      if group.examples %}
+    <tbody>
       {%- for mnemonic, result in group.examples.items() %}
         <tr>
           {%- if loop.first %}
-            <td rowspan="{{ group.examples | length }}">
+            <th rowspan="{{ group.examples | length }}" scope="rowgroup">
               <a href="unimnim/data/{{ group_id | escape }}.toml">
                 {{ group.name | escape }}
               </a>
-            </td>
+            </th>
             <td rowspan="{{ group.examples | length }}">
               <kbd>{{ group.prefix | escape }}</kbd>
             </td>
@@ -34,6 +35,6 @@
           <td dir="auto">{{ result | escape }}</td>
         </tr>
       {%- endfor %}
-    {%- endfor %}
-  </tbody>
+    </tbody>
+  {%- endfor %}
 </table>

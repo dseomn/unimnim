@@ -30,37 +30,41 @@ example:
       <th></th>
     </tr>
   </thead>
-  <tbody>
+    <tbody>
         <tr>
-            <td rowspan="1">
+            <th rowspan="1" scope="rowgroup">
               <a href="unimnim/data/Arab.toml">
                 Arabic
               </a>
-            </td>
+            </th>
             <td rowspan="1">
               <kbd>a</kbd>
             </td>
           <td><kbd>b</kbd></td>
           <td dir="auto">ب</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="1">
+            <th rowspan="1" scope="rowgroup">
               <a href="unimnim/data/Bopo.toml">
                 Bopomofo
               </a>
-            </td>
+            </th>
             <td rowspan="1">
               <kbd>Bo</kbd>
             </td>
           <td><kbd>b</kbd></td>
           <td dir="auto">ㄅ</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="2">
+            <th rowspan="2" scope="rowgroup">
               <a href="unimnim/data/Bugi.toml">
                 Buginese
               </a>
-            </td>
+            </th>
             <td rowspan="2">
               <kbd>Bu</kbd>
             </td>
@@ -71,12 +75,14 @@ example:
           <td><kbd>ki</kbd></td>
           <td dir="auto">ᨀᨗ</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="2">
+            <th rowspan="2" scope="rowgroup">
               <a href="unimnim/data/Buhd.toml">
                 Buhid
               </a>
-            </td>
+            </th>
             <td rowspan="2">
               <kbd>Bd</kbd>
             </td>
@@ -87,12 +93,14 @@ example:
           <td><kbd>ki</kbd></td>
           <td dir="auto">ᝃᝒ</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="2">
+            <th rowspan="2" scope="rowgroup">
               <a href="unimnim/data/Cyrl.toml">
                 Cyrillic
               </a>
-            </td>
+            </th>
             <td rowspan="2">
               <kbd>c</kbd>
             </td>
@@ -103,12 +111,14 @@ example:
           <td><kbd>k&#39;</kbd></td>
           <td dir="auto">ќ</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="3">
+            <th rowspan="3" scope="rowgroup">
               <a href="unimnim/data/Deva.toml">
                 Devanagari
               </a>
-            </td>
+            </th>
             <td rowspan="3">
               <kbd>d</kbd>
             </td>
@@ -123,24 +133,28 @@ example:
           <td><kbd>kim</kbd></td>
           <td dir="auto">किं</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="1">
+            <th rowspan="1" scope="rowgroup">
               <a href="unimnim/data/Goth.toml">
                 Gothic
               </a>
-            </td>
+            </th>
             <td rowspan="1">
               <kbd>GO</kbd>
             </td>
           <td><kbd>a</kbd></td>
           <td dir="auto">𐌰</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="2">
+            <th rowspan="2" scope="rowgroup">
               <a href="unimnim/data/Grek.toml">
                 Greek
               </a>
-            </td>
+            </th>
             <td rowspan="2">
               <kbd>Gr</kbd>
             </td>
@@ -151,12 +165,14 @@ example:
           <td><kbd>a&#39;</kbd></td>
           <td dir="auto">ά</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="3">
+            <th rowspan="3" scope="rowgroup">
               <a href="unimnim/data/Hano.toml">
                 Hanunoo
               </a>
-            </td>
+            </th>
             <td rowspan="3">
               <kbd>Ho</kbd>
             </td>
@@ -171,12 +187,14 @@ example:
           <td><kbd>ki</kbd></td>
           <td dir="auto">ᜣᜲ</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="4">
+            <th rowspan="4" scope="rowgroup">
               <a href="unimnim/data/Hebr.toml">
                 Hebrew
               </a>
-            </td>
+            </th>
             <td rowspan="4">
               <kbd>He</kbd>
             </td>
@@ -195,12 +213,14 @@ example:
           <td><kbd>ke</kbd></td>
           <td dir="auto">כֶ</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="2">
+            <th rowspan="2" scope="rowgroup">
               <a href="unimnim/data/Hrkt.toml">
                 Japanese syllabaries
               </a>
-            </td>
+            </th>
             <td rowspan="2">
               <kbd>k</kbd>
             </td>
@@ -211,12 +231,14 @@ example:
           <td><kbd>kka</kbd></td>
           <td dir="auto">カ</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="4">
+            <th rowspan="4" scope="rowgroup">
               <a href="unimnim/data/Latn.toml">
                 Latin
               </a>
-            </td>
+            </th>
             <td rowspan="4">
               <kbd>l</kbd>
             </td>
@@ -235,36 +257,42 @@ example:
           <td><kbd>oe</kbd></td>
           <td dir="auto">œ</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="1">
+            <th rowspan="1" scope="rowgroup">
               <a href="unimnim/data/Ogam.toml">
                 Ogham
               </a>
-            </td>
+            </th>
             <td rowspan="1">
               <kbd>OG</kbd>
             </td>
           <td><kbd>b</kbd></td>
           <td dir="auto">ᚁ</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="1">
+            <th rowspan="1" scope="rowgroup">
               <a href="unimnim/data/Runr.toml">
                 Runic
               </a>
-            </td>
+            </th>
             <td rowspan="1">
               <kbd>RU</kbd>
             </td>
           <td><kbd>b</kbd></td>
           <td dir="auto">ᛒ</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="2">
+            <th rowspan="2" scope="rowgroup">
               <a href="unimnim/data/Tagb.toml">
                 Tagbanwa
               </a>
-            </td>
+            </th>
             <td rowspan="2">
               <kbd>Tb</kbd>
             </td>
@@ -275,12 +303,14 @@ example:
           <td><kbd>ki</kbd></td>
           <td dir="auto">ᝣᝲ</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="2">
+            <th rowspan="2" scope="rowgroup">
               <a href="unimnim/data/Yiii.toml">
                 Yi
               </a>
-            </td>
+            </th>
             <td rowspan="2">
               <kbd>Yi</kbd>
             </td>
@@ -291,12 +321,14 @@ example:
           <td><kbd>qotR</kbd></td>
           <td dir="auto">꒐</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="6">
+            <th rowspan="6" scope="rowgroup">
               <a href="unimnim/data/common/math.toml">
                 math
               </a>
-            </td>
+            </th>
             <td rowspan="6">
               <kbd>ZM</kbd>
             </td>
@@ -323,12 +355,14 @@ example:
           <td><kbd>==!</kbd></td>
           <td dir="auto">≢</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="6">
+            <th rowspan="6" scope="rowgroup">
               <a href="unimnim/data/common/punctuation.toml">
                 punctuation
               </a>
-            </td>
+            </th>
             <td rowspan="6">
               <kbd>Z</kbd>
             </td>
@@ -355,12 +389,14 @@ example:
           <td><kbd>?!I</kbd></td>
           <td dir="auto">⸘</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="2">
+            <th rowspan="2" scope="rowgroup">
               <a href="unimnim/data/common/symbol/arrow.toml">
                 arrows
               </a>
-            </td>
+            </th>
             <td rowspan="2">
               <kbd>ZA</kbd>
             </td>
@@ -371,24 +407,28 @@ example:
           <td><kbd>|</kbd></td>
           <td dir="auto">↕</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="1">
+            <th rowspan="1" scope="rowgroup">
               <a href="unimnim/data/common/symbol/currency.toml">
                 currency symbols
               </a>
-            </td>
+            </th>
             <td rowspan="1">
               <kbd>Z$</kbd>
             </td>
           <td><kbd>Rs</kbd></td>
           <td dir="auto">₨</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="4">
+            <th rowspan="4" scope="rowgroup">
               <a href="unimnim/data/common/symbol/music.toml">
                 music
               </a>
-            </td>
+            </th>
             <td rowspan="4">
               <kbd>Zm</kbd>
             </td>
@@ -407,43 +447,49 @@ example:
           <td><kbd>nx|</kbd></td>
           <td dir="auto">𝅃𝅥</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="1">
+            <th rowspan="1" scope="rowgroup">
               <a href="unimnim/data/common/symbol/other.toml">
                 other symbols
               </a>
-            </td>
+            </th>
             <td rowspan="1">
               <kbd>Z</kbd>
             </td>
           <td><kbd>co</kbd></td>
           <td dir="auto">©</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="1">
+            <th rowspan="1" scope="rowgroup">
               <a href="unimnim/data/common/symbol/regional_indicator.toml">
                 regional indicators
               </a>
-            </td>
+            </th>
             <td rowspan="1">
               <kbd>ZRI</kbd>
             </td>
           <td><kbd>UN</kbd></td>
           <td dir="auto">🇺🇳</td>
         </tr>
+    </tbody>
+    <tbody>
         <tr>
-            <td rowspan="1">
+            <th rowspan="1" scope="rowgroup">
               <a href="unimnim/data/common/tag_sequence.toml">
                 tag sequences
               </a>
-            </td>
+            </th>
             <td rowspan="1">
               <kbd>ZTS</kbd>
             </td>
           <td><kbd>Fgbsct</kbd></td>
           <td dir="auto">🏴󠁧󠁢󠁳󠁣󠁴󠁿</td>
         </tr>
-  </tbody>
+    </tbody>
 </table>
 <!-- END: auto-generated examples -->
 
