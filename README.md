@@ -224,11 +224,11 @@ example:
             <td rowspan="2">
               <kbd>K</kbd>
             </td>
-          <td><kbd>hka</kbd></td>
+          <td><kbd>ka</kbd></td>
           <td dir="auto">か</td>
         </tr>
         <tr>
-          <td><kbd>kka</kbd></td>
+          <td><kbd>KA</kbd></td>
           <td dir="auto">カ</td>
         </tr>
     </tbody>

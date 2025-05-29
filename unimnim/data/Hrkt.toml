@@ -9,17 +9,33 @@
 prefix = "K"
 
 [examples]
-"hka" = "U+304B HIRAGANA LETTER KA: か"
-"kka" = "U+30AB KATAKANA LETTER KA: カ"
+"ka" = "U+304B HIRAGANA LETTER KA: か"
+"KA" = "U+30AB KATAKANA LETTER KA: カ"
 
-[name_maps.prefixes]
-"h" = "HIRAGANA "
-"k" = "KATAKANA "
+[name_maps.hiragana_prefix]
+"" = "HIRAGANA LETTER "
 
-[name_maps.letter_prefix]
-"" = "LETTER "
+[name_maps.katakana_prefix]
+"" = "KATAKANA LETTER "
 
-[name_maps.consonants]
+[name_maps.consonants_upper]
+"K" = "K"
+"G" = "G"
+"S" = "S"
+"Z" = "Z"
+"T" = "T"
+"D" = "D"
+"N" = "N"
+"H" = "H"
+"B" = "B"
+"P" = "P"
+"M" = "M"
+"Y" = "Y"
+"R" = "R"
+"W" = "W"
+"V" = "V"
+
+[name_maps.consonants_lower]
 "k" = "K"
 "g" = "G"
 "s" = "S"
@@ -36,26 +52,35 @@ prefix = "K"
 "w" = "W"
 "v" = "V"
 
-[name_maps.vowels]
+[name_maps.vowels_upper]
+"A" = "A"
+"I" = "I"
+"U" = "U"
+"E" = "E"
+"O" = "O"
+
+[name_maps.vowels_lower]
 "a" = "A"
 "i" = "I"
 "u" = "U"
 "e" = "E"
 "o" = "O"
 
-[name_maps.codas]
-"n" = "N"
+[name_maps.codas_upper]
+"N" = "N"
 
-[name_maps.iteration_mark]
-"2" = "ITERATION MARK"
+[name_maps.codas_lower]
+"n" = "N"
 
 [maps.empty_for_combining]
 "_" = ""  # empty-for-combining
 
 [maps.main]
+"2h" = "U+309D HIRAGANA ITERATION MARK: ゝ"
 "-2" = "U+30A0 KATAKANA-HIRAGANA DOUBLE HYPHEN: ゠"
 ".m" = "U+30FB KATAKANA MIDDLE DOT: ・"
 ">" = "U+30FC KATAKANA-HIRAGANA PROLONGED SOUND MARK: ー"  # amount
+"2k" = "U+30FD KATAKANA ITERATION MARK: ヽ"
 
 [combining.letters.append]
 "" = ""
@@ -70,13 +95,15 @@ prefix = "K"
 
 [expressions]
 letters = [
-  [["name_maps", "prefixes", "letter_prefix", "vowels"]],
-  [["name_maps", "prefixes", "letter_prefix", "consonants", "vowels"]],
-  [["name_maps", "prefixes", "letter_prefix", "codas"]],
+  [["name_maps", "hiragana_prefix", "vowels_lower"]],
+  [["name_maps", "hiragana_prefix", "consonants_lower", "vowels_lower"]],
+  [["name_maps", "hiragana_prefix", "codas_lower"]],
+  [["name_maps", "katakana_prefix", "vowels_upper"]],
+  [["name_maps", "katakana_prefix", "consonants_upper", "vowels_upper"]],
+  [["name_maps", "katakana_prefix", "codas_upper"]],
 ]
 main = [
   [["expression", "letters"], ["combining", "letters"]],
-  [["name_maps", "prefixes", "iteration_mark"], ["combining", "voicing"]],
   [["map", "empty_for_combining"], ["combining", "voicing"]],
-  [["map", "main"]],
+  [["map", "main"], ["combining", "voicing"]],
 ]
