@@ -48,6 +48,7 @@ prefix = "a"
 "zh" = "U+0638 ARABIC LETTER ZAH: ظ"  # suboptimal
 "`" = "U+0639 ARABIC LETTER AIN: ع"  # suboptimal
 "gh" = "U+063A ARABIC LETTER GHAIN: غ"
+"I" = "U+063D ARABIC LETTER FARSI YEH WITH INVERTED V: ؽ"
 "_" = "U+0640 ARABIC TATWEEL: ـ"
 "f" = "U+0641 ARABIC LETTER FEH: ف"
 "q" = "U+0642 ARABIC LETTER QAF: ق"
