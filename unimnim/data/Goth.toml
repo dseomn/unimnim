@@ -4,7 +4,7 @@
 
 # https://en.wikipedia.org/wiki/Gothic_alphabet
 
-prefix = "gO"
+prefix = "gt"
 
 [examples]
 "a" = "U+10330 GOTHIC LETTER AHSA: 𐌰"

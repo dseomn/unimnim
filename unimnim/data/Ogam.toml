@@ -4,7 +4,7 @@
 
 # https://en.wikipedia.org/wiki/Br%C3%ADatharogam
 
-prefix = "oG"
+prefix = "om"
 
 [examples]
 "b" = "U+1681 OGHAM LETTER BEITH: ᚁ"

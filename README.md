@@ -142,7 +142,7 @@ example:
               </a>
             </th>
             <td rowspan="1">
-              <kbd>gO</kbd>
+              <kbd>gt</kbd>
             </td>
           <td><kbd>a</kbd></td>
           <td dir="auto">𐌰</td>
@@ -266,7 +266,7 @@ example:
               </a>
             </th>
             <td rowspan="1">
-              <kbd>oG</kbd>
+              <kbd>om</kbd>
             </td>
           <td><kbd>b</kbd></td>
           <td dir="auto">ᚁ</td>
@@ -280,7 +280,7 @@ example:
               </a>
             </th>
             <td rowspan="1">
-              <kbd>rU</kbd>
+              <kbd>ru</kbd>
             </td>
           <td><kbd>b</kbd></td>
           <td dir="auto">ᛒ</td>

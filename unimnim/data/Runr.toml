@@ -16,7 +16,7 @@
 #
 # "F" is used for FRANKS CASKET runes.
 
-prefix = "rU"
+prefix = "ru"
 
 [examples]
 "b" = "U+16D2 RUNIC LETTER BERKANAN BEORC BJARKAN B: ᛒ"
