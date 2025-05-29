@@ -229,7 +229,16 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
         (
             "Latn",
             dict(prefix="l", expressions=dict(main=[[]])),
-            dict(name="Latn", prefix="l", expressions=dict(main=[[]])),
+            dict(name="Latin", prefix="l", expressions=dict(main=[[]])),
+        ),
+        (
+            "not-a-valid-script",
+            dict(prefix="l", expressions=dict(main=[[]])),
+            dict(
+                name="not-a-valid-script",
+                prefix="l",
+                expressions=dict(main=[[]]),
+            ),
         ),
         (
             "Latn",

@@ -14,6 +14,10 @@ import unicodedata
 
 import icu
 
+_LOCALE_DISPLAY_NAMES = icu.LocaleDisplayNames.createInstance(
+    icu.Locale.getEnglish()
+)
+
 # TODO: https://gitlab.pyicu.org/main/pyicu/-/issues/176 - Use a constant.
 _DEPRECATED_CODE_POINTS = frozenset(
     icu.Char.getBinaryPropertySet(icu.Char.getPropertyEnum("Deprecated"))
@@ -248,6 +252,15 @@ class Combining:
         )
 
 
+def _group_id_to_name(group_id: str) -> str:
+    # TODO: https://gitlab.pyicu.org/main/pyicu/-/issues/177 - Use
+    # icu.UProperty.INVALID_CODE instead of -1.
+    if icu.Char.getPropertyValueEnum(icu.UProperty.SCRIPT, group_id) == -1:
+        return group_id
+    else:
+        return _LOCALE_DISPLAY_NAMES.scriptDisplayName(group_id)
+
+
 @dataclasses.dataclass(frozen=True, kw_only=True)
 class Group:
     """Data for a single group of mnemonics.
@@ -298,7 +311,7 @@ class Group:
                 key: parse_explicit_string(value) for key, value in map_.items()
             }
         return cls(
-            name=raw["name"] if "name" in raw else group_id,
+            name=raw["name"] if "name" in raw else _group_id_to_name(group_id),
             prefix=raw["prefix"],
             examples={
                 key: parse_explicit_string(value, check_precomposed=False)
