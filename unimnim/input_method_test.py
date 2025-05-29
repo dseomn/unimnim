@@ -119,6 +119,7 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     expressions=dict(main=[[["name_maps", "main"]]]),
                 ),
@@ -128,6 +129,7 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     name_maps=dict(main={}),
                     expressions=dict(main=[[]]),
@@ -138,6 +140,7 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     expressions=dict(main=[[["map", "main"]]]),
                 ),
@@ -147,6 +150,7 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={}),
                     expressions=dict(main=[[]]),
@@ -157,6 +161,7 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     combining={},
                     expressions=dict(main=[[["combining", "main"]]]),
@@ -167,6 +172,7 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     combining=dict(main=data.Combining()),
                     expressions=dict(main=[[]]),
@@ -176,13 +182,14 @@ def test_map_duplicate_mnemonic_same_result(
         ),
         (
             {
-                "latin": data.Group(prefix="l", expressions={}),
+                "latin": data.Group(name="", prefix="l", expressions={}),
             },
             r"Group 'latin' does not have expression 'main'",
         ),
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     expressions=dict(main=[[["expression", "other"]]]),
                 ),
@@ -192,6 +199,7 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     expressions=dict(
                         main=[[]],
@@ -204,6 +212,7 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     expressions=dict(main=[[["not valid at all"]]]),
                 ),
@@ -213,6 +222,7 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"n": "n"}),
                     combining=dict(
@@ -237,6 +247,7 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(
                         one={"a": "a"},
@@ -252,6 +263,7 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(
                         one={"a": "a"},
@@ -270,6 +282,7 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     examples={"a": "a"},
                     maps=dict(main={}),
@@ -281,6 +294,7 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     examples={"a": "a"},
                     maps=dict(main={"a": "b"}),
@@ -292,11 +306,13 @@ def test_map_duplicate_mnemonic_same_result(
         (
             {
                 "latin1": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"a": "a"}),
                     expressions=dict(main=[[["map", "main"]]]),
                 ),
                 "latin2": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"a": "a"}),
                     expressions=dict(main=[[["map", "main"]]]),
@@ -322,6 +338,7 @@ def test_generate_map_error(
             # ignoring names that don't exist.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     name_maps=dict(
                         prefixes={
@@ -358,6 +375,7 @@ def test_generate_map_error(
             # combines with too.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"a": "a"}),
                     combining=dict(
@@ -382,6 +400,7 @@ def test_generate_map_error(
             # Combining characters can stack, in any valid order.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"s": "s"}),
                     combining=dict(
@@ -408,6 +427,7 @@ def test_generate_map_error(
             # Known sequences of length > 1 can be produced.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"a": "a"}),
                     combining=dict(
@@ -436,6 +456,7 @@ def test_generate_map_error(
             # ]
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"j": "j"}),
                     combining=dict(
@@ -461,6 +482,7 @@ def test_generate_map_error(
             # Unknown sequences can be produced if they're explicitly in a map.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(
                         main={
@@ -484,6 +506,7 @@ def test_generate_map_error(
             # combining.name_regex_replace.
             {
                 "common": data.Group(
+                    name="",
                     prefix="Z",
                     maps=dict(main={"NULL": "\x00"}),
                     combining=dict(
@@ -510,6 +533,7 @@ def test_generate_map_error(
             # combining.append.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"o": "o"}),
                     combining=dict(
@@ -538,6 +562,7 @@ def test_generate_map_error(
             # rules.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(
                         main={
@@ -576,6 +601,7 @@ def test_generate_map_error(
             # match corrected names.
             {
                 "math": data.Group(
+                    name="",
                     prefix="m",
                     maps=dict(
                         main={
@@ -640,6 +666,7 @@ def test_generate_map_error(
             # A regex that does not match is not an error.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"o": "o"}),
                     combining=dict(
@@ -665,6 +692,7 @@ def test_generate_map_error(
             # A regex that produces a name that does not exist is not an error.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"o": "o"}),
                     combining=dict(
@@ -690,6 +718,7 @@ def test_generate_map_error(
             # Mnemonics can overlap.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(
                         main={
@@ -722,6 +751,7 @@ def test_generate_map_error(
             # can even stack together, as long as the order isn't important.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"s": "s"}),
                     combining=dict(
@@ -750,6 +780,7 @@ def test_generate_map_error(
             # mnemonics.
             {
                 "greek": data.Group(
+                    name="",
                     prefix="g",
                     maps=dict(main={"a": "\N{GREEK SMALL LETTER ALPHA}"}),
                     combining=dict(
@@ -762,6 +793,7 @@ def test_generate_map_error(
                     ),
                 ),
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"a": "a"}),
                     combining=dict(
@@ -784,11 +816,13 @@ def test_generate_map_error(
             # between groups.
             {
                 "latin1": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"a": "a"}),
                     expressions=dict(main=[[["map", "main"]]]),
                 ),
                 "latin2": data.Group(
+                    name="",
                     prefix="la",
                     maps=dict(main={"": ""}),
                     combining=dict(
@@ -814,6 +848,7 @@ def test_generate_map_error(
             # characters.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"_": ""}),
                     combining=dict(
@@ -833,6 +868,7 @@ def test_generate_map_error(
             # characters without any additional prefix.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(main={"": ""}),
                     combining=dict(
@@ -851,6 +887,7 @@ def test_generate_map_error(
             # Combining characters can stack over an empty result.
             {
                 "regions": data.Group(
+                    name="",
                     prefix="r",
                     maps=dict(main={"": ""}),
                     combining=dict(
@@ -883,6 +920,7 @@ def test_generate_map_error(
             # Cartesian products work and can produce unkown sequences.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     maps=dict(
                         consonants={
@@ -921,6 +959,7 @@ def test_generate_map_error(
             # Examples work.
             {
                 "latin": data.Group(
+                    name="",
                     prefix="l",
                     examples={"a": "a"},
                     maps=dict(main={"a": "a"}),

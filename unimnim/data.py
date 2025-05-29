@@ -253,6 +253,7 @@ class Group:
     """Data for a single group of mnemonics.
 
     Attributes:
+        name: Human-readable name of the group.
         prefix: Prefix for all of the group's mnemonics.
         examples: Map from mnemonic (not including prefix) to result, to give as
             examples of how the group works.
@@ -262,6 +263,7 @@ class Group:
         expressions: How the above are combined.
     """
 
+    name: str
     prefix: str
     examples: Mapping[str, str] = dataclasses.field(default_factory=dict)
     name_maps: Mapping[str, Mapping[str, str]] = dataclasses.field(
@@ -278,9 +280,10 @@ class Group:
             _require_sorted_by_value_and_key(map_, name=f"maps.{map_name}")
 
     @classmethod
-    def parse(cls, raw: Any, /) -> Self:
+    def parse(cls, raw: Any, /, *, group_id: str) -> Self:
         """Returns the data parsed from the format used in data files."""
         if unexpected_keys := raw.keys() - {
+            "name",
             "prefix",
             "examples",
             "name_maps",
@@ -295,6 +298,7 @@ class Group:
                 key: parse_explicit_string(value) for key, value in map_.items()
             }
         return cls(
+            name=raw["name"] if "name" in raw else group_id,
             prefix=raw["prefix"],
             examples={
                 key: parse_explicit_string(value, check_precomposed=False)
@@ -316,9 +320,11 @@ def load(path: pathlib.Path, /) -> Mapping[str, Group]:
     Returns:
         Map from a group identifier to the group data.
     """
-    return {
-        str(file.relative_to(path)).removesuffix(".toml"): Group.parse(
-            tomllib.loads(file.read_text())
+    groups = {}
+    for file in path.glob("**/*.toml"):
+        group_id = str(file.relative_to(path)).removesuffix(".toml")
+        groups[group_id] = Group.parse(
+            tomllib.loads(file.read_text()),
+            group_id=group_id,
         )
-        for file in path.glob("**/*.toml")
-    }
+    return groups

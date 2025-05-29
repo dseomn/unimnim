@@ -220,18 +220,21 @@ def test_combining_parse(raw: Any, expected: Any) -> None:
 )
 def test_group_parse_error(raw: Any, error_regex: str) -> None:
     with pytest.raises(ValueError, match=error_regex):
-        data.Group.parse(raw)
+        data.Group.parse(raw, group_id="")
 
 
 @pytest.mark.parametrize(
-    "raw,expected",
+    "group_id,raw,expected",
     (
         (
+            "Latn",
             dict(prefix="l", expressions=dict(main=[[]])),
-            dict(prefix="l", expressions=dict(main=[[]])),
+            dict(name="Latn", prefix="l", expressions=dict(main=[[]])),
         ),
         (
+            "Latn",
             dict(
+                name="This is a group!",
                 prefix="l",
                 examples={"a'": "U+00E1 LATIN SMALL LETTER A WITH ACUTE"},
                 name_maps=dict(main={"a": "A"}),
@@ -244,6 +247,7 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
                 ),
             ),
             dict(
+                name="This is a group!",
                 prefix="l",
                 examples={"a'": "\N{LATIN SMALL LETTER A WITH ACUTE}"},
                 name_maps=dict(main={"a": "A"}),
@@ -260,8 +264,8 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
         ),
     ),
 )
-def test_group_parse(raw: Any, expected: Any) -> None:
-    assert data.Group.parse(raw) == data.Group(**expected)
+def test_group_parse(group_id: str, raw: Any, expected: Any) -> None:
+    assert data.Group.parse(raw, group_id=group_id) == data.Group(**expected)
 
 
 def test_load(tmp_path: pathlib.Path) -> None:
@@ -293,13 +297,15 @@ def test_load(tmp_path: pathlib.Path) -> None:
                 prefix="l",
                 maps=dict(main={"a": "U+0061 LATIN SMALL LETTER A"}),
                 expressions=dict(main=[[["map", "main"]]]),
-            )
+            ),
+            group_id="subdir/latin",
         ),
         "greek": data.Group.parse(
             dict(
                 prefix="g",
                 maps=dict(main={"a": "U+03B1 GREEK SMALL LETTER ALPHA"}),
                 expressions=dict(main=[[["map", "main"]]]),
-            )
+            ),
+            group_id="greek",
         ),
     }

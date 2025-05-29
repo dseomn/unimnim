@@ -74,6 +74,10 @@ U+2260 NOT EQUAL TO [precomposed]: ≠
 Data files are in [TOML](https://toml.io/) format:
 
 ```toml
+# Human-readable name of the group. If not specified, it will be derived from
+# the group ID (which is derived from the filename).
+name = "Example"
+
 # See "pefix" in Terminology section above.
 prefix = "l"
 
