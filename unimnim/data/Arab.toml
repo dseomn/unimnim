@@ -12,11 +12,17 @@ prefix = "a"
 [maps.main]
 "_" = ""  # empty-for-combining
 "#" = "U+0600 ARABIC NUMBER SIGN: ؀"
+"#y" = "U+0601 ARABIC SIGN SANAH: ؁"  # aka="year"
+"#f" = "U+0602 ARABIC FOOTNOTE MARKER: ؂"
+"#p" = "U+0603 ARABIC SIGN SAFHA: ؃"  # aka="page"
+"#s" = "U+0604 ARABIC SIGN SAMVAT: ؄"
+"#8" = "U+0605 ARABIC NUMBER MARK ABOVE: ؅"  # geometry
 "%0" = "U+0609 ARABIC-INDIC PER MILLE SIGN: ؉"
 "%00" = "U+060A ARABIC-INDIC PER TEN THOUSAND SIGN: ؊"
 "," = "U+060C ARABIC COMMA: ،"
 ",d" = "U+060D ARABIC DATE SEPARATOR: ؍"
 ";" = "U+061B ARABIC SEMICOLON: ؛"
+"..." = "U+061E ARABIC TRIPLE DOT PUNCTUATION MARK: ؞"
 "?" = "U+061F ARABIC QUESTION MARK: ؟"
 "'" = "U+0621 ARABIC LETTER HAMZA: ء"
 "a" = "U+0627 ARABIC LETTER ALEF: ا"
