@@ -183,8 +183,9 @@ user who regularly types in a small alphabet with a 2-key prefix. One of the
 reasons that the prefix is its own field in data files is to hopefully make it
 easier to add per-user configuration later. E.g., maybe users could configure
 prefix overrides, or maybe an input method could use a different starter key
-combination to start a mnemonic with a prefix already filled in. Please file a
-feature request if that's something you want.
+combination to start a mnemonic with a prefix already filled in, or maybe an
+input method could have a prefix lock feature to use the same prefix until it's
+canceled. Please file a feature request if that's something you want.
 
 ## Conventions
 
