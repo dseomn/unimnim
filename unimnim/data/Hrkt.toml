@@ -54,6 +54,7 @@ prefix = "k"
 
 [maps.main]
 "-2" = "U+30A0 KATAKANA-HIRAGANA DOUBLE HYPHEN: ゠"
+".m" = "U+30FB KATAKANA MIDDLE DOT: ・"
 ">" = "U+30FC KATAKANA-HIRAGANA PROLONGED SOUND MARK: ー"  # amount
 
 [combining.letters.append]

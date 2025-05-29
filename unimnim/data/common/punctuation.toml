@@ -89,6 +89,8 @@ prefix = "Z"
 ",,qR" = "U+2E42 DOUBLE LOW-REVERSED-9 QUOTATION MARK: ⹂"  # geometry
 "|---" = "U+2E4B TRIPLE DAGGER: ⹋"
 "&T" = "U+2E52 TIRONIAN SIGN CAPITAL ET: ⹒"
+",i" = "U+3001 IDEOGRAPHIC COMMA: 、"
+".i" = "U+3002 IDEOGRAPHIC FULL STOP: 。"
 '"d' = "U+3003 DITTO MARK: 〃"
 "<" = "U+3008 LEFT ANGLE BRACKET: 〈"
 ">" = "U+3009 RIGHT ANGLE BRACKET: 〉"
@@ -102,6 +104,8 @@ prefix = "Z"
 ")_]" = "U+3017 RIGHT WHITE LENTICULAR BRACKET: 〗"
 "[_{" = "U+3018 LEFT WHITE TORTOISE SHELL BRACKET: 〘"
 "}_]" = "U+3019 RIGHT WHITE TORTOISE SHELL BRACKET: 〙"
+"-w" = "U+301C WAVE DASH: 〜"
+"-W" = "U+3030 WAVY DASH: 〰"
 
 [combining.main.append]
 "" = ""
