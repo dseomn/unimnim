@@ -27,6 +27,7 @@
 # "s": set
 # "v": vector
 
+name = "math"
 prefix = "ZM"
 
 [examples]

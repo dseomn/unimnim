@@ -5,6 +5,7 @@
 # Many values in this file were picked after a very quick look at a Wikipedia
 # page or two, so consider this entire file #suboptimal.
 
+name = "currency symbols"
 prefix = "Z$"
 
 [examples]
