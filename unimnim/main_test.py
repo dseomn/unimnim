@@ -24,6 +24,7 @@ from unimnim import main
                 "output/map.json",
                 "output/prefix_map.json",
                 "output/unimnim.mim",
+                "output/examples.html",
                 "output/coverage.json",
             },
         ),
@@ -41,3 +42,26 @@ def test_main(
     assert {
         str(f.relative_to(tmp_path)) for f in tmp_path.glob("**/*")
     } == expected_files
+
+
+def test_readme(tmp_path: pathlib.Path) -> None:
+    main.main(args=(f"--write-all={tmp_path}",))
+    examples_html = (tmp_path / "examples.html").read_text()
+
+    assert __spec__.origin is not None
+    readme_lines = (
+        (pathlib.Path(__spec__.origin).parent.parent / "README.md")
+        .read_text()
+        .splitlines()
+    )
+    readme_examples_begin = readme_lines.index(
+        "<!-- BEGIN: auto-generated examples -->"
+    )
+    readme_examples_end = readme_lines.index(
+        "<!-- END: auto-generated examples -->"
+    )
+    readme_examples = "\n".join(
+        readme_lines[readme_examples_begin + 1 : readme_examples_end]
+    )
+
+    assert readme_examples == examples_html

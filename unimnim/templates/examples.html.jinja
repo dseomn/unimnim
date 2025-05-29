@@ -1,0 +1,39 @@
+{#
+ # SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+ #
+ # SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+-#}
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2" scope="col">Group/Script</th>
+      <th colspan="2" scope="col">Mnemonic</th>
+      <th rowspan="2" scope="col">Result</th>
+    </tr>
+    <tr>
+      <th scope="col">Prefix</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {%- for group_id, group in data | dictsort(case_sensitive=true) %}
+      {%- for mnemonic, result in group.examples.items() %}
+        <tr>
+          {%- if loop.first %}
+            <td rowspan="{{ group.examples | length }}">
+              <a href="unimnim/data/{{ group_id | escape }}.toml">
+                {{ group.name | escape }}
+              </a>
+            </td>
+            <td rowspan="{{ group.examples | length }}">
+              <kbd>{{ group.prefix | escape }}</kbd>
+            </td>
+          {%- endif %}
+          <td><kbd>{{ mnemonic | escape }}</kbd></td>
+          <td>{{ result | escape }}</td>
+        </tr>
+      {%- endfor %}
+    {%- endfor %}
+  </tbody>
+</table>

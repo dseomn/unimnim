@@ -96,6 +96,18 @@ def main(
         parsed_args.write_m17n.write_text(m17n_mim)
 
     if parsed_args.write_all is not None:
+        (parsed_args.write_all / "examples.html").write_text(
+            input_method.render_template(
+                (
+                    resources.files("unimnim")
+                    .joinpath("templates/examples.html.jinja")
+                    .read_text()
+                ),
+                data=data_,
+            )
+        )
+
+    if parsed_args.write_all is not None:
         _write_json(
             parsed_args.write_all / "coverage.json",
             coverage.report(covered=frozenset(map_.values())),

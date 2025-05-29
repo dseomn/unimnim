@@ -17,40 +17,435 @@ In general, a mnemonic starts with a prefix for the
 letter or symbol, then some optional combining mnemonics for accents. For
 example:
 
-| Mnemonic | Meaning | Result |
-| --- | --- | --- |
-| `la'` |  [Latin](unimnim/data/Latn.toml), a, acute | `á` |
-| `le^'` | Latin, e, circumflex, acute | `ế` |
-| `lAE-` | Latin, Æ, macron | `Ǣ` |
-| `ab` | [Arabic](unimnim/data/Arab.toml), ب | `ب` |
-| `Bob` | [Bopomofo](unimnim/data/Bopo.toml), ㄅ | `ㄅ` |
-| `Buka` | [Lontara/Bugis/Bugis-Makassar/Urupu Sulapa’ Eppa’](unimnim/data/Bugi.toml), ᨀ | `ᨀ` |
-| `Bdka` | [Buhid](unimnim/data/Buhd.toml), ᝃ | `ᝃ` |
-| `cd` | [Cyrillic](unimnim/data/Cyrl.toml), д | `д` |
-| `dka` | [Devanagari](unimnim/data/Deva.toml), क | `क` |
-| `GOa` | [Gothic](unimnim/data/Goth.toml), 𐌰 | `𐌰` |
-| `Gra'` | [Greek](unimnim/data/Grek.toml), α, tonos | `ά` |
-| `Hoki` | [Hanunoo](unimnim/data/Hano.toml), ᜣ,  ᜲ | `ᜣᜲ` |
-| `Hek.`| [Hebrew](unimnim/data/Hebr.toml), כ, dagesh | `כּ` |
-| `khka` | [Kana](unimnim/data/Hrkt.toml), Hiragana, か | `か` |
-| `kkka` | Kana, Katakana, カ | `カ` |
-| `OGb` | [Ogham](unimnim/data/Ogam.toml), ᚁ | `ᚁ` |
-| `RUb` | [Runic](unimnim/data/Runr.toml), ᛒ | `ᛒ` |
-| `Tbka` | [Tagbanwa](unimnim/data/Tagb.toml), ᝣ | `ᝣ` |
-| `Yiit` | [Yi](unimnim/data/Yiii.toml), ꀀ | `ꀀ` |
-| `ZM0s` | common[^z-common], [math](unimnim/data/common/math.toml), zero/empty/null, set | `∅` |
-| `Z-m` | common, dash ([punctuation](unimnim/data/common/punctuation.toml)), em | `—` |
-| `Z?!I` | common, interrobang (punctuation), inverted | `⸘` |
-| `ZA-` | common, [arrow](unimnim/data/common/symbol/arrow.toml), horizontal | `↔` |
-| `Z$Rs` | common, [currency](unimnim/data/common/symbol/currency.toml), rupee | `₨` |
-| `Zmb` | common, [music](unimnim/data/common/symbol/music.toml), flat | `♭` |
-| `Zco` | common, copyright ([other symbol](unimnim/data/common/symbol/other.toml)) | `©` |
-| `ZRIUN` | common, [regional indicator](unimnim/data/common/symbol/regional_indicator.toml), United Nations | `🇺🇳` |
-
-[^z-common]:
-    A lot of script names in English start with `C`, but not as many with `Z`,
-    so `Z` is used to minimize conflicts with other scripts. Also [ISO 15924
-    uses `Z`](https://en.wikipedia.org/wiki/ISO_15924#Special_codes).
+<!-- BEGIN: auto-generated examples -->
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2" scope="col">Group/Script</th>
+      <th colspan="2" scope="col">Mnemonic</th>
+      <th rowspan="2" scope="col">Result</th>
+    </tr>
+    <tr>
+      <th scope="col">Prefix</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+        <tr>
+            <td rowspan="1">
+              <a href="unimnim/data/Arab.toml">
+                Arabic
+              </a>
+            </td>
+            <td rowspan="1">
+              <kbd>a</kbd>
+            </td>
+          <td><kbd>b</kbd></td>
+          <td>ب</td>
+        </tr>
+        <tr>
+            <td rowspan="1">
+              <a href="unimnim/data/Bopo.toml">
+                Bopomofo
+              </a>
+            </td>
+            <td rowspan="1">
+              <kbd>Bo</kbd>
+            </td>
+          <td><kbd>b</kbd></td>
+          <td>ㄅ</td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+              <a href="unimnim/data/Bugi.toml">
+                Buginese
+              </a>
+            </td>
+            <td rowspan="2">
+              <kbd>Bu</kbd>
+            </td>
+          <td><kbd>ka</kbd></td>
+          <td>ᨀ</td>
+        </tr>
+        <tr>
+          <td><kbd>ki</kbd></td>
+          <td>ᨀᨗ</td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+              <a href="unimnim/data/Buhd.toml">
+                Buhid
+              </a>
+            </td>
+            <td rowspan="2">
+              <kbd>Bd</kbd>
+            </td>
+          <td><kbd>ka</kbd></td>
+          <td>ᝃ</td>
+        </tr>
+        <tr>
+          <td><kbd>ki</kbd></td>
+          <td>ᝃᝒ</td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+              <a href="unimnim/data/Cyrl.toml">
+                Cyrillic
+              </a>
+            </td>
+            <td rowspan="2">
+              <kbd>c</kbd>
+            </td>
+          <td><kbd>k</kbd></td>
+          <td>к</td>
+        </tr>
+        <tr>
+          <td><kbd>k&#39;</kbd></td>
+          <td>ќ</td>
+        </tr>
+        <tr>
+            <td rowspan="3">
+              <a href="unimnim/data/Deva.toml">
+                Devanagari
+              </a>
+            </td>
+            <td rowspan="3">
+              <kbd>d</kbd>
+            </td>
+          <td><kbd>k</kbd></td>
+          <td>क्</td>
+        </tr>
+        <tr>
+          <td><kbd>ka</kbd></td>
+          <td>क</td>
+        </tr>
+        <tr>
+          <td><kbd>kim</kbd></td>
+          <td>किं</td>
+        </tr>
+        <tr>
+            <td rowspan="1">
+              <a href="unimnim/data/Goth.toml">
+                Gothic
+              </a>
+            </td>
+            <td rowspan="1">
+              <kbd>GO</kbd>
+            </td>
+          <td><kbd>a</kbd></td>
+          <td>𐌰</td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+              <a href="unimnim/data/Grek.toml">
+                Greek
+              </a>
+            </td>
+            <td rowspan="2">
+              <kbd>Gr</kbd>
+            </td>
+          <td><kbd>a</kbd></td>
+          <td>α</td>
+        </tr>
+        <tr>
+          <td><kbd>a&#39;</kbd></td>
+          <td>ά</td>
+        </tr>
+        <tr>
+            <td rowspan="3">
+              <a href="unimnim/data/Hano.toml">
+                Hanunoo
+              </a>
+            </td>
+            <td rowspan="3">
+              <kbd>Ho</kbd>
+            </td>
+          <td><kbd>k</kbd></td>
+          <td>ᜣ᜴</td>
+        </tr>
+        <tr>
+          <td><kbd>ka</kbd></td>
+          <td>ᜣ</td>
+        </tr>
+        <tr>
+          <td><kbd>ki</kbd></td>
+          <td>ᜣᜲ</td>
+        </tr>
+        <tr>
+            <td rowspan="4">
+              <a href="unimnim/data/Hebr.toml">
+                Hebrew
+              </a>
+            </td>
+            <td rowspan="4">
+              <kbd>He</kbd>
+            </td>
+          <td><kbd>k</kbd></td>
+          <td>כ</td>
+        </tr>
+        <tr>
+          <td><kbd>k]</kbd></td>
+          <td>ך</td>
+        </tr>
+        <tr>
+          <td><kbd>k.</kbd></td>
+          <td>כּ</td>
+        </tr>
+        <tr>
+          <td><kbd>ke</kbd></td>
+          <td>כֶ</td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+              <a href="unimnim/data/Hrkt.toml">
+                Japanese syllabaries
+              </a>
+            </td>
+            <td rowspan="2">
+              <kbd>k</kbd>
+            </td>
+          <td><kbd>hka</kbd></td>
+          <td>か</td>
+        </tr>
+        <tr>
+          <td><kbd>kka</kbd></td>
+          <td>カ</td>
+        </tr>
+        <tr>
+            <td rowspan="4">
+              <a href="unimnim/data/Latn.toml">
+                Latin
+              </a>
+            </td>
+            <td rowspan="4">
+              <kbd>l</kbd>
+            </td>
+          <td><kbd>o</kbd></td>
+          <td>o</td>
+        </tr>
+        <tr>
+          <td><kbd>o/</kbd></td>
+          <td>ø</td>
+        </tr>
+        <tr>
+          <td><kbd>o/&#39;</kbd></td>
+          <td>ǿ</td>
+        </tr>
+        <tr>
+          <td><kbd>oe</kbd></td>
+          <td>œ</td>
+        </tr>
+        <tr>
+            <td rowspan="1">
+              <a href="unimnim/data/Ogam.toml">
+                Ogham
+              </a>
+            </td>
+            <td rowspan="1">
+              <kbd>OG</kbd>
+            </td>
+          <td><kbd>b</kbd></td>
+          <td>ᚁ</td>
+        </tr>
+        <tr>
+            <td rowspan="1">
+              <a href="unimnim/data/Runr.toml">
+                Runic
+              </a>
+            </td>
+            <td rowspan="1">
+              <kbd>RU</kbd>
+            </td>
+          <td><kbd>b</kbd></td>
+          <td>ᛒ</td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+              <a href="unimnim/data/Tagb.toml">
+                Tagbanwa
+              </a>
+            </td>
+            <td rowspan="2">
+              <kbd>Tb</kbd>
+            </td>
+          <td><kbd>ka</kbd></td>
+          <td>ᝣ</td>
+        </tr>
+        <tr>
+          <td><kbd>ki</kbd></td>
+          <td>ᝣᝲ</td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+              <a href="unimnim/data/Yiii.toml">
+                Yi
+              </a>
+            </td>
+            <td rowspan="2">
+              <kbd>Yi</kbd>
+            </td>
+          <td><kbd>it</kbd></td>
+          <td>ꀀ</td>
+        </tr>
+        <tr>
+          <td><kbd>qotR</kbd></td>
+          <td>꒐</td>
+        </tr>
+        <tr>
+            <td rowspan="6">
+              <a href="unimnim/data/common/math.toml">
+                math
+              </a>
+            </td>
+            <td rowspan="6">
+              <kbd>ZM</kbd>
+            </td>
+          <td><kbd>0s</kbd></td>
+          <td>∅</td>
+        </tr>
+        <tr>
+          <td><kbd>+n</kbd></td>
+          <td>∑</td>
+        </tr>
+        <tr>
+          <td><kbd>&amp;l</kbd></td>
+          <td>∧</td>
+        </tr>
+        <tr>
+          <td><kbd>&amp;s</kbd></td>
+          <td>∩</td>
+        </tr>
+        <tr>
+          <td><kbd>==</kbd></td>
+          <td>≡</td>
+        </tr>
+        <tr>
+          <td><kbd>==!</kbd></td>
+          <td>≢</td>
+        </tr>
+        <tr>
+            <td rowspan="6">
+              <a href="unimnim/data/common/punctuation.toml">
+                punctuation
+              </a>
+            </td>
+            <td rowspan="6">
+              <kbd>Z</kbd>
+            </td>
+          <td><kbd>-h</kbd></td>
+          <td>‐</td>
+        </tr>
+        <tr>
+          <td><kbd>-m</kbd></td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><kbd>&#39;q</kbd></td>
+          <td>’</td>
+        </tr>
+        <tr>
+          <td><kbd>&#39;p</kbd></td>
+          <td>′</td>
+        </tr>
+        <tr>
+          <td><kbd>?!</kbd></td>
+          <td>‽</td>
+        </tr>
+        <tr>
+          <td><kbd>?!I</kbd></td>
+          <td>⸘</td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+              <a href="unimnim/data/common/symbol/arrow.toml">
+                arrows
+              </a>
+            </td>
+            <td rowspan="2">
+              <kbd>ZA</kbd>
+            </td>
+          <td><kbd>-</kbd></td>
+          <td>↔</td>
+        </tr>
+        <tr>
+          <td><kbd>|</kbd></td>
+          <td>↕</td>
+        </tr>
+        <tr>
+            <td rowspan="1">
+              <a href="unimnim/data/common/symbol/currency.toml">
+                currency symbols
+              </a>
+            </td>
+            <td rowspan="1">
+              <kbd>Z$</kbd>
+            </td>
+          <td><kbd>Rs</kbd></td>
+          <td>₨</td>
+        </tr>
+        <tr>
+            <td rowspan="4">
+              <a href="unimnim/data/common/symbol/music.toml">
+                music
+              </a>
+            </td>
+            <td rowspan="4">
+              <kbd>Zm</kbd>
+            </td>
+          <td><kbd>n/4</kbd></td>
+          <td>𝅘𝅥</td>
+        </tr>
+        <tr>
+          <td><kbd>n/4.2</kbd></td>
+          <td>𝅘𝅥𝅭𝅭</td>
+        </tr>
+        <tr>
+          <td><kbd>n/4&gt;</kbd></td>
+          <td>𝅘𝅥𝅻</td>
+        </tr>
+        <tr>
+          <td><kbd>nx|</kbd></td>
+          <td>𝅃𝅥</td>
+        </tr>
+        <tr>
+            <td rowspan="1">
+              <a href="unimnim/data/common/symbol/other.toml">
+                other symbols
+              </a>
+            </td>
+            <td rowspan="1">
+              <kbd>Z</kbd>
+            </td>
+          <td><kbd>co</kbd></td>
+          <td>©</td>
+        </tr>
+        <tr>
+            <td rowspan="1">
+              <a href="unimnim/data/common/symbol/regional_indicator.toml">
+                regional indicators
+              </a>
+            </td>
+            <td rowspan="1">
+              <kbd>ZRI</kbd>
+            </td>
+          <td><kbd>UN</kbd></td>
+          <td>🇺🇳</td>
+        </tr>
+        <tr>
+            <td rowspan="1">
+              <a href="unimnim/data/common/tag_sequence.toml">
+                tag sequences
+              </a>
+            </td>
+            <td rowspan="1">
+              <kbd>ZTS</kbd>
+            </td>
+          <td><kbd>Fgbsct</kbd></td>
+          <td>🏴󠁧󠁢󠁳󠁣󠁴󠁿</td>
+        </tr>
+  </tbody>
+</table>
+<!-- END: auto-generated examples -->
 
 See the [data directory](unimnim/data) and its README for more details.
 
