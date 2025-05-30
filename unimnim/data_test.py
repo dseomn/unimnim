@@ -135,57 +135,6 @@ def test_to_explicit_string(string: str, expected: str) -> None:
 @pytest.mark.parametrize(
     "raw,error_regex",
     (
-        (dict(not_valid="foo"), r"Unexpected keys"),
-        (
-            dict(
-                append={
-                    "~": "U+0303 COMBINING TILDE",
-                    "'": "U+0301 COMBINING ACUTE ACCENT",
-                },
-            ),
-            r"combining\.append is not sorted",
-        ),
-        (
-            dict(
-                name_regex_replace={
-                    "b": [["foo", "bar"]],
-                    "a": [["foo", "bar"]],
-                },
-            ),
-            r"combining\.name_regex_replace is not sorted",
-        ),
-    ),
-)
-def test_combining_parse_error(raw: Any, error_regex: str) -> None:
-    with pytest.raises(ValueError, match=error_regex):
-        data.Combining.parse(raw)
-
-
-@pytest.mark.parametrize(
-    "raw,expected",
-    (
-        ({}, {}),
-        (
-            dict(append={"'": "U+0301 COMBINING ACUTE ACCENT"}),
-            dict(append={"'": "\u0301"}),
-        ),
-        (
-            dict(name_regex_replace={"/": [[r".*", r"\g<0> WITH STROKE"]]}),
-            dict(
-                name_regex_replace={
-                    "/": ((re.compile(r".*"), r"\g<0> WITH STROKE"),)
-                },
-            ),
-        ),
-    ),
-)
-def test_combining_parse(raw: Any, expected: Any) -> None:
-    assert data.Combining.parse(raw) == data.Combining(**expected)
-
-
-@pytest.mark.parametrize(
-    "raw,error_regex",
-    (
         (
             dict(prefix="l", expressions={}, not_valid="foo"),
             r"Unexpected keys",
@@ -215,6 +164,19 @@ def test_combining_parse(raw: Any, expected: Any) -> None:
                 expressions={},
             ),
             r"maps\.main is not sorted",
+        ),
+        (
+            dict(
+                prefix="l",
+                name_regex_replace_maps=dict(
+                    main={
+                        "b": [["foo", "bar"]],
+                        "a": [["foo", "bar"]],
+                    },
+                ),
+                expressions={},
+            ),
+            r"name_regex_replace_maps\.main is not sorted",
         ),
     ),
 )
@@ -248,10 +210,10 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
                 examples={"a'": "U+00E1 LATIN SMALL LETTER A WITH ACUTE"},
                 name_maps=dict(main={"a": "A"}),
                 maps=dict(main={"a": "U+0061 LATIN SMALL LETTER A"}),
-                combining=dict(
-                    main=dict(append={"'": "U+0301 COMBINING ACUTE ACCENT"}),
+                name_regex_replace_maps=dict(
+                    main={"/": [[r".*", r"\g<0> WITH STROKE"]]},
                 ),
-                expressions=dict(main=["combine", ["map", "main"], "main"]),
+                expressions=dict(main=["union"]),
             ),
             dict(
                 name="This is a group!",
@@ -259,12 +221,10 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
                 examples={"a'": "\N{LATIN SMALL LETTER A WITH ACUTE}"},
                 name_maps=dict(main={"a": "A"}),
                 maps=dict(main={"a": "a"}),
-                combining=dict(
-                    main=data.Combining.parse(
-                        dict(append={"'": "U+0301 COMBINING ACUTE ACCENT"})
-                    ),
+                name_regex_replace_maps=dict(
+                    main={"/": ((re.compile(r".*"), r"\g<0> WITH STROKE"),)},
                 ),
-                expressions=dict(main=["combine", ["map", "main"], "main"]),
+                expressions=dict(main=["union"]),
             ),
         ),
     ),

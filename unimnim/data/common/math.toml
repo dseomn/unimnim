@@ -136,10 +136,7 @@ prefix = "ZM"
 "int4" = "U+2A0C QUADRUPLE INTEGRAL OPERATOR: ⨌"
 "*v" = "U+2A2F VECTOR OR CROSS PRODUCT: ⨯"
 
-[combining.main.append]
-"" = ""
-
-[combining.main.name_regex_replace]
+[name_regex_replace_maps.combining]
 "!" = [
   ['.*', 'NOT \g<0>'],
   ['.*', 'NOT A \g<0>'],
@@ -171,4 +168,4 @@ prefix = "ZM"
 ]
 
 [expressions]
-main = ["combine", ["map", "main"], "main"]
+main = ["combine", ["map", "main"], ["name_regex_replace", "combining"]]

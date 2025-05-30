@@ -217,46 +217,6 @@ type NameRegexReplaceRules = Collection[NameRegexReplaceRule]
 type NameRegexReplaceMap = Mapping[str, NameRegexReplaceRules]
 
 
-@dataclasses.dataclass(frozen=True, kw_only=True)
-class Combining:
-    """Data for combining mnemonics.
-
-    Attributes:
-        append: See unimnim/data/README.md
-        name_regex_replace: See unimnim/data/README.md
-    """
-
-    append: Mapping[str, str] = dataclasses.field(default_factory=dict)
-    name_regex_replace: NameRegexReplaceMap = dataclasses.field(
-        default_factory=dict
-    )
-
-    def __post_init__(self) -> None:
-        _require_sorted_by_value_and_key(self.append, name="combining.append")
-        _require_sorted_by_key(
-            self.name_regex_replace, name="combining.name_regex_replace"
-        )
-
-    @classmethod
-    def parse(cls, raw: Any, /) -> Self:
-        """Returns the data parsed from the format used in data files."""
-        if unexpected_keys := raw.keys() - {"append", "name_regex_replace"}:
-            raise ValueError(f"Unexpected keys: {list(unexpected_keys)}")
-        name_regex_replace = {}
-        for key, rules in raw.get("name_regex_replace", {}).items():
-            name_regex_replace[key] = tuple(
-                (re.compile(regex_str), replacement)
-                for regex_str, replacement in rules
-            )
-        return cls(
-            append={
-                key: parse_explicit_string(value)
-                for key, value in raw.get("append", {}).items()
-            },
-            name_regex_replace=name_regex_replace,
-        )
-
-
 def _group_id_to_name(group_id: str) -> str:
     # TODO: https://gitlab.pyicu.org/main/pyicu/-/issues/177 - Use
     # icu.UProperty.INVALID_CODE instead of -1.
@@ -277,7 +237,8 @@ class Group:
             examples of how the group works.
         name_maps: Maps from part of a mnemonic to part of a character name.
         maps: Maps from mnemonic (not including prefix) to a result.
-        combining: Sets of rules for combining partial mnemonics with a map.
+        name_regex_replace_maps: Maps from part of a mnemonic to character name
+            regex replacements.
         expressions: How the above are combined.
     """
 
@@ -290,12 +251,22 @@ class Group:
     maps: Mapping[str, Mapping[str, str]] = dataclasses.field(
         default_factory=dict
     )
-    combining: Mapping[str, Combining] = dataclasses.field(default_factory=dict)
+    name_regex_replace_maps: Mapping[str, NameRegexReplaceMap] = (
+        dataclasses.field(default_factory=dict)
+    )
     expressions: Mapping[str, Any]
 
     def __post_init__(self) -> None:
         for map_name, map_ in self.maps.items():
             _require_sorted_by_value_and_key(map_, name=f"maps.{map_name}")
+        for (
+            map_name,
+            name_regex_replace_map,
+        ) in self.name_regex_replace_maps.items():
+            _require_sorted_by_key(
+                name_regex_replace_map,
+                name=f"name_regex_replace_maps.{map_name}",
+            )
 
     @classmethod
     def parse(cls, raw: Any, /, *, group_id: str) -> Self:
@@ -306,7 +277,7 @@ class Group:
             "examples",
             "name_maps",
             "maps",
-            "combining",
+            "name_regex_replace_maps",
             "expressions",
         }:
             raise ValueError(f"Unexpected keys: {list(unexpected_keys)}")
@@ -315,6 +286,14 @@ class Group:
             maps[map_name] = {
                 key: parse_explicit_string(value) for key, value in map_.items()
             }
+        name_regex_replace_maps = dict[str, dict[str, NameRegexReplaceRules]]()
+        for map_name, map_ in raw.get("name_regex_replace_maps", {}).items():
+            name_regex_replace_maps[map_name] = {}
+            for key, rules in map_.items():
+                name_regex_replace_maps[map_name][key] = tuple(
+                    (re.compile(regex_str), replacement)
+                    for regex_str, replacement in rules
+                )
         return cls(
             name=raw["name"] if "name" in raw else _group_id_to_name(group_id),
             prefix=raw["prefix"],
@@ -324,10 +303,7 @@ class Group:
             },
             name_maps=raw.get("name_maps", {}),
             maps=maps,
-            combining={
-                name: Combining.parse(combining_data)
-                for name, combining_data in raw.get("combining", {}).items()
-            },
+            name_regex_replace_maps=name_regex_replace_maps,
             expressions=raw["expressions"],
         )
 

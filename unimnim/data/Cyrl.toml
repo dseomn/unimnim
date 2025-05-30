@@ -114,8 +114,7 @@ prefix = "C"
 "W" = "U+051C CYRILLIC CAPITAL LETTER WE: Ԝ"
 "w" = "U+051D CYRILLIC SMALL LETTER WE: ԝ"
 
-[combining.main.append]
-"" = ""
+[maps.combining]
 "`" = "U+0300 COMBINING GRAVE ACCENT [combining]: ѐ"
 "'" = "U+0301 COMBINING ACUTE ACCENT [combining]: ќ"
 "^" = "U+0302 COMBINING CIRCUMFLEX ACCENT [combining]: а̂"
@@ -127,7 +126,7 @@ prefix = "C"
 "v" = "U+030C COMBINING CARON [combining]: т̌"
 ";" = "U+0328 COMBINING OGONEK [combining]: к̨"  # from=rfc1345,xcompose suboptimal
 
-[combining.main.name_regex_replace]
+[name_regex_replace_maps.combining]
 "," = [['.*', '\g<0> WITH TAIL']]
 "/" = [['.*', '\g<0> WITH STROKE']]
 "2" = [  # geometry
@@ -141,4 +140,9 @@ prefix = "C"
 "?5" = [['.*', '\g<0> WITH MIDDLE HOOK']]  # geometry
 
 [expressions]
-main = ["combine", ["map", "main"], "main"]
+main = [
+  "combine",
+  ["map", "main"],
+  ["append", ["map", "combining"]],
+  ["name_regex_replace", "combining"],
+]

@@ -143,8 +143,7 @@ prefix = "L"
 "'<" = "U+A78C LATIN SMALL LETTER SALTILLO: ꞌ"  # amount
 "HT" = "U+A78D LATIN CAPITAL LETTER TURNED H: Ɥ"  # geometry
 
-[combining.main.append]
-"" = ""
+[maps.combining]
 "`" = "U+0300 COMBINING GRAVE ACCENT [combining]: à"
 "'" = "U+0301 COMBINING ACUTE ACCENT [combining]: á"
 "^" = "U+0302 COMBINING CIRCUMFLEX ACCENT [combining]: â"
@@ -166,7 +165,7 @@ prefix = "L"
 "~2" = "U+0330 COMBINING TILDE BELOW [combining]: ṵ"  # geometry
 "-2" = "U+0331 COMBINING MACRON BELOW [combining]: ṉ"  # geometry
 
-[combining.main.name_regex_replace]
+[name_regex_replace_maps.combining]
 "/" = [['.*', '\g<0> WITH STROKE']]
 "//" = [
   ['LATIN (CAPITAL|SMALL) LETTER (.)', 'DOUBLE-STRUCK \g<1> \g<2>'],
@@ -191,4 +190,9 @@ prefix = "L"
 "||" = [['.*', '\g<0> WITH DOUBLE BAR']]
 
 [expressions]
-main = ["combine", ["map", "main"], "main"]
+main = [
+  "combine",
+  ["map", "main"],
+  ["append", ["map", "combining"]],
+  ["name_regex_replace", "combining"],
+]

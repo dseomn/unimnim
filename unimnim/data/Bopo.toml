@@ -87,12 +87,9 @@ prefix = "bo"
 "eo" = "U+31BE BOPOMOFO LETTER OE: ㆾ"
 "A" = "U+31BF BOPOMOFO LETTER AH: ㆿ"
 
-[combining.main.append]
-"" = ""
-
-[combining.main.name_regex_replace]
+[name_regex_replace_maps.combining]
 "." = [['.*', '\g<0> WITH DOT ABOVE']]
 "]" = [['(BOPOMOFO) (LETTER .*)', '\g<1> FINAL \g<2>']]  # logical-order
 
 [expressions]
-main = ["combine", ["map", "main"], "main"]
+main = ["combine", ["map", "main"], ["name_regex_replace", "combining"]]

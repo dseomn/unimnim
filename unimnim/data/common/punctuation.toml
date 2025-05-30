@@ -114,13 +114,17 @@ prefix = "Z"
 '"1' = "U+301F LOW DOUBLE PRIME QUOTATION MARK: 〟"  # geometry
 "-W" = "U+3030 WAVY DASH: 〰"
 
-[combining.main.append]
-"" = ""
+[maps.combining]
 "VST" = "U+FE0E VARIATION SELECTOR-15 [combining]: ‼︎"  # aka="text variation selector"
 "VSE" = "U+FE0F VARIATION SELECTOR-16 [combining]: ‼️"  # aka="emoji variation selector"
 
-[combining.main.name_regex_replace]
+[name_regex_replace_maps.combining]
 "l" = [['.*', 'MODIFIER LETTER \g<0>']]  # category
 
 [expressions]
-main = ["combine", ["map", "main"], "main"]
+main = [
+  "combine",
+  ["map", "main"],
+  ["append", ["map", "combining"]],
+  ["name_regex_replace", "combining"],
+]

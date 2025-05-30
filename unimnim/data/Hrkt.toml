@@ -82,16 +82,12 @@ prefix = "K"
 ">" = "U+30FC KATAKANA-HIRAGANA PROLONGED SOUND MARK: ー"  # amount
 "2k" = "U+30FD KATAKANA ITERATION MARK: ヽ"
 
-[combining.letters.append]
-"" = ""
-
-[combining.letters.name_regex_replace]
-"<" = [['(HIRAGANA|KATAKANA) LETTER (.*)', '\g<1> LETTER SMALL \g<2>']]  # amount
-
-[combining.voicing.append]
-"" = ""
+[maps.voicing_combining]
 "V" = "U+3099 COMBINING KATAKANA-HIRAGANA VOICED SOUND MARK [combining]: ば"
 "v" = "U+309A COMBINING KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK [combining]: ぱ"
+
+[name_regex_replace_maps.letters]
+"<" = [['(HIRAGANA|KATAKANA) LETTER (.*)', '\g<1> LETTER SMALL \g<2>']]  # amount
 
 [expressions]
 letters = [
@@ -105,7 +101,7 @@ letters = [
 ]
 main = [
   "union",
-  ["combine", ["expression", "letters"], "letters"],
-  ["combine", ["map", "empty_for_combining"], "voicing"],
-  ["combine", ["map", "main"], "voicing"],
+  ["combine", ["expression", "letters"], ["name_regex_replace", "letters"]],
+  ["product", ["map", "empty_for_combining"], ["map", "voicing_combining"]],
+  ["combine", ["map", "main"], ["append", ["map", "voicing_combining"]]],
 ]

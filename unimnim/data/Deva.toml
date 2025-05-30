@@ -87,6 +87,9 @@ prefix = "D"
 "s" = "U+0938 DEVANAGARI LETTER SA: स"
 "h" = "U+0939 DEVANAGARI LETTER HA: ह"
 
+[maps.consonants_combining]
+"." = "U+093C DEVANAGARI SIGN NUKTA [combining]: क़"
+
 [maps.virama]
 "" = "U+094D DEVANAGARI SIGN VIRAMA [combining]: क्"
 
@@ -116,21 +119,23 @@ prefix = "D"
 "m" = "U+0902 DEVANAGARI SIGN ANUSVARA [combining]: कं"
 "h" = "U+0903 DEVANAGARI SIGN VISARGA [combining]: कः"
 
-[combining.consonants.append]
-"." = "U+093C DEVANAGARI SIGN NUKTA [combining]: क़"
-
 [expressions]
 consonants = [
-  "union",
+  "combine",
   ["map", "consonants"],
-  ["combine", ["map", "consonants"], "consonants"],
+  ["append", ["map", "consonants_combining"]],
 ]
 main = [
   "union",
   ["product", ["map", "empty_for_combining"], ["map", "virama"]],
   ["product", ["map", "empty_for_combining"], ["map", "vowel_signs"]],
   ["product", ["map", "empty_for_combining"], ["map", "after_vowels"]],
-  ["combine", ["map", "empty_for_combining"], "consonants"],
+  [
+    "combine",
+    ["map", "empty_for_combining"],
+    "exclude_base",
+    ["append", ["map", "consonants_combining"]],
+  ],
   ["map", "main"],
   ["map", "independent_vowels"],
   ["product", ["map", "independent_vowels"], ["map", "after_vowels"]],

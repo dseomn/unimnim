@@ -13,7 +13,7 @@ prefix = "ZRI"
 [maps.main]
 "" = ""  # empty-for-combining
 
-[combining.main.append]
+[maps.combining]
 "A" = "U+1F1E6 REGIONAL INDICATOR SYMBOL LETTER A"
 "B" = "U+1F1E7 REGIONAL INDICATOR SYMBOL LETTER B"
 "C" = "U+1F1E8 REGIONAL INDICATOR SYMBOL LETTER C"
@@ -42,4 +42,4 @@ prefix = "ZRI"
 "Z" = "U+1F1FF REGIONAL INDICATOR SYMBOL LETTER Z"
 
 [expressions]
-main = ["combine", ["map", "main"], "main"]
+main = ["combine", ["map", "main"], ["append", ["map", "combining"]]]

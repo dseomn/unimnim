@@ -80,10 +80,7 @@ prefix = "yi"
 [maps.main]
 "w" = "U+A015 YI SYLLABLE WU (YI SYLLABLE ITERATION MARK): ꀕ"
 
-[combining.radicals.append]
-"" = ""
-
-[combining.radicals.name_regex_replace]
+[name_regex_replace_maps.radicals]
 "R" = [['YI SYLLABLE (.*)', 'YI RADICAL \g<1>']]
 
 [expressions]
@@ -92,7 +89,7 @@ main = [
   [
     "combine",
     ["name_maps", "prefix", "consonants", "vowels", "tones"],
-    "radicals",
+    ["name_regex_replace", "radicals"],
   ],
   ["map", "main"],
 ]

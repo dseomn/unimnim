@@ -92,16 +92,11 @@ prefix = "l"
 [maps.main]
 "A" = "U+0041 LATIN CAPITAL LETTER A: A"
 
-# Combining mnemonics as a map from partial mnemonic (regular string) to a
-# combining code point (explicit string). The partial mnemonic is appended to an
-# existing mnemonic and the code point is appended to that existing mnemonic's
-# result, then normalized. Must be sorted by result, then mnemonic. The original
-# map itself is not included in the result of combining by default. However, an
-# empty entry like `"" = ""` combines with the original map to produce that same
-# map, which is useful to produce both the original map and other things
-# combined with it. This defines a combining config named "main":
-[combining.main.append]
-"" = ""
+# Maps can also be used for combining, as a map from partial mnemonic to a
+# combining code point. The partial mnemonic is appended to an existing mnemonic
+# and the code point is appended to that existing mnemonic's result, then
+# normalized.
+[maps.combining]
 "`" = "U+0300 COMBINING GRAVE ACCENT [combining]: à"
 
 # Combining mnemonics as a map from partial mnemonic to an array of regex and
@@ -113,8 +108,8 @@ prefix = "l"
 # syntaxes. See
 # https://www.unicode.org/versions/Unicode16.0.0/core-spec/chapter-2/#G27986 for
 # why some mnemonics use this instead of `append`. Must be sorted by mnemonic.
-# This adds to the combining config named "main":
-[combining.main.name_regex_replace]
+# This defines a name_regex_replace_map named "combining":
+[name_regex_replace_maps.combining]
 "/" = [['.*', '\g<0> WITH STROKE']]
 
 # Expressions for how the above definitions are combined. Each expression
@@ -128,17 +123,27 @@ prefix = "l"
 #
 # ["map", name]: Reference maps.name.
 #
-# ["combine", expr, name]: Apply the combining config combining.name to the
-# given expression.
-#
 # ["expression", name]: Reference expressions.name, which must be defined before
 # it's referenced.
+#
+# ["combine", expr, option, ...]: Combine the given base expression with other
+# things depending on the options. Valid options are:
+#   "exclude_base": By default, the base expression and all combined mnemonics
+#     are returned. With this option, only the combined mnemonics are returned.
+#   ["append", expr]: Append the given expression, as described by
+#     maps.combining above.
+#   ["name_regex_replace", name]: Apply name_regex_replace_maps.name.
 #
 # ["product", expr, ...]: Take the cartesian product of the given expressions.
 #
 # ["union", expr, ...]: Take the union of the given expressions.
 [expressions]
-main = ["combine", ["map", "main"], "main"]
+main = [
+  "combine",
+  ["map", "main"],
+  ["append", ["map", "combining"]],
+  ["name_regex_replace", "combining"],
+]
 ```
 
 ```toml
@@ -274,7 +279,7 @@ first and `l'` in the second.
 prefix = "l"
 [maps.main]
 "_" = ""  # empty-for-combining
-[combining.main.append]
+[maps.combining]
 "'" = "U+0301 COMBINING ACUTE ACCENT"
 ```
 
@@ -282,7 +287,7 @@ prefix = "l"
 prefix = "l"
 [maps.main]
 "" = ""  # empty-for-combining
-[combining.main.append]
+[maps.combining]
 "'" = "U+0301 COMBINING ACUTE ACCENT"
 ```
 
@@ -386,6 +391,6 @@ character.
 [maps.main]
 "i" = "U+0069 LATIN SMALL LETTER I: i"
 "i-." = "U+0131 LATIN SMALL LETTER DOTLESS I: ı"  # uncombine
-[combining.main.append]
+[maps.combining]
 "." = "U+0307 COMBINING DOT ABOVE"
 ```

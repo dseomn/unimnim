@@ -36,6 +36,12 @@ prefix = "he"
 "sh" = "U+05E9 HEBREW LETTER SHIN: ש"
 "T" = "U+05EA HEBREW LETTER TAV: ת"
 
+[maps.consonants_combining]
+"." = "U+05BC HEBREW POINT DAGESH OR MAPIQ [combining]: בּ"
+"-" = "U+05BF HEBREW POINT RAFE [combining]: פֿ"
+"h" = "U+05C1 HEBREW POINT SHIN DOT [combining]: שׁ"
+"s" = "U+05C2 HEBREW POINT SIN DOT [combining]: שׂ"
+
 [maps.vowels]
 "'" = "U+05B0 HEBREW POINT SHEVA [combining]: אְ"
 "e<" = "U+05B1 HEBREW POINT HATAF SEGOL [combining]: אֱ"  # aka="reduced segol" amount
@@ -63,21 +69,19 @@ prefix = "he"
 [maps.empty_for_combining]
 "_" = ""  # empty-for-combining
 
-[combining.consonants.append]
-"" = ""
-"." = "U+05BC HEBREW POINT DAGESH OR MAPIQ [combining]: בּ"
-"-" = "U+05BF HEBREW POINT RAFE [combining]: פֿ"
-"h" = "U+05C1 HEBREW POINT SHIN DOT [combining]: שׁ"
-"s" = "U+05C2 HEBREW POINT SIN DOT [combining]: שׂ"
-
-[combining.consonants.name_regex_replace]
+[name_regex_replace_maps.consonants]
 "]" = [['(HEBREW LETTER) (.*)', '\g<1> FINAL \g<2>']]  # logical-order
 
-[combining.symbols.name_regex_replace]
+[name_regex_replace_maps.symbols]
 "$" = [['HEBREW LETTER (.*)', '\g<1> SYMBOL']]  # category
 
 [expressions]
-consonants = ["combine", ["map", "consonants"], "consonants"]
+consonants = [
+  "combine",
+  ["map", "consonants"],
+  ["append", ["map", "consonants_combining"]],
+  ["name_regex_replace", "consonants"],
+]
 letters = [
   "union",
   ["expression", "consonants"],
@@ -87,8 +91,8 @@ letters = [
 main = [
   "union",
   ["expression", "letters"],
-  ["combine", ["expression", "letters"], "symbols"],
+  ["combine", ["expression", "letters"], ["name_regex_replace", "symbols"]],
   ["map", "punctuation"],
   ["product", ["map", "empty_for_combining"], ["map", "vowels"]],
-  ["combine", ["map", "empty_for_combining"], "consonants"],
+  ["product", ["map", "empty_for_combining"], ["map", "consonants_combining"]],
 ]

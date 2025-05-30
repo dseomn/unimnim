@@ -68,8 +68,7 @@ prefix = "gr"
 "ps" = "U+03C8 GREEK SMALL LETTER PSI: ψ"
 "w" = "U+03C9 GREEK SMALL LETTER OMEGA: ω"  # Grek-beta-code suboptimal
 
-[combining.main.append]
-"" = ""
+[maps.combining]
 "`" = "U+0300 COMBINING GRAVE ACCENT [combining]: ὰ"
 "'" = "U+0301 COMBINING ACUTE ACCENT [combining]: ά"
 "-" = "U+0304 COMBINING MACRON [combining]: ᾱ"
@@ -80,7 +79,7 @@ prefix = "gr"
 "^" = "U+0342 COMBINING GREEK PERISPOMENI [combining]: ᾶ"
 "i" = "U+0345 COMBINING GREEK YPOGEGRAMMENI [combining]: ᾳ"  # aka="iota subscript"
 
-[combining.main.name_regex_replace]
+[name_regex_replace_maps.combining]
 "//" = [['GREEK (CAPITAL|SMALL) LETTER (.*)', 'DOUBLE-STRUCK \g<1> \g<2>']]
 "2" = [  # geometry
   ['GREEK (CAPITAL|SMALL) LETTER (.*)', 'GREEK SUBSCRIPT \g<1> LETTER \g<2>'],
@@ -96,4 +95,9 @@ prefix = "gr"
 ]
 
 [expressions]
-main = ["combine", ["map", "main"], "main"]
+main = [
+  "combine",
+  ["map", "main"],
+  ["append", ["map", "combining"]],
+  ["name_regex_replace", "combining"],
+]

@@ -4,7 +4,7 @@
 """Generates the input method from data."""
 
 import collections
-from collections.abc import Iterable, Mapping, Sequence, Set
+from collections.abc import Collection, Iterable, Mapping, Sequence, Set
 import dataclasses
 import functools
 import itertools
@@ -210,11 +210,19 @@ def _cartesian_product(*maps: _Map, group_id: str) -> _Map:
     return result
 
 
-def _apply_combining(map_: _Map, combining: data.Combining) -> _Map:
-    """Applies combining config to a map."""
-    combined_map = _Map(group_id=map_.group_id)
-    combining_to_check = collections.deque[tuple[str, str]](map_.all_.items())
-    added_to_queue = set(map_.all_)
+def _apply_combining(
+    base: _Map,
+    *,
+    exclude_base: bool,
+    append_maps: Collection[_Map],
+    name_regex_replace_maps: Collection[data.NameRegexReplaceMap],
+) -> _Map:
+    """Applies combining."""
+    combined_map = _Map(group_id=base.group_id)
+    combining_to_check = collections.deque[tuple[str, str]](base.all_.items())
+    added_to_queue = set(base.all_)
+    if not exclude_base:
+        combined_map.add_all(base)
 
     def _add(mnemonic: str, result: str, *, is_known: bool = True) -> None:
         combined_map.add(mnemonic, result, is_known=is_known)
@@ -223,12 +231,12 @@ def _apply_combining(map_: _Map, combining: data.Combining) -> _Map:
             added_to_queue.add(mnemonic)
 
     def _combine_append(
-        append_map: Mapping[str, str],
+        append_map: _Map,
         *,
         base_mnemonic: str,
         base_result: str,
     ) -> None:
-        for combining_mnemonic, combining_result in append_map.items():
+        for combining_mnemonic, combining_result in append_map.all_.items():
             combined_result = unicodedata.normalize(
                 "NFC", base_result + combining_result
             )
@@ -272,16 +280,18 @@ def _apply_combining(map_: _Map, combining: data.Combining) -> _Map:
 
     while combining_to_check:
         mnemonic, result = combining_to_check.popleft()
-        _combine_append(
-            combining.append,
-            base_mnemonic=mnemonic,
-            base_result=result,
-        )
-        _combine_name_regex_replace(
-            combining.name_regex_replace,
-            base_mnemonic=mnemonic,
-            base_result=result,
-        )
+        for append_map in append_maps:
+            _combine_append(
+                append_map,
+                base_mnemonic=mnemonic,
+                base_result=result,
+            )
+        for name_regex_replace_map in name_regex_replace_maps:
+            _combine_name_regex_replace(
+                name_regex_replace_map,
+                base_mnemonic=mnemonic,
+                base_result=result,
+            )
 
     return combined_map
 
@@ -320,7 +330,7 @@ class _ReferenceTrackingDict[T]:
 class _GroupState:
     name_maps: _ReferenceTrackingDict[Mapping[str, str]]
     maps: _ReferenceTrackingDict[_Map]
-    combining: _ReferenceTrackingDict[data.Combining]
+    name_regex_replace_maps: _ReferenceTrackingDict[data.NameRegexReplaceMap]
     expressions: _ReferenceTrackingDict[_Map]
 
 
@@ -345,13 +355,34 @@ def _evaluate_expression(
             )
         case ["map", str() as map_name]:
             return state.maps.get(map_name)
-        case ["combine", base_expr, str() as combining_name]:
-            return _apply_combining(
-                evaluate(base_expr),
-                state.combining.get(combining_name),
-            )
         case ["expression", str() as ref_name]:
             return state.expressions.get(ref_name)
+        case ["combine", base_expr, *options]:
+            base = evaluate(base_expr)
+            exclude_base = False
+            append_maps = []
+            name_regex_replace_maps = []
+            for option in options:
+                match option:
+                    case "exclude_base":
+                        exclude_base = True
+                    case ["append", append_expr]:
+                        append_maps.append(evaluate(append_expr))
+                    case ["name_regex_replace", str(map_name)]:
+                        name_regex_replace_maps.append(
+                            state.name_regex_replace_maps.get(map_name)
+                        )
+                    case _:
+                        raise ValueError(
+                            f"Group {group_id!r} has invalid 'combine' option: "
+                            f"{option!r}"
+                        )
+            return _apply_combining(
+                base,
+                exclude_base=exclude_base,
+                append_maps=append_maps,
+                name_regex_replace_maps=name_regex_replace_maps,
+            )
         case ["product", *operands]:
             return _cartesian_product(
                 *map(evaluate, operands),
@@ -384,10 +415,10 @@ def _generate_map_one_group(
             error_context=f"Group {group_id!r}",
             type_name="map",
         ),
-        combining=_ReferenceTrackingDict(
-            dict(group.combining),
+        name_regex_replace_maps=_ReferenceTrackingDict(
+            dict(group.name_regex_replace_maps),
             error_context=f"Group {group_id!r}",
-            type_name="combining",
+            type_name="name_regex_replace_map",
         ),
         expressions=_ReferenceTrackingDict(
             {},
@@ -412,7 +443,7 @@ def _generate_map_one_group(
 
     state.name_maps.require_all_referenced()
     state.maps.require_all_referenced()
-    state.combining.require_all_referenced()
+    state.name_regex_replace_maps.require_all_referenced()
     state.expressions.require_all_referenced()
 
     for example_mnemonic, example_result in group.examples.items():

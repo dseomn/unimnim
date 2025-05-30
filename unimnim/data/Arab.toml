@@ -94,18 +94,27 @@ prefix = "A"
 "8>" = "U+06F8 EXTENDED ARABIC-INDIC DIGIT EIGHT: ۸"  # amount
 "9>" = "U+06F9 EXTENDED ARABIC-INDIC DIGIT NINE: ۹"  # amount
 
-[combining.main.append]
-"" = ""
+[maps.combining]
 "~" = "U+0653 ARABIC MADDAH ABOVE [combining]: آ"
 "'8" = "U+0654 ARABIC HAMZA ABOVE [combining]: أ"  # geometry
 "'2" = "U+0655 ARABIC HAMZA BELOW [combining]: إ"  # geometry
 
-[combining.main.name_regex_replace]
+[name_regex_replace_maps.combining]
 "//" = [['ARABIC LETTER (.*)', 'ARABIC MATHEMATICAL DOUBLE-STRUCK \g<1>']]
 
 [expressions]
 main = [
   "union",
-  ["combine", ["map", "empty_for_combining"], "main"],
-  ["combine", ["map", "main"], "main"],
+  [
+    "combine",
+    ["map", "empty_for_combining"],
+    "exclude_base",
+    ["append", ["map", "combining"]],
+  ],
+  [
+    "combine",
+    ["map", "main"],
+    ["append", ["map", "combining"]],
+    ["name_regex_replace", "combining"],
+  ],
 ]

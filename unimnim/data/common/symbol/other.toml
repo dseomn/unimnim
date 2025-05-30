@@ -23,10 +23,9 @@ prefix = "Z"
 "POI" = "U+2318 PLACE OF INTEREST SIGN: ⌘"
 "O." = "U+25CC DOTTED CIRCLE: ◌"
 
-[combining.main.append]
-"" = ""
+[maps.combining]
 "VST" = "U+FE0E VARIATION SELECTOR-15 [combining]: ©︎"  # aka="text variation selector"
 "VSE" = "U+FE0F VARIATION SELECTOR-16 [combining]: ©️"  # aka="emoji variation selector"
 
 [expressions]
-main = ["combine", ["map", "main"], "main"]
+main = ["combine", ["map", "main"], ["append", ["map", "combining"]]]
