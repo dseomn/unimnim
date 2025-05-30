@@ -29,4 +29,4 @@ prefix = "Z"
 "VSE" = "U+FE0F VARIATION SELECTOR-16 [combining]: ©️"  # aka="emoji variation selector"
 
 [expressions]
-main = [[["map", "main"], ["combining", "main"]]]
+main = ["combine", ["map", "main"], "main"]

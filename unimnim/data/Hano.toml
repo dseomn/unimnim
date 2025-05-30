@@ -42,6 +42,7 @@ prefix = "ho"
 
 [expressions]
 main = [
-  [["map", "consonants"], ["map", "vowel_signs"]],
-  [["map", "independent_vowels"]],
+  "union",
+  ["product", ["map", "consonants"], ["map", "vowel_signs"]],
+  ["map", "independent_vowels"],
 ]

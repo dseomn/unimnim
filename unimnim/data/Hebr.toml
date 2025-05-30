@@ -77,16 +77,18 @@ prefix = "he"
 "$" = [['HEBREW LETTER (.*)', '\g<1> SYMBOL']]  # category
 
 [expressions]
-consonants = [[["map", "consonants"], ["combining", "consonants"]]]
+consonants = ["combine", ["map", "consonants"], "consonants"]
 letters = [
-  [["expression", "consonants"]],
-  [["expression", "consonants"], ["map", "vowels"]],
-  [["map", "letters"]],
+  "union",
+  ["expression", "consonants"],
+  ["product", ["expression", "consonants"], ["map", "vowels"]],
+  ["map", "letters"],
 ]
 main = [
-  [["expression", "letters"]],
-  [["expression", "letters"], ["combining", "symbols"]],
-  [["map", "punctuation"]],
-  [["map", "empty_for_combining"], ["map", "vowels"]],
-  [["map", "empty_for_combining"], ["combining", "consonants"]],
+  "union",
+  ["expression", "letters"],
+  ["combine", ["expression", "letters"], "symbols"],
+  ["map", "punctuation"],
+  ["product", ["map", "empty_for_combining"], ["map", "vowels"]],
+  ["combine", ["map", "empty_for_combining"], "consonants"],
 ]

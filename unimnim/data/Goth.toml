@@ -40,4 +40,4 @@ prefix = "gt"
 "900" = "U+1034A GOTHIC LETTER NINE HUNDRED: 𐍊"
 
 [expressions]
-main = [[["map", "main"]]]
+main = ["map", "main"]

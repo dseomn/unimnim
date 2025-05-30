@@ -105,6 +105,7 @@ prefix = "A"
 
 [expressions]
 main = [
-  [["map", "empty_for_combining"], ["combining", "main"]],
-  [["map", "main"], ["combining", "main"]],
+  "union",
+  ["combine", ["map", "empty_for_combining"], "main"],
+  ["combine", ["map", "main"], "main"],
 ]

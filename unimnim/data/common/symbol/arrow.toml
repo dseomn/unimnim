@@ -63,4 +63,4 @@ prefix = "ZA"
 "~~" = [['(.*) ARROW', '\g<1> SQUIGGLE ARROW']]
 
 [expressions]
-main = [[["map", "main"], ["combining", "main"]]]
+main = ["combine", ["map", "main"], "main"]

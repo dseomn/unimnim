@@ -96,4 +96,4 @@ prefix = "gr"
 ]
 
 [expressions]
-main = [[["map", "main"], ["combining", "main"]]]
+main = ["combine", ["map", "main"], "main"]

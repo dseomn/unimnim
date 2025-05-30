@@ -88,9 +88,11 @@ prefix = "yi"
 
 [expressions]
 main = [
+  "union",
   [
+    "combine",
     ["name_maps", "prefix", "consonants", "vowels", "tones"],
-    ["combining", "radicals"],
+    "radicals",
   ],
-  [["map", "main"]],
+  ["map", "main"],
 ]

@@ -69,4 +69,4 @@ prefix = "Z"
 "APC" = "U+009F (APPLICATION PROGRAM COMMAND)"  # from=aliases
 
 [expressions]
-main = [[["map", "main"]]]
+main = ["map", "main"]

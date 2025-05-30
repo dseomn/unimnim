@@ -56,6 +56,7 @@ prefix = "bu"
 
 [expressions]
 main = [
-  [["map", "letters"], ["map", "vowel_signs"]],
-  [["map", "punctuation"]],
+  "union",
+  ["product", ["map", "letters"], ["map", "vowel_signs"]],
+  ["map", "punctuation"],
 ]

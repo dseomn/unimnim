@@ -191,4 +191,4 @@ prefix = "L"
 "||" = [['.*', '\g<0> WITH DOUBLE BAR']]
 
 [expressions]
-main = [[["map", "main"], ["combining", "main"]]]
+main = ["combine", ["map", "main"], "main"]

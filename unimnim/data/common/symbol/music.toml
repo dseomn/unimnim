@@ -116,22 +116,27 @@ prefix = "Zm"
 
 [expressions]
 notes = [
+  "union",
   [
+    "product",
     ["map", "note_prefix"],
     ["map", "noteheads"],
     ["map", "stems"],
     ["map", "flags"],
     ["map", "articulation"],
   ],
-  [["map", "note_prefix"], ["map", "notes"], ["map", "articulation"]],
+  [
+    "product",
+    ["map", "note_prefix"],
+    ["map", "notes"],
+    ["map", "articulation"],
+  ],
 ]
-events = [
-  [["expression", "notes"]],
-  [["map", "rests"]],
-]
+events = ["union", ["expression", "notes"], ["map", "rests"]]
 main = [
-  [["map", "main"]],
-  [["expression", "events"], ["map", "augmentation"]],
-  [["map", "empty_for_combining"], ["map", "articulation"]],
-  [["map", "empty_for_combining"], ["map", "augmentation"]],
+  "union",
+  ["map", "main"],
+  ["product", ["expression", "events"], ["map", "augmentation"]],
+  ["product", ["map", "empty_for_combining"], ["map", "articulation"]],
+  ["product", ["map", "empty_for_combining"], ["map", "augmentation"]],
 ]

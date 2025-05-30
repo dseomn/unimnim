@@ -95,15 +95,17 @@ prefix = "K"
 
 [expressions]
 letters = [
-  [["name_maps", "hiragana_prefix", "vowels_lower"]],
-  [["name_maps", "hiragana_prefix", "consonants_lower", "vowels_lower"]],
-  [["name_maps", "hiragana_prefix", "codas_lower"]],
-  [["name_maps", "katakana_prefix", "vowels_upper"]],
-  [["name_maps", "katakana_prefix", "consonants_upper", "vowels_upper"]],
-  [["name_maps", "katakana_prefix", "codas_upper"]],
+  "union",
+  ["name_maps", "hiragana_prefix", "vowels_lower"],
+  ["name_maps", "hiragana_prefix", "consonants_lower", "vowels_lower"],
+  ["name_maps", "hiragana_prefix", "codas_lower"],
+  ["name_maps", "katakana_prefix", "vowels_upper"],
+  ["name_maps", "katakana_prefix", "consonants_upper", "vowels_upper"],
+  ["name_maps", "katakana_prefix", "codas_upper"],
 ]
 main = [
-  [["expression", "letters"], ["combining", "letters"]],
-  [["map", "empty_for_combining"], ["combining", "voicing"]],
-  [["map", "main"], ["combining", "voicing"]],
+  "union",
+  ["combine", ["expression", "letters"], "letters"],
+  ["combine", ["map", "empty_for_combining"], "voicing"],
+  ["combine", ["map", "main"], "voicing"],
 ]

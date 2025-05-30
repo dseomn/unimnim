@@ -306,6 +306,51 @@ class _GroupState:
     expressions: _ReferenceTrackingDict[_Map]
 
 
+def _evaluate_expression(
+    expression: Any,
+    *,
+    group_id: str,
+    state: _GroupState,
+) -> _Map:
+    evaluate = functools.partial(
+        _evaluate_expression,
+        group_id=group_id,
+        state=state,
+    )
+    match expression:
+        case ["name_maps", *name_map_names] if all(
+            isinstance(name, str) for name in name_map_names
+        ):
+            return _names_maps_to_map(
+                map(state.name_maps.get, name_map_names),
+                group_id=group_id,
+            )
+        case ["map", str() as map_name]:
+            return state.maps.get(map_name)
+        case ["combine", base_expr, str() as combining_name]:
+            return _apply_combining(
+                evaluate(base_expr),
+                state.combining.get(combining_name),
+            )
+        case ["expression", str() as ref_name]:
+            return state.expressions.get(ref_name)
+        case ["product", *operands]:
+            map_ = _Map(group_id=group_id)
+            map_.add("", "")
+            for operand in operands:
+                map_ = _cartesian_product(map_, evaluate(operand))
+            return map_
+        case ["union", *operands]:
+            map_ = _Map(group_id=group_id)
+            for operand in operands:
+                map_.add_all(evaluate(operand))
+            return map_
+        case _:
+            raise ValueError(
+                f"Group {group_id!r} has invalid expression: {expression!r}"
+            )
+
+
 def _generate_map_one_group(
     group_id: str,
     group: data.Group,
@@ -340,44 +385,11 @@ def _generate_map_one_group(
             state.maps.data[map_name].add(mnemonic, result)
 
     for expression_name, expression in group.expressions.items():
-        expression_map = _Map(group_id=group_id)
-        for union_operand_expr in expression:
-            union_operand_map = _Map(group_id=group_id)
-            # Add an empty entry so that the cartesian product with another map
-            # returns that other map.
-            union_operand_map.add("", "")
-            for operation in union_operand_expr:
-                match operation:
-                    case ["name_maps", *name_map_names] if all(
-                        isinstance(name, str) for name in name_map_names
-                    ):
-                        union_operand_map = _cartesian_product(
-                            union_operand_map,
-                            _names_maps_to_map(
-                                map(state.name_maps.get, name_map_names),
-                                group_id=group_id,
-                            ),
-                        )
-                    case ["map", str() as map_name]:
-                        union_operand_map = _cartesian_product(
-                            union_operand_map, state.maps.get(map_name)
-                        )
-                    case ["combining", str() as combining_name]:
-                        union_operand_map = _apply_combining(
-                            union_operand_map,
-                            state.combining.get(combining_name),
-                        )
-                    case ["expression", str() as ref_name]:
-                        union_operand_map = _cartesian_product(
-                            union_operand_map, state.expressions.get(ref_name)
-                        )
-                    case _:
-                        raise ValueError(
-                            f"Group {group_id!r} has invalid expression: "
-                            f"{operation!r}"
-                        )
-            expression_map.add_all(union_operand_map)
-        state.expressions.data[expression_name] = expression_map
+        state.expressions.data[expression_name] = _evaluate_expression(
+            expression,
+            group_id=group_id,
+            state=state,
+        )
 
     main_map = state.expressions.get("main")
 

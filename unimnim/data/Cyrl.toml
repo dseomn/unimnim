@@ -141,4 +141,4 @@ prefix = "C"
 "?5" = [['.*', '\g<0> WITH MIDDLE HOOK']]  # geometry
 
 [expressions]
-main = [[["map", "main"], ["combining", "main"]]]
+main = ["combine", ["map", "main"], "main"]

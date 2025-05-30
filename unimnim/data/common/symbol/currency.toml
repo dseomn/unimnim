@@ -27,4 +27,4 @@ prefix = "Z$"
 "BTC" = "U+20BF BITCOIN SIGN: ₿"
 
 [expressions]
-main = [[["map", "main"]]]
+main = ["map", "main"]

@@ -123,4 +123,4 @@ prefix = "Z"
 "l" = [['.*', 'MODIFIER LETTER \g<0>']]  # category
 
 [expressions]
-main = [[["map", "main"], ["combining", "main"]]]
+main = ["combine", ["map", "main"], "main"]

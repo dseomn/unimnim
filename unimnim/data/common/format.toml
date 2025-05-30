@@ -25,4 +25,4 @@ prefix = "Z"
 "ZWNBSP" = "U+FEFF ZERO WIDTH NO-BREAK SPACE (BYTE ORDER MARK)"  # from=aliases
 
 [expressions]
-main = [[["map", "main"]]]
+main = ["map", "main"]

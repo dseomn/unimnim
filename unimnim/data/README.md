@@ -117,18 +117,28 @@ prefix = "l"
 [combining.main.name_regex_replace]
 "/" = [['.*', '\g<0> WITH STROKE']]
 
-# Expressions for how the above definitions are combined. The elements in the
-# outer array are unioned together. ["map", name] results in the cartesian
-# product of the given map with whatever comes before, or just the given map if
-# there's nothing before it. ["combining", name] applies the given combining
-# config. ["expression", name] behaves like ["map", name], but references a
-# previously defined expression instead of a map. See the next example below for
-# now ["name_maps", ...] works. The "main" expression is used as the final map
-# of the group.
+# Expressions for how the above definitions are combined. Each expression
+# evaluates to a map from mnemonic to result, and the "main" expression is used
+# as the final map of the group. Valid expressions are:
+#
+# ["name_maps", name, ...]: Take the cartesian product of the given name_maps,
+# and create a regular map from the mnemonic parts joined together to the
+# character named by the result parts joined together. See the other data file
+# example below for more detail.
+#
+# ["map", name]: Reference maps.name.
+#
+# ["combine", expr, name]: Apply the combining config combining.name to the
+# given expression.
+#
+# ["expression", name]: Reference expressions.name, which must be defined before
+# it's referenced.
+#
+# ["product", expr, ...]: Take the cartesian product of the given expressions.
+#
+# ["union", expr, ...]: Take the union of the given expressions.
 [expressions]
-main = [
-  [["map", "main"], ["combining", "main"]],
-]
+main = ["combine", ["map", "main"], "main"]
 ```
 
 ```toml
@@ -149,9 +159,7 @@ prefix = "l"
 "b" = "B"
 
 [expressions]
-main = [
-  [["name_maps", "prefixes", "letters"]],
-]
+main = ["name_maps", "prefixes", "letters"]
 ```
 
 ## Prefixes

@@ -27,6 +27,7 @@ prefix = "Z"
 
 [expressions]
 main = [
-  [["name_maps", "variation_selector", "digits", "digits", "digits"]],
-  [["map", "main"]],
+  "union",
+  ["name_maps", "variation_selector", "digits", "digits", "digits"],
+  ["map", "main"],
 ]

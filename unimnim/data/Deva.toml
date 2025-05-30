@@ -121,18 +121,20 @@ prefix = "D"
 
 [expressions]
 consonants = [
-  [["map", "consonants"]],
-  [["map", "consonants"], ["combining", "consonants"]],
+  "union",
+  ["map", "consonants"],
+  ["combine", ["map", "consonants"], "consonants"],
 ]
 main = [
-  [["map", "empty_for_combining"], ["map", "virama"]],
-  [["map", "empty_for_combining"], ["map", "vowel_signs"]],
-  [["map", "empty_for_combining"], ["map", "after_vowels"]],
-  [["map", "empty_for_combining"], ["combining", "consonants"]],
-  [["map", "main"]],
-  [["map", "independent_vowels"]],
-  [["map", "independent_vowels"], ["map", "after_vowels"]],
-  [["expression", "consonants"], ["map", "virama"]],
-  [["expression", "consonants"], ["map", "vowel_signs"]],
-  [["expression", "consonants"], ["map", "vowel_signs"], ["map", "after_vowels"]],
+  "union",
+  ["product", ["map", "empty_for_combining"], ["map", "virama"]],
+  ["product", ["map", "empty_for_combining"], ["map", "vowel_signs"]],
+  ["product", ["map", "empty_for_combining"], ["map", "after_vowels"]],
+  ["combine", ["map", "empty_for_combining"], "consonants"],
+  ["map", "main"],
+  ["map", "independent_vowels"],
+  ["product", ["map", "independent_vowels"], ["map", "after_vowels"]],
+  ["product", ["expression", "consonants"], ["map", "virama"]],
+  ["product", ["expression", "consonants"], ["map", "vowel_signs"]],
+  ["product", ["expression", "consonants"], ["map", "vowel_signs"], ["map", "after_vowels"]],
 ]

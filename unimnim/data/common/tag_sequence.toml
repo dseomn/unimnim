@@ -55,4 +55,4 @@ prefix = "ZTS"
 "" = "U+E007F CANCEL TAG"
 
 [expressions]
-main = [[["map", "base"], ["combining", "spec"], ["combining", "end"]]]
+main = ["combine", ["combine", ["map", "base"], "spec"], "end"]

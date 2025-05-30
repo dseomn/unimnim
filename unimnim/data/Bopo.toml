@@ -95,4 +95,4 @@ prefix = "bo"
 "]" = [['(BOPOMOFO) (LETTER .*)', '\g<1> FINAL \g<2>']]  # logical-order
 
 [expressions]
-main = [[["map", "main"], ["combining", "main"]]]
+main = ["combine", ["map", "main"], "main"]

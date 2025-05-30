@@ -228,16 +228,16 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
     (
         (
             "Latn",
-            dict(prefix="l", expressions=dict(main=[[]])),
-            dict(name="Latin", prefix="l", expressions=dict(main=[[]])),
+            dict(prefix="l", expressions=dict(main=["union"])),
+            dict(name="Latin", prefix="l", expressions=dict(main=["union"])),
         ),
         (
             "not-a-valid-script",
-            dict(prefix="l", expressions=dict(main=[[]])),
+            dict(prefix="l", expressions=dict(main=["union"])),
             dict(
                 name="not-a-valid-script",
                 prefix="l",
-                expressions=dict(main=[[]]),
+                expressions=dict(main=["union"]),
             ),
         ),
         (
@@ -251,9 +251,7 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
                 combining=dict(
                     main=dict(append={"'": "U+0301 COMBINING ACUTE ACCENT"}),
                 ),
-                expressions=dict(
-                    main=[[["map", "main"], ["combining", "main"]]],
-                ),
+                expressions=dict(main=["combine", ["map", "main"], "main"]),
             ),
             dict(
                 name="This is a group!",
@@ -266,9 +264,7 @@ def test_group_parse_error(raw: Any, error_regex: str) -> None:
                         dict(append={"'": "U+0301 COMBINING ACUTE ACCENT"})
                     ),
                 ),
-                expressions=dict(
-                    main=[[["map", "main"], ["combining", "main"]]],
-                ),
+                expressions=dict(main=["combine", ["map", "main"], "main"]),
             ),
         ),
     ),
@@ -285,7 +281,7 @@ def test_load(tmp_path: pathlib.Path) -> None:
         [maps.main]
         "a" = "U+0061 LATIN SMALL LETTER A"
         [expressions]
-        main = [[["map", "main"]]]
+        main = ["map", "main"]
         """
     )
     (tmp_path / "greek.toml").write_text(
@@ -294,7 +290,7 @@ def test_load(tmp_path: pathlib.Path) -> None:
         [maps.main]
         "a" = "U+03B1 GREEK SMALL LETTER ALPHA"
         [expressions]
-        main = [[["map", "main"]]]
+        main = ["map", "main"]
         """
     )
 
@@ -305,7 +301,7 @@ def test_load(tmp_path: pathlib.Path) -> None:
             dict(
                 prefix="l",
                 maps=dict(main={"a": "U+0061 LATIN SMALL LETTER A"}),
-                expressions=dict(main=[[["map", "main"]]]),
+                expressions=dict(main=["map", "main"]),
             ),
             group_id="subdir/latin",
         ),
@@ -313,7 +309,7 @@ def test_load(tmp_path: pathlib.Path) -> None:
             dict(
                 prefix="g",
                 maps=dict(main={"a": "U+03B1 GREEK SMALL LETTER ALPHA"}),
-                expressions=dict(main=[[["map", "main"]]]),
+                expressions=dict(main=["map", "main"]),
             ),
             group_id="greek",
         ),

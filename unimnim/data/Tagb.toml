@@ -38,6 +38,7 @@ prefix = "tb"
 
 [expressions]
 main = [
-  [["map", "independent_vowels"]],
-  [["map", "consonants"], ["map", "vowel_signs"]],
+  "union",
+  ["map", "independent_vowels"],
+  ["product", ["map", "consonants"], ["map", "vowel_signs"]],
 ]
