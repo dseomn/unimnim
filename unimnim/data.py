@@ -212,7 +212,9 @@ def _require_sorted_by_value_and_key(
     )
 
 
-type NameRegexReplaceMap = Mapping[str, Collection[tuple[re.Pattern[str], str]]]
+type NameRegexReplaceRule = tuple[re.Pattern[str], str]
+type NameRegexReplaceRules = Collection[NameRegexReplaceRule]
+type NameRegexReplaceMap = Mapping[str, NameRegexReplaceRules]
 
 
 @dataclasses.dataclass(frozen=True, kw_only=True)
