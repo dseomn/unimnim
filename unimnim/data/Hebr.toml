@@ -12,6 +12,9 @@ prefix = "he"
 "k." = "U+05DB HEBREW LETTER KAF, U+05BC HEBREW POINT DAGESH OR MAPIQ: כּ"
 "ke" = "U+05DB HEBREW LETTER KAF, U+05B6 HEBREW POINT SEGOL: כֶ"
 
+[maps.empty_for_combining]
+"_" = ""  # empty-for-combining
+
 [maps.consonants]
 "a" = "U+05D0 HEBREW LETTER ALEF: א"  # from=rfc1345 suboptimal
 "v" = "U+05D1 HEBREW LETTER BET: ב"
@@ -66,9 +69,6 @@ prefix = "he"
 "'" = "U+05F3 HEBREW PUNCTUATION GERESH: ׳"
 '"' = "U+05F4 HEBREW PUNCTUATION GERSHAYIM: ״"
 
-[maps.empty_for_combining]
-"_" = ""  # empty-for-combining
-
 [name_regex_replace_maps.consonants]
 "]" = [['(HEBREW LETTER) (.*)', '\g<1> FINAL \g<2>']]  # logical-order
 
@@ -90,9 +90,9 @@ letters = [
 ]
 main = [
   "union",
+  ["product", ["map", "empty_for_combining"], ["map", "consonants_combining"]],
+  ["product", ["map", "empty_for_combining"], ["map", "vowels"]],
   ["expression", "letters"],
   ["combine", ["expression", "letters"], ["name_regex_replace", "symbols"]],
   ["map", "punctuation"],
-  ["product", ["map", "empty_for_combining"], ["map", "vowels"]],
-  ["product", ["map", "empty_for_combining"], ["map", "consonants_combining"]],
 ]

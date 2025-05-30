@@ -15,6 +15,9 @@ prefix = "Zm"
 "n/4>" = "U+1D158 MUSICAL SYMBOL NOTEHEAD BLACK, U+1D165 MUSICAL SYMBOL COMBINING STEM, U+1D17B MUSICAL SYMBOL COMBINING ACCENT: 𝅘𝅥𝅻"
 "nx|" = "U+1D143 MUSICAL SYMBOL X NOTEHEAD, U+1D165 MUSICAL SYMBOL COMBINING STEM: 𝅃𝅥"
 
+[maps.empty_for_combining]
+"_" = ""  # empty-for-combining
+
 [maps.main]
 "b" = "U+266D MUSIC FLAT SIGN: ♭"
 "=" = "U+266E MUSIC NATURAL SIGN: ♮"  # music-abc
@@ -111,9 +114,6 @@ prefix = "Zm"
 ".3" = "U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT, U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT, U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT [combining]: 𝅘𝅥𝅭𝅭𝅭"
 ".4" = "U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT, U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT, U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT, U+1D16D MUSICAL SYMBOL COMBINING AUGMENTATION DOT [combining]: 𝅘𝅥𝅭𝅭𝅭𝅭"
 
-[maps.empty_for_combining]
-"_" = ""  # empty-for-combining
-
 [expressions]
 notes = [
   "union",
@@ -135,8 +135,8 @@ notes = [
 events = ["union", ["expression", "notes"], ["map", "rests"]]
 main = [
   "union",
-  ["map", "main"],
-  ["product", ["expression", "events"], ["map", "augmentation"]],
   ["product", ["map", "empty_for_combining"], ["map", "articulation"]],
   ["product", ["map", "empty_for_combining"], ["map", "augmentation"]],
+  ["map", "main"],
+  ["product", ["expression", "events"], ["map", "augmentation"]],
 ]
