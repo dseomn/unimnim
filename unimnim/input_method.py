@@ -298,38 +298,47 @@ class _ReferenceTrackingDict[T]:
             )
 
 
+@dataclasses.dataclass(frozen=True, kw_only=True)
+class _GroupState:
+    name_maps: _ReferenceTrackingDict[Mapping[str, str]]
+    maps: _ReferenceTrackingDict[_Map]
+    combining: _ReferenceTrackingDict[data.Combining]
+    expressions: _ReferenceTrackingDict[_Map]
+
+
 def _generate_map_one_group(
     group_id: str,
     group: data.Group,
 ) -> Mapping[str, str]:
     """Returns a map from mnemonic to result for one group."""
-    name_maps = _ReferenceTrackingDict[Mapping[str, str]](
-        dict(group.name_maps),
-        error_context=f"Group {group_id!r}",
-        type_name="name_map",
+    state = _GroupState(
+        name_maps=_ReferenceTrackingDict(
+            dict(group.name_maps),
+            error_context=f"Group {group_id!r}",
+            type_name="name_map",
+        ),
+        maps=_ReferenceTrackingDict(
+            {},
+            error_context=f"Group {group_id!r}",
+            type_name="map",
+        ),
+        combining=_ReferenceTrackingDict(
+            dict(group.combining),
+            error_context=f"Group {group_id!r}",
+            type_name="combining",
+        ),
+        expressions=_ReferenceTrackingDict(
+            {},
+            error_context=f"Group {group_id!r}",
+            type_name="expression",
+        ),
     )
 
-    maps = _ReferenceTrackingDict[_Map](
-        {},
-        error_context=f"Group {group_id!r}",
-        type_name="map",
-    )
     for map_name, map_data in group.maps.items():
-        maps.data[map_name] = _Map(group_id=group_id)
+        state.maps.data[map_name] = _Map(group_id=group_id)
         for mnemonic, result in map_data.items():
-            maps.data[map_name].add(mnemonic, result)
+            state.maps.data[map_name].add(mnemonic, result)
 
-    combining = _ReferenceTrackingDict[data.Combining](
-        dict(group.combining),
-        error_context=f"Group {group_id!r}",
-        type_name="combining",
-    )
-
-    expressions = _ReferenceTrackingDict[_Map](
-        {},
-        error_context=f"Group {group_id!r}",
-        type_name="expression",
-    )
     for expression_name, expression in group.expressions.items():
         expression_map = _Map(group_id=group_id)
         for union_operand_expr in expression:
@@ -345,21 +354,22 @@ def _generate_map_one_group(
                         union_operand_map = _cartesian_product(
                             union_operand_map,
                             _names_maps_to_map(
-                                map(name_maps.get, name_map_names),
+                                map(state.name_maps.get, name_map_names),
                                 group_id=group_id,
                             ),
                         )
                     case ["map", str() as map_name]:
                         union_operand_map = _cartesian_product(
-                            union_operand_map, maps.get(map_name)
+                            union_operand_map, state.maps.get(map_name)
                         )
                     case ["combining", str() as combining_name]:
                         union_operand_map = _apply_combining(
-                            union_operand_map, combining.get(combining_name)
+                            union_operand_map,
+                            state.combining.get(combining_name),
                         )
                     case ["expression", str() as ref_name]:
                         union_operand_map = _cartesian_product(
-                            union_operand_map, expressions.get(ref_name)
+                            union_operand_map, state.expressions.get(ref_name)
                         )
                     case _:
                         raise ValueError(
@@ -367,14 +377,14 @@ def _generate_map_one_group(
                             f"{operation!r}"
                         )
             expression_map.add_all(union_operand_map)
-        expressions.data[expression_name] = expression_map
+        state.expressions.data[expression_name] = expression_map
 
-    main_map = expressions.get("main")
+    main_map = state.expressions.get("main")
 
-    name_maps.require_all_referenced()
-    maps.require_all_referenced()
-    combining.require_all_referenced()
-    expressions.require_all_referenced()
+    state.name_maps.require_all_referenced()
+    state.maps.require_all_referenced()
+    state.combining.require_all_referenced()
+    state.expressions.require_all_referenced()
 
     for example_mnemonic, example_result in group.examples.items():
         if example_mnemonic not in main_map.known:
