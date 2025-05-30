@@ -4,11 +4,12 @@
 """Generates the input method from data."""
 
 import collections
-from collections.abc import Iterable, Mapping, Sequence, Set
+from collections.abc import Collection, Iterable, Mapping, Sequence, Set
 import dataclasses
 import functools
 import itertools
 import pprint
+import re
 from typing import Any
 import unicodedata
 
@@ -222,42 +223,46 @@ def _apply_combining(map_: _Map, combining: data.Combining) -> _Map:
             combining_to_check.append((mnemonic, result))
             added_to_queue.add(mnemonic)
 
-    while combining_to_check:
-        mnemonic, result = combining_to_check.popleft()
-
-        for (
-            combining_mnemonic,
-            combining_result,
-        ) in combining.append.items():
+    def _combine_append(
+        append_map: Mapping[str, str],
+        *,
+        base_mnemonic: str,
+        base_result: str,
+    ) -> None:
+        for combining_mnemonic, combining_result in append_map.items():
             combined_result = unicodedata.normalize(
-                "NFC", result + combining_result
+                "NFC", base_result + combining_result
             )
             if combined_result not in _known_sequences_and_prefixes():
                 continue
-            combined_mnemonic = mnemonic + combining_mnemonic
+            combined_mnemonic = base_mnemonic + combining_mnemonic
             _add(
                 combined_mnemonic,
                 combined_result,
                 is_known=combined_result in known_sequences(),
             )
 
-        if len(result) != 1:
-            continue
+    def _combine_name_regex_replace(
+        name_regex_replace: Mapping[
+            str, Collection[tuple[re.Pattern[str], str]]
+        ],
+        *,
+        base_mnemonic: str,
+        base_result: str,
+    ) -> None:
+        if len(base_result) != 1:
+            return
         # TODO: dseomn - Check the control names from NameAliases.txt, so that
         # name_regex_replace can be used for
         # https://en.wikipedia.org/wiki/Control_Pictures
-        result_name = icu.Char.charName(
-            result, icu.UCharNameChoice.CHAR_NAME_ALIAS
-        ) or unicodedata.name(result, "")
-        if not result_name:
-            continue
-
-        for (
-            combining_mnemonic,
-            rules,
-        ) in combining.name_regex_replace.items():
+        base_result_name = icu.Char.charName(
+            base_result, icu.UCharNameChoice.CHAR_NAME_ALIAS
+        ) or unicodedata.name(base_result, "")
+        if not base_result_name:
+            return
+        for combining_mnemonic, rules in name_regex_replace.items():
             for combining_pattern, combining_replacement in rules:
-                match = combining_pattern.fullmatch(result_name)
+                match = combining_pattern.fullmatch(base_result_name)
                 if match is None:
                     continue
                 combined_name = match.expand(combining_replacement)
@@ -265,8 +270,21 @@ def _apply_combining(map_: _Map, combining: data.Combining) -> _Map:
                     combined_raw = _lookup_correct_name(combined_name)
                 except KeyError:
                     continue
-                combined_mnemonic = mnemonic + combining_mnemonic
+                combined_mnemonic = base_mnemonic + combining_mnemonic
                 _add(combined_mnemonic, combined_raw)
+
+    while combining_to_check:
+        mnemonic, result = combining_to_check.popleft()
+        _combine_append(
+            combining.append,
+            base_mnemonic=mnemonic,
+            base_result=result,
+        )
+        _combine_name_regex_replace(
+            combining.name_regex_replace,
+            base_mnemonic=mnemonic,
+            base_result=result,
+        )
 
     return combined_map
 
