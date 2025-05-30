@@ -168,6 +168,24 @@ example:
     </tbody>
     <tbody>
         <tr>
+            <th rowspan="2" scope="rowgroup">
+              <a href="unimnim/data/Hang.toml">
+                Hangul
+              </a>
+            </th>
+            <td rowspan="2">
+              <kbd>hg</kbd>
+            </td>
+          <td><kbd>ga</kbd></td>
+          <td dir="auto">가</td>
+        </tr>
+        <tr>
+          <td><kbd>gag</kbd></td>
+          <td dir="auto">각</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
             <th rowspan="3" scope="rowgroup">
               <a href="unimnim/data/Hano.toml">
                 Hanunoo

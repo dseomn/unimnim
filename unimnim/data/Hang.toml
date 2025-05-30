@@ -1,0 +1,110 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Hangul
+
+prefix = "hg"
+
+[examples]
+"ga" = "U+AC00 HANGUL SYLLABLE GA: 가"
+"gag" = "U+AC01 HANGUL SYLLABLE GAG: 각"
+
+[name_maps.choseong]
+"" = "HANGUL CHOSEONG "
+
+[name_maps.jungseong]
+"" = "HANGUL JUNGSEONG "
+
+[name_maps.jongseong]
+"" = "HANGUL JONGSEONG "
+
+[name_maps.hyphen_empty]
+"" = "-"
+
+[name_maps.hyphen_explicit]
+# This prevents duplicates between "o-e" and "oe".
+"-" = "-"
+
+[name_maps.consonants]
+"g" = "KIYEOK"
+"kk" = "SSANGKIYEOK"
+"n" = "NIEUN"
+"d" = "TIKEUT"
+"tt" = "SSANGTIKEUT"
+"r" = "RIEUL"
+"m" = "MIEUM"
+"b" = "PIEUP"
+"pp" = "SSANGPIEUP"
+"s" = "SIOS"
+"ss" = "SSANGSIOS"
+"'" = "IEUNG"
+"j" = "CIEUC"
+"jj" = "SSANGCIEUC"
+"ch" = "CHIEUCH"
+"k" = "KHIEUKH"
+"t" = "THIEUTH"
+"p" = "PHIEUPH"
+"h" = "HIEUH"
+
+[name_maps.vowels]
+"a" = "A"
+"ae" = "AE"
+"ya" = "YA"
+"yae" = "YAE"
+"eo" = "EO"
+"e" = "E"
+"yeo" = "YEO"
+"ye" = "YE"
+"o" = "O"
+"wa" = "WA"
+"wae" = "WAE"
+"oe" = "OE"
+"yo" = "YO"
+"u" = "U"
+"wo" = "WEO"
+"we" = "WE"
+"wi" = "WI"
+"yu" = "YU"
+"eu" = "EU"
+"ui" = "YI"
+"i" = "I"
+
+[maps.empty_for_combining]
+"_" = ""  # empty-for-combining
+
+[expressions]
+choseong = [
+  "union",
+  ["name_maps", "choseong", "consonants"],
+  ["name_maps", "choseong", "consonants", "hyphen_empty", "consonants"],
+  ["name_maps", "choseong", "consonants", "hyphen_empty", "consonants", "hyphen_empty", "consonants"],
+]
+jungseong = [
+  "union",
+  ["name_maps", "jungseong", "vowels"],
+  ["name_maps", "jungseong", "vowels", "hyphen_explicit", "vowels"],
+  ["name_maps", "jungseong", "vowels", "hyphen_explicit", "vowels", "hyphen_explicit", "vowels"],
+]
+jongseong = [
+  "union",
+  ["name_maps", "jongseong", "consonants"],
+  ["name_maps", "jongseong", "consonants", "hyphen_empty", "consonants"],
+  ["name_maps", "jongseong", "consonants", "hyphen_empty", "consonants", "hyphen_empty", "consonants"],
+]
+main = [
+  "union",
+  ["product", ["expression", "choseong"], ["map", "empty_for_combining"]],
+  ["product", ["map", "empty_for_combining"], ["expression", "jungseong"]],
+  ["product", ["map", "empty_for_combining"], ["expression", "jongseong"]],
+  [
+    "combine",
+    [
+      "combine",
+      ["expression", "choseong"],
+      "exclude_base",
+      ["append", ["expression", "jungseong"]],
+    ],
+    ["append", ["expression", "jongseong"]],
+  ],
+]
