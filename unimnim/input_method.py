@@ -188,22 +188,25 @@ def _names_maps_to_map(
     return map_
 
 
-def _cartesian_product(a: _Map, b: _Map, /) -> _Map:
-    """Returns the cartesian product of two maps."""
-    result = _Map(group_id=a.group_id)
-    for a_mnemonic, a_result in a.all_.items():
-        a_known = a_mnemonic in a.known or not a_result
-        for b_mnemonic, b_result in b.all_.items():
-            b_known = b_mnemonic in b.known or not b_result
-            combined_result = unicodedata.normalize("NFC", a_result + b_result)
-            result.add(
-                a_mnemonic + b_mnemonic,
-                combined_result,
-                is_known=(
-                    (a_known and b_known)
-                    or combined_result in known_sequences()
-                ),
+def _cartesian_product(*maps: _Map, group_id: str) -> _Map:
+    """Returns the cartesian product of maps."""
+    result = _Map(group_id=group_id)
+    for items in itertools.product(*(map_.all_.items() for map_ in maps)):
+        mnemonic_parts = []
+        result_parts = []
+        parts_known = []
+        for map_index, (mnemonic_part, result_part) in enumerate(items):
+            mnemonic_parts.append(mnemonic_part)
+            result_parts.append(result_part)
+            parts_known.append(
+                mnemonic_part in maps[map_index].known or not result_part
             )
+        combined_result = unicodedata.normalize("NFC", "".join(result_parts))
+        result.add(
+            "".join(mnemonic_parts),
+            combined_result,
+            is_known=all(parts_known) or combined_result in known_sequences(),
+        )
     return result
 
 
@@ -335,11 +338,10 @@ def _evaluate_expression(
         case ["expression", str() as ref_name]:
             return state.expressions.get(ref_name)
         case ["product", *operands]:
-            map_ = _Map(group_id=group_id)
-            map_.add("", "")
-            for operand in operands:
-                map_ = _cartesian_product(map_, evaluate(operand))
-            return map_
+            return _cartesian_product(
+                *map(evaluate, operands),
+                group_id=group_id,
+            )
         case ["union", *operands]:
             map_ = _Map(group_id=group_id)
             for operand in operands:
