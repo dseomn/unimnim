@@ -25,6 +25,7 @@ test = [
   "mypy",
   "pytest",
   "pytest-cov",
+  "pytest-xdist",
 ]
 
 [project.scripts]
@@ -62,6 +63,8 @@ addopts = """\
   --cov=. \
   --cov-branch \
   --cov-report=term-missing \
+  --numprocesses=auto \
+  --dist=worksteal \
   """
 
 [tool.setuptools.packages.find]
