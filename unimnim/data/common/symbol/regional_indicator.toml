@@ -10,10 +10,10 @@ prefix = "ZRI"
 [examples]
 "UN" = "U+1F1FA REGIONAL INDICATOR SYMBOL LETTER U, U+1F1F3 REGIONAL INDICATOR SYMBOL LETTER N: 🇺🇳"
 
-[maps.main]
+[maps.empty_for_combining]
 "" = ""  # empty-for-combining
 
-[maps.combining]
+[maps.main]
 "A" = "U+1F1E6 REGIONAL INDICATOR SYMBOL LETTER A"
 "B" = "U+1F1E7 REGIONAL INDICATOR SYMBOL LETTER B"
 "C" = "U+1F1E8 REGIONAL INDICATOR SYMBOL LETTER C"
@@ -42,4 +42,4 @@ prefix = "ZRI"
 "Z" = "U+1F1FF REGIONAL INDICATOR SYMBOL LETTER Z"
 
 [expressions]
-main = ["combine", ["map", "main"], ["append", ["map", "combining"]]]
+main = ["combine", ["map", "empty_for_combining"], ["append", ["map", "main"]]]
