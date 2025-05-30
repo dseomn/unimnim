@@ -127,15 +127,10 @@ consonants = [
 ]
 main = [
   "union",
+  ["product", ["map", "empty_for_combining"], ["map", "consonants_combining"]],
   ["product", ["map", "empty_for_combining"], ["map", "virama"]],
   ["product", ["map", "empty_for_combining"], ["map", "vowel_signs"]],
   ["product", ["map", "empty_for_combining"], ["map", "after_vowels"]],
-  [
-    "combine",
-    ["map", "empty_for_combining"],
-    "exclude_base",
-    ["append", ["map", "consonants_combining"]],
-  ],
   ["map", "main"],
   ["map", "independent_vowels"],
   ["product", ["map", "independent_vowels"], ["map", "after_vowels"]],
