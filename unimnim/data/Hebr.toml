@@ -39,6 +39,11 @@ prefix = "he"
 "sh" = "U+05E9 HEBREW LETTER SHIN: ש"
 "T" = "U+05EA HEBREW LETTER TAV: ת"
 
+[maps.yiddish_consonants]
+"ww" = "U+05F0 HEBREW LIGATURE YIDDISH DOUBLE VAV: װ"
+"wy" = "U+05F1 HEBREW LIGATURE YIDDISH VAV YOD: ױ"
+"yy" = "U+05F2 HEBREW LIGATURE YIDDISH DOUBLE YOD: ײ"
+
 [maps.consonants_combining]
 "." = "U+05BC HEBREW POINT DAGESH OR MAPIQ [combining]: בּ"
 "-" = "U+05BF HEBREW POINT RAFE [combining]: פֿ"
@@ -58,12 +63,6 @@ prefix = "he"
 "o" = "U+05B9 HEBREW POINT HOLAM [combining]: אֹ"
 "u" = "U+05BB HEBREW POINT QUBUTS [combining]: אֻ"
 
-[maps.letters]
-"ww" = "U+05F0 HEBREW LIGATURE YIDDISH DOUBLE VAV: װ"
-"wy" = "U+05F1 HEBREW LIGATURE YIDDISH VAV YOD: ױ"
-"yy" = "U+05F2 HEBREW LIGATURE YIDDISH DOUBLE YOD: ײ"
-"yya" = "U+05F2 HEBREW LIGATURE YIDDISH DOUBLE YOD, U+05B7 HEBREW POINT PATAH: ײַ"
-
 [maps.punctuation]
 "-" = "U+05BE HEBREW PUNCTUATION MAQAF: ־"
 "'" = "U+05F3 HEBREW PUNCTUATION GERESH: ׳"
@@ -82,11 +81,21 @@ consonants = [
   ["append", ["map", "consonants_combining"]],
   ["name_regex_replace", "consonants"],
 ]
+yiddish_consonants = [
+  "combine",
+  ["map", "yiddish_consonants"],
+  ["append", ["map", "consonants_combining"]],
+  ["name_regex_replace", "consonants"],
+]
 letters = [
   "union",
   ["expression", "consonants"],
   ["product", ["expression", "consonants"], ["map", "vowels"]],
-  ["map", "letters"],
+  [
+    "combine",
+    ["expression", "yiddish_consonants"],
+    ["append", ["map", "vowels"]],
+  ],
 ]
 main = [
   "union",
