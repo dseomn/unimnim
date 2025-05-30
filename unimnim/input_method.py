@@ -4,12 +4,11 @@
 """Generates the input method from data."""
 
 import collections
-from collections.abc import Collection, Iterable, Mapping, Sequence, Set
+from collections.abc import Iterable, Mapping, Sequence, Set
 import dataclasses
 import functools
 import itertools
 import pprint
-import re
 from typing import Any
 import unicodedata
 
@@ -243,9 +242,7 @@ def _apply_combining(map_: _Map, combining: data.Combining) -> _Map:
             )
 
     def _combine_name_regex_replace(
-        name_regex_replace: Mapping[
-            str, Collection[tuple[re.Pattern[str], str]]
-        ],
+        name_regex_replace_map: data.NameRegexReplaceMap,
         *,
         base_mnemonic: str,
         base_result: str,
@@ -260,7 +257,7 @@ def _apply_combining(map_: _Map, combining: data.Combining) -> _Map:
         ) or unicodedata.name(base_result, "")
         if not base_result_name:
             return
-        for combining_mnemonic, rules in name_regex_replace.items():
+        for combining_mnemonic, rules in name_regex_replace_map.items():
             for combining_pattern, combining_replacement in rules:
                 match = combining_pattern.fullmatch(base_result_name)
                 if match is None:

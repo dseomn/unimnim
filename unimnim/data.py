@@ -212,6 +212,9 @@ def _require_sorted_by_value_and_key(
     )
 
 
+type NameRegexReplaceMap = Mapping[str, Collection[tuple[re.Pattern[str], str]]]
+
+
 @dataclasses.dataclass(frozen=True, kw_only=True)
 class Combining:
     """Data for combining mnemonics.
@@ -222,9 +225,9 @@ class Combining:
     """
 
     append: Mapping[str, str] = dataclasses.field(default_factory=dict)
-    name_regex_replace: Mapping[
-        str, Collection[tuple[re.Pattern[str], str]]
-    ] = dataclasses.field(default_factory=dict)
+    name_regex_replace: NameRegexReplaceMap = dataclasses.field(
+        default_factory=dict
+    )
 
     def __post_init__(self) -> None:
         _require_sorted_by_value_and_key(self.append, name="combining.append")
