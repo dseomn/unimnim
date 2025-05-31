@@ -30,6 +30,8 @@ prefix = "E"
 [name_maps.vowels]
 "u" = "U"
 "i" = "I"
+"e" = "EE"
+"" = "E"
 "o" = "O"
 
 [expressions]
