@@ -10,4 +10,5 @@ reuse lint
 black --check --diff .
 isort --check --diff .
 mypy
+make -C tools
 pytest

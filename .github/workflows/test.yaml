@@ -22,7 +22,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        sudo apt-get install -y reuse
+        sudo apt-get install -y libm17n-dev reuse
         python -m pip install --upgrade pip
         pip install '.[test]'
     - name: Test
