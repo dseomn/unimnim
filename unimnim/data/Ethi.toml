@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Ge%CA%BDez_script
+
+prefix = "E"
+
+[name_maps.prefix]
+"" = "ETHIOPIC SYLLABLE "
+
+[name_maps.consonants]
+"l" = "L"
+"m" = "M"
+"r" = "R"
+"q" = "Q"
+"qw" = "QW"
+"b" = "B"
+"n" = "N"
+"k" = "K"
+"kw" = "KW"
+"w" = "W"
+"z" = "Z"
+"y" = "Y"
+"d" = "D"
+"g" = "G"
+"gw" = "GW"
+"f" = "F"
+
+[name_maps.vowels]
+"u" = "U"
+"i" = "I"
+"o" = "O"
+
+[expressions]
+main = ["name_maps", "prefix", "consonants", "vowels"]
