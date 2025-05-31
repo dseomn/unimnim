@@ -28,11 +28,15 @@ prefix = "E"
 "f" = "F"
 
 [name_maps.vowels]
+"a" = "A"
 "u" = "U"
 "i" = "I"
+"A" = "AA"
 "e" = "EE"
 "" = "E"
 "o" = "O"
+"wa" = "WA"
+"ja" = "YA"
 
 [expressions]
 main = ["name_maps", "prefix", "consonants", "vowels"]
