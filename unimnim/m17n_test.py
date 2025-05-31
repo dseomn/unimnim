@@ -8,6 +8,7 @@ import itertools
 import os
 import pathlib
 import subprocess
+from typing import Any
 
 import pytest
 
@@ -20,32 +21,46 @@ _START = ("A-\\",)
 _SEARCH_PREFIX_START = ("A-\\", "A-\\")
 
 
+# TODO: https://github.com/pytest-dev/pytest/issues/9216 - Delete this.
+def _param(
+    id: str,
+    *,
+    map_: Mapping[str, str],
+    keys: Sequence[str],
+    expected_candidates: Sequence[str] = (),
+    expected_preedit: str = "",
+    expected_committed: str = "",
+) -> Any:
+    return pytest.param(
+        map_,
+        keys,
+        expected_candidates,
+        expected_preedit,
+        expected_committed,
+        id=id,
+    )
+
+
 @pytest.mark.parametrize(
     "map_,keys,expected_candidates,expected_preedit,expected_committed",
     (
-        (
-            # No command, input method ignores key.
-            {"a": "b"},
-            ("a",),
-            (),
-            "",
-            "a",
+        _param(
+            "key_passed_through_with_no_command",
+            map_={"a": "b"},
+            keys=("a",),
+            expected_committed="a",
         ),
-        (
-            # Shows prompt when starting a mnemonic.
-            {"a": "b"},
-            _START,
-            (),
-            _PROMPT,
-            "",
+        _param(
+            "start",
+            map_={"a": "b"},
+            keys=_START,
+            expected_preedit=_PROMPT,
         ),
-        (
-            # Commits the result.
-            {"a": "b"},
-            (*_START, "a"),
-            (),
-            "",
-            "b",
+        _param(
+            "commits_when_no_other_possible_mnemonics",
+            map_={"a": "b"},
+            keys=(*_START, "a"),
+            expected_committed="b",
         ),
     ),
 )
