@@ -14,34 +14,25 @@ prefix = "E"
 "m" = "M"
 "r" = "R"
 "q" = "Q"
+"qw" = "QW"
 "b" = "B"
 "n" = "N"
 "k" = "K"
+"kw" = "KW"
 "w" = "W"
 "z" = "Z"
 "y" = "Y"
 "d" = "D"
 "g" = "G"
+"gw" = "GW"
 "f" = "F"
 
-[name_maps.labiovelar_consonants]
-"qw" = "QW"
-"kw" = "KW"
-"gw" = "GW"
-
-[name_maps.vowels_anywhere]
+[name_maps.vowels]
+"u" = "U"
 "i" = "I"
 "e" = "EE"
 "" = "E"
-
-[name_maps.vowels_not_after_labiovelar]
-"u" = "U"
 "o" = "O"
 
 [expressions]
-main = [
-  "union",
-  ["name_maps", "prefix", "consonants", "vowels_anywhere"],
-  ["name_maps", "prefix", "consonants", "vowels_not_after_labiovelar"],
-  ["name_maps", "prefix", "labiovelar_consonants", "vowels_anywhere"],
-]
+main = ["name_maps", "prefix", "consonants", "vowels"]
