@@ -67,5 +67,37 @@ prefix = "E"
 "wa" = "WA"
 "ja" = "YA"
 
+[maps.main]
+"_" = "U+1361 ETHIOPIC WORDSPACE: ፡"
+"." = "U+1362 ETHIOPIC FULL STOP: ።"
+"," = "U+1363 ETHIOPIC COMMA: ፣"
+";" = "U+1364 ETHIOPIC SEMICOLON: ፤"
+":" = "U+1365 ETHIOPIC COLON: ፥"
+"?" = "U+1367 ETHIOPIC QUESTION MARK: ፧"
+"1" = "U+1369 ETHIOPIC DIGIT ONE: ፩"
+"2" = "U+136A ETHIOPIC DIGIT TWO: ፪"
+"3" = "U+136B ETHIOPIC DIGIT THREE: ፫"
+"4" = "U+136C ETHIOPIC DIGIT FOUR: ፬"
+"5" = "U+136D ETHIOPIC DIGIT FIVE: ፭"
+"6" = "U+136E ETHIOPIC DIGIT SIX: ፮"
+"7" = "U+136F ETHIOPIC DIGIT SEVEN: ፯"
+"8" = "U+1370 ETHIOPIC DIGIT EIGHT: ፰"
+"9" = "U+1371 ETHIOPIC DIGIT NINE: ፱"
+"10" = "U+1372 ETHIOPIC NUMBER TEN: ፲"
+"20" = "U+1373 ETHIOPIC NUMBER TWENTY: ፳"
+"30" = "U+1374 ETHIOPIC NUMBER THIRTY: ፴"
+"40" = "U+1375 ETHIOPIC NUMBER FORTY: ፵"
+"50" = "U+1376 ETHIOPIC NUMBER FIFTY: ፶"
+"60" = "U+1377 ETHIOPIC NUMBER SIXTY: ፷"
+"70" = "U+1378 ETHIOPIC NUMBER SEVENTY: ፸"
+"80" = "U+1379 ETHIOPIC NUMBER EIGHTY: ፹"
+"90" = "U+137A ETHIOPIC NUMBER NINETY: ፺"
+"100" = "U+137B ETHIOPIC NUMBER HUNDRED: ፻"
+"10k" = "U+137C ETHIOPIC NUMBER TEN THOUSAND: ፼"  # si-prefix
+
 [expressions]
-main = ["name_maps", "prefix", "consonants", "vowels"]
+main = [
+  "union",
+  ["name_maps", "prefix", "consonants", "vowels"],
+  ["map", "main"],
+]
