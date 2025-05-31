@@ -380,28 +380,42 @@ def test_generate_map_error(
             {"la": "a"},
         ),
         (
-            # combine append works and includes the base map by default.
+            # Unknown sequences can be produced if they're explicitly in a map.
             {
                 "latin": data.Group(
                     name="",
                     prefix="l",
                     maps=dict(
-                        main={"a": "a"},
-                        append={"'": "\N{COMBINING ACUTE ACCENT}"},
+                        main={
+                            "a": (
+                                "a\N{HEBREW POINT DAGESH OR MAPIQ}"
+                                "\N{ARABIC MADDAH ABOVE}"
+                            ),
+                        },
                     ),
-                    expressions=dict(
-                        main=[
-                            "combine",
-                            ["map", "main"],
-                            ["append", ["map", "append"]],
-                        ]
-                    ),
+                    expressions=dict(main=["map", "main"]),
                 ),
             },
             {
-                "la": "a",
-                "la'": "\N{LATIN SMALL LETTER A WITH ACUTE}",
+                "la": (
+                    "a\N{HEBREW POINT DAGESH OR MAPIQ}\N{ARABIC MADDAH ABOVE}"
+                ),
             },
+        ),
+        (
+            # "expression" references an expression.
+            {
+                "latin": data.Group(
+                    name="",
+                    prefix="l",
+                    maps=dict(main={"a": "a"}),
+                    expressions=dict(
+                        other=["map", "main"],
+                        main=["expression", "other"],
+                    ),
+                ),
+            },
+            {"la": "a"},
         ),
         (
             # combine exclude_base works.
@@ -424,6 +438,30 @@ def test_generate_map_error(
                 ),
             },
             {"la'": "\N{LATIN SMALL LETTER A WITH ACUTE}"},
+        ),
+        (
+            # combine append works and includes the base map by default.
+            {
+                "latin": data.Group(
+                    name="",
+                    prefix="l",
+                    maps=dict(
+                        main={"a": "a"},
+                        append={"'": "\N{COMBINING ACUTE ACCENT}"},
+                    ),
+                    expressions=dict(
+                        main=[
+                            "combine",
+                            ["map", "main"],
+                            ["append", ["map", "append"]],
+                        ]
+                    ),
+                ),
+            },
+            {
+                "la": "a",
+                "la'": "\N{LATIN SMALL LETTER A WITH ACUTE}",
+            },
         ),
         (
             # Combining characters can stack, in any valid order.
@@ -516,29 +554,6 @@ def test_generate_map_error(
                 "lj~": "j\N{COMBINING TILDE}",
                 # Note that "lj." is not present.
                 "lj.~": "j\N{COMBINING DOT ABOVE}\N{COMBINING TILDE}",
-            },
-        ),
-        (
-            # Unknown sequences can be produced if they're explicitly in a map.
-            {
-                "latin": data.Group(
-                    name="",
-                    prefix="l",
-                    maps=dict(
-                        main={
-                            "a": (
-                                "a\N{HEBREW POINT DAGESH OR MAPIQ}"
-                                "\N{ARABIC MADDAH ABOVE}"
-                            ),
-                        },
-                    ),
-                    expressions=dict(main=["map", "main"]),
-                ),
-            },
-            {
-                "la": (
-                    "a\N{HEBREW POINT DAGESH OR MAPIQ}\N{ARABIC MADDAH ABOVE}"
-                ),
             },
         ),
         (
@@ -765,6 +780,62 @@ def test_generate_map_error(
             {"lo": "o"},
         ),
         (
+            # "product" works and can produce unkown sequences.
+            {
+                "latin": data.Group(
+                    name="",
+                    prefix="l",
+                    maps=dict(
+                        consonants={
+                            "b": "b",
+                            "c": "c",
+                        },
+                        vowels={
+                            "a": "a",
+                            "e": "e",
+                        },
+                        final_consonants={
+                            "d": "d",
+                        },
+                    ),
+                    expressions=dict(
+                        main=[
+                            "product",
+                            ["map", "consonants"],
+                            ["map", "vowels"],
+                            ["map", "final_consonants"],
+                        ],
+                    ),
+                ),
+            },
+            {
+                "lbad": "bad",
+                "lbed": "bed",
+                "lcad": "cad",
+                "lced": "ced",
+            },
+        ),
+        (
+            # "union" works.
+            {
+                "latin": data.Group(
+                    name="",
+                    prefix="l",
+                    maps=dict(
+                        one={"a": "a"},
+                        two={"b": "b"},
+                    ),
+                    expressions=dict(
+                        main=["union", ["map", "one"], ["map", "two"]],
+                    ),
+                ),
+            },
+            {
+                "la": "a",
+                "lb": "b",
+            },
+        ),
+        (
             # Mnemonics can overlap.
             {
                 "latin": data.Group(
@@ -977,77 +1048,6 @@ def test_generate_map_error(
                     "\N{REGIONAL INDICATOR SYMBOL LETTER U}"
                     "\N{REGIONAL INDICATOR SYMBOL LETTER N}"
                 ),
-            },
-        ),
-        (
-            # "expression" references an expression.
-            {
-                "latin": data.Group(
-                    name="",
-                    prefix="l",
-                    maps=dict(main={"a": "a"}),
-                    expressions=dict(
-                        other=["map", "main"],
-                        main=["expression", "other"],
-                    ),
-                ),
-            },
-            {"la": "a"},
-        ),
-        (
-            # "product" works and can produce unkown sequences.
-            {
-                "latin": data.Group(
-                    name="",
-                    prefix="l",
-                    maps=dict(
-                        consonants={
-                            "b": "b",
-                            "c": "c",
-                        },
-                        vowels={
-                            "a": "a",
-                            "e": "e",
-                        },
-                        final_consonants={
-                            "d": "d",
-                        },
-                    ),
-                    expressions=dict(
-                        main=[
-                            "product",
-                            ["map", "consonants"],
-                            ["map", "vowels"],
-                            ["map", "final_consonants"],
-                        ],
-                    ),
-                ),
-            },
-            {
-                "lbad": "bad",
-                "lbed": "bed",
-                "lcad": "cad",
-                "lced": "ced",
-            },
-        ),
-        (
-            # "union" works.
-            {
-                "latin": data.Group(
-                    name="",
-                    prefix="l",
-                    maps=dict(
-                        one={"a": "a"},
-                        two={"b": "b"},
-                    ),
-                    expressions=dict(
-                        main=["union", ["map", "one"], ["map", "two"]],
-                    ),
-                ),
-            },
-            {
-                "la": "a",
-                "lb": "b",
             },
         ),
         (
