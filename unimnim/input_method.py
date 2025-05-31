@@ -188,28 +188,6 @@ def _names_maps_to_map(
     return map_
 
 
-def _cartesian_product(*maps: _Map, group_id: str) -> _Map:
-    """Returns the cartesian product of maps."""
-    result = _Map(group_id=group_id)
-    for items in itertools.product(*(map_.all_.items() for map_ in maps)):
-        mnemonic_parts = []
-        result_parts = []
-        parts_known = []
-        for map_index, (mnemonic_part, result_part) in enumerate(items):
-            mnemonic_parts.append(mnemonic_part)
-            result_parts.append(result_part)
-            parts_known.append(
-                mnemonic_part in maps[map_index].known or not result_part
-            )
-        combined_result = unicodedata.normalize("NFC", "".join(result_parts))
-        result.add(
-            "".join(mnemonic_parts),
-            combined_result,
-            is_known=all(parts_known) or combined_result in known_sequences(),
-        )
-    return result
-
-
 def _apply_combining(
     base: _Map,
     *,
@@ -294,6 +272,28 @@ def _apply_combining(
             )
 
     return combined_map
+
+
+def _cartesian_product(*maps: _Map, group_id: str) -> _Map:
+    """Returns the cartesian product of maps."""
+    result = _Map(group_id=group_id)
+    for items in itertools.product(*(map_.all_.items() for map_ in maps)):
+        mnemonic_parts = []
+        result_parts = []
+        parts_known = []
+        for map_index, (mnemonic_part, result_part) in enumerate(items):
+            mnemonic_parts.append(mnemonic_part)
+            result_parts.append(result_part)
+            parts_known.append(
+                mnemonic_part in maps[map_index].known or not result_part
+            )
+        combined_result = unicodedata.normalize("NFC", "".join(result_parts))
+        result.add(
+            "".join(mnemonic_parts),
+            combined_result,
+            is_known=all(parts_known) or combined_result in known_sequences(),
+        )
+    return result
 
 
 @dataclasses.dataclass(frozen=True)
