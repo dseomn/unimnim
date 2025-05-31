@@ -6,6 +6,9 @@
 
 prefix = "E"
 
+[examples]
+"ha" = "U+1200 ETHIOPIC SYLLABLE HA: ሀ"
+
 [name_maps.prefix]
 "" = "ETHIOPIC SYLLABLE "
 

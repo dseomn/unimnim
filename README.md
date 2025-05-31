@@ -137,6 +137,20 @@ example:
     <tbody>
         <tr>
             <th rowspan="1" scope="rowgroup">
+              <a href="unimnim/data/Ethi.toml">
+                Ethiopic
+              </a>
+            </th>
+            <td rowspan="1">
+              <kbd>E</kbd>
+            </td>
+          <td><kbd>ha</kbd></td>
+          <td dir="auto">ሀ</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <th rowspan="1" scope="rowgroup">
               <a href="unimnim/data/Goth.toml">
                 Gothic
               </a>
