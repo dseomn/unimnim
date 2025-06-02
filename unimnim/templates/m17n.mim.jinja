@@ -46,7 +46,11 @@
      # This makes the map match all prefixes so that (shift init) happens rather
      # than starting the map again.
      #}
-    ({{ prefix | m17n_mtext }})
+    ({{ prefix | m17n_mtext }}
+      {#-
+       # TODO: https://savannah.nongnu.org/bugs/index.php?67181 - Delete this.
+       #}
+      (delete @<) prompt (mark PROMPT) {{ prefix | m17n_mtext }})
     {%- endif %}
     {%- endfor %}
     )

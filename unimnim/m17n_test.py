@@ -126,6 +126,12 @@ def _param(
             commit="bd",
         ),
         _param(
+            "map_done_and_prefix_then_longer_prefix_then_invalid_key",
+            map_={"a": "b", "aaa": "c"},
+            keys=(*_START, "a", "a", "d"),
+            commit="aad",
+        ),
+        _param(
             "map_done_and_prefix_then_unrelated_prefix",
             map_={"a": "b", "aa": "c", "dd": "e"},
             keys=(*_START, "a", "f"),
