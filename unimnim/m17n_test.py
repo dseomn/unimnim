@@ -28,18 +28,18 @@ def _param(
     *,
     map_: Mapping[str, str],
     keys: Sequence[str],
+    commit: str = "",
     candidates_shown: bool | None = None,
     candidates: Sequence[str] = (),
     preedit: str = "",
-    commit: str = "",
 ) -> Any:
     return pytest.param(
         map_,
         keys,
+        commit,
         bool(candidates) if candidates_shown is None else candidates_shown,
         candidates,
         preedit,
-        commit,
         id=id,
     )
 
@@ -49,10 +49,10 @@ def _param(
         (
             "map_",
             "keys",
+            "commit",
             "candidates_shown",
             "candidates",
             "preedit",
-            "commit",
         )
     ),
     (
@@ -145,8 +145,8 @@ def _param(
             "search_prefix_invalid_key",
             map_={"a": "b"},
             keys=(*_SEARCH_PREFIX_START, "c"),
-            candidates_shown=True,  # Not useful, but not a problem.
             commit="c",
+            candidates_shown=True,  # Not useful, but not a problem.
         ),
         _param(
             "search_prefix_done",
@@ -218,10 +218,10 @@ def _param(
 def test_m17n_input_method(
     map_: Mapping[str, str],
     keys: Sequence[str],
+    commit: str,
     candidates_shown: bool,
     candidates: Sequence[str],
     preedit: str,
-    commit: str,
     tmp_path: pathlib.Path,
 ) -> None:
     (tmp_path / "unimnim.mim").write_text(
@@ -263,14 +263,14 @@ def test_m17n_input_method(
             "-n",
             "unimnim",
             *itertools.chain.from_iterable(("-i", key) for key in keys),
+            "-t",
+            commit,
             *(("-C",) if candidates_shown else ()),
             *itertools.chain.from_iterable(
                 ("-c", candidate) for candidate in candidates
             ),
             "-p",
             preedit,
-            "-t",
-            commit,
         ),
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,

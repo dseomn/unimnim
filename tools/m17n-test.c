@@ -50,14 +50,14 @@ int main(int argc, char *argv[]) {
   size_t input_count = 0;
 
   // Expected results.
+  const char *expected_committed = "";
   bool expected_candidates_shown = false;
   const char *expected_candidates[argc];
   size_t expected_candidates_count = 0;
   const char *expected_preedit = "";
-  const char *expected_committed = "";
 
   int option;
-  while ((option = getopt(argc, argv, "l:n:i:Cc:p:t:")) != -1) {
+  while ((option = getopt(argc, argv, "l:n:i:t:Cc:p:")) != -1) {
     switch (option) {
     case 'l':
       language = optarg;
@@ -68,6 +68,9 @@ int main(int argc, char *argv[]) {
     case 'i':
       input[input_count++] = optarg;
       break;
+    case 't':
+      expected_committed = optarg;
+      break;
     case 'C':
       expected_candidates_shown = true;
       break;
@@ -76,9 +79,6 @@ int main(int argc, char *argv[]) {
       break;
     case 'p':
       expected_preedit = optarg;
-      break;
-    case 't':
-      expected_committed = optarg;
       break;
     default:
       fprintf(stderr, "Error parsing options.\n");
@@ -129,6 +129,10 @@ int main(int argc, char *argv[]) {
     }
   }
 
+  if (!assert_mtext_equal("committed", committed, expected_committed)) {
+    retval = 1;
+  }
+
   if ((bool)ic->candidate_show != expected_candidates_shown) {
     fprintf(stderr, "Error: candidates %s shown.\n",
             ic->candidate_show ? "were" : "were not");
@@ -172,10 +176,6 @@ int main(int argc, char *argv[]) {
   }
 
   if (!assert_mtext_equal("preedit", ic->preedit, expected_preedit)) {
-    retval = 1;
-  }
-
-  if (!assert_mtext_equal("committed", committed, expected_committed)) {
     retval = 1;
   }
 
