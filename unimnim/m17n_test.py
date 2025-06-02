@@ -29,7 +29,6 @@ def _param(
     map_: Mapping[str, str],
     keys: Sequence[str],
     commit: str = "",
-    candidates_shown: bool | None = None,
     candidates: Sequence[str] = (),
     preedit: str = "",
 ) -> Any:
@@ -37,7 +36,6 @@ def _param(
         map_,
         keys,
         commit,
-        bool(candidates) if candidates_shown is None else candidates_shown,
         candidates,
         preedit,
         id=id,
@@ -50,7 +48,6 @@ def _param(
             "map_",
             "keys",
             "commit",
-            "candidates_shown",
             "candidates",
             "preedit",
         )
@@ -158,7 +155,6 @@ def _param(
             map_={"a": "b"},
             keys=(*_SEARCH_PREFIX_START, "c"),
             commit="c",
-            candidates_shown=True,  # Not useful, but not a problem.
         ),
         _param(
             "search_prefix_done",
@@ -255,7 +251,6 @@ def test_m17n_input_method(
     map_: Mapping[str, str],
     keys: Sequence[str],
     commit: str,
-    candidates_shown: bool,
     candidates: Sequence[str],
     preedit: str,
     tmp_path: pathlib.Path,
@@ -301,7 +296,7 @@ def test_m17n_input_method(
             *itertools.chain.from_iterable(("-i", key) for key in keys),
             "-t",
             commit,
-            *(("-C",) if candidates_shown else ()),
+            *(("-C",) if candidates else ()),
             *itertools.chain.from_iterable(
                 ("-c", candidate) for candidate in candidates
             ),
