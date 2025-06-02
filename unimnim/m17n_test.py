@@ -28,6 +28,7 @@ def _param(
     *,
     map_: Mapping[str, str],
     keys: Sequence[str],
+    expected_candidates_shown: bool | None = None,
     expected_candidates: Sequence[str] = (),
     expected_preedit: str = "",
     expected_committed: str = "",
@@ -35,6 +36,11 @@ def _param(
     return pytest.param(
         map_,
         keys,
+        (
+            bool(expected_candidates)
+            if expected_candidates_shown is None
+            else expected_candidates_shown
+        ),
         expected_candidates,
         expected_preedit,
         expected_committed,
@@ -43,7 +49,16 @@ def _param(
 
 
 @pytest.mark.parametrize(
-    "map_,keys,expected_candidates,expected_preedit,expected_committed",
+    ",".join(
+        (
+            "map_",
+            "keys",
+            "expected_candidates_shown",
+            "expected_candidates",
+            "expected_preedit",
+            "expected_committed",
+        )
+    ),
     (
         _param(
             "no_command",
@@ -123,6 +138,7 @@ def _param(
 def test_m17n_input_method(
     map_: Mapping[str, str],
     keys: Sequence[str],
+    expected_candidates_shown: bool,
     expected_candidates: Sequence[str],
     expected_preedit: str,
     expected_committed: str,
@@ -167,7 +183,7 @@ def test_m17n_input_method(
             "-n",
             "unimnim",
             *itertools.chain.from_iterable(("-i", key) for key in keys),
-            *(("-C",) if expected_candidates else ()),
+            *(("-C",) if expected_candidates_shown else ()),
             *itertools.chain.from_iterable(
                 ("-c", candidate) for candidate in expected_candidates
             ),
