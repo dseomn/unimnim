@@ -58,7 +58,7 @@ def _param(
             expected_preedit=_PROMPT,
         ),
         _param(
-            "commits_when_no_other_possible_mnemonics",
+            "commits_when_no_other_possibilities",
             map_={"a": "b"},
             keys=(*_START, "a"),
             expected_committed="b",
