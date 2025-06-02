@@ -8,14 +8,15 @@ import itertools
 import os
 import pathlib
 import subprocess
+import textwrap
 from typing import Any
 
 import pytest
 
 from unimnim import input_method
 
-_PROMPT = "·"
-_SEARCH_PREFIX_PROMPT = "·"
+_PROMPT = "[prompt]"
+_SEARCH_PREFIX_PROMPT = "[search-prefix-prompt]"
 
 _START = ("A-\\",)
 _SEARCH_PREFIX_START = ("A-\\", "A-\\")
@@ -89,6 +90,20 @@ def test_m17n_input_method(
             map=map_,
             prefix_map=input_method.generate_prefix_map(map_),
             version="no-version-test-only",
+        )
+    )
+    (tmp_path / "config.mic").write_text(
+        textwrap.dedent(
+            f"""
+            ((input-method t unimnim)
+             (variable
+              (prompt nil {input_method.m17n_mtext(_PROMPT)})
+              (search-prefix-prompt
+               nil
+               {input_method.m17n_mtext(_SEARCH_PREFIX_PROMPT)})
+              )
+             )
+            """
         )
     )
     assert __spec__.origin is not None
