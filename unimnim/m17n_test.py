@@ -44,7 +44,6 @@ def _param(
     )
 
 
-# TODO: test A-\ while preedit is open
 @pytest.mark.parametrize(
     ",".join(
         (
