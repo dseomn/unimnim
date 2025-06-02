@@ -33,8 +33,21 @@
 (map
   (starter (start prompt))
   (map
-    {%- for mnemonic, result in map.items() %}
-    ({{ mnemonic | m17n_mtext }} (delete @<) {{ result | m17n_mtext }})
+    {%- for prefix in prefix_map if prefix %}
+    {%- if prefix in map %}
+    ({{ prefix | m17n_mtext }} (delete @<) {{ map[prefix] | m17n_mtext }})
+    {%- else %}
+    {#-
+     # If the user types a prefix of a mnemonic that is not itself a full
+     # mnemonic, the pre-edit should be open to keep typing a full mnemonic. If
+     # they then type a key that makes the prefix invalid, it should commit and
+     # go back to the init state. However, if that key is the first key of any
+     # other mnemonic, it would instead start the map again from that point.
+     # This makes the map match all prefixes so that (shift init) happens rather
+     # than starting the map again.
+     #}
+    ({{ prefix | m17n_mtext }})
+    {%- endif %}
     {%- endfor %}
     )
 
@@ -67,7 +80,7 @@
     (search-prefix-starter (mark PROMPT) (shift search-prefix-map))
     )
   (map
-    (map (shift init))
+    (map (delete-prompt) (shift init))
     (nil (delete-prompt) (shift init))
     )
   (search-prefix-map

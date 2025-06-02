@@ -103,6 +103,12 @@ def _param(
             expected_committed="ac",
         ),
         _param(
+            "map_prefix_then_unrelated_prefix",
+            map_={"aa": "bb", "cc": "dd"},
+            keys=(*_START, "a", "c"),
+            expected_committed="ac",
+        ),
+        _param(
             "map_prefix_then_done",
             map_={"aa": "bb"},
             keys=(*_START, "a", "a"),
@@ -119,6 +125,12 @@ def _param(
             map_={"a": "b", "aa": "c"},
             keys=(*_START, "a", "d"),
             expected_committed="bd",
+        ),
+        _param(
+            "map_done_and_prefix_then_unrelated_prefix",
+            map_={"a": "b", "aa": "c", "dd": "e"},
+            keys=(*_START, "a", "f"),
+            expected_committed="bf",
         ),
         _param(
             "map_done_and_prefix_then_done",
@@ -167,6 +179,12 @@ def _param(
             expected_committed="bbc",
         ),
         _param(
+            "search_prefix_prefix_then_unrelated_prefix",
+            map_={"aa": "bb", "cc": "dd"},
+            keys=(*_SEARCH_PREFIX_START, "a", "c"),
+            expected_committed="bbc",
+        ),
+        _param(
             "search_prefix_prefix_then_done",
             map_={"aa": "bb"},
             keys=(*_SEARCH_PREFIX_START, "a", "a"),
@@ -185,6 +203,12 @@ def _param(
             map_={"a": "b", "aa": "c"},
             keys=(*_SEARCH_PREFIX_START, "a", "d"),
             expected_committed=f"bd",
+        ),
+        _param(
+            "search_prefix_done_and_prefix_then_unrelated_prefix",
+            map_={"a": "b", "aa": "c", "dd": "e"},
+            keys=(*_SEARCH_PREFIX_START, "a", "f"),
+            expected_committed=f"bf",
         ),
         _param(
             "search_prefix_done_and_prefix_then_done",
