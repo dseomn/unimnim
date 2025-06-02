@@ -133,6 +133,66 @@ def _param(
             expected_candidates=(),
             expected_preedit=_SEARCH_PREFIX_PROMPT,
         ),
+        _param(
+            "search_prefix_invalid_key",
+            map_={"a": "b"},
+            keys=(*_SEARCH_PREFIX_START, "c"),
+            expected_candidates_shown=True,  # Not useful, but not a problem.
+            expected_committed="c",
+        ),
+        _param(
+            "search_prefix_done",
+            map_={"a": "b"},
+            keys=(*_SEARCH_PREFIX_START, "a"),
+            expected_candidates=("b",),
+            expected_preedit="b",
+        ),
+        _param(
+            "search_prefix_done_then_invalid_key",
+            map_={"a": "b"},
+            keys=(*_SEARCH_PREFIX_START, "a", "c"),
+            expected_committed="bc",
+        ),
+        _param(
+            "search_prefix_prefix",
+            map_={"aa": "bb"},
+            keys=(*_SEARCH_PREFIX_START, "a"),
+            expected_candidates=("bb",),
+            expected_preedit=f"bb",
+        ),
+        _param(
+            "search_prefix_prefix_then_invalid_key",
+            map_={"aa": "bb"},
+            keys=(*_SEARCH_PREFIX_START, "a", "c"),
+            expected_committed="bbc",
+        ),
+        _param(
+            "search_prefix_prefix_then_done",
+            map_={"aa": "bb"},
+            keys=(*_SEARCH_PREFIX_START, "a", "a"),
+            expected_candidates=("bb",),
+            expected_preedit=f"bb",
+        ),
+        _param(
+            "search_prefix_done_and_prefix",
+            map_={"a": "b", "aa": "c"},
+            keys=(*_SEARCH_PREFIX_START, "a"),
+            expected_candidates=("b", "c"),
+            expected_preedit=f"b",
+        ),
+        _param(
+            "search_prefix_done_and_prefix_then_invalid_key",
+            map_={"a": "b", "aa": "c"},
+            keys=(*_SEARCH_PREFIX_START, "a", "d"),
+            expected_committed=f"bd",
+        ),
+        _param(
+            "search_prefix_done_and_prefix_then_done",
+            map_={"a": "b", "aa": "c"},
+            keys=(*_SEARCH_PREFIX_START, "a", "a"),
+            expected_candidates=("c",),
+            expected_preedit=f"c",
+        ),
     ),
 )
 def test_m17n_input_method(
