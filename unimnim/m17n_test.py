@@ -105,6 +105,12 @@ def _param(
             commit="ac",
         ),
         _param(
+            "map_prefix_then_new_command",
+            map_={"aa": "bb"},
+            keys=(*_START, "a", *_START, "a", "a"),
+            commit="abb",
+        ),
+        _param(
             "map_prefix_then_done",
             map_={"aa": "bb"},
             keys=(*_START, "a", "a"),
@@ -127,6 +133,12 @@ def _param(
             map_={"a": "b", "aa": "c", "dd": "e"},
             keys=(*_START, "a", "f"),
             commit="bf",
+        ),
+        _param(
+            "map_done_and_prefix_then_new_command",
+            map_={"a": "b", "aa": "c"},
+            keys=(*_START, "a", *_START, "a", "a"),
+            commit="bc",
         ),
         _param(
             "map_done_and_prefix_then_done",
@@ -162,6 +174,14 @@ def _param(
             commit="bc",
         ),
         _param(
+            "search_prefix_done_then_new_command",
+            map_={"a": "b", "c": "d"},
+            keys=(*_SEARCH_PREFIX_START, "a", *_SEARCH_PREFIX_START, "c"),
+            commit="b",
+            candidates=("d",),
+            preedit="d",
+        ),
+        _param(
             "search_prefix_prefix",
             map_={"aa": "bb"},
             keys=(*_SEARCH_PREFIX_START, "a"),
@@ -179,6 +199,14 @@ def _param(
             map_={"aa": "bb", "cc": "dd"},
             keys=(*_SEARCH_PREFIX_START, "a", "c"),
             commit="bbc",
+        ),
+        _param(
+            "search_prefix_prefix_then_new_command",
+            map_={"aa": "bb"},
+            keys=(*_SEARCH_PREFIX_START, "a", *_SEARCH_PREFIX_START, "a"),
+            commit="bb",
+            candidates=("bb",),
+            preedit="bb",
         ),
         _param(
             "search_prefix_prefix_then_done",
@@ -205,6 +233,14 @@ def _param(
             map_={"a": "b", "aa": "c", "dd": "e"},
             keys=(*_SEARCH_PREFIX_START, "a", "f"),
             commit="bf",
+        ),
+        _param(
+            "search_prefix_done_and_prefix_then_new_command",
+            map_={"a": "b", "aa": "c"},
+            keys=(*_SEARCH_PREFIX_START, "a", *_SEARCH_PREFIX_START, "a", "a"),
+            commit="b",
+            candidates=("c",),
+            preedit="c",
         ),
         _param(
             "search_prefix_done_and_prefix_then_done",
