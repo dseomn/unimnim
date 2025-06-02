@@ -62,6 +62,13 @@ def _param(
             keys=(*_START, "a"),
             expected_committed="b",
         ),
+        _param(
+            "search_prefix_start",
+            map_={"aa": "b", "bb": "a"},
+            keys=_SEARCH_PREFIX_START,
+            expected_candidates=(),
+            expected_preedit=_SEARCH_PREFIX_PROMPT,
+        ),
     ),
 )
 def test_m17n_input_method(
