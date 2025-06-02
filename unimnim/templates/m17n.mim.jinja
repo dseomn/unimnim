@@ -62,7 +62,7 @@
       (delete @<)
       (
        (
-        {%- for result in results %}
+        {%- for result in results[:1000] %}
         {{ result | m17n_mtext }}
         {%- endfor %}
         )

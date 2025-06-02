@@ -251,6 +251,13 @@ def _param(
             candidates=("c",),
             preedit="c",
         ),
+        _param(
+            "search_prefix_truncated_candidate_list",
+            map_={f"a{i:04d}": f"b{i:04d}" for i in range(1001)},
+            keys=(*_SEARCH_PREFIX_START, "a"),
+            candidates=tuple(f"b{i:04d}" for i in range(1000)),
+            preedit="b0000",
+        ),
     ),
 )
 def test_m17n_input_method(
