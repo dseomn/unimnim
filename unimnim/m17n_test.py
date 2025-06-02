@@ -46,22 +46,70 @@ def _param(
     "map_,keys,expected_candidates,expected_preedit,expected_committed",
     (
         _param(
-            "key_passed_through_with_no_command",
+            "no_command",
             map_={"a": "b"},
             keys=("a",),
             expected_committed="a",
         ),
         _param(
-            "start",
+            "map_start",
             map_={"a": "b"},
             keys=_START,
             expected_preedit=_PROMPT,
         ),
         _param(
-            "commits_when_no_other_possibilities",
+            "map_invalid_key",
+            map_={"a": "b"},
+            keys=(*_START, "c"),
+            expected_committed="c",
+        ),
+        _param(
+            "map_done",
             map_={"a": "b"},
             keys=(*_START, "a"),
             expected_committed="b",
+        ),
+        _param(
+            "map_done_then_mnemonic_without_command",
+            map_={"a": "b"},
+            keys=(*_START, "a", "a"),
+            expected_committed="ba",
+        ),
+        _param(
+            "map_prefix",
+            map_={"aa": "bb"},
+            keys=(*_START, "a"),
+            expected_preedit=f"{_PROMPT}a",
+        ),
+        _param(
+            "map_prefix_then_invalid_key",
+            map_={"aa": "bb"},
+            keys=(*_START, "a", "c"),
+            expected_committed="ac",
+        ),
+        _param(
+            "map_prefix_then_done",
+            map_={"aa": "bb"},
+            keys=(*_START, "a", "a"),
+            expected_committed="bb",
+        ),
+        _param(
+            "map_done_and_prefix",
+            map_={"a": "b", "aa": "c"},
+            keys=(*_START, "a"),
+            expected_preedit="b",
+        ),
+        _param(
+            "map_done_and_prefix_then_invalid_key",
+            map_={"a": "b", "aa": "c"},
+            keys=(*_START, "a", "d"),
+            expected_committed="bd",
+        ),
+        _param(
+            "map_done_and_prefix_then_done",
+            map_={"a": "b", "aa": "c"},
+            keys=(*_START, "a", "a"),
+            expected_committed="c",
         ),
         _param(
             "search_prefix_start",
