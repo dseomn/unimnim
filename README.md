@@ -96,6 +96,20 @@ example:
     </tbody>
     <tbody>
         <tr>
+            <th rowspan="1" scope="rowgroup">
+              <a href="unimnim/data/Cher.toml">
+                Cherokee
+              </a>
+            </th>
+            <td rowspan="1">
+              <kbd>ce</kbd>
+            </td>
+          <td><kbd>GA</kbd></td>
+          <td dir="auto">Ꭶ</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
             <th rowspan="2" scope="rowgroup">
               <a href="unimnim/data/Cyrl.toml">
                 Cyrillic

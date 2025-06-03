@@ -1,0 +1,84 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Cherokee_syllabary
+
+prefix = "ce"
+
+[examples]
+"GA" = "U+13A6 CHEROKEE LETTER GA: Ꭶ"
+
+[name_maps.prefix_upper]
+"" = "CHEROKEE LETTER "
+
+[name_maps.prefix_lower]
+"" = "CHEROKEE SMALL LETTER "
+
+[name_maps.consonants_upper]
+"" = ""
+"G" = "G"
+"K" = "K"
+"H" = "H"
+"L" = "L"
+"M" = "M"
+"N" = "N"
+"HN" = "HN"
+"QU" = "QU"
+"S" = "S"
+"D" = "D"
+"T" = "T"
+"DL" = "DL"
+"TL" = "TL"
+"TS" = "TS"
+"W" = "W"
+"Y" = "Y"
+
+[name_maps.consonants_lower]
+"" = ""
+"g" = "G"
+"k" = "K"
+"h" = "H"
+"l" = "L"
+"m" = "M"
+"n" = "N"
+"hn" = "HN"
+"qu" = "QU"
+"s" = "S"
+"d" = "D"
+"t" = "T"
+"dl" = "DL"
+"tl" = "TL"
+"ts" = "TS"
+"w" = "W"
+"y" = "Y"
+
+[name_maps.vowels_upper]
+"" = ""
+"A" = "A"
+"E" = "E"
+"I" = "I"
+"O" = "O"
+"U" = "U"
+"V" = "V"
+
+[name_maps.vowels_lower]
+"" = ""
+"a" = "A"
+"e" = "E"
+"i" = "I"
+"o" = "O"
+"u" = "U"
+"v" = "V"
+
+[maps.main]
+"NAH" = "U+13C0 CHEROKEE LETTER NAH: Ꮐ"
+"nah" = "U+AB90 CHEROKEE SMALL LETTER NAH: ꮐ"
+
+[expressions]
+main = [
+  "union",
+  ["name_maps", "prefix_upper", "consonants_upper", "vowels_upper"],
+  ["name_maps", "prefix_lower", "consonants_lower", "vowels_lower"],
+  ["map", "main"],
+]
