@@ -1,0 +1,35 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Sundanese_script
+
+prefix = "su"
+
+[maps.empty_for_combining]
+"_" = ""  # empty-for-combining
+
+[maps.independent_vowels]
+"a" = "U+1B83 SUNDANESE LETTER A: ᮃ"
+"i" = "U+1B84 SUNDANESE LETTER I: ᮄ"
+"u" = "U+1B85 SUNDANESE LETTER U: ᮅ"
+"E" = "U+1B86 SUNDANESE LETTER AE: ᮆ"
+"o" = "U+1B87 SUNDANESE LETTER O: ᮇ"
+"e" = "U+1B88 SUNDANESE LETTER E: ᮈ"
+"eu" = "U+1B89 SUNDANESE LETTER EU: ᮉ"
+
+[maps.vowel_signs]
+"a" = ""
+"i" = "U+1BA4 SUNDANESE VOWEL SIGN PANGHULU [combining]: ᮊᮤ"
+"u" = "U+1BA5 SUNDANESE VOWEL SIGN PANYUKU [combining]: ᮊᮥ"
+"E" = "U+1BA6 SUNDANESE VOWEL SIGN PANAELAENG [combining]: ᮊᮦ"
+"o" = "U+1BA7 SUNDANESE VOWEL SIGN PANOLONG [combining]: ᮊᮧ"
+"e" = "U+1BA8 SUNDANESE VOWEL SIGN PAMEPET [combining]: ᮊᮨ"
+"eu" = "U+1BA9 SUNDANESE VOWEL SIGN PANEULEUNG [combining]: ᮊᮩ"
+
+[expressions]
+main = [
+  "union",
+  ["product", ["map", "empty_for_combining"], ["map", "vowel_signs"]],
+  ["map", "independent_vowels"],
+]
