@@ -18,6 +18,38 @@ prefix = "su"
 "e" = "U+1B88 SUNDANESE LETTER E: ᮈ"
 "eu" = "U+1B89 SUNDANESE LETTER EU: ᮉ"
 
+[maps.consonants]
+"k" = "U+1B8A SUNDANESE LETTER KA: ᮊ"
+"q" = "U+1B8B SUNDANESE LETTER QA: ᮋ"
+"g" = "U+1B8C SUNDANESE LETTER GA: ᮌ"
+"ng" = "U+1B8D SUNDANESE LETTER NGA: ᮍ"
+"c" = "U+1B8E SUNDANESE LETTER CA: ᮎ"
+"j" = "U+1B8F SUNDANESE LETTER JA: ᮏ"
+"z" = "U+1B90 SUNDANESE LETTER ZA: ᮐ"
+"t" = "U+1B92 SUNDANESE LETTER TA: ᮒ"
+"d" = "U+1B93 SUNDANESE LETTER DA: ᮓ"
+"n" = "U+1B94 SUNDANESE LETTER NA: ᮔ"
+"p" = "U+1B95 SUNDANESE LETTER PA: ᮕ"
+"f" = "U+1B96 SUNDANESE LETTER FA: ᮖ"
+"v" = "U+1B97 SUNDANESE LETTER VA: ᮗ"
+"b" = "U+1B98 SUNDANESE LETTER BA: ᮘ"
+"m" = "U+1B99 SUNDANESE LETTER MA: ᮙ"
+"y" = "U+1B9A SUNDANESE LETTER YA: ᮚ"
+"r" = "U+1B9B SUNDANESE LETTER RA: ᮛ"
+"l" = "U+1B9C SUNDANESE LETTER LA: ᮜ"
+"w" = "U+1B9D SUNDANESE LETTER WA: ᮝ"
+"s" = "U+1B9E SUNDANESE LETTER SA: ᮞ"
+"x" = "U+1B9F SUNDANESE LETTER XA: ᮟ"
+"h" = "U+1BA0 SUNDANESE LETTER HA: ᮠ"
+"kh" = "U+1BAE SUNDANESE LETTER KHA: ᮮ"
+"sy" = "U+1BAF SUNDANESE LETTER SYA: ᮯ"
+
+[maps.medial_consonants]
+"r" = "U+1BA2 SUNDANESE CONSONANT SIGN PANYAKRA [combining]: ᮊᮢ"
+"l" = "U+1BA3 SUNDANESE CONSONANT SIGN PANYIKU [combining]: ᮊᮣ"
+"m" = "U+1BAC SUNDANESE CONSONANT SIGN PASANGAN MA [combining]: ᮊᮬ"
+"w" = "U+1BAD SUNDANESE CONSONANT SIGN PASANGAN WA [combining]: ᮊᮭ"
+
 [maps.vowel_signs]
 "a" = ""
 "i" = "U+1BA4 SUNDANESE VOWEL SIGN PANGHULU [combining]: ᮊᮤ"
@@ -28,8 +60,14 @@ prefix = "su"
 "eu" = "U+1BA9 SUNDANESE VOWEL SIGN PANEULEUNG [combining]: ᮊᮩ"
 
 [expressions]
+onsets = [
+  "union",
+  ["map", "consonants"],
+  ["product", ["map", "consonants"], ["map", "medial_consonants"]],
+]
 main = [
   "union",
   ["product", ["map", "empty_for_combining"], ["map", "vowel_signs"]],
   ["map", "independent_vowels"],
+  ["product", ["expression", "onsets"], ["map", "vowel_signs"]],
 ]
