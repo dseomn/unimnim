@@ -78,7 +78,14 @@ onsets = [
 ]
 main = [
   "union",
+  [
+    "product",
+    ["map", "empty_for_combining"],
+    ["map", "medial_consonants"],
+    ["map", "empty_for_combining"],
+  ],
   ["product", ["map", "empty_for_combining"], ["map", "vowel_signs"]],
+  ["product", ["map", "empty_for_combining"], ["map", "final_consonant_signs"]],
   ["product", ["map", "empty_for_combining"], ["map", "vowel_killers"]],
   ["map", "independent_vowels"],
   ["product", ["map", "independent_vowels"], ["map", "final_consonant_signs"]],
