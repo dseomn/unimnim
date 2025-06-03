@@ -59,6 +59,10 @@ prefix = "su"
 "e" = "U+1BA8 SUNDANESE VOWEL SIGN PAMEPET [combining]: ᮊᮨ"
 "eu" = "U+1BA9 SUNDANESE VOWEL SIGN PANEULEUNG [combining]: ᮊᮩ"
 
+[maps.vowel_killers]
+"" = "U+1BAA SUNDANESE SIGN PAMAAEH [combining]: ᮊ᮪"
+"-" = "U+1BAB SUNDANESE SIGN VIRAMA [combining]: ᮊ᮫"
+
 [expressions]
 onsets = [
   "union",
@@ -68,6 +72,8 @@ onsets = [
 main = [
   "union",
   ["product", ["map", "empty_for_combining"], ["map", "vowel_signs"]],
+  ["product", ["map", "empty_for_combining"], ["map", "vowel_killers"]],
   ["map", "independent_vowels"],
   ["product", ["expression", "onsets"], ["map", "vowel_signs"]],
+  ["product", ["expression", "onsets"], ["map", "vowel_killers"]],
 ]
