@@ -70,6 +70,18 @@ prefix = "su"
 "" = "U+1BAA SUNDANESE SIGN PAMAAEH [combining]: ᮊ᮪"
 "-" = "U+1BAB SUNDANESE SIGN VIRAMA [combining]: ᮊ᮫"
 
+[maps.main]
+"0" = "U+1BB0 SUNDANESE DIGIT ZERO: ᮰"
+"1" = "U+1BB1 SUNDANESE DIGIT ONE: ᮱"
+"2" = "U+1BB2 SUNDANESE DIGIT TWO: ᮲"
+"3" = "U+1BB3 SUNDANESE DIGIT THREE: ᮳"
+"4" = "U+1BB4 SUNDANESE DIGIT FOUR: ᮴"
+"5" = "U+1BB5 SUNDANESE DIGIT FIVE: ᮵"
+"6" = "U+1BB6 SUNDANESE DIGIT SIX: ᮶"
+"7" = "U+1BB7 SUNDANESE DIGIT SEVEN: ᮷"
+"8" = "U+1BB8 SUNDANESE DIGIT EIGHT: ᮸"
+"9" = "U+1BB9 SUNDANESE DIGIT NINE: ᮹"
+
 [expressions]
 onsets = [
   "union",
@@ -97,4 +109,5 @@ main = [
     ["map", "final_consonant_signs"],
   ],
   ["product", ["expression", "onsets"], ["map", "vowel_killers"]],
+  ["map", "main"],
 ]
