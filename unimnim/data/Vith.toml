@@ -6,6 +6,9 @@
 
 prefix = "vi"
 
+[examples]
+"a" = "U+10597 VITHKUQI SMALL LETTER A: 𐖗"
+
 [maps.main]
 "A" = "U+10570 VITHKUQI CAPITAL LETTER A: 𐕰"
 "BB" = "U+10571 VITHKUQI CAPITAL LETTER BBE: 𐕱"

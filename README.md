@@ -396,6 +396,20 @@ example:
     </tbody>
     <tbody>
         <tr>
+            <th rowspan="1" scope="rowgroup">
+              <a href="unimnim/data/Vith.toml">
+                Vithkuqi
+              </a>
+            </th>
+            <td rowspan="1">
+              <kbd>vi</kbd>
+            </td>
+          <td><kbd>a</kbd></td>
+          <td dir="auto">𐖗</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
             <th rowspan="2" scope="rowgroup">
               <a href="unimnim/data/Yiii.toml">
                 Yi
