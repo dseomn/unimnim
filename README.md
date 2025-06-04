@@ -321,6 +321,20 @@ example:
     <tbody>
         <tr>
             <th rowspan="1" scope="rowgroup">
+              <a href="unimnim/data/Osma.toml">
+                Osmanya
+              </a>
+            </th>
+            <td rowspan="1">
+              <kbd>os</kbd>
+            </td>
+          <td><kbd>b</kbd></td>
+          <td dir="auto">𐒁</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <th rowspan="1" scope="rowgroup">
               <a href="unimnim/data/Runr.toml">
                 Runic
               </a>

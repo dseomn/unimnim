@@ -1,0 +1,55 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Osmanya_script
+
+prefix = "os"
+
+[examples]
+"b" = "U+10481 OSMANYA LETTER BA: 𐒁"
+
+[maps.main]
+"'" = "U+10480 OSMANYA LETTER ALEF: 𐒀"
+"b" = "U+10481 OSMANYA LETTER BA: 𐒁"
+"t" = "U+10482 OSMANYA LETTER TA: 𐒂"
+"j" = "U+10483 OSMANYA LETTER JA: 𐒃"
+"x" = "U+10484 OSMANYA LETTER XA: 𐒄"
+"kh" = "U+10485 OSMANYA LETTER KHA: 𐒅"
+"d" = "U+10486 OSMANYA LETTER DEEL: 𐒆"
+"r" = "U+10487 OSMANYA LETTER RA: 𐒇"
+"s" = "U+10488 OSMANYA LETTER SA: 𐒈"
+"sh" = "U+10489 OSMANYA LETTER SHIIN: 𐒉"
+"dh" = "U+1048A OSMANYA LETTER DHA: 𐒊"
+"c" = "U+1048B OSMANYA LETTER CAYN: 𐒋"
+"g" = "U+1048C OSMANYA LETTER GA: 𐒌"
+"f" = "U+1048D OSMANYA LETTER FA: 𐒍"
+"q" = "U+1048E OSMANYA LETTER QAAF: 𐒎"
+"k" = "U+1048F OSMANYA LETTER KAAF: 𐒏"
+"l" = "U+10490 OSMANYA LETTER LAAN: 𐒐"
+"m" = "U+10491 OSMANYA LETTER MIIN: 𐒑"
+"n" = "U+10492 OSMANYA LETTER NUUN: 𐒒"
+"w" = "U+10493 OSMANYA LETTER WAW: 𐒓"
+"h" = "U+10494 OSMANYA LETTER HA: 𐒔"
+"y" = "U+10495 OSMANYA LETTER YA: 𐒕"
+"a" = "U+10496 OSMANYA LETTER A: 𐒖"
+"e" = "U+10497 OSMANYA LETTER E: 𐒗"
+"i" = "U+10498 OSMANYA LETTER I: 𐒘"
+"o" = "U+10499 OSMANYA LETTER O: 𐒙"
+"u" = "U+1049A OSMANYA LETTER U: 𐒚"
+"aa" = "U+1049B OSMANYA LETTER AA: 𐒛"
+"ee" = "U+1049C OSMANYA LETTER EE: 𐒜"
+"oo" = "U+1049D OSMANYA LETTER OO: 𐒝"
+"0" = "U+104A0 OSMANYA DIGIT ZERO: 𐒠"
+"1" = "U+104A1 OSMANYA DIGIT ONE: 𐒡"
+"2" = "U+104A2 OSMANYA DIGIT TWO: 𐒢"
+"3" = "U+104A3 OSMANYA DIGIT THREE: 𐒣"
+"4" = "U+104A4 OSMANYA DIGIT FOUR: 𐒤"
+"5" = "U+104A5 OSMANYA DIGIT FIVE: 𐒥"
+"6" = "U+104A6 OSMANYA DIGIT SIX: 𐒦"
+"7" = "U+104A7 OSMANYA DIGIT SEVEN: 𐒧"
+"8" = "U+104A8 OSMANYA DIGIT EIGHT: 𐒨"
+"9" = "U+104A9 OSMANYA DIGIT NINE: 𐒩"
+
+[expressions]
+main = ["map", "main"]
