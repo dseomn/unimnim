@@ -334,6 +334,36 @@ example:
     </tbody>
     <tbody>
         <tr>
+            <th rowspan="5" scope="rowgroup">
+              <a href="unimnim/data/Sund.toml">
+                Sundanese
+              </a>
+            </th>
+            <td rowspan="5">
+              <kbd>su</kbd>
+            </td>
+          <td><kbd>k</kbd></td>
+          <td dir="auto">ᮊ᮪</td>
+        </tr>
+        <tr>
+          <td><kbd>ka</kbd></td>
+          <td dir="auto">ᮊ</td>
+        </tr>
+        <tr>
+          <td><kbd>ki</kbd></td>
+          <td dir="auto">ᮊᮤ</td>
+        </tr>
+        <tr>
+          <td><kbd>kar</kbd></td>
+          <td dir="auto">ᮊᮁ</td>
+        </tr>
+        <tr>
+          <td><kbd>kra</kbd></td>
+          <td dir="auto">ᮊᮢ</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
             <th rowspan="2" scope="rowgroup">
               <a href="unimnim/data/Tagb.toml">
                 Tagbanwa
