@@ -10,16 +10,21 @@ prefix = "tf"
 "dj" = "U+2D35 TIFINAGH LETTER BERBER ACADEMY YAJ: ⴵ"
 "f" = "U+2D3C TIFINAGH LETTER YAF: ⴼ"
 "kh" = "U+2D45 TIFINAGH LETTER YAKH: ⵅ"
+"i" = "U+2D49 TIFINAGH LETTER YI: ⵉ"
 "j" = "U+2D4A TIFINAGH LETTER YAZH: ⵊ"
 "l" = "U+2D4D TIFINAGH LETTER YAL: ⵍ"
 "m" = "U+2D4E TIFINAGH LETTER YAM: ⵎ"
 "ng" = "U+2D51 TIFINAGH LETTER TUAREG YANG: ⵑ"
 "p" = "U+2D52 TIFINAGH LETTER YAP: ⵒ"
+"u" = "U+2D53 TIFINAGH LETTER YU: ⵓ"
 "c" = "U+2D5B TIFINAGH LETTER YASH: ⵛ"
 "ch" = "U+2D5E TIFINAGH LETTER YACH: ⵞ"
 "v" = "U+2D60 TIFINAGH LETTER YAV: ⵠ"
 "w" = "U+2D61 TIFINAGH LETTER YAW: ⵡ"
 "y" = "U+2D62 TIFINAGH LETTER YAY: ⵢ"
+
+[maps.vowels]
+"a" = "U+2D30 TIFINAGH LETTER YA: ⴰ"
 
 [maps.consonant_joiner]
 "-" = "U+2D7F TIFINAGH CONSONANT JOINER"
@@ -34,4 +39,5 @@ main = [
     ["map", "consonant_joiner"],
     ["map", "consonants"],
   ],
+  ["map", "vowels"],
 ]
