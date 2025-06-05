@@ -35,6 +35,12 @@ prefix = "th"
 "c" = "U+0797 THAANA LETTER CHAVIYANI: ޗ"
 "N" = "U+07B1 THAANA LETTER NAA: ޱ"
 
+[maps.alifu_carrier]
+"" = "U+0787 THAANA LETTER ALIFU: އ"
+
+[maps.alifu_consonant]
+"'" = "U+0787 THAANA LETTER ALIFU: އ"
+
 [maps.vowel_signs]
 "a" = "U+07A6 THAANA ABAFILI [combining]: އަ"
 "aa" = "U+07A7 THAANA AABAAFILI [combining]: އާ"
@@ -69,9 +75,12 @@ prefix = "th"
 main = [
   "union",
   ["product", ["map", "consonants"], ["map", "empty_for_combining"]],
+  ["product", ["map", "alifu_consonant"], ["map", "empty_for_combining"]],
   ["product", ["map", "empty_for_combining"], ["map", "vowel_signs"]],
   ["product", ["map", "empty_for_combining"], ["map", "sukun"]],
   ["product", ["map", "consonants"], ["map", "vowel_signs"]],
   ["product", ["map", "consonants"], ["map", "sukun"]],
+  ["product", ["map", "alifu_carrier"], ["map", "vowel_signs"]],
+  ["product", ["map", "alifu_consonant"], ["map", "sukun"]],
   ["map", "main"],
 ]
