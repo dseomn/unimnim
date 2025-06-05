@@ -49,6 +49,9 @@ prefix = "tf"
 [maps.consonant_joiner]
 "-" = "U+2D7F TIFINAGH CONSONANT JOINER"
 
+[maps.main]
+"," = "U+2D70 TIFINAGH SEPARATOR MARK: ⵰"
+
 [expressions]
 main = [
   "union",
@@ -61,4 +64,5 @@ main = [
     ["map", "consonants"],
   ],
   ["map", "vowels"],
+  ["map", "main"],
 ]
