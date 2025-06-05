@@ -6,6 +6,9 @@
 
 prefix = "tf"
 
+[maps.empty_for_combining]
+"_" = ""  # empty-for-combining
+
 [maps.consonants]
 "b" = "U+2D31 TIFINAGH LETTER YAB: ⴱ"
 "B" = "U+2D32 TIFINAGH LETTER YABH: ⴲ"
@@ -49,6 +52,7 @@ prefix = "tf"
 [expressions]
 main = [
   "union",
+  ["product", ["map", "empty_for_combining"], ["map", "consonant_joiner"]],
   ["map", "consonants"],
   [
     "product",
