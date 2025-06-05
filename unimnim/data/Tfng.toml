@@ -32,6 +32,8 @@ prefix = "tf"
 "Q" = "U+2D48 TIFINAGH LETTER TUAREG YAQ: ⵈ"
 "i" = "U+2D49 TIFINAGH LETTER YI: ⵉ"
 "j" = "U+2D4A TIFINAGH LETTER YAZH: ⵊ"
+"ZH" = "U+2D4B TIFINAGH LETTER AHAGGAR YAZH: ⵋ"  # suboptimal
+"zh" = "U+2D4C TIFINAGH LETTER TUAREG YAZH: ⵌ"  # suboptimal
 "l" = "U+2D4D TIFINAGH LETTER YAL: ⵍ"
 "m" = "U+2D4E TIFINAGH LETTER YAM: ⵎ"
 "n" = "U+2D4F TIFINAGH LETTER YAN: ⵏ"
@@ -51,6 +53,9 @@ prefix = "tf"
 "v" = "U+2D60 TIFINAGH LETTER YAV: ⵠ"
 "w" = "U+2D61 TIFINAGH LETTER YAW: ⵡ"
 "y" = "U+2D62 TIFINAGH LETTER YAY: ⵢ"
+"z" = "U+2D63 TIFINAGH LETTER YAZ: ⵣ"
+"Z" = "U+2D64 TIFINAGH LETTER TAWELLEMET YAZ: ⵤ"
+"zz" = "U+2D65 TIFINAGH LETTER YAZZ: ⵥ"  # suboptimal
 "w8" = "U+2D6F TIFINAGH MODIFIER LETTER LABIALIZATION MARK: ⵯ"  # aka="superscript yaw" geometry
 
 [maps.vowels]
