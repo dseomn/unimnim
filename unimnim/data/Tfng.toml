@@ -6,6 +6,11 @@
 
 prefix = "tf"
 
+[examples]
+"r" = "U+2D54 TIFINAGH LETTER YAR: ⵔ"
+"t" = "U+2D5C TIFINAGH LETTER YAT: ⵜ"
+"r-t" = "U+2D54 TIFINAGH LETTER YAR, U+2D7F TIFINAGH CONSONANT JOINER, U+2D5C TIFINAGH LETTER YAT: ⵔ⵿ⵜ"
+
 [maps.empty_for_combining]
 "_" = ""  # empty-for-combining
 
