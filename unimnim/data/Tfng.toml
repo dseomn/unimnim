@@ -34,6 +34,8 @@ prefix = "tf"
 
 [maps.vowels]
 "a" = "U+2D30 TIFINAGH LETTER YA: ⴰ"
+"e" = "U+2D3B TIFINAGH LETTER YEY: ⴻ"
+"E" = "U+2D66 TIFINAGH LETTER YE: ⵦ"
 
 [maps.consonant_joiner]
 "-" = "U+2D7F TIFINAGH CONSONANT JOINER"
