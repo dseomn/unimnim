@@ -46,6 +46,8 @@ prefix = "th"
 "ee" = "U+07AD THAANA EYBEYFILI [combining]: އޭ"
 "o" = "U+07AE THAANA OBOFILI [combining]: އޮ"
 "oo" = "U+07AF THAANA OABOAFILI [combining]: އޯ"
+
+[maps.sukun]
 "" = "U+07B0 THAANA SUKUN [combining]: އް"
 
 [maps.main]
@@ -67,6 +69,8 @@ prefix = "th"
 main = [
   "union",
   ["product", ["map", "empty_for_combining"], ["map", "vowel_signs"]],
+  ["product", ["map", "empty_for_combining"], ["map", "sukun"]],
   ["product", ["map", "consonants"], ["map", "vowel_signs"]],
+  ["product", ["map", "consonants"], ["map", "sukun"]],
   ["map", "main"],
 ]
