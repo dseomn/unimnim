@@ -1,0 +1,55 @@
+# SPDX-FileCopyrightText: 2025 David Mandelberg <david@mandelberg.org>
+#
+# SPDX-License-Identifier: CC0-1.0 OR Apache-2.0
+
+# https://en.wikipedia.org/wiki/Thaana
+
+prefix = "th"
+
+[maps.empty_for_combining]
+"_" = ""  # empty-for-combining
+
+[maps.consonants]
+"h" = "U+0780 THAANA LETTER HAA: ހ"
+"S" = "U+0781 THAANA LETTER SHAVIYANI: ށ"
+"n" = "U+0782 THAANA LETTER NOONU: ނ"
+"r" = "U+0783 THAANA LETTER RAA: ރ"
+"b" = "U+0784 THAANA LETTER BAA: ބ"
+"L" = "U+0785 THAANA LETTER LHAVIYANI: ޅ"
+"k" = "U+0786 THAANA LETTER KAAFU: ކ"
+"v" = "U+0788 THAANA LETTER VAAVU: ވ"
+"m" = "U+0789 THAANA LETTER MEEMU: މ"
+"f" = "U+078A THAANA LETTER FAAFU: ފ"
+"d" = "U+078B THAANA LETTER DHAALU: ދ"
+"t" = "U+078C THAANA LETTER THAA: ތ"
+"l" = "U+078D THAANA LETTER LAAMU: ލ"
+"g" = "U+078E THAANA LETTER GAAFU: ގ"
+"s" = "U+0790 THAANA LETTER SEENU: ސ"
+"D" = "U+0791 THAANA LETTER DAVIYANI: ޑ"
+"z" = "U+0792 THAANA LETTER ZAVIYANI: ޒ"
+"T" = "U+0793 THAANA LETTER TAVIYANI: ޓ"
+"y" = "U+0794 THAANA LETTER YAA: ޔ"
+"p" = "U+0795 THAANA LETTER PAVIYANI: ޕ"
+"j" = "U+0796 THAANA LETTER JAVIYANI: ޖ"
+"c" = "U+0797 THAANA LETTER CHAVIYANI: ޗ"
+"N" = "U+07B1 THAANA LETTER NAA: ޱ"
+
+[maps.vowel_signs]
+"a" = "U+07A6 THAANA ABAFILI [combining]: އަ"
+"aa" = "U+07A7 THAANA AABAAFILI [combining]: އާ"
+"i" = "U+07A8 THAANA IBIFILI [combining]: އި"
+"ii" = "U+07A9 THAANA EEBEEFILI [combining]: އީ"
+"u" = "U+07AA THAANA UBUFILI [combining]: އު"
+"uu" = "U+07AB THAANA OOBOOFILI [combining]: އޫ"
+"e" = "U+07AC THAANA EBEFILI [combining]: އެ"
+"ee" = "U+07AD THAANA EYBEYFILI [combining]: އޭ"
+"o" = "U+07AE THAANA OBOFILI [combining]: އޮ"
+"oo" = "U+07AF THAANA OABOAFILI [combining]: އޯ"
+"" = "U+07B0 THAANA SUKUN [combining]: އް"
+
+[expressions]
+main = [
+  "union",
+  ["product", ["map", "empty_for_combining"], ["map", "vowel_signs"]],
+  ["product", ["map", "consonants"], ["map", "vowel_signs"]],
+]
