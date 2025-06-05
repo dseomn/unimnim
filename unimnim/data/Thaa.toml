@@ -48,9 +48,25 @@ prefix = "th"
 "oo" = "U+07AF THAANA OABOAFILI [combining]: އޯ"
 "" = "U+07B0 THAANA SUKUN [combining]: އް"
 
+[maps.main]
+"," = "U+060C ARABIC COMMA: ،"
+";" = "U+061B ARABIC SEMICOLON: ؛"
+"?" = "U+061F ARABIC QUESTION MARK: ؟"
+"0" = "U+0660 ARABIC-INDIC DIGIT ZERO: ٠"
+"1" = "U+0661 ARABIC-INDIC DIGIT ONE: ١"
+"2" = "U+0662 ARABIC-INDIC DIGIT TWO: ٢"
+"3" = "U+0663 ARABIC-INDIC DIGIT THREE: ٣"
+"4" = "U+0664 ARABIC-INDIC DIGIT FOUR: ٤"
+"5" = "U+0665 ARABIC-INDIC DIGIT FIVE: ٥"
+"6" = "U+0666 ARABIC-INDIC DIGIT SIX: ٦"
+"7" = "U+0667 ARABIC-INDIC DIGIT SEVEN: ٧"
+"8" = "U+0668 ARABIC-INDIC DIGIT EIGHT: ٨"
+"9" = "U+0669 ARABIC-INDIC DIGIT NINE: ٩"
+
 [expressions]
 main = [
   "union",
   ["product", ["map", "empty_for_combining"], ["map", "vowel_signs"]],
   ["product", ["map", "consonants"], ["map", "vowel_signs"]],
+  ["map", "main"],
 ]
