@@ -22,6 +22,7 @@ prefix = "tf"
 "v" = "U+2D60 TIFINAGH LETTER YAV: ⵠ"
 "w" = "U+2D61 TIFINAGH LETTER YAW: ⵡ"
 "y" = "U+2D62 TIFINAGH LETTER YAY: ⵢ"
+"w8" = "U+2D6F TIFINAGH MODIFIER LETTER LABIALIZATION MARK: ⵯ"  # aka="superscript yaw" geometry
 
 [maps.vowels]
 "a" = "U+2D30 TIFINAGH LETTER YA: ⴰ"
