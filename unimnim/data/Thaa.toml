@@ -68,6 +68,7 @@ prefix = "th"
 [expressions]
 main = [
   "union",
+  ["product", ["map", "consonants"], ["map", "empty_for_combining"]],
   ["product", ["map", "empty_for_combining"], ["map", "vowel_signs"]],
   ["product", ["map", "empty_for_combining"], ["map", "sukun"]],
   ["product", ["map", "consonants"], ["map", "vowel_signs"]],
