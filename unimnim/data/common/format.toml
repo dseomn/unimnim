@@ -6,6 +6,7 @@ prefix = "Z"
 
 [maps.main]
 "SHY" = "U+00AD SOFT HYPHEN"  # from=aliases
+"ALM" = "U+061C ARABIC LETTER MARK"  # from=aliases
 "ZWSP" = "U+200B ZERO WIDTH SPACE"  # from=aliases
 "ZWNJ" = "U+200C ZERO WIDTH NON-JOINER"  # from=aliases
 "ZWJ" = "U+200D ZERO WIDTH JOINER"  # from=aliases
