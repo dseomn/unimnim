@@ -418,6 +418,28 @@ example:
     </tbody>
     <tbody>
         <tr>
+            <th rowspan="3" scope="rowgroup">
+              <a href="unimnim/data/Thaa.toml">
+                Thaana
+              </a>
+            </th>
+            <td rowspan="3">
+              <kbd>th</kbd>
+            </td>
+          <td><kbd>h</kbd></td>
+          <td dir="auto">ހް</td>
+        </tr>
+        <tr>
+          <td><kbd>ha</kbd></td>
+          <td dir="auto">ހަ</td>
+        </tr>
+        <tr>
+          <td><kbd>a</kbd></td>
+          <td dir="auto">އަ</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
             <th rowspan="1" scope="rowgroup">
               <a href="unimnim/data/Vith.toml">
                 Vithkuqi

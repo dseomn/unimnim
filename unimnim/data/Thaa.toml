@@ -6,6 +6,11 @@
 
 prefix = "th"
 
+[examples]
+"h" = "U+0780 THAANA LETTER HAA, U+07B0 THAANA SUKUN: ހް"
+"ha" = "U+0780 THAANA LETTER HAA, U+07A6 THAANA ABAFILI: ހަ"
+"a" = "U+0787 THAANA LETTER ALIFU, U+07A6 THAANA ABAFILI: އަ"
+
 [maps.empty_for_combining]
 "_" = ""  # empty-for-combining
 
