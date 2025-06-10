@@ -7,6 +7,8 @@
 /*
  * Simple program to feed input to an m17n input method, and test that it
  * behaves as expected.
+ *
+ * TODO: m17n >= 1.8.6 - Switch to upstream m17n-input-test.
  */
 
 #include <stdbool.h>
