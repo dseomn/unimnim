@@ -28,9 +28,10 @@ def _extended_grapheme_clusters(s: str, /) -> Iterable[str]:
         yield s
         return
     it = icu.BreakIterator.createCharacterInstance(icu.Locale.getRoot())
-    it.setText(s)
+    icu_string = icu.UnicodeString(s)
+    it.setText(icu_string)
     for start, end in itertools.pairwise(itertools.chain((0,), it)):
-        yield s[start:end]
+        yield str(icu_string[start:end])
 
 
 @functools.cache

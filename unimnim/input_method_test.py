@@ -34,6 +34,16 @@ from unimnim import input_method
                 ),
             ],
         ),
+        (
+            # code point <= FFFF
+            "a\N{HEBREW LETTER BET}b",
+            ["a", "\N{HEBREW LETTER BET}", "b"],
+        ),
+        (
+            # code point > FFFF
+            "a\N{CALENDAR}b",
+            ["a", "\N{CALENDAR}", "b"],
+        ),
     ),
 )
 def test_extended_grapheme_clusters(s: str, expected: Sequence[str]) -> None:
