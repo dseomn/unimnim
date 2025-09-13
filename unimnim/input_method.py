@@ -9,6 +9,7 @@ import dataclasses
 import functools
 import itertools
 import pprint
+import sys
 from typing import Any
 import unicodedata
 
@@ -55,7 +56,7 @@ def known_sequences() -> Mapping[str, Sequence[str]]:
             if language is not None:
                 languages.add(language)
 
-    for code_point_num in range(0x10FFFF + 1):
+    for code_point_num in range(sys.maxunicode + 1):
         code_point = chr(code_point_num)
         if unicodedata.category(code_point) not in (
             "Cn",  # unassigned
