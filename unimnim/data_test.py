@@ -235,24 +235,20 @@ def test_group_parse(group_id: str, raw: Any, expected: Any) -> None:
 
 def test_load(tmp_path: pathlib.Path) -> None:
     (tmp_path / "subdir").mkdir()
-    (tmp_path / "subdir" / "latin.toml").write_text(
-        """
+    (tmp_path / "subdir" / "latin.toml").write_text("""
         prefix = "l"
         [maps.main]
         "a" = "U+0061 LATIN SMALL LETTER A"
         [expressions]
         main = ["map", "main"]
-        """
-    )
-    (tmp_path / "greek.toml").write_text(
-        """
+    """)
+    (tmp_path / "greek.toml").write_text("""
         prefix = "g"
         [maps.main]
         "a" = "U+03B1 GREEK SMALL LETTER ALPHA"
         [expressions]
         main = ["map", "main"]
-        """
-    )
+    """)
 
     actual = data.load(tmp_path)
 

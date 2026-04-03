@@ -59,16 +59,12 @@ def main(
             input_method.known_sequences(),
         )
         with (parsed_args.write_all / "known_sequences.toml").open("w") as f:
-            f.write(
-                textwrap.dedent(
-                    """\
-                    # This file is intended to help with starting a new data
-                    # file. Note that there might be syntax errors, combining
-                    # characters aren't represented with `[combining]`, and it
-                    # might need other manual changes.
-                    """
-                )
-            )
+            f.write(textwrap.dedent("""\
+                # This file is intended to help with starting a new data file.
+                # Note that there might be syntax errors, combining characters
+                # aren't represented with `[combining]`, and it might need other
+                # manual changes.
+            """))
             for sequence in sorted(input_method.known_sequences()):
                 f.write(f'"" = "{data.to_explicit_string(sequence)}"\n')
 

@@ -280,20 +280,16 @@ def test_m17n_input_method(
             version="no-version-test-only",
         )
     )
-    (tmp_path / "config.mic").write_text(
-        textwrap.dedent(
-            f"""
-            ((input-method t unimnim)
-             (variable
-              (prompt nil {input_method.m17n_mtext(_PROMPT)})
-              (search-prefix-prompt
-               nil
-               {input_method.m17n_mtext(_SEARCH_PREFIX_PROMPT)})
-              )
-             )
-            """
-        )
-    )
+    (tmp_path / "config.mic").write_text(textwrap.dedent(f"""
+        ((input-method t unimnim)
+         (variable
+          (prompt nil {input_method.m17n_mtext(_PROMPT)})
+          (search-prefix-prompt
+           nil
+           {input_method.m17n_mtext(_SEARCH_PREFIX_PROMPT)})
+          )
+         )
+    """))
     assert __spec__.origin is not None
     m17n_test = str(
         pathlib.Path(__spec__.origin).parent.parent / "tools" / "m17n-test"
